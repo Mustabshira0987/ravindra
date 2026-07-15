@@ -1,0 +1,6 @@
+{
+  "name": "Ravindra Engineering College for Women",
+  "description": "Premium modern web portal for Ravindra Engineering College for Women (RCEW), Kurnool, featuring immersive college tours, departments, admissions, placements, and campus life details.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

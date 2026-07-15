@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  --color-primary-50: #e6f0fa;
+  --color-primary-100: #cce0f5;
+  --color-primary-200: #99c2eb;
+  --color-primary-300: #66a3e0;
+  --color-primary-400: #3385d6;
+  --color-primary-500: #0066cc;
+  --color-primary-600: #004d99;
+  --color-primary-700: #003366;
+  --color-primary-800: #002852;
+  --color-primary-900: #002147;
+  --color-primary-950: #001530;
+
+  --color-gold-50: #faf8f0;
+  --color-gold-100: #faf3d4;
+  --color-gold-200: #f3e3a9;
+  --color-gold-300: #e9ce80;
+  --color-gold-400: #dfbf5e;
+  --color-gold-500: #d4af37;
+  --color-gold-600: #b6922a;
+  --color-gold-700: #927420;
+  --color-gold-800: #735a18;
+  --color-gold-900: #554210;
+  --color-gold-950: #362908;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased font-sans transition-colors duration-300 overflow-x-hidden;
+}
+
+/* Custom dark mode tweaks (Tailwind 4 uses selector strategy or class default) */
+.dark body {
+  @apply bg-primary-950 text-slate-100;
+}
+
+/* Custom Utilities for Premium look */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark .glass {
+  background: rgba(11, 17, 26, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.dark .glass-nav {
+  background: rgba(11, 17, 26, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Beautiful Animated Background Patterns */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 28, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 28, 42, 0.03) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-primary-950;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-300 rounded-full;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-primary-800 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-400;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-700;
+}
