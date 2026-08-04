@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
@@ -6,6 +7,7 @@ import {
   Calendar, Key, Users, ShieldAlert, UserCheck, ShieldCheck, Lock, ExternalLink, Loader2
 } from 'lucide-react';
 import { COLLEGE_INFO } from '../data';
+import COLLEGE_LOGO_IMAGE from '../assets/images/rcew_college_logo_1784036182954.png';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -103,10 +105,10 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       ]
     },
     {
-      label: 'Bulletins',
-      href: '/bulletins',
+      label: 'Faculty',
+      href: '/faculty',
       subitems: [
-        { label: 'Latest Circulars', href: '/bulletins' },
+        { label: 'Faculty Roster', href: '/faculty' },
       ]
     }
   ];
@@ -150,13 +152,13 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   return (
     <>
       {/* 1. TOP ANNOUNCEMENT BAR (Scrolling Marquee) */}
-      <div className="bg-primary-950 text-gold-300 py-1.5 overflow-hidden border-b border-gold-500/20 text-[11px] font-mono select-none relative z-50">
-        <div className="max-w-7xl mx-auto px-4 flex items-center relative">
-          <span className="bg-gold-500 text-primary-950 text-[9px] font-bold uppercase px-2 py-0.5 rounded mr-3 shrink-0 relative z-10 shadow-sm animate-pulse">
+      <div className="bg-blue-600 text-white py-1.5 overflow-hidden border-b border-blue-700 text-[11px] font-mono select-none relative z-50 w-full">
+        <div className="w-full px-4 sm:px-8 lg:px-12 flex items-center relative">
+          <span className="bg-yellow-400 text-blue-950 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded mr-3 shrink-0 relative z-10 shadow-sm animate-pulse">
             Announcements
           </span>
           <div className="w-full overflow-hidden flex whitespace-nowrap">
-            <div className="animate-marquee flex gap-16 uppercase">
+            <div className="animate-marquee flex gap-16 uppercase font-semibold">
               <span>🎉 Admissions Open for Academic Year 2026-27</span>
               <span>🏆 NAAC Accredited with A+ Grade</span>
               <span>🎓 Autonomous Institution (UGC Proposal)</span>
@@ -165,7 +167,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
               <span>💼 Corporate Placements: 96.4% Secured</span>
             </div>
             {/* Duplicate for infinite loop */}
-            <div className="animate-marquee flex gap-16 uppercase ml-16" aria-hidden="true">
+            <div className="animate-marquee flex gap-16 uppercase ml-16 font-semibold" aria-hidden="true">
               <span>🎉 Admissions Open for Academic Year 2026-27</span>
               <span>🏆 NAAC Accredited with A+ Grade</span>
               <span>🎓 Autonomous Institution (UGC Proposal)</span>
@@ -178,30 +180,30 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       </div>
 
       {/* 2. UTILITY SLIM HEADER */}
-      <div className="bg-primary-900 text-white/90 text-[11px] font-semibold tracking-wide py-2.5 border-b border-white/5 relative z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <div className="bg-slate-50 text-slate-700 text-[11px] font-semibold tracking-wide py-2 border-b border-slate-200 relative z-50 w-full">
+        <div className="w-full px-4 sm:px-8 lg:px-12 flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <a href="tel:+919246922069" className="flex items-center gap-1.5 hover:text-gold-400 transition-colors">
-              <Phone className="h-3.5 w-3.5 text-gold-400" /> +91 92469 22069
+            <a href="tel:+919246922069" className="flex items-center gap-1.5 hover:text-blue-600 transition-colors">
+              <Phone className="h-3.5 w-3.5 text-blue-600" /> +91 92469 22069
             </a>
-            <span className="text-white/20 hidden sm:inline">|</span>
-            <a href="mailto:admissions@recw.ac.in" className="hidden sm:flex items-center gap-1.5 hover:text-gold-400 transition-colors">
-              <Mail className="h-3.5 w-3.5 text-gold-400" /> admissions@recw.ac.in
+            <span className="text-slate-300 hidden sm:inline">|</span>
+            <a href="mailto:admissions@recw.ac.in" className="hidden sm:flex items-center gap-1.5 hover:text-blue-600 transition-colors">
+              <Mail className="h-3.5 w-3.5 text-blue-600" /> admissions@recw.ac.in
             </a>
           </div>
 
           <div className="flex items-center gap-4">
-            <Link to="/academics" className="hover:text-gold-400 transition-colors">Academic Calendar</Link>
-            <span className="text-white/20">|</span>
-            <a href="https://recw.ac.in" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-gold-400 transition-colors">
+            <Link to="/academics" className="hover:text-blue-600 transition-colors">Academic Calendar</Link>
+            <span className="text-slate-300">|</span>
+            <a href="https://recw.ac.in" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-blue-600 transition-colors">
               Digital Campus <ExternalLink className="h-3 w-3" />
             </a>
-            <span className="text-white/20">|</span>
+            <span className="text-slate-300">|</span>
             <button
               onClick={() => setPortalOpen(true)}
-              className="flex items-center gap-1.5 bg-gold-500 hover:bg-gold-400 text-primary-950 px-2.5 py-1 rounded font-bold transition-all text-[10px] uppercase shadow-sm cursor-pointer"
+              className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg font-bold transition-all text-[10px] uppercase shadow-sm cursor-pointer"
             >
-              <Key className="h-3 w-3" /> Student Portal
+              <Key className="h-3 w-3 text-yellow-300" /> Student Portal
             </button>
           </div>
         </div>
@@ -210,40 +212,36 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       {/* 3. STICKY MAIN NAVIGATION BAR */}
       <nav
         id="main-navbar"
-        className={`sticky top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-primary-900/95 dark:bg-primary-950/95 shadow-xl border-b-4 border-gold-500 py-3 text-white'
-            : 'bg-primary-900 dark:bg-primary-950/90 py-4 border-b border-white/5 text-white'
-        }`}
+        className={`sticky top-0 left-0 right-0 z-40 transition-all duration-300 w-full bg-white border-b border-slate-200 shadow-sm py-3 text-slate-800`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between gap-4">
-            {/* Brand Branding */}
+            {/* Brand Branding (Left) */}
             <Link
               to="/"
-              className="flex items-center space-x-3 group cursor-pointer shrink-0"
+              className="flex items-center space-x-3 shrink-0"
               id="navbar-brand-link"
             >
-              <div className="w-11 h-11 bg-white rounded-full flex items-center justify-center p-1 border border-gold-500 shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0">
-                <GraduationCap className="h-6.5 w-6.5 text-primary-900" />
+              <div className="w-11 h-11 bg-white rounded-lg flex items-center justify-center p-1 border border-slate-200 shadow-sm group-hover:scale-105 transition-transform duration-300 shrink-0">
+                <img src={COLLEGE_LOGO_IMAGE} alt="RCEW Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
-                <h1 className="text-white font-serif font-bold text-sm sm:text-base leading-none uppercase tracking-tight">
+                <h1 className="text-blue-900 font-serif font-bold text-sm sm:text-base leading-none uppercase tracking-tight">
                   Ravindra Engineering College
                 </h1>
-                <p className="text-gold-400 text-[8.5px] sm:text-[9.5px] font-semibold tracking-widest uppercase mt-0.5">
+                <p className="text-blue-600 text-[8.5px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-0.5">
                   for Women (RCEW), Kurnool
                 </p>
               </div>
             </Link>
 
-            {/* Desktop Nav Items with dropdowns */}
-            <div className="hidden lg:flex items-center space-x-1">
+            {/* Desktop Nav Items with dropdowns (Centered) */}
+            <div className="hidden lg:flex items-center justify-center space-x-1 xl:space-x-2 flex-grow">
               {/* Home */}
               <Link
                 to="/"
-                className={`px-3 py-2 text-xs font-bold uppercase tracking-wider transition-colors hover:text-gold-400 ${
-                  location.pathname === '/' ? 'text-gold-400' : 'text-white/90'
+                className={`px-3 py-2 text-xs font-bold uppercase tracking-wider transition-colors hover:text-blue-600 relative ${
+                  location.pathname === '/' ? 'text-blue-600 border-b-2 border-yellow-500 pb-1' : 'text-slate-700'
                 }`}
               >
                 Home
@@ -260,8 +258,8 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <button
-                      className={`px-3 py-2 text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:text-gold-400 transition-colors cursor-pointer ${
-                        isCurrentCategory ? 'text-gold-400' : 'text-white/90'
+                      className={`px-3 py-2 text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:text-blue-600 transition-colors cursor-pointer ${
+                        isCurrentCategory ? 'text-blue-600 border-b-2 border-yellow-500 pb-1' : 'text-slate-700'
                       }`}
                     >
                       {item.label} <ChevronDown className="h-3 w-3 shrink-0" />
@@ -274,13 +272,13 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
-                          className="absolute top-full left-0 w-56 bg-primary-950 border-t-2 border-gold-500 shadow-2xl rounded-b-xl overflow-hidden py-2"
+                          className="absolute top-full left-0 w-56 bg-white border border-slate-200 border-t-2 border-t-blue-600 shadow-xl rounded-b-xl overflow-hidden py-2 z-50"
                         >
                           {item.subitems.map((sub, sidx) => (
                             <Link
                               key={sidx}
                               to={sub.href}
-                              className="block px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-white/80 hover:bg-white/5 hover:text-gold-400 transition-all border-b border-white/5 last:border-0"
+                              className="block px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-all border-b border-slate-100 last:border-0"
                             >
                               {sub.label}
                             </Link>
@@ -295,8 +293,8 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
               {/* Contact */}
               <Link
                 to="/contact"
-                className={`px-3 py-2 text-xs font-bold uppercase tracking-wider transition-colors hover:text-gold-400 ${
-                  location.pathname === '/contact' ? 'text-gold-400' : 'text-white/90'
+                className={`px-3 py-2 text-xs font-bold uppercase tracking-wider transition-colors hover:text-blue-600 ${
+                  location.pathname === '/contact' ? 'text-blue-600 border-b-2 border-yellow-500 pb-1' : 'text-slate-700'
                 }`}
               >
                 Contact
@@ -307,7 +305,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="p-2 rounded-xl text-white/80 hover:text-gold-400 hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-2 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors cursor-pointer"
                 aria-label="Search"
               >
                 <Search className="h-4.5 w-4.5" />
@@ -315,16 +313,16 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
 
               <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="p-2 rounded-xl text-white/80 hover:text-gold-400 hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-2 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors cursor-pointer"
                 aria-label="Toggle Theme"
               >
-                {darkMode ? <Sun className="h-4.5 w-4.5 text-gold-400" /> : <Moon className="h-4.5 w-4.5 text-white" />}
+                {darkMode ? <Sun className="h-4.5 w-4.5 text-yellow-500" /> : <Moon className="h-4.5 w-4.5 text-slate-600" />}
               </button>
 
               {/* Mobile toggle */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden p-2 rounded-xl text-white/80 hover:text-gold-400 hover:bg-white/10 transition-colors cursor-pointer"
+                className="lg:hidden p-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-colors cursor-pointer"
               >
                 {isOpen ? <X className="h-5.5 w-5.5" /> : <Menu className="h-5.5 w-5.5" />}
               </button>
@@ -393,9 +391,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             >
               <div>
                 <div className="flex items-center justify-between pb-6 border-b border-white/5">
-                  <div className="flex items-center space-x-2">
-                    <GraduationCap className="h-6 w-6 text-gold-400" />
-                    <span className="font-serif font-bold text-base uppercase">RCEW Kurnool</span>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-9 h-9 bg-white rounded-lg p-0.5 border border-gold-500 shadow-sm shrink-0 flex items-center justify-center">
+                      <img src={COLLEGE_LOGO_IMAGE} alt="RCEW Logo" className="w-full h-full object-contain" />
+                    </div>
+                    <span className="font-serif font-bold text-base uppercase text-white">RCEW Kurnool</span>
                   </div>
                   <button onClick={() => setIsOpen(false)} className="p-2 text-white/75 hover:text-white cursor-pointer">
                     <X className="h-5.5 w-5.5" />

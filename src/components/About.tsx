@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Target, Compass, Award, ShieldCheck, HeartHandshake, CheckCircle } from 'lucide-react';
 import { COLLEGE_INFO } from '../data';
-
+import COLLEGE_LOGO_IMAGE from '../assets/images/rcew_college_logo_1784036182954.png';
 export default function About() {
   const highlights = [
     "100% Safe and Secure Women's Campus with round-the-clock guards",

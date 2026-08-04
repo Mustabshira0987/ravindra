@@ -6,29 +6,29 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
 
-  --color-primary-50: #e6f0fa;
-  --color-primary-100: #cce0f5;
-  --color-primary-200: #99c2eb;
-  --color-primary-300: #66a3e0;
-  --color-primary-400: #3385d6;
-  --color-primary-500: #0066cc;
-  --color-primary-600: #004d99;
-  --color-primary-700: #003366;
-  --color-primary-800: #002852;
-  --color-primary-900: #002147;
-  --color-primary-950: #001530;
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6; /* Secondary Blue */
+  --color-primary-600: #2563eb; /* Primary Royal Blue */
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #2563eb;
+  --color-primary-950: #1d4ed8;
 
-  --color-gold-50: #faf8f0;
-  --color-gold-100: #faf3d4;
-  --color-gold-200: #f3e3a9;
-  --color-gold-300: #e9ce80;
-  --color-gold-400: #dfbf5e;
-  --color-gold-500: #d4af37;
-  --color-gold-600: #b6922a;
-  --color-gold-700: #927420;
-  --color-gold-800: #735a18;
-  --color-gold-900: #554210;
-  --color-gold-950: #362908;
+  --color-gold-50: #fefce8;
+  --color-gold-100: #fef9c3;
+  --color-gold-200: #fef08a;
+  --color-gold-300: #fde047;
+  --color-gold-400: #facc15; /* Soft Gold */
+  --color-gold-500: #eab308; /* Accent Gold */
+  --color-gold-600: #ca8a04;
+  --color-gold-700: #a16207;
+  --color-gold-800: #854d0e;
+  --color-gold-900: #713f12;
+  --color-gold-950: #422006;
 }
 
 html {

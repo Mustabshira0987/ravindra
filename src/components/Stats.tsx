@@ -34,7 +34,7 @@ function Counter({ value, suffix }: CounterProps) {
   }, [value, isInView]);
 
   return (
-    <span ref={elementRef} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-white tracking-tight">
+    <span ref={elementRef} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-blue-600 tracking-tight">
       {count.toLocaleString()}{suffix}
     </span>
   );
@@ -44,30 +44,26 @@ export default function Stats() {
   const getIcon = (id: string) => {
     switch (id) {
       case 'students':
-        return <Users className="h-6 w-6 text-gold-300" />;
+        return <Users className="h-6 w-6 text-yellow-500" />;
       case 'faculty':
-        return <BookOpen className="h-6 w-6 text-gold-300" />;
+        return <BookOpen className="h-6 w-6 text-yellow-500" />;
       case 'departments':
-        return <Building2 className="h-6 w-6 text-gold-300" />;
+        return <Building2 className="h-6 w-6 text-yellow-500" />;
       case 'placements':
-        return <Trophy className="h-6 w-6 text-gold-300" />;
+        return <Trophy className="h-6 w-6 text-yellow-500" />;
       case 'recruiters':
-        return <Briefcase className="h-6 w-6 text-gold-300" />;
+        return <Briefcase className="h-6 w-6 text-yellow-500" />;
       case 'alumni':
-        return <GraduationCap className="h-6 w-6 text-gold-300" />;
+        return <GraduationCap className="h-6 w-6 text-yellow-500" />;
       default:
-        return <GraduationCap className="h-6 w-6 text-gold-300" />;
+        return <GraduationCap className="h-6 w-6 text-yellow-500" />;
     }
   };
 
   return (
-    <section className="relative bg-primary-900 py-16 overflow-hidden">
-      {/* Absolute elements for styling */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-      <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold-500/20 to-transparent" />
-
+    <section className="relative bg-[#F8FBFF] py-20 overflow-hidden border-y border-blue-100/80">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-10 gap-x-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
           {STATS.map((stat, idx) => (
             <motion.div
               key={stat.id}
@@ -75,15 +71,15 @@ export default function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="flex flex-col items-center text-center p-4 rounded-2xl bg-primary-950/40 glass border border-white/5"
+              className="flex flex-col items-center text-center p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 group"
             >
-              <div className="p-3 bg-primary-800 rounded-2xl mb-4 shadow-inner border border-white/10">
+              <div className="p-3.5 bg-yellow-50 rounded-2xl mb-4 border border-yellow-200/60 group-hover:scale-110 transition-transform duration-300">
                 {getIcon(stat.id)}
               </div>
               
               <Counter value={stat.value} suffix={stat.suffix} />
               
-              <p className="text-xs sm:text-sm text-slate-300 font-sans font-medium mt-2 max-w-[130px]">
+              <p className="text-xs sm:text-sm text-slate-600 font-sans font-semibold mt-2 max-w-[130px]">
                 {stat.label}
               </p>
             </motion.div>

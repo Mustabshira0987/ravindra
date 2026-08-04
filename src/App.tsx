@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { GraduationCap, ArrowUp } from 'lucide-react';
+import COLLEGE_LOGO_IMAGE from './assets/images/rcew_college_logo_1784036182954.png';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -20,7 +21,7 @@ import Admissions from './pages/Admissions';
 import Placements from './pages/Placements';
 import IQAC from './pages/IQAC';
 import CampusLife from './pages/CampusLife';
-import Bulletins from './pages/Bulletins';
+import Faculty from './pages/Faculty';
 import Contact from './pages/Contact';
 
 // Scroll to Top Reset Component
@@ -63,7 +64,7 @@ function ScrollTopButton() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 p-3 bg-primary-800 hover:bg-gold-500 hover:text-primary-950 text-white dark:bg-gold-500 dark:hover:bg-gold-400 dark:text-primary-950 rounded-full shadow-2xl transition-all duration-300 border border-gold-500/20 cursor-pointer"
+          className="fixed bottom-6 right-6 z-40 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-xl transition-all duration-300 border border-blue-500 cursor-pointer"
           aria-label="Scroll to top"
         >
           <ArrowUp className="h-5 w-5" />
@@ -75,7 +76,7 @@ function ScrollTopButton() {
 
 function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: (val: boolean) => void }) {
   return (
-    <div className="relative min-h-screen bg-slate-50 dark:bg-primary-950 transition-colors duration-300 flex flex-col">
+    <div className="relative min-h-screen bg-slate-50 transition-colors duration-300 flex flex-col">
       <ScrollToTop />
       
       {/* Dynamic multi-layer header and navigations */}
@@ -99,7 +100,8 @@ function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMo
             <Route path="/placements" element={<Placements />} />
             <Route path="/iqac" element={<IQAC />} />
             <Route path="/campus-life" element={<CampusLife />} />
-            <Route path="/bulletins" element={<Bulletins />} />
+            <Route path="/faculty" element={<Faculty />} />
+            <Route path="/bulletins" element={<Faculty />} />
             <Route path="/contact" element={<Contact />} />
             {/* Fallback route */}
             <Route path="*" element={<Home />} />
@@ -136,7 +138,7 @@ export default function App() {
 
   return (
     <HashRouter>
-      <div className="relative min-h-screen bg-slate-50 dark:bg-primary-950 transition-colors duration-300">
+      <div className="relative min-h-screen bg-slate-50 transition-colors duration-300">
         <AnimatePresence mode="wait">
           {loading ? (
             /* High-quality Academic Preloading screen */
@@ -145,28 +147,28 @@ export default function App() {
               initial={{ opacity: 1 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="fixed inset-0 bg-primary-950 z-999 flex flex-col items-center justify-center p-4 text-white"
+              className="fixed inset-0 bg-white z-999 flex flex-col items-center justify-center p-4 text-slate-900"
               id="academic-portal-preloader"
             >
               <div className="relative flex flex-col items-center text-center">
-                {/* Outer pulsing gold halo */}
-                <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-gold-500/30 to-primary-600/30 blur-xl animate-pulse" />
+                {/* Outer pulsing blue halo */}
+                <div className="absolute -inset-4 rounded-full bg-blue-100/60 blur-xl animate-pulse" />
                 
-                {/* College Cap icon */}
+                {/* College Logo */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: [1, 1.1, 1], opacity: 1 }}
+                  animate={{ scale: [1, 1.05, 1], opacity: 1 }}
                   transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-                  className="relative bg-primary-900 p-5 rounded-2xl border border-gold-400/30 shadow-2xl text-gold-400 mb-6"
+                  className="relative bg-white p-2 rounded-2xl border border-slate-200 shadow-xl mb-6 w-20 h-20 flex items-center justify-center"
                 >
-                  <GraduationCap className="h-10 w-10 text-gold-300" />
+                  <img src={COLLEGE_LOGO_IMAGE} alt="RCEW Logo" className="w-full h-full object-contain" />
                 </motion.div>
 
                 <motion.h1
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.4 }}
-                  className="font-serif font-bold text-2xl sm:text-3xl tracking-tight text-white max-w-lg"
+                  className="font-serif font-bold text-2xl sm:text-3xl tracking-tight text-blue-900 max-w-lg"
                 >
                   Ravindra Engineering College for Women
                 </motion.h1>
@@ -175,18 +177,18 @@ export default function App() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4, duration: 0.3 }}
-                  className="text-xs text-gold-300 font-mono uppercase tracking-widest mt-2"
+                  className="text-xs text-blue-600 font-mono uppercase tracking-widest mt-2 font-bold"
                 >
                   Kurnool, AP • Counseling Code: REC
                 </motion.p>
 
                 {/* Loader bar */}
-                <div className="w-48 h-1 bg-white/10 rounded-full mt-8 overflow-hidden">
+                <div className="w-48 h-1 bg-slate-200 rounded-full mt-8 overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
                     transition={{ duration: 1.2, ease: 'easeOut' }}
-                    className="h-full bg-gold-400 rounded-full"
+                    className="h-full bg-blue-600 rounded-full"
                   />
                 </div>
 

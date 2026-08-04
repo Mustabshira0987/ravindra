@@ -15,6 +15,12 @@ export const COLLEGE_INFO = {
   principalName: 'Dr. K. E. Sreenivasa Murthy',
   principalTitle: 'M.Tech., Ph.D., Principal, RCEW',
   principalImage: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400',
+  vision: 'To emerge as a premier global institution in technical education, training women engineers to acquire technological competency, research-driven capabilities, and ethical integrity, thereby leading the world with innovation and sustainable change.',
+  mission: [
+    'To impart state-of-the-art technological education with an emphasis on practical application and research.',
+    'To foster an empowering environment that builds self-confidence, leadership, and ethical values in women engineers.',
+    'To establish strong industry-institute collaborations for continuous skill enhancement and career growth.'
+  ],
   contact: {
     address: 'Nandikotkur Road, Venkayapalli, Kurnool, Andhra Pradesh - 518002',
     phone: '+91 92469 22069, +91 8518 272669',

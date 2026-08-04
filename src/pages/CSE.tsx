@@ -146,49 +146,50 @@ export default function CSE() {
 
         {/* 4. Faculty Profiles */}
         <section>
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-widest font-mono">Expert Mentorship</span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white mt-1">Our Prominent Faculty</h2>
-            <div className="h-1 w-12 bg-gold-500 mx-auto mt-3 rounded-full" />
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono">Academic Mentors</span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">Department Faculty Roster</h2>
+            <div className="h-1 w-12 bg-yellow-500 mx-auto mt-3 rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
-            {EXTRA_DEPT_DETAILS.faculty.map((member, index) => (
-              <div key={index} className="bg-white dark:bg-primary-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm flex flex-col items-center p-6 text-center">
-                <div className="h-32 w-32 rounded-full overflow-hidden mb-4 border-2 border-gold-500/30">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {EXTRA_DEPT_DETAILS.faculty.map((member, idx) => (
+              <div key={idx} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-center flex flex-col items-center justify-between hover:-translate-y-1 transition-all">
+                <div>
+                  <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-blue-200 shadow-sm">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <h4 className="font-serif font-bold text-slate-900 text-sm">{member.name}</h4>
+                  <p className="text-xs font-bold text-blue-600 mt-0.5">{member.designation}</p>
+                  <p className="text-[11px] text-slate-500 font-mono mt-2">{member.qualification}</p>
                 </div>
-                <h4 className="font-serif font-bold text-sm sm:text-base text-primary-950 dark:text-white leading-tight">{member.name}</h4>
-                <p className="text-gold-600 dark:text-gold-400 text-[11px] font-mono mt-1">{member.designation}</p>
-                <p className="text-slate-400 text-[10px] mt-1">{member.qualification}</p>
-                <span className="text-[10px] bg-slate-100 dark:bg-primary-950 text-slate-500 dark:text-slate-300 font-bold px-2.5 py-0.5 rounded-full mt-4">Exp: {member.experience}</span>
+                <span className="text-[10px] bg-slate-100 text-slate-700 font-bold px-2.5 py-0.5 rounded-full mt-4 border border-slate-200">Exp: {member.experience}</span>
               </div>
             ))}
           </div>
         </section>
 
         {/* 5. Curriculum & Coursework */}
-        <section className="bg-primary-950 text-white p-8 sm:p-12 rounded-3xl shadow-xl relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <section className="bg-[#F8FBFF] text-slate-900 p-8 sm:p-12 rounded-2xl border border-blue-100/80 shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5 space-y-4">
-              <FileSpreadsheet className="h-8 w-8 text-gold-400" />
-              <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">Curriculum & Course Syllabus</h3>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              <FileSpreadsheet className="h-8 w-8 text-yellow-500" />
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-slate-900">Curriculum & Course Syllabus</h3>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                 The syllabus is rigorously structured under the guidance of our academic advisory board in collaboration with JNTU Anantapur, merging foundational math theory with direct industry programming platforms.
               </p>
             </div>
-            <div className="lg:col-span-7 bg-white/5 p-6 rounded-2xl border border-white/10">
-              <span className="text-[10px] text-gold-400 font-mono uppercase tracking-wider block mb-4">Core Syllabus Focus Areas</span>
+            <div className="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+              <span className="text-[10px] text-blue-600 font-mono font-bold uppercase tracking-wider block mb-4">Core Syllabus Focus Areas</span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {EXTRA_DEPT_DETAILS.curriculum.map((subject, idx) => (
-                  <div key={idx} className="flex gap-2 items-center text-xs text-slate-300">
-                    <span className="w-1.5 h-1.5 bg-gold-400 rounded-full" />
+                  <div key={idx} className="flex gap-2 items-center text-xs font-semibold text-slate-700">
+                    <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full" />
                     <span>{subject}</span>
                   </div>
                 ))}
@@ -199,21 +200,21 @@ export default function CSE() {
 
         {/* 6. Achievements */}
         <section>
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-widest font-mono">Outstanding Standards</span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white mt-1">Recent Achievements</h2>
-            <div className="h-1 w-12 bg-gold-500 mx-auto mt-3 rounded-full" />
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono">Outstanding Standards</span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">Recent Achievements</h2>
+            <div className="h-1 w-12 bg-yellow-500 mx-auto mt-3 rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {EXTRA_DEPT_DETAILS.achievements.map((ach, idx) => (
-              <div key={idx} className="bg-white dark:bg-primary-900 border border-slate-100 dark:border-slate-800 p-6 rounded-2xl flex gap-4 shadow-sm">
-                <div className="w-10 h-10 bg-gold-100 dark:bg-primary-950 text-gold-600 dark:text-gold-400 rounded-xl flex items-center justify-center shrink-0">
-                  <Trophy className="h-5 w-5" />
+              <div key={idx} className="bg-white border border-slate-200 p-6 rounded-2xl flex gap-4 shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-10 h-10 bg-yellow-50 text-yellow-600 rounded-xl flex items-center justify-center shrink-0 border border-yellow-200">
+                  <Trophy className="h-5 w-5 text-yellow-600" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-xs sm:text-sm text-primary-950 dark:text-white mb-1">Academic Landmark</h4>
-                  <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-300 leading-relaxed">{ach}</p>
+                  <h4 className="font-bold text-xs sm:text-sm text-slate-900 mb-1">Academic Landmark</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed">{ach}</p>
                 </div>
               </div>
             ))}
