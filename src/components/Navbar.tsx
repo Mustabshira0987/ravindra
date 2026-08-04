@@ -68,6 +68,16 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       ]
     },
     {
+      label: 'Know Us',
+      href: '/about/profile',
+      subitems: [
+        { label: 'Our Management', href: '/about/management' },
+        { label: 'History of RCEW', href: '/about/profile#history' },
+        { label: 'Milestones', href: '/milestones' },
+        { label: 'Why RCEW', href: '/why-rcew' },
+      ]
+    },
+    {
       label: 'Departments',
       href: '/departments/cse',
       subitems: [

@@ -23,6 +23,8 @@ import IQAC from './pages/IQAC';
 import CampusLife from './pages/CampusLife';
 import Faculty from './pages/Faculty';
 import Contact from './pages/Contact';
+import Milestones from './pages/Milestones';
+import WhyRCEW from './pages/WhyRCEW';
 
 // Scroll to Top Reset Component
 function ScrollToTop() {
@@ -101,6 +103,10 @@ function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMo
             <Route path="/iqac" element={<IQAC />} />
             <Route path="/campus-life" element={<CampusLife />} />
             <Route path="/faculty" element={<Faculty />} />
+            <Route path="/milestones" element={<Milestones />} />
+            <Route path="/know-us/milestones" element={<Milestones />} />
+            <Route path="/why-rcew" element={<WhyRCEW />} />
+            <Route path="/know-us/why-rcew" element={<WhyRCEW />} />
             <Route path="/bulletins" element={<Faculty />} />
             <Route path="/contact" element={<Contact />} />
             {/* Fallback route */}

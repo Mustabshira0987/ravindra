@@ -226,48 +226,55 @@ export const PLACEMENT_STATS: PlacementsData = {
   ]
 };
 
+import LIBRARY_IMG from './assets/images/rcew_library_1785857412956.png';
+import LABS_IMG from './assets/images/rcew_labs_1785857439260.jpg';
+import SPORTS_YOGA_IMG from './assets/images/rcew_sports_yoga_1785858954194.jpg';
+import TRANSPORT_IMG from './assets/images/rcew_transport_1785858124524.png';
+import HOSTEL_IMG from './assets/images/rcew_hostel_1785858724076.png';
+import AUDITORIUM_DANCE_IMG from './assets/images/rcew_auditorium_dance_1785858845832.jpg';
+
 export const CAMPUS_FACILITIES: CampusFacility[] = [
   {
     id: 'library',
     name: 'Central Library',
     description: 'A massive hub of knowledge housing over 35,000 volumes, 120 national and international physical journals, and digital subscription portals (IEEE, Springer, Delnet) with high-speed internet desks.',
-    image: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80&w=800',
+    image: LIBRARY_IMG,
     highlights: ['24/7 Digital Hub access', 'Over 35,000 physical volumes', 'Air-Conditioned reading zones', 'Plagiarism verification software access']
   },
   {
     id: 'laboratories',
     name: 'State-of-the-Art Labs',
-    description: 'Specialized lab setups for research and development. From advanced machine learning computing systems to specialized VLSI testing equipment and civil concrete analyzers.',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+    description: 'Specialized lab setups for research and development. From advanced machine learning computing systems to specialized VLSI testing equipment and physics & electronics analyzers.',
+    image: LABS_IMG,
     highlights: ['NVIDIA AI workstations', 'Latest testing equipment', 'Dedicated technical staff', 'High speed Gigabit networking']
   },
   {
     id: 'hostel',
     name: 'Secure Girls Hostel',
     description: 'An expansive home away from home with round-the-clock structural CCTV surveillance, biometric security, nutritious vegetarian food dining, clean pure drinking water filtration, and standard hygiene care.',
-    image: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800',
-    highlights: ['24/7 Wardens & Security guards', 'Nutritious clean dining hall', 'Solar hot water facility', 'Recreational common lounge with TV']
+    image: HOSTEL_IMG,
+    highlights: ['24/7 Wardens & Security guards', 'Nutritious clean dining hall', 'Solar hot water facility', 'Recreational sports & common lounges']
   },
   {
     id: 'sports',
     name: 'Sports & Fitness Arena',
-    description: 'Promoting a balanced, healthy style of living with our comprehensive courts for basketball, volleyball, throwball, table tennis, badminton, and a fully equipped gymnasium with trainers.',
-    image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800',
-    highlights: ['Floodlit basketball court', 'Modern indoor gym complex', 'Annual sports festival (RECSpo)', 'Certified physical trainers']
+    description: 'Promoting a balanced, healthy style of living with our comprehensive grounds for volleyball, throwball, yoga fitness, table tennis, badminton, and a fully equipped gymnasium with certified trainers.',
+    image: SPORTS_YOGA_IMG,
+    highlights: ['International Yoga Day celebrations', 'Volleyball & Throwball grounds', 'Annual sports festival (RECSpo)', 'Certified physical trainers']
   },
   {
     id: 'transport',
-    name: 'Transportation',
-    description: 'A fleet of more than 20 well-maintained safety college buses, mapping all primary junctions across Kurnool city, Nandyal, Nandikotkur, Dhone, and neighboring major towns.',
-    image: 'https://images.unsplash.com/photo-1557223562-6c77ef16210f?auto=format&fit=crop&q=80&w=800',
+    name: 'Transportation Fleet',
+    description: 'A fleet of well-maintained safety college buses, mapping all primary junctions across Kurnool city, Nandyal, Nandikotkur, Dhone, and neighboring major towns.',
+    image: TRANSPORT_IMG,
     highlights: ['GPS-equipped modern buses', 'Extensive route coverage', 'Experienced drivers', 'Dedicated grievance support']
   },
   {
     id: 'auditorium',
-    name: 'Centenary Auditorium',
-    description: 'A magnificent, fully centralized air-conditioned hall with a seating scale of over 1,000, high-end acoustic sound boards, and high-definition projectors for cultural and corporate events.',
-    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800',
-    highlights: ['1,000+ guest seating size', 'Top-tier Acoustic systems', 'Used for dynamic Hackathons', 'A/C guest changing suites']
+    name: 'Centenary Auditorium & Stage Events',
+    description: 'A magnificent, fully centralized air-conditioned hall with high-end acoustic sound boards and stage setup for cultural dance performances, sports, and international event celebrations.',
+    image: AUDITORIUM_DANCE_IMG,
+    highlights: ['1,000+ guest seating size', 'Top-tier Acoustic systems', 'Host for Cultural Fests & Dance', 'Stage & cultural event suites']
   }
 ];
 

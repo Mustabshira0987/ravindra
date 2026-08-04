@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, UserCheck, GraduationCap, Award, BookOpen, Filter, Sparkles } from 'lucide-react';
+import FACULTY_GROUP_IMAGE from '../assets/images/rcew_faculty_group_1785859150336.png';
 
 interface FacultyMember {
   sNo: number;
@@ -164,59 +165,84 @@ export default function Faculty() {
       {/* HERO SECTION */}
       <section className="relative bg-gradient-to-b from-blue-50 via-white to-slate-50 py-16 border-b border-slate-200">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left Column: Heading & Info */}
+            <div className="lg:col-span-7 space-y-4">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-700 border border-blue-200"
+              >
+                <UserCheck className="h-4 w-4 text-yellow-500" /> Academic Leadership & Faculty
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 tracking-tight leading-tight"
+              >
+                Faculty Members
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal"
+              >
+                Meet the experienced and dedicated faculty members of Ravindra Engineering College for Women committed to academic excellence, innovation, and student success.
+              </motion.p>
+
+              {/* Quick Stats Grid */}
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-6 border-t border-slate-200"
+              >
+                <div className="bg-white border border-slate-200 p-3.5 rounded-2xl shadow-sm text-center">
+                  <span className="text-blue-600 font-serif font-bold text-xl sm:text-2xl block">{totalFacultyCount}</span>
+                  <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider font-bold">Faculty Members</span>
+                </div>
+                <div className="bg-white border border-slate-200 p-3.5 rounded-2xl shadow-sm text-center">
+                  <span className="text-blue-600 font-serif font-bold text-xl sm:text-2xl block">4</span>
+                  <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider font-bold">Academic Streams</span>
+                </div>
+                <div className="bg-white border border-slate-200 p-3.5 rounded-2xl shadow-sm text-center">
+                  <span className="text-blue-600 font-serif font-bold text-xl sm:text-2xl block">100%</span>
+                  <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider font-bold">Dedicated Mentors</span>
+                </div>
+                <div className="bg-white border border-slate-200 p-3.5 rounded-2xl shadow-sm text-center">
+                  <span className="text-blue-600 font-serif font-bold text-xl sm:text-2xl block">JNTUA</span>
+                  <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider font-bold">Aligned Syllabus</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Faculty Group Showcase Photo */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-700 border border-blue-200"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="lg:col-span-5"
             >
-              <UserCheck className="h-4 w-4 text-yellow-500" /> Academic Leadership & Faculty
+              <div className="relative rounded-2xl overflow-hidden shadow-md border-4 border-white">
+                <img
+                  src={FACULTY_GROUP_IMAGE}
+                  alt="Ravindra College of Engineering for Women Faculty Team"
+                  className="w-full h-72 sm:h-80 object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white text-center">
+                  <span className="text-[11px] bg-blue-600 text-white px-3 py-1 rounded-full font-bold uppercase tracking-wider font-mono shadow-sm">
+                    RCEW Faculty Team • Academic Leadership
+                  </span>
+                </div>
+              </div>
             </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 tracking-tight leading-tight"
-            >
-              Faculty Members
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal"
-            >
-              Meet the experienced and dedicated faculty members of Ravindra Engineering College for Women committed to academic excellence, innovation, and student success.
-            </motion.p>
           </div>
-
-          {/* Quick Stats Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 pt-8 border-t border-slate-200"
-          >
-            <div className="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm">
-              <span className="text-blue-600 font-serif font-bold text-2xl sm:text-3xl block">{totalFacultyCount}</span>
-              <span className="text-[11px] text-slate-500 font-mono uppercase tracking-wider">Faculty Members</span>
-            </div>
-            <div className="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm">
-              <span className="text-blue-600 font-serif font-bold text-2xl sm:text-3xl block">4</span>
-              <span className="text-[11px] text-slate-500 font-mono uppercase tracking-wider">Academic Streams</span>
-            </div>
-            <div className="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm">
-              <span className="text-blue-600 font-serif font-bold text-2xl sm:text-3xl block">100%</span>
-              <span className="text-[11px] text-slate-500 font-mono uppercase tracking-wider">Dedicated Mentorship</span>
-            </div>
-            <div className="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm">
-              <span className="text-blue-600 font-serif font-bold text-2xl sm:text-3xl block">JNTUA</span>
-              <span className="text-[11px] text-slate-500 font-mono uppercase tracking-wider">Aligned Standards</span>
-            </div>
-          </motion.div>
         </div>
       </section>
 
