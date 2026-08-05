@@ -31,12 +31,14 @@
   --color-gold-950: #422006;
 }
 
-html {
+html, body, #root {
+  max-width: 100%;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-slate-50 text-slate-800 antialiased font-sans transition-colors duration-300 overflow-x-hidden;
+  @apply bg-slate-50 text-slate-800 antialiased font-sans transition-colors duration-300;
 }
 
 /* Custom dark mode tweaks (Tailwind 4 uses selector strategy or class default) */

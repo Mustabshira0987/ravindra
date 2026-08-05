@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { GraduationCap, ArrowUp } from 'lucide-react';
-import COLLEGE_LOGO_IMAGE from './assets/images/rcew_college_logo_1784036182954.png';
+import COLLEGE_BANNER_IMAGE from './assets/images/rcew_horizontal_banner.png';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -82,7 +82,7 @@ function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMo
       <ScrollToTop />
       
       {/* Dynamic multi-layer header and navigations */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
 
       {/* Pages Outlet */}
       <main className="flex-grow">
@@ -159,34 +159,15 @@ export default function App() {
               <div className="relative flex flex-col items-center text-center">
                 {/* Outer pulsing blue halo */}
                 <div className="absolute -inset-4 rounded-full bg-blue-100/60 blur-xl animate-pulse" />
-                
-                {/* College Logo */}
+                {/* College Banner */}
                 <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: [1, 1.05, 1], opacity: 1 }}
-                  transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-                  className="relative bg-white p-2 rounded-2xl border border-slate-200 shadow-xl mb-6 w-20 h-20 flex items-center justify-center"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
+                  className="relative mb-6 max-w-[90%] sm:max-w-md md:max-w-lg flex items-center justify-center"
                 >
-                  <img src={COLLEGE_LOGO_IMAGE} alt="RCEW Logo" className="w-full h-full object-contain" />
+                  <img src={COLLEGE_BANNER_IMAGE} alt="RCEW Logo" className="w-full h-auto object-contain" />
                 </motion.div>
-
-                <motion.h1
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.4 }}
-                  className="font-serif font-bold text-2xl sm:text-3xl tracking-tight text-blue-900 max-w-lg"
-                >
-                  Ravindra Engineering College for Women
-                </motion.h1>
-
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.3 }}
-                  className="text-xs text-blue-600 font-mono uppercase tracking-widest mt-2 font-bold"
-                >
-                  Kurnool, AP • Counseling Code: REC
-                </motion.p>
 
                 {/* Loader bar */}
                 <div className="w-48 h-1 bg-slate-200 rounded-full mt-8 overflow-hidden">
