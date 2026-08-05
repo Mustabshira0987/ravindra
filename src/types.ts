@@ -83,3 +83,19 @@ export interface Testimonial {
   quote: string;
   image: string;
 }
+
+export interface CompanyVisitItem {
+  sno: number;
+  company: string;
+  ctc: string;
+  category: 'Super Dream' | 'Dream' | 'Standard';
+}
+
+export interface PlacedStudentRecord {
+  sno: number;
+  rollNo: string;
+  name: string;
+  employer: string;
+  ctc: string;
+  branch: string;
+}

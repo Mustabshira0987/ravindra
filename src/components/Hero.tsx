@@ -4,7 +4,7 @@ import { ArrowRight, Sparkles, Award, ShieldCheck, CheckCircle2, GraduationCap }
 import { COLLEGE_INFO } from '../data';
 
 // Imported exact local campus hero image
-import CAMPUS_HERO_IMAGE from '../assets/images/rcew_campus_hero_1784036167208.jpg';
+import CAMPUS_HERO_IMAGE from '../assets/images/rcew_empowering_women_hero.png';
 import COLLEGE_LOGO_IMAGE from '../assets/images/rcew_college_logo_1784036182954.png';
 
 export default function Hero() {

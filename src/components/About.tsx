@@ -77,46 +77,6 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* Principal Message Editorial */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20" id="principal-message-block">
-          <div className="lg:col-span-5 relative">
-            <div className="absolute -inset-2 bg-gradient-to-r from-gold-500 to-primary-700 rounded-3xl blur-xl opacity-20" />
-            <div className="relative bg-white dark:bg-primary-900 p-4 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800">
-              <img
-                src={COLLEGE_INFO.principalImage}
-                alt={COLLEGE_INFO.principalName}
-                className="w-full h-[400px] object-cover rounded-2xl shadow-inner"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute bottom-6 left-6 right-6 p-4 bg-primary-950/90 dark:bg-primary-950/95 text-white rounded-xl backdrop-blur-sm border border-white/10">
-                <p className="font-serif font-bold text-base text-gold-400">{COLLEGE_INFO.principalName}</p>
-                <p className="text-xs text-slate-300 font-mono">{COLLEGE_INFO.principalTitle}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-gold-300">
-              <HeartHandshake className="h-3.5 w-3.5" />
-              Leadership Message
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white">
-              Principal’s Desk Welcoming You
-            </h3>
-            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed italic">
-              "{COLLEGE_INFO.principalMessage}"
-            </p>
-            <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
-              <p className="font-serif font-bold text-primary-900 dark:text-white text-lg">
-                Dr. K. E. Sreenivasa Murthy
-              </p>
-              <p className="text-slate-400 text-xs font-mono">
-                Principal, Ravindra Engineering College for Women
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* Highlight Checklist Section */}
         <div className="p-8 sm:p-12 rounded-3xl bg-slate-50 dark:bg-primary-900/25 border border-slate-100 dark:border-slate-800/60 shadow-sm" id="college-highlights-checklist">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">

@@ -46,7 +46,6 @@ export default function Navbar({}: NavbarProps) {
         { label: 'College Profile', href: '/about/profile' },
         { label: 'Vision & Mission', href: '/about/vision-mission' },
         { label: 'Management', href: '/about/management' },
-        { label: 'Principal\'s Message', href: '/about/principal-message' },
       ]
     },
     {
@@ -84,9 +83,10 @@ export default function Navbar({}: NavbarProps) {
     },
     {
       label: 'Placements',
-      href: '/placements',
+      href: '/placements/company-visits',
       subitems: [
-        { label: 'Placement Info', href: '/placements' },
+        { label: 'Company Visits', href: '/placements/company-visits' },
+        { label: 'Placed Students', href: '/placements/placed-students' },
       ]
     },
     {

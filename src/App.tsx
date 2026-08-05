@@ -12,7 +12,6 @@ import Home from './pages/Home';
 import AboutProfile from './pages/AboutProfile';
 import VisionMission from './pages/VisionMission';
 import Management from './pages/Management';
-import PrincipalMessage from './pages/PrincipalMessage';
 import Academics from './pages/Academics';
 import CSE from './pages/CSE';
 import ECE from './pages/ECE';
@@ -93,13 +92,14 @@ function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMo
             <Route path="/about/profile" element={<AboutProfile />} />
             <Route path="/about/vision-mission" element={<VisionMission />} />
             <Route path="/about/management" element={<Management />} />
-            <Route path="/about/principal-message" element={<PrincipalMessage />} />
             <Route path="/academics" element={<Academics />} />
             <Route path="/departments/cse" element={<CSE />} />
             <Route path="/departments/ece" element={<ECE />} />
             <Route path="/departments/ai-ds" element={<AIDS />} />
             <Route path="/admissions" element={<Admissions />} />
             <Route path="/placements" element={<Placements />} />
+            <Route path="/placements/company-visits" element={<Placements />} />
+            <Route path="/placements/placed-students" element={<Placements />} />
             <Route path="/iqac" element={<IQAC />} />
             <Route path="/campus-life" element={<CampusLife />} />
             <Route path="/faculty" element={<Faculty />} />
