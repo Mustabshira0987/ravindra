@@ -6,6 +6,7 @@ import COLLEGE_BANNER_IMAGE from './assets/images/rcew_horizontal_banner.png';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Preloader from './components/Preloader';
 
 // Pages
 import Home from './pages/Home';
@@ -147,43 +148,7 @@ export default function App() {
       <div className="relative min-h-screen bg-slate-50 transition-colors duration-300">
         <AnimatePresence mode="wait">
           {loading ? (
-            /* High-quality Academic Preloading screen */
-            <motion.div
-              key="preloader"
-              initial={{ opacity: 1 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="fixed inset-0 bg-white z-999 flex flex-col items-center justify-center p-4 text-slate-900"
-              id="academic-portal-preloader"
-            >
-              <div className="relative flex flex-col items-center text-center">
-                {/* Outer pulsing blue halo */}
-                <div className="absolute -inset-4 rounded-full bg-blue-100/60 blur-xl animate-pulse" />
-                {/* College Banner */}
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.8, ease: 'easeOut' }}
-                  className="relative mb-6 max-w-[90%] sm:max-w-md md:max-w-lg flex items-center justify-center"
-                >
-                  <img src={COLLEGE_BANNER_IMAGE} alt="RCEW Logo" className="w-full h-auto object-contain" />
-                </motion.div>
-
-                {/* Loader bar */}
-                <div className="w-48 h-1 bg-slate-200 rounded-full mt-8 overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: '100%' }}
-                    transition={{ duration: 1.2, ease: 'easeOut' }}
-                    className="h-full bg-blue-600 rounded-full"
-                  />
-                </div>
-
-                <span className="text-[10px] text-slate-500 font-mono mt-3">
-                  Empowering Women Through Technical Education
-                </span>
-              </div>
-            </motion.div>
+            <Preloader />
           ) : (
             <MainAppLayout darkMode={darkMode} setDarkMode={setDarkMode} />
           )}

@@ -40,15 +40,6 @@ export default function Navbar({}: NavbarProps) {
 
   const menuConfig = [
     {
-      label: 'About',
-      href: '/about/profile',
-      subitems: [
-        { label: 'College Profile', href: '/about/profile' },
-        { label: 'Vision & Mission', href: '/about/vision-mission' },
-        { label: 'Management', href: '/about/management' },
-      ]
-    },
-    {
       label: 'Academics',
       href: '/academics',
       subitems: [

@@ -6,6 +6,7 @@ import Hero from '../components/Hero';
 import Stats from '../components/Stats';
 import Testimonials from '../components/Testimonials';
 import { DEPARTMENTS, NEWS_EVENTS, PLACEMENT_STATS } from '../data';
+import MUGDHA_CELEBRATIONS_IMAGE from '../assets/images/rcew_mugdha_celebrations.jpg';
 
 export default function Home() {
   // Filter only the three departments requested: CSE, ECE, AI&DS
@@ -28,10 +29,9 @@ export default function Home() {
               <div className="absolute -top-4 -left-4 w-72 h-72 bg-blue-100 rounded-3xl blur-2xl -z-10" />
               <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white">
                 <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
-                  alt="RCEW Campus Collaboration"
+                  src={MUGDHA_CELEBRATIONS_IMAGE}
+                  alt="RCEW Mugdha Celebrations"
                   className="w-full h-96 object-cover"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
