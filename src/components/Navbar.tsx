@@ -50,8 +50,11 @@ export default function Navbar({}: NavbarProps) {
       label: 'Know Us',
       href: '/about/profile',
       subitems: [
+        { label: 'College Profile & History', href: '/about/profile' },
         { label: 'Our Management', href: '/about/management' },
-        { label: 'History of RCEW', href: '/about/profile#history' },
+        { label: 'Message from Principal Desk', href: '/about/principal-desk' },
+        { label: 'Rankings and Awards', href: '/about/rankings-awards' },
+        { label: 'Governing Body Members', href: '/about/governing-body' },
         { label: 'Milestones', href: '/milestones' },
         { label: 'Why RCEW', href: '/why-rcew' },
       ]
@@ -62,7 +65,6 @@ export default function Navbar({}: NavbarProps) {
       subitems: [
         { label: 'Computer Science & Engineering', href: '/departments/cse' },
         { label: 'Electronics & Communication', href: '/departments/ece' },
-        { label: 'Artificial Intelligence & Data Science', href: '/departments/ai-ds' },
       ]
     },
     {

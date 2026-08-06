@@ -25,6 +25,9 @@ import Faculty from './pages/Faculty';
 import Contact from './pages/Contact';
 import Milestones from './pages/Milestones';
 import WhyRCEW from './pages/WhyRCEW';
+import PrincipalDesk from './pages/PrincipalDesk';
+import RankingsAwards from './pages/RankingsAwards';
+import GoverningBody from './pages/GoverningBody';
 
 // Scroll to Top Reset Component
 function ScrollToTop() {
@@ -93,6 +96,12 @@ function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMo
             <Route path="/about/profile" element={<AboutProfile />} />
             <Route path="/about/vision-mission" element={<VisionMission />} />
             <Route path="/about/management" element={<Management />} />
+            <Route path="/about/principal-desk" element={<PrincipalDesk />} />
+            <Route path="/about/rankings-awards" element={<RankingsAwards />} />
+            <Route path="/about/governing-body" element={<GoverningBody />} />
+            <Route path="/know-us/principal-desk" element={<PrincipalDesk />} />
+            <Route path="/know-us/rankings-awards" element={<RankingsAwards />} />
+            <Route path="/know-us/governing-body" element={<GoverningBody />} />
             <Route path="/academics" element={<Academics />} />
             <Route path="/departments/cse" element={<CSE />} />
             <Route path="/departments/ece" element={<ECE />} />
@@ -123,16 +132,21 @@ function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMo
 }
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => {
+    return !sessionStorage.getItem('rcew_app_loaded');
+  });
   const [darkMode, setDarkMode] = useState(false);
 
-  // Initialize startup load delay
+  // Initialize startup load delay on first visit only
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, []);
+    if (loading) {
+      const timer = setTimeout(() => {
+        setLoading(false);
+        sessionStorage.setItem('rcew_app_loaded', 'true');
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
 
   // Sync dark mode class
   useEffect(() => {

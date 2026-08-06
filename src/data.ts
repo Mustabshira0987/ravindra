@@ -22,9 +22,18 @@ export const COLLEGE_INFO = {
     'To establish strong industry-institute collaborations for continuous skill enhancement and career growth.'
   ],
   contact: {
-    address: 'Nandikotkur Road, Venkayapalli, Kurnool, Andhra Pradesh - 518002',
-    phone: '+91 92469 22069, +91 8518 272669',
-    email: 'principal@recw.ac.in, admissions@recw.ac.in',
+    address: 'RAVINDRA COLLEGE OF ENGINEERING FOR WOMEN(Autonomous), Near Venkayapalle, Pasupula Village, Nandikotkur Road, Kurnool – 518452, Andhra Pradesh – India.',
+    phone: '+91 8639756876 (Admissions), +91 9948187766 (Placements), 08518-285088',
+    email: 'principal@recw.ac.in, placementofficer@recw.ac.in',
+    admissionsContact: {
+      name: 'Mrs. G. Spandana',
+      phone: '+91 8639756876'
+    },
+    placementsContact: {
+      name: 'Mrs. Indira Priyadarshini',
+      mobile: '+91 9948187766',
+      landline: '08518-285088'
+    },
     mapIframeUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3837.93380295191!2d78.0700021!3d15.8504018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1m3!1d0!2d78.0700021!3d15.8504018!2sRavindra+Engineering+College+for+Women!5e0!3m2!1sen!2sin!4v1580000000000!5m2!1sen!2sin',
     socials: {
       facebook: 'https://facebook.com',
@@ -50,8 +59,8 @@ export const DEPARTMENTS: Department[] = [
     id: 'cse',
     name: 'Computer Science & Engineering',
     code: 'CSE',
-    shortDesc: 'Nurturing innovative software developers and compute scientists for the modern digital era.',
-    fullDesc: 'The Department of Computer Science & Engineering at RCEW was established in 2008. The department is NBA-accredited and known for high academic standards and student-driven innovation. It boasts ultra-modern laboratory facilities, regular guest lectures from top tech leaders, and strong coding club cultures to prepare young women for global software roles.',
+    shortDesc: 'Nurturing innovative software developers and computer scientists for the modern digital era.',
+    fullDesc: 'At Ravindra College of Engineering for Women, the Computer Science and Engineering department is a launchpad for innovation and empowerment. Established in 2008, the NBA-accredited department has more than 420 students and 27 core faculty members dedicated to professional excellence, research, and contemporary computing education.',
     intake: 180,
     duration: '4 Years (B.Tech)',
     established: 2008,

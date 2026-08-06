@@ -1,247 +1,897 @@
-import React from 'react';
-import { Award, CheckCircle, FlaskConical, Trophy, FileSpreadsheet, Eye } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  BookOpen, Award, CheckCircle2, Users, ChevronRight,
+  History, ShieldCheck, GraduationCap, Eye, Sparkles, Building2,
+  Calendar, Layers, MapPin, Mail, Phone, ExternalLink, Target, Compass, Lightbulb,
+  Globe, Cpu, Radio, Search, FlaskConical, Microchip, Binary, Zap
+} from 'lucide-react';
 import { DEPARTMENTS } from '../data';
 
-const EXTRA_DEPT_DETAILS = {
-  vision: "To cultivate highly proficient electronics and communication engineering professionals with a solid grounding in hardware-software interfaces, VLSI fabrication logic, and wireless signal systems.",
-  mission: [
-    "To offer state-of-the-art laboratory infrastructure in embedded models and microcontrollers.",
-    "To foster an understanding of industrial telecom, satellite communication, and chip design.",
-    "To ensure that high quality placement training aligns students with core and IT opportunities."
+// ECE Sidebar Navigation Configuration
+const ECE_SIDEBAR_MENU = [
+  { id: 'home', label: 'Home' },
+  { id: 'bos', label: 'Board of Studies Members' },
+  { id: 'faculty', label: 'Faculty Members' },
+  { id: 'labs', label: 'Labs and Computing Facilities' },
+  { id: 'obe', label: 'OBE', hasSubmenu: true },
+];
+
+// Board of Studies Members - ECE
+const ECE_BOS_MEMBERS = [
+  {
+    sno: 1,
+    name: 'Dr. M. Jayalakshmi',
+    organization: 'HoD ECE, Ravindra College of Engineering for Women',
+    designation: 'Chairman'
+  },
+  {
+    sno: 2,
+    name: 'Dr. S Chandra Mohan Reddy',
+    organization: 'Professor, Department of Electronics and Communication Engineering, JNTUA College of Engineering, Ananthapuramu',
+    designation: 'University Nominee'
+  },
+  {
+    sno: 3,
+    name: 'Dr. Sandeep Kumar Chaturvedi',
+    organization: 'Scientist ‘B’, Defense Research Development Organization (DRDO), Hyderabad',
+    designation: 'Industry'
+  },
+  {
+    sno: 4,
+    name: 'Ms. P. Bhavana Reddy',
+    organization: 'Application Engineer, Synopsys',
+    designation: 'Alumni'
+  },
+  {
+    sno: 5,
+    name: 'Dr. Mohebbanaaz',
+    organization: 'Associate Professor, Department of Electronics and Communication Engineering, Ravindra College of Engineering for Women',
+    designation: 'Internal Member'
+  },
+  {
+    sno: 6,
+    name: 'Mrs. M. Jyothirmai',
+    organization: 'Assistant Professor, Department of Electronics and Communication Engineering, Ravindra College of Engineering for Women',
+    designation: 'Internal Member'
+  },
+  {
+    sno: 7,
+    name: 'Prof. S. Rajendar',
+    organization: 'Professor, Department of Electronics and Communication Engineering, Vardhaman College of Engineering (Autonomous)',
+    designation: 'Academician'
+  },
+  {
+    sno: 8,
+    name: 'Dr. T. Srinivas',
+    organization: 'Professor, Department of Electrical Communication Engineering, Indian Institute of Science (IISc), Bangalore - 560012',
+    designation: 'Academician'
+  },
+  {
+    sno: 9,
+    name: 'Dr. S. Anuradha',
+    organization: 'Professor, Department of Electronics & Communication Engineering, National Institute of Technology (NIT), Warangal, Telangana',
+    designation: 'Academician'
+  }
+];
+
+// Faculty Members - ECE Roster (No Face Images)
+interface FacultyMember {
+  sno: number;
+  name: string;
+  designation: string;
+  isPhD?: boolean;
+}
+
+const ECE_FACULTY_ROSTER: FacultyMember[] = [
+  {
+    sno: 1,
+    name: 'Dr. N. Sreekanth',
+    designation: 'Professor & Principal',
+    isPhD: true
+  },
+  {
+    sno: 2,
+    name: 'Dr. B. Madhusudhana Reddy',
+    designation: 'HOD & Professor',
+    isPhD: true
+  },
+  {
+    sno: 3,
+    name: 'Dr. M. Jayalakshmi',
+    designation: 'Professor',
+    isPhD: true
+  },
+  {
+    sno: 4,
+    name: 'Dr. P. Bindhu Swetha',
+    designation: 'Professor',
+    isPhD: true
+  },
+  {
+    sno: 5,
+    name: 'Dr. Mohebbanaaz',
+    designation: 'Associate Professor',
+    isPhD: true
+  },
+  {
+    sno: 6,
+    name: 'Mrs. C. Ahalya',
+    designation: 'Assistant Professor',
+    isPhD: true
+  },
+  {
+    sno: 7,
+    name: 'Mrs. M. Jyothirmai',
+    designation: 'Assistant Professor',
+    isPhD: true
+  },
+  {
+    sno: 8,
+    name: 'Mr. K. Venkata Siva Reddy',
+    designation: 'Assistant Professor',
+    isPhD: true
+  },
+  {
+    sno: 9,
+    name: 'Mr. P. Kishor Kumar',
+    designation: 'Assistant Professor',
+    isPhD: true
+  },
+  {
+    sno: 10,
+    name: 'Mrs. B. Geetha Rani',
+    designation: 'Assistant Professor',
+    isPhD: true
+  },
+  {
+    sno: 11,
+    name: 'Mr. D. Gowri Sankar Rao',
+    designation: 'Assistant Professor'
+  },
+  {
+    sno: 12,
+    name: 'Ms. Syed Ishrath Moin',
+    designation: 'Assistant Professor'
+  }
+];
+
+// ECE Software Stack & Equipment List
+const ECE_SOFTWARE_STACK = [
+  'MATLAB',
+  'MASM / TASM',
+  'Active HDL',
+  'Multi-Sim',
+  'Code Composer Studio',
+  'Tina-Pro Simulation Software',
+  'PSPICE Software',
+  'Microprocessor / Microcontroller Kits',
+  'DSP Processor Kits',
+  'FPGA / CPLD VLSI Trainer Kits'
+];
+
+// 12 Specialized ECE Laboratories
+const ECE_SPECIALIST_LABS = [
+  { id: 1, name: 'Electronic Devices and Circuits Lab', icon: 'Cpu', category: 'Foundational Hardware' },
+  { id: 2, name: 'Electronic Circuits Analysis Lab', icon: 'Zap', category: 'Circuit Modeling' },
+  { id: 3, name: 'Pulse and Digital Circuits Lab', icon: 'Binary', category: 'Digital Waveforms' },
+  { id: 4, name: 'IC Applications Lab', icon: 'Microchip', category: 'Integrated Circuits' },
+  { id: 5, name: 'Analog Communication Systems Lab', icon: 'Radio', category: 'Telecom Engineering' },
+  { id: 6, name: 'Digital Signal Processing Lab', icon: 'Layers', category: 'Signal Engineering' },
+  { id: 7, name: 'Digital Communication Systems Lab', icon: 'Globe', category: 'Digital Networking' },
+  { id: 8, name: 'Microwave and Optical Communications Lab', icon: 'Compass', category: 'RF & Photonics' },
+  { id: 9, name: 'Microprocessors and DSP Lab', icon: 'Cpu', category: 'Embedded Processors' },
+  { id: 10, name: 'IoT Lab', icon: 'Sparkles', category: 'Smart Sensors & IoT' },
+  { id: 11, name: 'Network Analysis Lab', icon: 'ShieldCheck', category: 'Network Theory' },
+  { id: 12, name: 'Electrical Lab', icon: 'Zap', category: 'Electrical Machines' }
+];
+
+// OBE Details - ECE
+const ECE_OBE_DATA = {
+  peos: [
+    {
+      code: 'PEO 1',
+      title: 'Technical Competence & Innovation',
+      desc: 'Graduates of ECE will demonstrate technical competence by identifying, formulating, analyzing and creating solutions using appropriate knowledge in Electronics and Communication Engineering.'
+    },
+    {
+      code: 'PEO 2',
+      title: 'Multidisciplinary & Team Performance',
+      desc: 'Graduates of ECE will become individual or team players who are fortified to provide sustainable solutions for interdisciplinary problems using modern tools.'
+    },
+    {
+      code: 'PEO 3',
+      title: 'Professional Engineering & Higher Education',
+      desc: 'Graduates of ECE will become engineering professionals and innovators in core engineering, service industries or pursue higher studies.'
+    },
+    {
+      code: 'PEO 4',
+      title: 'Ethical Responsibility & Lifelong Learning',
+      desc: 'Graduates of ECE will be able to engage in professional activities ethically and thereby enhance the knowledge and contribution towards the society through lifelong learning.'
+    }
   ],
-  achievements: [
-    "Established the Advanced VLSI & Embedded Systems Laboratory with support from Cadence design systems.",
-    "Secured outstanding academic results under JNTUA with multiple university gold medals.",
-    "Won the AICTE-Pragati state project competition for smart solar agriculture system prototyping.",
-    "Continuous NBA accredited status ensuring global degree compatibility."
+  psos: [
+    {
+      code: 'PSO 1',
+      title: 'VLSI & Embedded Systems Design',
+      desc: 'The ability to analyze and design circuit and system level solutions, for VLSI, Embedded System and relevant areas.'
+    },
+    {
+      code: 'PSO 2',
+      title: 'Communications & Signal Processing Competency',
+      desc: 'Demonstrate the technical competency with proficiency in programming and simulation tools for applications in communications and signal processing.'
+    }
   ],
-  curriculum: [
-    "Electronic Devices & Circuit Designs",
-    "Analog & Digital Communication Engineering",
-    "VLSI Design & Verilog Modeling",
-    "Microprocessors & Microcontroller Architectures",
-    "Digital Signal Processing Algorithms",
-    "Antenna Theory & Microwave Engineering"
-  ],
-  faculty: [
-    { name: "Dr. J. Prasanna Kumar", designation: "Professor & HOD", qualification: "M.E., Ph.D. in Communications", experience: "20+ Years", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=250" },
-    { name: "Dr. M. Swetha Reddy", designation: "Professor", qualification: "M.Tech, Ph.D.", experience: "15+ Years", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250" },
-    { name: "Mr. G. Venkateswarlu", designation: "Associate Professor", qualification: "M.Tech", experience: "11+ Years", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250" },
-    { name: "Mrs. P. Swarnalatha", designation: "Assistant Professor", qualification: "M.Tech", experience: "7+ Years", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=250" }
-  ],
-  gallery: [
-    { url: "https://images.unsplash.com/photo-1517055727180-d5a0cd281b78?auto=format&fit=crop&q=80&w=400", title: "VLSI Synthesis Lab" },
-    { url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400", title: "Microcontroller Testing" },
-    { url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=400", title: "Embedded Hardware Expo" }
+  pos: [
+    {
+      code: 'PO 1',
+      name: 'Engineering Knowledge',
+      desc: 'Apply knowledge of mathematics, natural science, computing, engineering fundamentals and an engineering specialization as specified in WK1 to WK4 respectively to develop to the solution of complex engineering problems.'
+    },
+    {
+      code: 'PO 2',
+      name: 'Problem Analysis',
+      desc: 'Identify, formulate, review research literature and analyze complex engineering problems reaching substantiated conclusions with consideration for sustainable development. (WK1 to WK4)'
+    },
+    {
+      code: 'PO 3',
+      name: 'Design/Development of Solutions',
+      desc: 'Design creative solutions for complex engineering problems and design/develop systems/components/processes to meet identified needs with consideration for the public health and safety, whole-life cost, net zero carbon, culture, society and environment as required. (WK5)'
+    },
+    {
+      code: 'PO 4',
+      name: 'Conduct Investigations of Complex Problems',
+      desc: 'Conduct investigations of complex engineering problems using research-based knowledge including design of experiments, modelling, analysis & interpretation of data to provide valid conclusions. (WK8).'
+    },
+    {
+      code: 'PO 5',
+      name: 'Engineering Tool Usage',
+      desc: 'Create, select and apply appropriate techniques, resources and modern engineering & IT tools, including prediction and modelling recognizing their limitations to solve complex engineering problems. (WK2 and WK6)'
+    },
+    {
+      code: 'PO 6',
+      name: 'The Engineer and The World',
+      desc: 'Analyze and evaluate societal and environmental aspects while solving complex engineering problems for its impact on sustainability with reference to economy, health, safety, legal framework, culture and environment. (WK1, WK5, and WK7).'
+    },
+    {
+      code: 'PO 7',
+      name: 'Ethics',
+      desc: 'Apply ethical principles and commit to professional ethics, human values, diversity and inclusion; adhere to national & international laws. (WK9)'
+    },
+    {
+      code: 'PO 8',
+      name: 'Individual and Collaborative Team work',
+      desc: 'Function effectively as an individual, and as a member or leader in diverse/multi-disciplinary teams.'
+    },
+    {
+      code: 'PO 9',
+      name: 'Communication',
+      desc: 'Communicate effectively and inclusively within the engineering community and society at large, such as being able to comprehend and write effective reports and design documentation, make effective presentations considering cultural, language, and learning differences.'
+    },
+    {
+      code: 'PO 10',
+      name: 'Project Management and Finance',
+      desc: 'Apply knowledge and understanding of engineering management principles and economic decision-making and apply these to one’s own work, as a member and leader in a team, and to manage projects and in multidisciplinary environments.'
+    },
+    {
+      code: 'PO 11',
+      name: 'Life-Long Learning',
+      desc: 'Recognize the need for, and have the preparation and ability for i) independent and life-long learning ii) adaptability to new and emerging technologies and iii) critical thinking in the broadest context of technological change. (WK8)'
+    }
   ]
 };
 
 export default function ECE() {
+  const [activeTab, setActiveTab] = useState<string>('home');
+  const [obeSubtab, setObeSubtab] = useState<'peos' | 'pos' | 'psos'>('peos');
+  const [facultySearch, setFacultySearch] = useState<string>('');
+
   const baseDept = DEPARTMENTS.find(d => d.id === 'ece');
 
-  if (!baseDept) return null;
-
   return (
-    <div className="py-10 bg-slate-50 min-h-screen">
-      {/* Page Title Header Banner */}
-      <section className="relative py-16 bg-gradient-to-b from-blue-50 via-white to-slate-50 text-slate-900 overflow-hidden mb-12 border-b border-slate-200 shadow-sm">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-          <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono">
-            Department of Excellence
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-slate-900">
-            {baseDept.name} ({baseDept.code})
-          </h1>
-          <div className="h-1 w-20 bg-yellow-500 mx-auto mt-2 rounded-full" />
-          <p className="max-w-2xl mx-auto text-slate-600 text-sm sm:text-base leading-relaxed">
-            {baseDept.shortDesc}
-          </p>
-        </div>
-      </section>
+    <div className="min-h-screen bg-slate-50 py-8 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main Grid Layout with Sticky Left Sidebar */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* ================= LEFT SIDEBAR (Electric Royal Blue Theme - 2nd Image Color) ================= */}
+          <div className="lg:col-span-3 bg-white rounded-2xl shadow-lg border border-slate-200/80 overflow-hidden sticky top-24">
+            
+            {/* Top Electric Royal Blue Accent Line */}
+            <div className="h-3.5 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700" />
 
-      {/* Main Content Containers */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-        {/* 1. Overview Section */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 space-y-6">
-            <span className="text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-widest font-mono block">
-              Academic Overview
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white">
-              Course Overview & History
-            </h2>
-            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-              {baseDept.fullDesc}
-            </p>
-            <div className="grid grid-cols-2 gap-4 bg-white dark:bg-primary-900/40 p-5 rounded-2xl border border-slate-100 dark:border-slate-800">
-              <div>
-                <span className="text-[11px] text-slate-400 font-mono uppercase">Annual Intake</span>
-                <p className="font-bold text-primary-950 dark:text-white text-lg">{baseDept.intake} Students / Yr</p>
-              </div>
-              <div>
-                <span className="text-[11px] text-slate-400 font-mono uppercase">Established</span>
-                <p className="font-bold text-primary-950 dark:text-white text-lg">{baseDept.established}</p>
-              </div>
+            {/* Sidebar Title Card with Electric Royal Blue Gradient */}
+            <div className="p-6 text-center bg-gradient-to-b from-blue-600 via-blue-700 to-blue-800 text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-bl-full pointer-events-none" />
+              <GraduationCap className="h-7 w-7 text-white mx-auto mb-1.5 drop-shadow-xs" />
+              <h2 className="text-xl sm:text-2xl font-serif font-bold text-white leading-tight">
+                Department <br />
+                <span className="text-white font-sans tracking-wide text-lg sm:text-xl">of ECE</span>
+              </h2>
+              <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/20 text-white border border-white/30">
+                RCEW Autonomous
+              </span>
             </div>
-          </div>
-          <div className="lg:col-span-5 relative">
-            <img
-              src={baseDept.image}
-              alt={baseDept.name}
-              className="w-full h-80 object-cover rounded-3xl shadow-xl border-4 border-white dark:border-primary-900"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-        </section>
 
-        {/* 2. Departmental Vision & Mission */}
-        <section className="bg-white dark:bg-primary-900/40 p-8 sm:p-12 rounded-3xl border border-slate-100 dark:border-slate-855 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Vision */}
-          <div className="space-y-4">
-            <div className="w-10 h-10 bg-gold-100 dark:bg-primary-950 text-gold-600 dark:text-gold-400 rounded-xl flex items-center justify-center">
-              <Eye className="h-5.5 w-5.5" />
-            </div>
-            <h3 className="text-xl font-serif font-bold text-primary-900 dark:text-white">Department Vision</h3>
-            <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed italic">
-              "{EXTRA_DEPT_DETAILS.vision}"
-            </p>
-          </div>
+            {/* Navigation Options List */}
+            <nav className="divide-y divide-slate-100">
+              {ECE_SIDEBAR_MENU.map((item) => {
+                const isActive = activeTab === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => setActiveTab(item.id)}
+                    className={`w-full text-left px-5 py-3.5 text-sm sm:text-base font-semibold flex items-center justify-between transition-all cursor-pointer relative ${
+                      isActive
+                        ? 'text-blue-700 bg-blue-50 font-bold shadow-2xs'
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}
+                  >
+                    <span className="flex items-center gap-2">
+                      {isActive && <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />}
+                      <span>{item.label}</span>
+                    </span>
 
-          {/* Mission */}
-          <div className="space-y-4">
-            <div className="w-10 h-10 bg-primary-100 dark:bg-primary-950 text-primary-700 dark:text-gold-400 rounded-xl flex items-center justify-center">
-              <Award className="h-5.5 w-5.5" />
-            </div>
-            <h3 className="text-xl font-serif font-bold text-primary-900 dark:text-white">Department Mission</h3>
-            <ul className="space-y-3">
-              {EXTRA_DEPT_DETAILS.mission.map((item, index) => (
-                <li key={index} className="flex gap-2.5 items-start text-slate-600 dark:text-slate-400 text-xs sm:text-sm">
-                  <CheckCircle className="h-4 w-4 text-gold-500 shrink-0 mt-0.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+                    {item.hasSubmenu ? (
+                      <ChevronRight className={`h-4 w-4 transition-transform ${isActive ? 'rotate-90 text-blue-600 font-bold' : 'text-slate-400'}`} />
+                    ) : null}
 
-        {/* 3. Laboratories */}
-        <section>
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-widest font-mono">Practical Excellence</span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white mt-1">Experimental Laboratories</h2>
-            <div className="h-1 w-12 bg-gold-500 mx-auto mt-3 rounded-full" />
+                    {/* Active Right Vertical Electric Blue Indicator */}
+                    {isActive && (
+                      <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-blue-600 rounded-l" />
+                    )}
+                  </button>
+                );
+              })}
+            </nav>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {baseDept.labs.map((lab, index) => (
-              <div key={index} className="bg-white dark:bg-primary-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
-                <FlaskConical className="h-6 w-6 text-gold-500 mb-4" />
-                <h4 className="font-serif font-bold text-sm sm:text-base text-primary-950 dark:text-white mb-2">{lab}</h4>
-                <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">Fully equipped with gigabit Ethernet, dedicated technician support staff, air conditioning, and professional hardware platforms.</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 4. Faculty Profiles */}
-        <section>
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-widest font-mono">Expert Mentorship</span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white mt-1">Our Prominent Faculty</h2>
-            <div className="h-1 w-12 bg-gold-500 mx-auto mt-3 rounded-full" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
-            {EXTRA_DEPT_DETAILS.faculty.map((member, index) => (
-              <div key={index} className="bg-white dark:bg-primary-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm flex flex-col items-center p-6 text-center">
-                <div className="h-32 w-32 rounded-full overflow-hidden mb-4 border-2 border-gold-500/30">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <h4 className="font-serif font-bold text-sm sm:text-base text-primary-950 dark:text-white leading-tight">{member.name}</h4>
-                <p className="text-gold-600 dark:text-gold-400 text-[11px] font-mono mt-1">{member.designation}</p>
-                <p className="text-slate-400 text-[10px] mt-1">{member.qualification}</p>
-                <span className="text-[10px] bg-slate-100 dark:bg-primary-950 text-slate-500 dark:text-slate-300 font-bold px-2.5 py-0.5 rounded-full mt-4">Exp: {member.experience}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 5. Curriculum & Coursework */}
-        <section className="bg-[#F8FBFF] text-slate-900 p-8 sm:p-12 rounded-2xl border border-blue-100/80 shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-5 space-y-4">
-              <FileSpreadsheet className="h-8 w-8 text-yellow-500" />
-              <h3 className="text-xl sm:text-2xl font-serif font-bold text-slate-900">Curriculum & Course Syllabus</h3>
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                The syllabus is rigorously structured under the guidance of our academic advisory board in collaboration with JNTU Anantapur, merging foundational math theory with direct industry programming platforms.
-              </p>
-            </div>
-            <div className="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
-              <span className="text-[10px] text-blue-600 font-mono font-bold uppercase tracking-wider block mb-4">Core Syllabus Focus Areas</span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {EXTRA_DEPT_DETAILS.curriculum.map((subject, idx) => (
-                  <div key={idx} className="flex gap-2 items-center text-xs font-semibold text-slate-700">
-                    <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full" />
-                    <span>{subject}</span>
+          {/* ================= RIGHT MAIN CONTENT AREA ================= */}
+          <div className="lg:col-span-9 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 md:p-10 min-h-[600px]">
+            
+            {/* 1. HOME TAB */}
+            {activeTab === 'home' && (
+              <div className="space-y-8 animate-fadeIn">
+                
+                {/* Section Header with Electric Royal Blue Theme */}
+                <div className="border-b border-slate-200 pb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div>
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                      RCEW Academic Department
+                    </span>
+                    <h1 className="text-2xl sm:text-3xl font-serif font-bold text-blue-800 mt-2">
+                      Department of ECE
+                    </h1>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 6. Achievements */}
-        <section>
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono">Outstanding Standards</span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">Recent Achievements</h2>
-            <div className="h-1 w-12 bg-yellow-500 mx-auto mt-3 rounded-full" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {EXTRA_DEPT_DETAILS.achievements.map((ach, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 p-6 rounded-2xl flex gap-4 shadow-sm hover:-translate-y-1 transition-all">
-                <div className="w-10 h-10 bg-yellow-50 text-yellow-600 rounded-xl flex items-center justify-center shrink-0 border border-yellow-200">
-                  <Trophy className="h-5 w-5 text-yellow-600" />
+                  <span className="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-blue-600 text-white shadow-xs">
+                    NBA Accredited • Code: ECE
+                  </span>
                 </div>
-                <div>
-                  <h4 className="font-bold text-xs sm:text-sm text-slate-900 mb-1">Academic Landmark</h4>
-                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed">{ach}</p>
+
+                {/* Hero Feature Card */}
+                <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+                  <img
+                    src="https://images.unsplash.com/photo-1517055727180-d5a0cd281b78?auto=format&fit=crop&q=80&w=1200"
+                    alt="Electronics & Communication Engineering Laboratory"
+                    className="w-full h-64 sm:h-80 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/40 to-transparent flex items-end p-6 sm:p-8">
+                    <div className="text-white space-y-1.5">
+                      <span className="px-2.5 py-0.5 bg-blue-500 text-white text-[10px] font-mono font-bold uppercase rounded">
+                        Established 2008
+                      </span>
+                      <p className="font-serif text-xl sm:text-3xl font-bold text-white drop-shadow-xs">
+                        ELECTRONICS & COMMUNICATION ENGINEERING
+                      </p>
+                      <p className="text-xs sm:text-sm text-blue-100 font-medium max-w-2xl">
+                        Generating innovative ideas, technical competence, and moral values for local and global societal needs.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Quick Highlights / Key Metrics with Electric Royal Blue Palette */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div className="p-4 bg-blue-600 text-white rounded-2xl text-center shadow-md relative overflow-hidden">
+                    <span className="text-2xl sm:text-3xl font-serif font-bold text-white block">1,500+</span>
+                    <span className="text-[11px] text-blue-100 font-mono uppercase font-bold">Campus Community</span>
+                  </div>
+
+                  <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-2xl text-center shadow-xs">
+                    <span className="text-2xl sm:text-3xl font-serif font-bold text-blue-700 block">2008</span>
+                    <span className="text-[11px] text-blue-900 font-mono uppercase font-bold">Established</span>
+                  </div>
+
+                  <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-2xl text-center shadow-xs">
+                    <span className="text-2xl sm:text-3xl font-serif font-bold text-blue-700 block">180</span>
+                    <span className="text-[11px] text-blue-900 font-mono uppercase font-bold">Augmented Intake</span>
+                  </div>
+
+                  <div className="p-4 bg-blue-700 text-white rounded-2xl text-center shadow-md">
+                    <span className="text-xl sm:text-2xl font-serif font-bold text-white block pt-1">AICTE</span>
+                    <span className="text-[10px] text-blue-100 font-mono uppercase font-bold">JNTUA Affiliated</span>
+                  </div>
+                </div>
+
+                {/* ABOUT THE DEPARTMENT */}
+                <div className="space-y-5">
+                  <div className="flex items-center gap-2.5 border-b border-slate-200 pb-3">
+                    <div className="p-2 bg-blue-600 text-white rounded-xl shadow-xs">
+                      <BookOpen className="h-5 w-5" />
+                    </div>
+                    <h2 className="text-xl sm:text-2xl font-serif font-bold text-blue-800">
+                      ELECTRONICS & COMMUNICATION ENGINEERING
+                    </h2>
+                  </div>
+
+                  <div className="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                    <p className="bg-blue-50/90 p-5 rounded-2xl border-l-4 border-blue-600 shadow-xs font-medium text-slate-800">
+                      The Electronics and Communication Engineering (ECE) Department in Ravindra College of Engineering women (RECW) has been established in 2008 since then it is providing education for the students of ECE to create innovative ideas and produce creative solutions to the societys needs. The students of ECE are conscious to the universal moral values, adherent to the professional ethical code. The department is intended to generate and disseminate knowledge and technologies essential to the local and global needs in the field of Electronics and Communication Engineering.
+                    </p>
+
+                    <p className="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs">
+                      Since its inception in 2008,RECW is rigorously striving to attain the status of being one of the top institutions in the field of technical education and scientific research. It is aesthetically designed, practically architected campus for student, faculty and administration efficiency. RECW currently supports a community of over 1,500 students.
+                    </p>
+
+                    <p className="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs">
+                      The Department of Electronics and Communication Engineering (ECE) at RECW is a name for its excellence in Electronics and Communication Engineering education and research. The department is providing excellent opportunities for young technocrats to enhance their learning capabilities with strong skill set in Electronics, Signal & Image processing, Analog & Digital communications, Optical communications, Computer communications and wireless communications. The ECE graduate is likely to be equipped with the required skill set and pursue career in Electronics, Communications & IT industry, research and higher qualifications in reputed premier institutions in the country or abroad.
+                    </p>
+
+                    {/* Intake & Program Growth Card */}
+                    <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl flex items-start gap-4 shadow-md relative overflow-hidden">
+                      <div className="p-3 bg-white/20 text-white rounded-xl shrink-0 mt-0.5 shadow-sm">
+                        <GraduationCap className="h-6 w-6 font-bold" />
+                      </div>
+                      <div className="space-y-1.5">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-100 bg-white/20 px-2.5 py-0.5 rounded">
+                          Approved Intake Capacity
+                        </span>
+                        <h4 className="font-serif font-bold text-white text-base sm:text-lg">
+                          AICTE Recognition & Intake Augmentation
+                        </h4>
+                        <p className="text-xs sm:text-sm text-blue-50 leading-relaxed font-medium">
+                          The ECE Program has been recognized by AICTE and affiliated to JNTUA; Anantapur the current intake is 120 students. The intake has been augmented to 180 from the next academic year i.e 2012-2013.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Faculty & Mentorship Feature */}
+                    <div className="p-6 bg-blue-50/80 rounded-2xl border border-blue-200 space-y-4 shadow-xs">
+                      <h4 className="font-serif font-bold text-blue-900 text-base sm:text-lg flex items-center gap-2">
+                        <div className="p-2 bg-blue-600 text-white rounded-lg">
+                          <Users className="h-5 w-5" />
+                        </div>
+                        Faculty Commitment & Mentorship Program
+                      </h4>
+                      <p className="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium">
+                        The ECE Department recruits faculty with excellent academic qualifications and rich experience in academia, industry and research, and supports superior research facilities. Faculty of ECE uses the state- of- the art teaching aids to ensure better content delivery and facilitate greater student interaction. Faculty commitment to excellence in teaching has been recognized and honored with numerous engineering and institution teaching awards. In addition to classes, students also have the opportunity to interact with faculty as mentees through faculty mentoring program.
+                      </p>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+                        <div className="bg-white p-4 rounded-xl border border-blue-200 flex items-start gap-3 shadow-2xs">
+                          <FlaskConical className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                          <p className="text-xs sm:text-sm text-slate-700 font-medium">
+                            The department has well-equipped laboratories for course work teaching and student projects, including a number of specialist laboratories.
+                          </p>
+                        </div>
+                        <div className="bg-white p-4 rounded-xl border border-blue-200 flex items-start gap-3 shadow-2xs">
+                          <Sparkles className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                          <p className="text-xs sm:text-sm text-slate-700 font-medium">
+                            The department of ECE always looks ahead with strong team work in order to give a valuable education and present techno excellent Electronics and Communication engineers to the society.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* VISION & MISSION CARDS */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                  {/* Vision Card */}
+                  <div className="bg-white rounded-2xl border-2 border-blue-600 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <div className="inline-flex items-center gap-2 bg-blue-600 text-white px-3.5 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider">
+                        <Eye className="h-4 w-4 text-white" />
+                        Vision
+                      </div>
+                      <p className="text-slate-800 text-sm sm:text-base leading-relaxed font-semibold pt-2">
+                        "Molding electronics engineers with Innovative Ideas, Professional Competence and socially responsible for the promotion of industrial growth of the nation."
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Mission Card */}
+                  <div className="bg-white rounded-2xl border-2 border-blue-600 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <div className="inline-flex items-center gap-2 bg-blue-700 text-white px-3.5 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider">
+                        <Target className="h-4 w-4 text-white" />
+                        Mission
+                      </div>
+                      <p className="text-slate-800 text-sm sm:text-base leading-relaxed font-semibold pt-2">
+                        "To become a center of excellence for education and research along with motivating students and faculty to take up innovative activities in line with ethical principles for the benefit of the society."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Technological Excellence Banner */}
+                <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white p-6 sm:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 items-center">
+                  <div className="p-4 bg-white/20 rounded-2xl shrink-0">
+                    <Cpu className="h-10 w-10 text-white" />
+                  </div>
+                  <div className="space-y-2 text-center md:text-left">
+                    <h3 className="font-serif font-bold text-white text-lg sm:text-xl">Techno-Excellent Engineering Commitment</h3>
+                    <p className="text-xs sm:text-sm text-blue-100 leading-relaxed italic">
+                      "Presenting techno-excellent Electronics and Communication engineers to society through strong teamwork, superior laboratory infrastructure, and universal moral values."
+                    </p>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
+            )}
 
-        {/* 7. Gallery */}
-        <section className="pb-12">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-widest font-mono">Visual Highlights</span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white mt-1">Department Gallery</h2>
-            <div className="h-1 w-12 bg-gold-500 mx-auto mt-3 rounded-full" />
-          </div>
+            {/* 2. BOARD OF STUDIES MEMBERS */}
+            {activeTab === 'bos' && (
+              <div className="space-y-6 animate-fadeIn">
+                <div className="border-b border-slate-200 pb-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+                    Academic Governance
+                  </span>
+                  <h1 className="text-2xl sm:text-3xl font-serif font-bold text-blue-800 mt-2">
+                    Board of Studies Members
+                  </h1>
+                  <p className="text-sm font-semibold text-slate-500 font-serif">Department of Electronics & Communication Engineering</p>
+                </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {EXTRA_DEPT_DETAILS.gallery.map((img, idx) => (
-              <div key={idx} className="relative h-60 rounded-2xl overflow-hidden group border border-slate-100 dark:border-slate-800 shadow-sm">
-                <img
-                  src={img.url}
-                  alt={img.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-black/40 flex items-end p-5 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-white text-xs font-serif font-bold">{img.title}</span>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-blue-50/50 p-4 rounded-xl border-l-4 border-blue-600 font-medium">
+                  The Board of Studies (BOS) for Electronics & Communication Engineering comprises university nominees from JNTUA, DRDO defense research scientists, Synopsys application engineers, academic experts from IISc Bangalore & NIT Warangal, and internal faculty.
+                </p>
+
+                {/* Summary Metrics */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="p-3.5 bg-blue-600 text-white rounded-xl text-center shadow-xs">
+                    <span className="text-2xl font-serif font-bold text-white">9</span>
+                    <span className="text-[10px] font-mono block text-blue-100 font-semibold uppercase">Total Members</span>
+                  </div>
+                  <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-center shadow-xs">
+                    <span className="text-sm font-serif font-bold text-blue-900 block">JNTUA / IISc / NITW</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Academic Experts</span>
+                  </div>
+                  <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-center shadow-xs">
+                    <span className="text-sm font-serif font-bold text-blue-900 block">DRDO Hyderabad</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Industry Partner</span>
+                  </div>
+                  <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-center shadow-xs">
+                    <span className="text-sm font-serif font-bold text-blue-900 block">Synopsys</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Alumni Representative</span>
+                  </div>
+                </div>
+
+                {/* Table View */}
+                <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm bg-white">
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead className="bg-blue-600 text-white font-serif font-bold uppercase text-[11px]">
+                      <tr>
+                        <th className="py-3.5 px-4 w-16 text-center">S.No</th>
+                        <th className="py-3.5 px-4">Name of the Member</th>
+                        <th className="py-3.5 px-4">Organization / Affiliation</th>
+                        <th className="py-3.5 px-4 text-center">Designation</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-slate-700">
+                      {ECE_BOS_MEMBERS.map((member) => {
+                        let badgeStyle = "bg-slate-100 text-slate-800 border-slate-200";
+                        if (member.designation === 'Chairman') badgeStyle = "bg-blue-700 text-white font-bold shadow-2xs";
+                        else if (member.designation === 'University Nominee') badgeStyle = "bg-blue-600 text-white font-bold shadow-2xs";
+                        else if (member.designation === 'Industry') badgeStyle = "bg-blue-100 text-blue-900 border border-blue-300 font-bold";
+                        else if (member.designation === 'Alumni') badgeStyle = "bg-blue-100 text-blue-900 border border-blue-300 font-bold";
+                        else if (member.designation === 'Internal Member') badgeStyle = "bg-slate-100 text-slate-800 border border-slate-200 font-medium";
+                        else if (member.designation === 'Academician') badgeStyle = "bg-blue-50 text-blue-800 border border-blue-200 font-bold";
+
+                        return (
+                          <tr key={member.sno} className="hover:bg-blue-50/40 transition-colors">
+                            <td className="py-3.5 px-4 font-mono font-bold text-center text-blue-600">{member.sno}</td>
+                            <td className="py-3.5 px-4 font-bold text-slate-900 whitespace-nowrap">{member.name}</td>
+                            <td className="py-3.5 px-4 text-slate-600 leading-relaxed">{member.organization}</td>
+                            <td className="py-3.5 px-4 text-center whitespace-nowrap">
+                              <span className={`px-3 py-1 rounded-full text-[11px] font-mono inline-block ${badgeStyle}`}>
+                                {member.designation}
+                              </span>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 </div>
               </div>
-            ))}
+            )}
+
+            {/* 3. FACULTY MEMBERS */}
+            {activeTab === 'faculty' && (
+              <div className="space-y-8 animate-fadeIn">
+                <div className="border-b border-slate-200 pb-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div>
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+                      RCEW Academic Roster
+                    </span>
+                    <h1 className="text-2xl sm:text-3xl font-serif font-bold text-blue-800 mt-2">
+                      Department of ECE Faculty Members
+                    </h1>
+                    <p className="text-xs font-semibold text-slate-500 font-serif mt-0.5">
+                      Core Electronics & Communication Engineering Faculty Roster
+                    </p>
+                  </div>
+
+                  {/* Search Bar */}
+                  <div className="relative w-full md:w-64">
+                    <Search className="h-4 w-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <input
+                      type="text"
+                      placeholder="Search ECE faculty..."
+                      value={facultySearch}
+                      onChange={(e) => setFacultySearch(e.target.value)}
+                      className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all"
+                    />
+                  </div>
+                </div>
+
+                {/* Table View without face photos */}
+                <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-xs bg-white">
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead className="bg-blue-600 text-white font-serif font-bold uppercase text-[11px]">
+                      <tr>
+                        <th className="py-3.5 px-4 w-16 text-center">SNO</th>
+                        <th className="py-3.5 px-4">Name of the Faculty</th>
+                        <th className="py-3.5 px-4 text-center">Designation</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-slate-700">
+                      {ECE_FACULTY_ROSTER.filter(f =>
+                        !facultySearch ||
+                        f.name.toLowerCase().includes(facultySearch.toLowerCase()) ||
+                        f.designation.toLowerCase().includes(facultySearch.toLowerCase())
+                      ).map((fac) => {
+                        let badgeStyle = "bg-slate-100 text-slate-800 border-slate-200";
+                        if (fac.designation.includes('Principal') || fac.designation.includes('HOD')) {
+                          badgeStyle = "bg-blue-700 text-white font-bold shadow-2xs";
+                        } else if (fac.designation === 'Professor') {
+                          badgeStyle = "bg-blue-600 text-white font-bold shadow-2xs";
+                        } else if (fac.designation.includes('Associate Professor')) {
+                          badgeStyle = "bg-blue-100 text-blue-900 border border-blue-300 font-bold";
+                        } else if (fac.designation.includes('Assistant Professor')) {
+                          badgeStyle = "bg-slate-100 text-slate-800 border border-slate-200 font-medium";
+                        }
+
+                        return (
+                          <tr key={fac.sno} className="hover:bg-blue-50/40 transition-colors">
+                            <td className="py-3.5 px-4 font-mono font-bold text-center text-blue-600">{fac.sno}</td>
+                            <td className="py-3.5 px-4 font-bold text-slate-900">
+                              <div className="flex items-center gap-2">
+                                <span>{fac.name}</span>
+                                {fac.isPhD && (
+                                  <span className="px-2 py-0.5 bg-blue-50 text-blue-800 font-mono font-bold text-[10px] rounded-md border border-blue-200 shrink-0">
+                                    (Ph.D)
+                                  </span>
+                                )}
+                              </div>
+                            </td>
+                            <td className="py-3.5 px-4 text-center whitespace-nowrap">
+                              <span className={`px-3 py-1 rounded-full text-[11px] inline-block ${badgeStyle}`}>
+                                {fac.designation}
+                              </span>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* 4. LABS AND COMPUTING FACILITIES */}
+            {activeTab === 'labs' && (
+              <div className="space-y-8 animate-fadeIn">
+                {/* Section Header */}
+                <div className="border-b border-slate-200 pb-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+                    Practical Infrastructure
+                  </span>
+                  <h1 className="text-2xl sm:text-3xl font-serif font-bold text-blue-800 mt-2">
+                    Labs and Computing Facilities
+                  </h1>
+                  <p className="text-sm font-semibold text-slate-500 font-serif">Department of Electronics & Communication Engineering</p>
+                </div>
+
+                {/* Computer Center Banner Card */}
+                <div className="p-6 bg-blue-600 text-white rounded-2xl space-y-4 shadow-md relative overflow-hidden">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 bg-white/20 text-white rounded-xl shadow-xs">
+                      <Cpu className="h-6 w-6 font-bold" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-100 bg-white/20 px-2.5 py-0.5 rounded">
+                        Air-Conditioned Computer Center
+                      </span>
+                      <h2 className="text-lg sm:text-xl font-serif font-bold text-white mt-0.5">
+                        Lenovo Systems Computing Facility & Simulation Software Suite
+                      </h2>
+                    </div>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-blue-50 leading-relaxed font-medium">
+                    The Department of Electronics and Communication Engineering has well established with latest Instruments. The Department has a separate air conditioned Computer Center to cater to the needs of UG students with Lenovo Systems and equipped with various software’s like MAT LAB, MASM/TASM, Active HDL, Multi-Sim, Code Composer Studio, Tina-pro Simulation Software, Microprocessor/Microcontroller Trainer Kits, DSP Processor Kits, VLSI Trainer Kits FPGA/CPLD and PSPICE Software.
+                  </p>
+
+                  {/* Software Badges Stack */}
+                  <div className="pt-2">
+                    <span className="text-[11px] font-mono font-bold text-blue-100 uppercase block mb-2">Installed Simulation Software & Hardware Kits:</span>
+                    <div className="flex flex-wrap gap-2">
+                      {ECE_SOFTWARE_STACK.map((sw, idx) => (
+                        <span key={idx} className="px-3 py-1 bg-white/15 text-white text-xs font-mono font-bold rounded-lg border border-white/20 shadow-2xs backdrop-blur-xs">
+                          {sw}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Core Competence & 12 Specialized Laboratories */}
+                <div className="space-y-4 pt-2">
+                  <div className="p-4 bg-blue-50/70 border-l-4 border-blue-600 rounded-r-xl shadow-2xs">
+                    <h3 className="font-serif font-bold text-blue-900 text-base">SPECIALIST LABORATORIES</h3>
+                    <p className="text-xs text-slate-600 mt-1 font-medium">
+                      With an objective of developing core competence in the respective subject matter specialisations and special interest groups for learning newer technologies, the Department has the following labs namely:
+                    </p>
+                  </div>
+
+                  {/* 12 Labs Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {ECE_SPECIALIST_LABS.map((lab) => (
+                      <div key={lab.id} className="p-4.5 bg-white border border-slate-200 rounded-2xl shadow-2xs hover:border-blue-600 hover:shadow-md transition-all space-y-3 flex flex-col justify-between group">
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between">
+                            <span className="w-8 h-8 bg-blue-600 text-white rounded-xl flex items-center justify-center font-mono font-bold text-xs shadow-2xs">
+                              #{lab.id}
+                            </span>
+                            <span className="text-[10px] font-mono font-bold text-blue-800 uppercase bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                              {lab.category}
+                            </span>
+                          </div>
+                          <h4 className="font-serif font-bold text-slate-900 text-sm sm:text-base leading-snug pt-1 group-hover:text-blue-600 transition-colors">
+                            {lab.name}
+                          </h4>
+                        </div>
+
+                        <div className="pt-2 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-blue-600 font-semibold">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-blue-600" /> Fully Equipped & Operational
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* 5. OBE (OUTCOME BASED EDUCATION) */}
+            {activeTab === 'obe' && (
+              <div className="space-y-6 animate-fadeIn">
+                <div className="border-b border-slate-200 pb-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+                    NBA Accredited Framework
+                  </span>
+                  <h1 className="text-2xl sm:text-3xl font-serif font-bold text-blue-800 mt-2">
+                    Outcome Based Education (OBE)
+                  </h1>
+                  <p className="text-sm font-semibold text-slate-500 font-serif">Department of Electronics & Communication Engineering</p>
+                </div>
+
+                {/* Sub-tabs for PEOs, PSOs, POs */}
+                <div className="flex flex-wrap gap-2 border-b border-slate-200 pb-1">
+                  <button
+                    onClick={() => setObeSubtab('peos')}
+                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-t-lg transition-colors cursor-pointer ${
+                      obeSubtab === 'peos'
+                        ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    PEOs (Educational Objectives)
+                  </button>
+                  <button
+                    onClick={() => setObeSubtab('psos')}
+                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-t-lg transition-colors cursor-pointer ${
+                      obeSubtab === 'psos'
+                        ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    PSOs (Specific Outcomes)
+                  </button>
+                  <button
+                    onClick={() => setObeSubtab('pos')}
+                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-t-lg transition-colors cursor-pointer ${
+                      obeSubtab === 'pos'
+                        ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    POs (Program Outcomes - PO1 to PO11)
+                  </button>
+                </div>
+
+                {/* Subtab PEOs */}
+                {obeSubtab === 'peos' && (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-slate-50 border-l-4 border-blue-600 rounded-r-xl">
+                      <h3 className="font-serif font-bold text-blue-900 text-base">PROGRAM EDUCATIONAL OBJECTIVES</h3>
+                      <p className="text-xs text-slate-600 mt-1">Core long-term career and professional accomplishments expected of ECE graduates within a few years of graduation.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {ECE_OBE_DATA.peos.map((peo, idx) => (
+                        <div key={idx} className="p-5 bg-white border border-slate-200 rounded-2xl shadow-xs hover:border-blue-600 transition-colors space-y-2">
+                          <span className="text-xs font-mono font-bold text-white bg-blue-600 px-2.5 py-1 rounded-md shadow-2xs">{peo.code}</span>
+                          <h4 className="font-serif font-bold text-slate-900 text-sm pt-1">{peo.title}</h4>
+                          <p className="text-xs text-slate-600 leading-relaxed">{peo.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Subtab PSOs */}
+                {obeSubtab === 'psos' && (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-blue-50/80 border-l-4 border-blue-600 rounded-r-xl space-y-1">
+                      <h3 className="font-serif font-bold text-blue-900 text-base">PROGRAM SPECIFIC OUTCOMES</h3>
+                      <p className="text-xs font-medium text-blue-900 italic">
+                        Upon completion of the ECE program, students will be able to:
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {ECE_OBE_DATA.psos.map((pso, idx) => (
+                        <div key={idx} className="p-5 bg-white border-2 border-blue-200 rounded-2xl shadow-xs hover:shadow-md transition-shadow space-y-2">
+                          <span className="text-xs font-mono font-bold text-white bg-blue-600 px-2.5 py-1 rounded-md border border-blue-300">{pso.code}</span>
+                          <h4 className="font-serif font-bold text-slate-900 text-sm pt-1">{pso.title}</h4>
+                          <p className="text-xs text-slate-700 leading-relaxed font-medium">{pso.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Subtab POs */}
+                {obeSubtab === 'pos' && (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-slate-50 border-l-4 border-blue-600 rounded-r-xl">
+                      <h3 className="font-serif font-bold text-blue-900 text-base">PROGRAM OUTCOMES (PO1 - PO11)</h3>
+                      <p className="text-xs text-slate-600 mt-1">Graduate attributes defined by National Board of Accreditation (NBA) for Electronics & Communication Engineering.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {ECE_OBE_DATA.pos.map((po, idx) => (
+                        <div key={idx} className="p-4 bg-white border border-slate-200 rounded-2xl shadow-xs hover:border-blue-600 transition-colors space-y-1.5 flex flex-col justify-between">
+                          <div>
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs font-mono font-bold text-white bg-blue-600 px-2.5 py-0.5 rounded">{po.code}</span>
+                            </div>
+                            <h4 className="font-serif font-bold text-slate-900 text-sm mt-2">{po.name}</h4>
+                            <p className="text-xs text-slate-600 mt-1 leading-relaxed">{po.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
           </div>
-        </section>
+
+        </div>
+
       </div>
     </div>
   );

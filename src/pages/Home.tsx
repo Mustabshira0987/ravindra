@@ -7,6 +7,9 @@ import Stats from '../components/Stats';
 import Testimonials from '../components/Testimonials';
 import { DEPARTMENTS, NEWS_EVENTS, PLACEMENT_STATS } from '../data';
 import MUGDHA_CELEBRATIONS_IMAGE from '../assets/images/rcew_mugdha_celebrations.jpg';
+import VISUAL_TOUR_BOOTCAMP from '../assets/images/rcew_visual_tour_bootcamp.jpg';
+import VISUAL_TOUR_WORKSHOP from '../assets/images/rcew_visual_tour_workshop.jpg';
+import VISUAL_TOUR_LABS from '../assets/images/rcew_visual_tour_labs.jpg';
 
 export default function Home() {
   // Filter only the three departments requested: CSE, ECE, AI&DS
@@ -351,37 +354,34 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6" id="home-gallery-grid-preview">
-            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-100 dark:border-slate-800/40">
+            <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
               <img
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800"
-                alt="Convocation Celebration"
+                src={VISUAL_TOUR_BOOTCAMP}
+                alt="Lean Start Up & MVP Boot Camp"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-black/45 flex items-end p-5">
-                <span className="text-white text-xs font-serif font-semibold">Convocation Assembly</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-5">
+                <span className="text-white text-xs sm:text-sm font-serif font-bold drop-shadow-sm">Lean Start Up & MVP Boot Camp</span>
               </div>
             </div>
-            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-100 dark:border-slate-800/40">
+            <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
               <img
-                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800"
-                alt="State Level Hackfest"
+                src={VISUAL_TOUR_WORKSHOP}
+                alt="Empowering Girls on Cloud Tech"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-black/45 flex items-end p-5">
-                <span className="text-white text-xs font-serif font-semibold">Interactive Tech Summit</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-5">
+                <span className="text-white text-xs sm:text-sm font-serif font-bold drop-shadow-sm">Empowering Girls on Cloud Tech Workshop</span>
               </div>
             </div>
-            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-100 dark:border-slate-800/40">
+            <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
               <img
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
-                alt="Academic Lab Research"
+                src={VISUAL_TOUR_LABS}
+                alt="Advanced Computing & Hardware Labs"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-black/45 flex items-end p-5">
-                <span className="text-white text-xs font-serif font-semibold">Advanced AI Computing Studio</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-5">
+                <span className="text-white text-xs sm:text-sm font-serif font-bold drop-shadow-sm">Advanced Computing & Hardware Labs</span>
               </div>
             </div>
           </div>

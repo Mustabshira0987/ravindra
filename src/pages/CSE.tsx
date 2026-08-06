@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import {
-  BookOpen, Award, CheckCircle2, FlaskConical, Users, FileText, ChevronRight,
-  History, ShieldCheck, GraduationCap, Download, Eye, Sparkles, Building2,
-  Calendar, Layers, MapPin, Mail, Phone, ExternalLink
+  BookOpen, Award, CheckCircle2, Users, ChevronRight,
+  History, ShieldCheck, GraduationCap, Eye, Sparkles, Building2,
+  Calendar, Layers, MapPin, Mail, Phone, ExternalLink, Target, Compass, Lightbulb,
+  Globe, Rocket, Search
 } from 'lucide-react';
 import { DEPARTMENTS } from '../data';
 
@@ -14,102 +15,251 @@ const DEPARTMENT_SIDEBAR_MENU = [
   { id: 'courses', label: 'Courses Offered' },
   { id: 'obe', label: 'OBE', hasSubmenu: true },
   { id: 'faculty', label: 'Faculty Members' },
-  { id: 'labs', label: 'CSE Lab Facilities' },
-  { id: 'question-papers', label: 'Autonomous Question Papers' },
 ];
 
 // Board of Studies Members
 const BOS_MEMBERS = [
-  { name: 'Dr. G. Ramesh', designation: 'Chairman', affiliation: 'HOD & Professor, Dept of CSE, RCEW Kurnool', role: 'Head of Board' },
-  { name: 'Dr. K. Srinivasulu', designation: 'University Nominee', affiliation: 'Professor of CSE, JNTU Anantapur', role: 'Academic Expert' },
-  { name: 'Dr. V. Sankar', designation: 'Subject Expert', affiliation: 'Professor, Dept of CSE, NIT Warangal', role: 'External Expert' },
-  { name: 'Dr. M. Sunitha', designation: 'Subject Expert', affiliation: 'Associate Professor, Dept of CSE, IIIT Hyderabad', role: 'External Expert' },
-  { name: 'Mr. S. Venkatakrishnan', designation: 'Industry Representative', affiliation: 'Principal Technical Architect, TCS Hyderabad', role: 'Industry Specialist' },
-  { name: 'Mrs. R. Bhavani', designation: 'Alumni Representative', affiliation: 'Senior Software Engineer, Cognizant Bengaluru', role: 'Alumni Specialist' },
+  {
+    sno: 1,
+    name: 'Dr K Seshadri Ramana',
+    organization: 'HoD CSE, Ravindra College of Engineering for Women',
+    designation: 'Chairman'
+  },
+  {
+    sno: 2,
+    name: 'Prof. C Shoba Bindu',
+    organization: 'Professor, Department of CSE & Director, Software Development Cell, JNT University Anantapur, Ananthapuramu',
+    designation: 'University Nominee'
+  },
+  {
+    sno: 3,
+    name: 'Mr. G. Raja Sekhar',
+    organization: 'Sr. Project Manager, LTI Mindtree, Bangalore',
+    designation: 'Industry'
+  },
+  {
+    sno: 4,
+    name: 'Ms. N. B. Madhuri Deekshitha',
+    organization: 'Sr. Software Engineer, Value Labs, Hyderabad',
+    designation: 'Alumni'
+  },
+  {
+    sno: 5,
+    name: 'Dr. T. Aditya Sai Srinivas',
+    organization: 'Associate Professor, Department of Computer Science Engineering, Ravindra College of Engineering for Women',
+    designation: 'Internal Member'
+  },
+  {
+    sno: 6,
+    name: 'Dr. B. Sabeena',
+    organization: 'Associate Professor, Department of Computer Science Engineering, Ravindra College of Engineering for Women',
+    designation: 'Internal Member'
+  },
+  {
+    sno: 7,
+    name: 'Mrs. Y. Indira Priyadarshini',
+    organization: 'Assistant Professor, Department of Computer Science Engineering, Ravindra College of Engineering for Women',
+    designation: 'Internal Member'
+  },
+  {
+    sno: 8,
+    name: 'Dr. Priyanka Chawla',
+    organization: 'Associate Professor, Department of Computer Science And Engineering, National Institute of Technology, Warangal – 506004, Telangana, INDIA',
+    designation: 'Academician'
+  },
+  {
+    sno: 9,
+    name: 'Dr Bhimarjuna Reddy',
+    organization: 'Professor, IIT, Hyderabad',
+    designation: 'Academician'
+  }
 ];
 
 // OBE Details
 const OBE_DATA = {
   peos: [
-    { code: 'PEO 1', title: 'Professional Career', desc: 'To prepare graduates with strong mathematical, scientific, and engineering fundamentals necessary to formulate, solve, and analyze computer engineering problems.' },
-    { code: 'PEO 2', title: 'Core Competency', desc: 'To provide students with solid foundation in computer software and hardware concepts required to design innovative products and digital applications.' },
-    { code: 'PEO 3', title: 'Leadership & Ethics', desc: 'To inculcate professional, ethical attitude, team spirit, effective communication skills, and lifelong learning capabilities in young women leaders.' },
-  ],
-  pos: [
-    { code: 'PO 1', name: 'Engineering Knowledge', desc: 'Apply knowledge of mathematics, science, and engineering fundamentals to complex CSE problems.' },
-    { code: 'PO 2', name: 'Problem Analysis', desc: 'Identify, formulate, and analyze complex software and computing problems reaching substantiated conclusions.' },
-    { code: 'PO 3', name: 'Design & Development of Solutions', desc: 'Design solutions for complex technical systems that meet specified public health, safety, and societal needs.' },
-    { code: 'PO 4', name: 'Conduct Investigations of Complex Problems', desc: 'Use research-based knowledge and research methods including design of experiments and synthesis of data.' },
-    { code: 'PO 5', name: 'Modern Tool Usage', desc: 'Create, select, and apply appropriate techniques, resources, and modern IT and engineering tools.' },
-    { code: 'PO 6', name: 'The Engineer and Society', desc: 'Apply reasoning informed by contextual knowledge to assess societal, safety, legal, and cultural issues.' },
-    { code: 'PO 7', name: 'Environment and Sustainability', desc: 'Understand the impact of professional engineering solutions in societal and environmental contexts.' },
-    { code: 'PO 8', name: 'Ethics', desc: 'Apply ethical principles and commit to professional ethics and responsibilities of engineering practice.' },
-    { code: 'PO 9', name: 'Individual and Team Work', desc: 'Function effectively as an individual, and as a member or leader in diverse and multidisciplinary teams.' },
-    { code: 'PO 10', name: 'Communication', desc: 'Communicate effectively on complex engineering activities with the engineering community and society.' },
-    { code: 'PO 11', name: 'Project Management and Finance', desc: 'Demonstrate knowledge and understanding of engineering and management principles.' },
-    { code: 'PO 12', name: 'Life-long Learning', desc: 'Recognize the need for, and have the preparation and ability to engage in independent and life-long learning.' },
+    {
+      code: 'PEO 1',
+      title: 'Software Systems Development',
+      desc: 'Apply principles of computer science and engineering to analyze, design and develop software systems.'
+    },
+    {
+      code: 'PEO 2',
+      title: 'Industry Practices & Adaptability',
+      desc: 'Understand, analyze and apply current industry accepted computing practices and adapt to changing trends in technology.'
+    },
+    {
+      code: 'PEO 3',
+      title: 'Societal & Industry Solutions',
+      desc: 'Assess industry and societal needs and develop suitable technological solutions.'
+    },
+    {
+      code: 'PEO 4',
+      title: 'Leadership & Lifelong Learning',
+      desc: 'Exhibit team spirit, inter-personal and leadership dynamics for effective management of projects and engage in life-long learning to conform to changing professional and societal needs.'
+    }
   ],
   psos: [
-    { code: 'PSO 1', title: 'Software System Architecture', desc: 'Develop efficient algorithms and robust software architectures using modern programming languages (Java, Python, C++).' },
-    { code: 'PSO 2', title: 'Data Analytics & Cloud Intelligence', desc: 'Apply data science techniques, cloud deployments, and intelligent systems to design enterprise-grade platforms.' },
+    {
+      code: 'PSO 1',
+      title: 'System Software Engineering',
+      desc: 'Design, develop, test, and maintain innovative System Software to meet the desired needs of industry & society.'
+    },
+    {
+      code: 'PSO 2',
+      title: 'Algorithmic Networking & Data Analytics',
+      desc: 'Apply skills to design efficient algorithms to solve the problems in the area of networking & data analytics.'
+    }
+  ],
+  pos: [
+    {
+      code: 'PO 1',
+      name: 'Engineering Knowledge',
+      desc: 'Apply knowledge of mathematics, natural science, computing, engineering fundamentals and an engineering specialization as specified in WK1 to WK4 respectively to develop to the solution of complex engineering problems.'
+    },
+    {
+      code: 'PO 2',
+      name: 'Problem Analysis',
+      desc: 'Identify, formulate, review research literature and analyze complex engineering problems reaching substantiated conclusions with consideration for sustainable development. (WK1 to WK4)'
+    },
+    {
+      code: 'PO 3',
+      name: 'Design/Development of Solutions',
+      desc: 'Design creative solutions for complex engineering problems and design/develop systems/components/processes to meet identified needs with consideration for the public health and safety, whole-life cost, net zero carbon, culture, society and environment as required. (WK5)'
+    },
+    {
+      code: 'PO 4',
+      name: 'Conduct Investigations of Complex Problems',
+      desc: 'Conduct investigations of complex engineering problems using research-based knowledge including design of experiments, modelling, analysis & interpretation of data to provide valid conclusions. (WK8).'
+    },
+    {
+      code: 'PO 5',
+      name: 'Engineering Tool Usage',
+      desc: 'Create, select and apply appropriate techniques, resources and modern engineering & IT tools, including prediction and modelling recognizing their limitations to solve complex engineering problems. (WK2 and WK6)'
+    },
+    {
+      code: 'PO 6',
+      name: 'The Engineer and The World',
+      desc: 'Analyze and evaluate societal and environmental aspects while solving complex engineering problems for its impact on sustainability with reference to economy, health, safety, legal framework, culture and environment. (WK1, WK5, and WK7).'
+    },
+    {
+      code: 'PO 7',
+      name: 'Ethics',
+      desc: 'Apply ethical principles and commit to professional ethics, human values, diversity and inclusion; adhere to national & international laws. (WK9)'
+    },
+    {
+      code: 'PO 8',
+      name: 'Individual and Collaborative Team work',
+      desc: 'Function effectively as an individual, and as a member or leader in diverse/multi-disciplinary teams.'
+    },
+    {
+      code: 'PO 9',
+      name: 'Communication',
+      desc: 'Communicate effectively and inclusively within the engineering community and society at large, such as being able to comprehend and write effective reports and design documentation, make effective presentations considering cultural, language, and learning differences.'
+    },
+    {
+      code: 'PO 10',
+      name: 'Project Management and Finance',
+      desc: 'Apply knowledge and understanding of engineering management principles and economic decision-making and apply these to one’s own work, as a member and leader in a team, and to manage projects and in multidisciplinary environments.'
+    },
+    {
+      code: 'PO 11',
+      name: 'Life-Long Learning',
+      desc: 'Recognize the need for, and have the preparation and ability for i) independent and life-long learning ii) adaptability to new and emerging technologies and iii) critical thinking in the broadest context of technological change. (WK8)'
+    }
   ]
 };
 
-// Faculty Roster
-const FACULTY_ROSTER = [
-  { name: "Dr. G. Ramesh", designation: "Professor & HOD", qualification: "M.Tech, Ph.D. (CSE)", experience: "18+ Years", specialization: "Artificial Intelligence & Cloud Computing", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300" },
-  { name: "Mrs. K. Radhika Sree", designation: "Associate Professor", qualification: "M.Tech, (Ph.D.)", experience: "12+ Years", specialization: "Data Structures & Database Systems", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300" },
-  { name: "Mr. P. Kalyan Rao", designation: "Assistant Professor", qualification: "M.Tech", experience: "8+ Years", specialization: "Full-Stack Web Technologies & DevOps", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=300" },
-  { name: "Mrs. J. Lakshmi Priya", designation: "Assistant Professor", qualification: "M.Tech", experience: "6+ Years", specialization: "Cyber Security & Computer Networks", image: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=300" },
-  { name: "Dr. M. Suresh Kumar", designation: "Professor", qualification: "M.Tech, Ph.D.", experience: "15+ Years", specialization: "Machine Learning & Neural Networks", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300" },
-  { name: "Mrs. S. Anitha", designation: "Assistant Professor", qualification: "M.Tech", experience: "7+ Years", specialization: "Operating Systems & System Software", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300" },
+// Complete Faculty Roster grouped by Programs
+interface FacultyMember {
+  sno: number;
+  name: string;
+  designation: string;
+  isPhD?: boolean;
+}
+
+const BTECH_FACULTY: FacultyMember[] = [
+  { sno: 1, name: 'Dr. K.SESHADRI RAMANA', designation: 'Professor & HoD', isPhD: true },
+  { sno: 2, name: 'Dr. B. NAGALAKSHMI', designation: 'Associate Professor', isPhD: true },
+  { sno: 3, name: 'Mrs. Y. INDIRA PRIYADARSHINI', designation: 'Assistant Professor', isPhD: true },
+  { sno: 4, name: 'Mr. G. FAYAZ HUSSAIN', designation: 'Assistant Professor', isPhD: true },
+  { sno: 5, name: 'Mrs. KIRAN MAYEE', designation: 'Assistant Professor', isPhD: true },
+  { sno: 6, name: 'Mrs. PRATHIBHA PRIYADARSHNI', designation: 'Assistant Professor', isPhD: true },
+  { sno: 7, name: 'Mrs. YASHODA', designation: 'Assistant Professor' },
+  { sno: 8, name: 'Mrs. J USHA SRI', designation: 'Assistant Professor' },
+  { sno: 9, name: 'Mr. S. ASLAM SHAREEF', designation: 'Assistant Professor' },
+  { sno: 10, name: 'Mrs. M. SAILAJA', designation: 'Assistant Professor' },
+  { sno: 11, name: 'Mrs. G. SHAHEEN FIRDOUS', designation: 'Assistant Professor' },
+  { sno: 12, name: 'Mrs. SAI REKHA', designation: 'Assistant Professor' },
+  { sno: 13, name: 'Mrs. SARITHA REDDY', designation: 'Assistant Professor' },
+  { sno: 14, name: 'Mrs. S. NUZHATHA PASHA', designation: 'Assistant Professor' },
+  { sno: 15, name: 'Mr. M. BALAKRISHNA', designation: 'Assistant Professor' },
+  { sno: 16, name: 'Mrs. SAMEENA YOUSUFF', designation: 'Assistant Professor' },
+  { sno: 17, name: 'Mrs. V LEENA PARIMALA', designation: 'Assistant Professor' },
+  { sno: 18, name: 'Mrs. SAMIYA', designation: 'Assistant Professor' },
+  { sno: 19, name: 'Mr. M. PRAVEEN KUMAR', designation: 'Assistant Professor' },
+  { sno: 20, name: 'Mrs. L. SANDYA REKHA', designation: 'Assistant Professor' },
+  { sno: 21, name: 'Mrs. K. LAKSHMI PRASANNA', designation: 'Assistant Professor' },
+  { sno: 22, name: 'Mrs. V. PREMA MANVI', designation: 'Assistant Professor' },
+  { sno: 23, name: 'Mrs. T. UMA DEVI', designation: 'Assistant Professor' },
+  { sno: 24, name: 'Mrs. A. JOY PRANAHITHA', designation: 'Assistant Professor' },
+  { sno: 25, name: 'Mrs. P. RAGA CHANDRIKA', designation: 'Assistant Professor' },
+  { sno: 26, name: 'Mrs. S. TABITA', designation: 'Assistant Professor' },
+  { sno: 27, name: 'Mrs. M. SHAHEDA BEGUM', designation: 'Assistant Professor' },
+  { sno: 28, name: 'Mrs. B. NAGA DIVYA', designation: 'Assistant Professor' },
+  { sno: 29, name: 'Ms. M. SHIVA THULASI', designation: 'Assistant Professor' },
+  { sno: 30, name: 'Mrs. E. K. MOUNIKA', designation: 'Assistant Professor' },
+  { sno: 31, name: 'Mrs. P RAGHAVARDHINI', designation: 'Assistant Professor' },
+  { sno: 32, name: 'Mrs. R. TEJASWI', designation: 'Assistant Professor' },
+  { sno: 33, name: 'Mrs. P. M. PRIYANKA', designation: 'Assistant Professor' },
+  { sno: 34, name: 'Mrs. G. SABERA', designation: 'Assistant Professor' },
+  { sno: 35, name: 'Mr. RAJA ASHOK KUMAR', designation: 'Assistant Professor' },
+  { sno: 36, name: 'Mr. G NATARAJA SEKHAR', designation: 'Assistant Professor' },
+  { sno: 37, name: 'Mrs. S. RUMANA FIRDOSE', designation: 'Assistant Professor' },
+  { sno: 38, name: 'Mrs. AYESHA IFFAT BASHEER', designation: 'Assistant Professor' },
+  { sno: 39, name: 'Ms. SUVARNAMMA', designation: 'Assistant Professor' },
+  { sno: 40, name: 'Mr. B. SAHADEVA REDDY', designation: 'Assistant Professor' },
+  { sno: 41, name: 'Mr. T. RAMAKRISHNA', designation: 'Assistant Professor' },
+  { sno: 42, name: 'Ms. K. SWATHI', designation: 'Assistant Professor' },
+  { sno: 43, name: 'Mr. K. NARAYANA', designation: 'Assistant Professor' },
+  { sno: 44, name: 'Ms. K. DIVYA', designation: 'Assistant Professor' },
+  { sno: 45, name: 'Mr. M. DINAKARA SANDEEP', designation: 'Assistant Professor' },
+  { sno: 46, name: 'Mrs. M. MADHU LATHA', designation: 'Assistant Professor' },
+  { sno: 47, name: 'Mr. S. MOHAMMED IMTIAZ ALI', designation: 'Assistant Professor' },
+  { sno: 48, name: 'Ms. T.B. SHIRISHA', designation: 'Assistant Professor' },
+  { sno: 49, name: 'Ms. S SHAISTHA FARHEE', designation: 'Assistant Professor' },
+  { sno: 50, name: 'Ms. V. B. RADHA', designation: 'Assistant Professor' },
+  { sno: 51, name: 'Mr. V.V.R. SHASHANK', designation: 'Assistant Professor' },
 ];
 
-// Lab Facilities
-const CSE_LABS = [
-  {
-    name: "Advanced AI & Deep Learning Studio",
-    systems: "60 High-End Workstations (Intel i7 13th Gen, 32GB RAM, NVIDIA RTX 4070 GPUs)",
-    software: "Python 3.11, TensorFlow, PyTorch, CUDA, Jupyter Notebooks, OpenCV",
-    desc: "State-of-the-art laboratory dedicated to machine learning modeling, computer vision experiments, and natural language processing thesis research.",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600"
-  },
-  {
-    name: "Data Structures & Java Programming Lab",
-    systems: "70 Desktop Workstations (Intel i5, 16GB RAM, Gigabit LAN)",
-    software: "JDK 21, Eclipse IDE, VS Code, Git, NetBeans, MySQL",
-    desc: "Equipped for foundational coding bootcamps, competitive programming sessions, and Object-Oriented Software design paradigms.",
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600"
-  },
-  {
-    name: "Database Systems & Cloud Computing Studio",
-    systems: "65 Workstations connected to High-Speed Central Linux Servers",
-    software: "Oracle 19c, PostgreSQL, Docker, AWS CLI, Kubernetes, MongoDB",
-    desc: "Hands-on data architecture, SQL query optimization, distributed cloud microservices deployment, and NoSQL database modeling.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600"
-  },
-  {
-    name: "Cyber Security & Networks Lab",
-    systems: "50 Security Hardened Stations",
-    software: "Wireshark, Kali Linux, Cisco Packet Tracer, Snort IDS, Metasploit",
-    desc: "Network packet inspection, cryptographic protocol implementation, ethical hacking simulations, and network topology configurations.",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=600"
-  }
+const MTECH_CSE_FACULTY: FacultyMember[] = [
+  { sno: 1, name: 'Dr. B. SABEENA', designation: 'Associate Professor', isPhD: true },
+  { sno: 2, name: 'Mrs V. ROHINI', designation: 'Assistant Professor', isPhD: true },
+  { sno: 3, name: 'Mr. DORA BABU', designation: 'Assistant Professor' },
 ];
 
-// Autonomous Question Papers
-const QUESTION_PAPERS = [
-  { year: '2024-25', sem: 'IV-I (7th Sem)', code: 'CSE401', title: 'Artificial Intelligence & Neural Networks', type: 'End-Semester' },
-  { year: '2024-25', sem: 'III-II (6th Sem)', code: 'CSE306', title: 'Compiler Design & Automata Theory', type: 'End-Semester' },
-  { year: '2023-24', sem: 'III-I (5th Sem)', code: 'CSE301', title: 'Database Management Systems', type: 'End-Semester' },
-  { year: '2023-24', sem: 'II-II (4th Sem)', code: 'CSE204', title: 'Design and Analysis of Algorithms', type: 'End-Semester' },
-  { year: '2023-24', sem: 'II-I (3rd Sem)', code: 'CSE201', title: 'Data Structures using C++', type: 'Mid-Semester' },
-  { year: '2022-23', sem: 'I-II (2nd Sem)', code: 'CSE102', title: 'Python Programming & Problem Solving', type: 'End-Semester' },
+const MTECH_AIML_FACULTY: FacultyMember[] = [
+  { sno: 1, name: 'Dr. T. ADITYA SAI SRINIVAS', designation: 'Associate Professor', isPhD: true },
+  { sno: 2, name: 'Mr. N. PARASHURAM', designation: 'Assistant Professor', isPhD: true },
+];
+
+const CAI_FACULTY: FacultyMember[] = [
+  { sno: 1, name: 'Ms. V. NEELIMA', designation: 'Assistant Professor' },
+  { sno: 2, name: 'Mr. RAVI BOLLEDDULA', designation: 'Assistant Professor' },
+  { sno: 3, name: 'Ms. N. SWATHI', designation: 'Assistant Professor' },
+  { sno: 4, name: 'Mrs. G. LUCY', designation: 'Assistant Professor' },
+  { sno: 5, name: 'Ms. A. SWETHA', designation: 'Assistant Professor' },
+  { sno: 6, name: 'Ms. P. SNIGDHASREE', designation: 'Assistant Professor' },
+  { sno: 7, name: 'Ms. P. CHANDANA REDDY', designation: 'Assistant Professor' },
+  { sno: 8, name: 'Ms. L. DEVASENA', designation: 'Assistant Professor' },
+  { sno: 9, name: 'Ms. SHAIK RESHMA', designation: 'Assistant Professor' },
 ];
 
 export default function CSE() {
   const [activeTab, setActiveTab] = useState<string>('home');
   const [obeSubtab, setObeSubtab] = useState<'peos' | 'pos' | 'psos'>('peos');
+  const [facultyFilter, setFacultyFilter] = useState<'all' | 'btech' | 'mtech_cse' | 'mtech_aiml' | 'cai'>('all');
+  const [facultySearch, setFacultySearch] = useState<string>('');
 
   const baseDept = DEPARTMENTS.find(d => d.id === 'cse');
 
@@ -120,16 +270,23 @@ export default function CSE() {
         {/* Main Grid Layout with Sidebar on Left */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* ================= LEFT SIDEBAR ================= */}
-          <div className="lg:col-span-3 bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden sticky top-24">
-            {/* Top Maroon Header Accent */}
-            <div className="h-3 bg-[#900C3F]" />
+          {/* ================= LEFT SIDEBAR (Electric Royal Blue Theme - 2nd Image Color) ================= */}
+          <div className="lg:col-span-3 bg-white rounded-2xl shadow-lg border border-slate-200/80 overflow-hidden sticky top-24">
+            
+            {/* Top Electric Royal Blue Accent Line */}
+            <div className="h-3.5 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700" />
 
-            {/* Sidebar Title */}
-            <div className="p-6 text-center border-b border-slate-100 bg-white">
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#900C3F] leading-tight">
-                Department <br /> of CSE
+            {/* Sidebar Title Card with Electric Royal Blue Gradient */}
+            <div className="p-6 text-center bg-gradient-to-b from-blue-600 via-blue-700 to-blue-800 text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-bl-full pointer-events-none" />
+              <GraduationCap className="h-7 w-7 text-white mx-auto mb-1.5 drop-shadow-xs" />
+              <h2 className="text-xl sm:text-2xl font-serif font-bold text-white leading-tight">
+                Department <br />
+                <span className="text-white font-sans tracking-wide text-lg sm:text-xl">of CSE</span>
               </h2>
+              <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/20 text-white border border-white/30">
+                RCEW Autonomous
+              </span>
             </div>
 
             {/* Navigation Options List */}
@@ -142,19 +299,22 @@ export default function CSE() {
                     onClick={() => setActiveTab(item.id)}
                     className={`w-full text-left px-5 py-3.5 text-sm sm:text-base font-semibold flex items-center justify-between transition-all cursor-pointer relative ${
                       isActive
-                        ? 'text-blue-700 bg-blue-50/70 font-bold'
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-slate-50'
+                        ? 'text-blue-700 bg-blue-50 font-bold shadow-2xs'
+                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
                     }`}
                   >
-                    <span>{item.label}</span>
+                    <span className="flex items-center gap-2">
+                      {isActive && <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />}
+                      <span>{item.label}</span>
+                    </span>
 
                     {item.hasSubmenu ? (
-                      <ChevronRight className={`h-4 w-4 transition-transform ${isActive ? 'rotate-90 text-blue-700' : 'text-slate-400'}`} />
+                      <ChevronRight className={`h-4 w-4 transition-transform ${isActive ? 'rotate-90 text-blue-600 font-bold' : 'text-slate-400'}`} />
                     ) : null}
 
-                    {/* Active Right Vertical Blue Bar Indicator */}
+                    {/* Active Right Vertical Electric Blue Indicator */}
                     {isActive && (
-                      <div className="absolute right-0 top-0 bottom-0 w-1 bg-blue-600 rounded-l" />
+                      <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-blue-600 rounded-l" />
                     )}
                   </button>
                 );
@@ -168,14 +328,15 @@ export default function CSE() {
             {/* 1. HOME TAB */}
             {activeTab === 'home' && (
               <div className="space-y-8 animate-fadeIn">
+                {/* Section Header */}
                 <div className="border-b border-slate-200 pb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">RCEW Academic Stream</span>
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">RCEW Academic Department</span>
                     <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
-                      Computer Science & Engineering
+                      Department of CSE
                     </h1>
                   </div>
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-100 text-amber-900 border border-amber-300">
                     NBA Accredited • Code: CSE
                   </span>
                 </div>
@@ -184,50 +345,138 @@ export default function CSE() {
                 <div className="relative rounded-2xl overflow-hidden shadow-md">
                   <img
                     src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200"
-                    alt="CSE Department Overview"
+                    alt="Department of Computer Science & Engineering"
                     className="w-full h-64 sm:h-80 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent flex items-end p-6">
                     <div className="text-white space-y-1">
-                      <p className="font-serif text-lg sm:text-xl font-bold">Pioneering Software Engineering & AI Solutions</p>
-                      <p className="text-xs sm:text-sm text-slate-300">Empowering young women engineers with cutting-edge tech skills since 2008.</p>
+                      <p className="font-serif text-lg sm:text-2xl font-bold text-amber-300">Department of Computer Science & Engineering</p>
+                      <p className="text-xs sm:text-sm text-slate-200">A launchpad for innovation and empowerment at RCEW since 2008.</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Key Metrics */}
+                {/* Quick Highlights / Key Metrics */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center">
-                    <span className="text-2xl font-serif font-bold text-blue-900 block">180</span>
-                    <span className="text-[11px] text-slate-500 font-mono uppercase">Annual Intake</span>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center shadow-xs">
+                    <span className="text-2xl font-serif font-bold text-blue-700 block">420+</span>
+                    <span className="text-[11px] text-slate-600 font-mono uppercase font-semibold">Enrolled Students</span>
                   </div>
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center">
-                    <span className="text-2xl font-serif font-bold text-blue-900 block">2008</span>
-                    <span className="text-[11px] text-slate-500 font-mono uppercase">Established</span>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center shadow-xs">
+                    <span className="text-2xl font-serif font-bold text-blue-700 block">27</span>
+                    <span className="text-[11px] text-slate-600 font-mono uppercase font-semibold">Core Faculty</span>
                   </div>
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center">
-                    <span className="text-2xl font-serif font-bold text-amber-600 block">96.4%</span>
-                    <span className="text-[11px] text-slate-500 font-mono uppercase">Placement Rate</span>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center shadow-xs">
+                    <span className="text-2xl font-serif font-bold text-amber-600 block">2008</span>
+                    <span className="text-[11px] text-slate-600 font-mono uppercase font-semibold">Established</span>
                   </div>
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center">
-                    <span className="text-2xl font-serif font-bold text-blue-900 block">14.5 LPA</span>
-                    <span className="text-[11px] text-slate-500 font-mono uppercase">Highest Package</span>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center shadow-xs">
+                    <span className="text-2xl font-serif font-bold text-blue-700 block">180</span>
+                    <span className="text-[11px] text-slate-600 font-mono uppercase font-semibold">Annual Intake</span>
+                  </div>
+                </div>
+
+                {/* ABOUT THE DEPARTMENT */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 border-b border-slate-100 pb-2">
+                    <BookOpen className="h-6 w-6 text-blue-600" />
+                    <h2 className="text-xl sm:text-2xl font-serif font-bold text-blue-800">
+                      ABOUT THE DEPARTMENT
+                    </h2>
+                  </div>
+
+                  <div className="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                    <p className="bg-slate-50 p-5 rounded-2xl border-l-4 border-blue-600 shadow-xs">
+                      At Ravindra College of Engineering for Women, the Computer Science and Engineering department is more than just a program—it’s a launchpad for innovation and empowerment. Here, we nurture creativity, problem-solving skills, and a passion for technology, preparing women to thrive in the dynamic world of computing. With dedicated faculty, cutting-edge research opportunities, and a supportive community, we’re shaping the next generation of female leaders in computer science.
+                    </p>
+
+                    <p className="p-4 bg-white rounded-xl border border-slate-200">
+                      The mission of the Department is to persistently strive for achieving excellence in computing disciplines. It is being pursued through its spectrum of academic programmes in computing of contemporary standards. The sustained effort is to produce computing graduates with potential to design and develop systems involving the integration of software and hardware devices; innovative approaches to programming and problem solving as well as creative ways to use Computers; Large scale software systems; and computing infrastructure of an organization.
+                    </p>
+
+                    <p className="p-4 bg-white rounded-xl border border-slate-200">
+                      History of Computer Science discipline at RCEW dates back to 2008. The Department of Computer Science & Engineering was established to meet the demand for well-qualified computer professionals.
+                    </p>
+
+                    <div className="p-5 bg-gradient-to-br from-amber-50/80 to-amber-100/40 rounded-2xl border border-amber-200 space-y-3">
+                      <p className="font-medium text-slate-800">
+                        At present, the Department of Computer Science and Engineering, has more than <strong>420 students</strong> and <strong>27 core faculty members</strong> apart from many visiting professors, distinguished professionals from industry, eminent researchers and teaching/ research assistants. With an aim to carve a niche for itself in Computer Science and Engineering and allied domains, the Department strives to:
+                      </p>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                        <div className="bg-white p-4 rounded-xl border border-amber-200/80 flex items-start gap-3 shadow-xs">
+                          <Globe className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                          <p className="text-xs sm:text-sm text-slate-700 font-medium">
+                            Become a pioneering world-class centre of excellence in education and research through collaborative, consultative and participatory approaches
+                          </p>
+                        </div>
+                        <div className="bg-white p-4 rounded-xl border border-amber-200/80 flex items-start gap-3 shadow-xs">
+                          <GraduationCap className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                          <p className="text-xs sm:text-sm text-slate-700 font-medium">
+                            Nurture effective capabilities for the development of high quality technical and scientific manpower to meet the challenges of the knowledge era
+                          </p>
+                        </div>
+                        <div className="bg-white p-4 rounded-xl border border-amber-200/80 flex items-start gap-3 shadow-xs">
+                          <Building2 className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                          <p className="text-xs sm:text-sm text-slate-700 font-medium">
+                            Provide cost-effective Information and Communication Technology (ICT)-based solutions and value-added services to a variety of organisations and to meet the expectations of stakeholders
+                          </p>
+                        </div>
+                        <div className="bg-white p-4 rounded-xl border border-amber-200/80 flex items-start gap-3 shadow-xs">
+                          <Sparkles className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                          <p className="text-xs sm:text-sm text-slate-700 font-medium">
+                            Foster a learning and creative community that strives to continuously advance the frontiers of knowledge and promote the deployment and usage of ICT-based applications for betterment of society.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* VISION & MISSION CARDS */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                  {/* Vision Card */}
+                  <div className="bg-white rounded-2xl border-2 border-blue-200 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50/50 rounded-bl-full pointer-events-none" />
+                    <div className="space-y-3">
+                      <div className="inline-flex items-center gap-2 bg-blue-600 text-white px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider">
+                        <Eye className="h-4 w-4 text-amber-300" />
+                        Vision
+                      </div>
+                      <p className="text-slate-800 text-sm sm:text-base leading-relaxed font-medium pt-2">
+                        "To be a center of excellence in the field of Computer Science and Engineering along with imparting proficient and adaptable technological resources for the well being of mankind."
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Mission Card */}
+                  <div className="bg-white rounded-2xl border-2 border-amber-400/30 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-bl-full pointer-events-none" />
+                    <div className="space-y-3">
+                      <div className="inline-flex items-center gap-2 bg-amber-600 text-white px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider">
+                        <Target className="h-4 w-4 text-white" />
+                        Mission
+                      </div>
+                      <p className="text-slate-800 text-sm sm:text-base leading-relaxed font-medium pt-2">
+                        "To achieve professional excellence by promoting an academic environment conducive to research and innovative ideas in order to meet the needs of ever changing IT industry and society."
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 {/* HOD Message */}
-                <div className="bg-blue-50/60 p-6 rounded-2xl border border-blue-100 flex flex-col md:flex-row gap-6 items-start">
+                <div className="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md flex flex-col md:flex-row gap-6 items-start">
                   <img
                     src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300"
                     alt="Dr. G. Ramesh"
-                    className="w-24 h-24 rounded-full object-cover border-2 border-blue-600 shrink-0 shadow-sm"
+                    className="w-24 h-24 rounded-full object-cover border-2 border-amber-400 shrink-0 shadow-sm"
                   />
                   <div className="space-y-2">
-                    <h3 className="font-serif font-bold text-slate-900 text-lg">Message from Head of Department</h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                    <h3 className="font-serif font-bold text-amber-300 text-lg sm:text-xl">Message from Head of Department</h3>
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
                       "Our mission in the Department of Computer Science & Engineering is to inspire creativity, logical rigor, and software leadership. We provide state-of-the-art computational infrastructure and individual mentorship to make our women graduates industry leaders."
                     </p>
-                    <p className="text-xs font-bold text-blue-900 font-mono pt-1">— Dr. G. Ramesh, HOD & Professor</p>
+                    <p className="text-xs font-bold text-amber-400 font-mono pt-1">— Dr. G. Ramesh, HOD & Professor</p>
                   </div>
                 </div>
               </div>
@@ -235,45 +484,163 @@ export default function CSE() {
 
             {/* 2. HISTORY OF THE DEPARTMENT */}
             {activeTab === 'history' && (
-              <div className="space-y-6 animate-fadeIn">
+              <div className="space-y-8 animate-fadeIn">
                 <div className="border-b border-slate-200 pb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Legacy & Growth</span>
+                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">RCEW Legacy & Program Growth</span>
                   <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
                     History of the Department
                   </h1>
+                  <p className="text-sm font-semibold text-slate-500 font-serif">Department of CSE</p>
                 </div>
 
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  Established in the year <strong>2008</strong> with an initial intake of 60 seats, the Department of Computer Science & Engineering at Ravindra College of Engineering for Women (RCEW) has evolved into one of Kurnool's premier software education hubs. To meet rising corporate demand for trained women software engineers, the intake was progressively expanded to <strong>180 seats</strong>.
+                <p className="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-5 rounded-2xl border-l-4 border-blue-600">
+                  The Department of Computer Science & Engineering at Ravindra College of Engineering for Women (RCEW) was established to meet the rising demand for well-qualified computer professionals. Over the years, the department has experienced remarkable academic expansion in both undergraduate (B.Tech) and postgraduate (M.Tech) programs.
                 </p>
 
-                {/* Timeline */}
+                {/* Programs Breakdown Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* B.Tech Card */}
+                  <div className="bg-white rounded-2xl border-2 border-blue-200 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden space-y-4">
+                    <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+                      <div className="p-2.5 bg-blue-600 text-white rounded-xl">
+                        <GraduationCap className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono uppercase bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">Undergraduate</span>
+                        <h3 className="font-serif font-bold text-lg text-slate-900 mt-0.5">
+                          B. Tech. (Computer Science & Engineering)
+                        </h3>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3 pt-1">
+                      <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                        <div className="flex items-center gap-3">
+                          <span className="px-2.5 py-1 bg-blue-600 text-white text-xs font-mono font-bold rounded-lg">2008</span>
+                          <span className="text-xs sm:text-sm font-medium text-slate-800">Department Inception</span>
+                        </div>
+                        <span className="text-xs font-bold text-blue-700 font-mono bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">Started with 60 seats</span>
+                      </div>
+
+                      <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                        <div className="flex items-center gap-3">
+                          <span className="px-2.5 py-1 bg-blue-600 text-white text-xs font-mono font-bold rounded-lg">2010</span>
+                          <span className="text-xs sm:text-sm font-medium text-slate-800">1st Expansion Phase</span>
+                        </div>
+                        <span className="text-xs font-bold text-amber-700 font-mono bg-amber-50 px-2.5 py-1 rounded-full border border-amber-100">Intake increased to 120 seats</span>
+                      </div>
+
+                      <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                        <div className="flex items-center gap-3">
+                          <span className="px-2.5 py-1 bg-blue-600 text-white text-xs font-mono font-bold rounded-lg">2021</span>
+                          <span className="text-xs sm:text-sm font-medium text-slate-800">2nd Expansion Phase</span>
+                        </div>
+                        <span className="text-xs font-bold text-blue-700 font-mono bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">Intake increased to 180 seats</span>
+                      </div>
+
+                      <div className="flex items-center justify-between p-3 bg-gradient-to-r from-amber-50 to-amber-100/50 rounded-xl border border-amber-200">
+                        <div className="flex items-center gap-3">
+                          <span className="px-2.5 py-1 bg-amber-600 text-white text-xs font-mono font-bold rounded-lg">2022</span>
+                          <span className="text-xs sm:text-sm font-bold text-slate-900">Major Expansion</span>
+                        </div>
+                        <span className="text-xs font-extrabold text-blue-700 font-mono bg-white px-2.5 py-1 rounded-full border border-amber-300 shadow-xs">Intake increased to 360 seats</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* M.Tech Card */}
+                  <div className="bg-white rounded-2xl border-2 border-amber-400/30 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between space-y-4">
+                    <div>
+                      <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <div className="p-2.5 bg-amber-600 text-white rounded-xl">
+                          <Award className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <span className="text-[10px] font-mono uppercase bg-blue-100 text-blue-900 font-bold px-2 py-0.5 rounded">Postgraduate</span>
+                          <h3 className="font-serif font-bold text-lg text-slate-900 mt-0.5">
+                            M. Tech. (Computer Science & Engineering)
+                          </h3>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3 pt-4">
+                        <div className="flex items-center justify-between p-4 bg-amber-50/60 rounded-xl border border-amber-200">
+                          <div className="flex items-center gap-3">
+                            <span className="px-2.5 py-1 bg-amber-600 text-white text-xs font-mono font-bold rounded-lg">2024</span>
+                            <span className="text-xs sm:text-sm font-bold text-slate-800">Postgraduate Program Launch</span>
+                          </div>
+                          <span className="text-xs font-extrabold text-amber-900 font-mono bg-white px-3 py-1 rounded-full border border-amber-300 shadow-xs">Started with 18 seats</span>
+                        </div>
+
+                        <p className="text-xs text-slate-600 leading-relaxed pt-2">
+                          Introduced advanced research-oriented curriculum focusing on Artificial Intelligence, Cloud Infrastructure, and Data Engineering to nurture postgraduates for advanced R&D and leadership roles.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                      <span className="text-xs font-mono font-bold text-slate-500 uppercase">Total Current Annual Intake</span>
+                      <span className="text-sm font-serif font-bold text-blue-700">378 Seats (B.Tech + M.Tech)</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Milestone Visual Timeline */}
                 <div className="space-y-4 pt-4">
-                  <h3 className="font-serif font-bold text-lg text-slate-900">Milestone Timeline</h3>
-                  <div className="space-y-4 border-l-2 border-blue-600 pl-6 ml-2">
-                    <div className="relative">
-                      <span className="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white" />
-                      <span className="text-xs font-mono font-bold text-blue-600">2008</span>
-                      <h4 className="font-bold text-slate-900 text-sm">Department Inception</h4>
-                      <p className="text-xs text-slate-600">Started operations with 60 intake capacity, high-speed digital computing lab, and JNTUA affiliation.</p>
+                  <h3 className="font-serif font-bold text-xl text-slate-900 flex items-center gap-2">
+                    <History className="h-5 w-5 text-blue-600" />
+                    Historical Growth Timeline
+                  </h3>
+
+                  <div className="relative border-l-2 border-blue-600 pl-6 ml-3 space-y-6">
+                    {/* 2008 */}
+                    <div className="relative group">
+                      <span className="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-xs group-hover:scale-125 transition-transform" />
+                      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs hover:border-blue-600 transition-colors">
+                        <span className="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">2008</span>
+                        <h4 className="font-bold text-slate-900 text-sm mt-1">B.Tech CSE Introduced — 60 Seats</h4>
+                        <p className="text-xs text-slate-600 mt-0.5">The Department of Computer Science & Engineering was established with an initial intake of 60 seats.</p>
+                      </div>
                     </div>
-                    <div className="relative">
-                      <span className="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white" />
-                      <span className="text-xs font-mono font-bold text-blue-600">2014</span>
-                      <h4 className="font-bold text-slate-900 text-sm">Expansion & Research Labs</h4>
-                      <p className="text-xs text-slate-600">Intake increased to 120 seats. Inauguration of specialized Linux and Cloud Computing research suites.</p>
+
+                    {/* 2010 */}
+                    <div className="relative group">
+                      <span className="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-xs group-hover:scale-125 transition-transform" />
+                      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs hover:border-blue-600 transition-colors">
+                        <span className="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">2010</span>
+                        <h4 className="font-bold text-slate-900 text-sm mt-1">Intake Expanded to 120 Seats</h4>
+                        <p className="text-xs text-slate-600 mt-0.5">Due to high demand and state-of-the-art lab infrastructure, the B.Tech intake was increased to 120 seats.</p>
+                      </div>
                     </div>
-                    <div className="relative">
-                      <span className="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white" />
-                      <span className="text-xs font-mono font-bold text-blue-600">2018</span>
-                      <h4 className="font-bold text-slate-900 text-sm">NBA Accreditation</h4>
-                      <p className="text-xs text-slate-600">Awarded Prestigious NBA Accreditation for top teaching standards, curriculum alignment, and high placement ratios.</p>
+
+                    {/* 2021 */}
+                    <div className="relative group">
+                      <span className="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-xs group-hover:scale-125 transition-transform" />
+                      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs hover:border-blue-600 transition-colors">
+                        <span className="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">2021</span>
+                        <h4 className="font-bold text-slate-900 text-sm mt-1">Intake Expanded to 180 Seats</h4>
+                        <p className="text-xs text-slate-600 mt-0.5">Further expansion to 180 seats to accommodate rising admissions and industry placement success.</p>
+                      </div>
                     </div>
-                    <div className="relative">
-                      <span className="absolute -left-[31px] top-1 w-4 h-4 bg-amber-500 rounded-full border-4 border-white" />
-                      <span className="text-xs font-mono font-bold text-amber-600">2023 - Present</span>
-                      <h4 className="font-bold text-slate-900 text-sm">AI Center of Excellence & 180 Seats</h4>
-                      <p className="text-xs text-slate-600">Expanded intake to 180 seats. Built GPU-powered Deep Learning studio and hackathon incubation cell.</p>
+
+                    {/* 2022 */}
+                    <div className="relative group">
+                      <span className="absolute -left-[31px] top-1 w-4 h-4 bg-amber-500 rounded-full border-4 border-white shadow-xs group-hover:scale-125 transition-transform" />
+                      <div className="bg-white p-4 rounded-xl border border-amber-300 shadow-xs hover:border-amber-500 transition-colors">
+                        <span className="text-xs font-mono font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">2022</span>
+                        <h4 className="font-bold text-slate-900 text-sm mt-1">Intake Increased to 360 Seats</h4>
+                        <p className="text-xs text-slate-600 mt-0.5">Significant expansion to 360 seats in B.Tech CSE, establishing RCEW as a premier regional computing hub.</p>
+                      </div>
+                    </div>
+
+                    {/* 2024 */}
+                    <div className="relative group">
+                      <span className="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-xs group-hover:scale-125 transition-transform" />
+                      <div className="bg-gradient-to-r from-amber-50 to-blue-50 p-4 rounded-xl border border-amber-300 shadow-xs">
+                        <span className="text-xs font-mono font-bold text-white bg-blue-600 px-2 py-0.5 rounded">2024</span>
+                        <h4 className="font-bold text-slate-900 text-sm mt-1">M.Tech. CSE Launched — 18 Seats</h4>
+                        <p className="text-xs text-slate-700 mt-0.5 font-medium">Postgraduate M.Tech in Computer Science & Engineering introduced with 18 seats capacity.</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -281,42 +648,74 @@ export default function CSE() {
             )}
 
             {/* 3. BOARD OF STUDIES MEMBERS */}
-            {activeTab === 'history' ? null : activeTab === 'bos' && (
+            {activeTab === 'bos' && (
               <div className="space-y-6 animate-fadeIn">
                 <div className="border-b border-slate-200 pb-4">
                   <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Academic Governance</span>
                   <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
-                    Board of Studies' (BOS) Members
+                    Board of Studies' Members
                   </h1>
+                  <p className="text-sm font-semibold text-slate-500 font-serif">Department of Computer Science & Engineering</p>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  The Board of Studies (BOS) for the Department of Computer Science & Engineering comprises distinguished academic professors from JNTUA, premier IIT/NIT subject experts, and corporate technical directors to design an industry-relevant curriculum.
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-xl border-l-4 border-blue-600">
+                  The Board of Studies (BOS) for Computer Science and Engineering comprises eminent academic experts from IITs, NITs, JNTUA, corporate technical leaders, distinguished alumni, and core internal faculty to design an industry-relevant autonomous curriculum.
                 </p>
 
-                <div className="overflow-x-auto border border-slate-200 rounded-xl">
+                {/* Summary Metrics */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="p-3 bg-blue-50/50 border border-blue-100 rounded-xl text-center shadow-xs">
+                    <span className="text-xl font-serif font-bold text-blue-700">9</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Total Members</span>
+                  </div>
+                  <div className="p-3 bg-amber-50/50 border border-amber-100 rounded-xl text-center shadow-xs">
+                    <span className="text-xl font-serif font-bold text-amber-700">JNTUA / IIT / NIT</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Academic Experts</span>
+                  </div>
+                  <div className="p-3 bg-blue-50/50 border border-blue-100 rounded-xl text-center shadow-xs">
+                    <span className="text-xl font-serif font-bold text-blue-900">LTI Mindtree</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Industry Partner</span>
+                  </div>
+                  <div className="p-3 bg-purple-50/50 border border-purple-100 rounded-xl text-center shadow-xs">
+                    <span className="text-xl font-serif font-bold text-purple-900">Value Labs</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Alumni Representative</span>
+                  </div>
+                </div>
+
+                {/* Table View */}
+                <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm bg-white">
                   <table className="w-full text-left text-xs sm:text-sm">
-                    <thead className="bg-slate-100 text-slate-800 font-serif font-bold uppercase text-[11px] border-b border-slate-200">
+                    <thead className="bg-blue-700 text-white font-serif font-bold uppercase text-[11px]">
                       <tr>
-                        <th className="py-3 px-4">S.No</th>
-                        <th className="py-3 px-4">Name of the Member</th>
-                        <th className="py-3 px-4">Designation in BOS</th>
-                        <th className="py-3 px-4">Affiliation & Institution</th>
+                        <th className="py-3.5 px-4 w-16 text-center">S.No</th>
+                        <th className="py-3.5 px-4">Name of the Member</th>
+                        <th className="py-3.5 px-4">Organization / Affiliation</th>
+                        <th className="py-3.5 px-4 text-center">Designation</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 text-slate-700">
-                      {BOS_MEMBERS.map((member, idx) => (
-                        <tr key={idx} className="hover:bg-slate-50">
-                          <td className="py-3 px-4 font-mono font-bold text-slate-500">{idx + 1}</td>
-                          <td className="py-3 px-4 font-bold text-slate-900">{member.name}</td>
-                          <td className="py-3 px-4">
-                            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 font-mono">
-                              {member.designation}
-                            </span>
-                          </td>
-                          <td className="py-3 px-4">{member.affiliation}</td>
-                        </tr>
-                      ))}
+                      {BOS_MEMBERS.map((member) => {
+                        let badgeStyle = "bg-slate-100 text-slate-800 border-slate-200";
+                        if (member.designation === 'Chairman') badgeStyle = "bg-blue-700 text-white font-bold";
+                        else if (member.designation === 'University Nominee') badgeStyle = "bg-blue-100 text-blue-900 border-blue-200 font-bold";
+                        else if (member.designation === 'Industry') badgeStyle = "bg-amber-100 text-amber-900 border-amber-200 font-bold";
+                        else if (member.designation === 'Alumni') badgeStyle = "bg-purple-100 text-purple-900 border-purple-200 font-bold";
+                        else if (member.designation === 'Internal Member') badgeStyle = "bg-emerald-100 text-emerald-900 border-emerald-200 font-medium";
+                        else if (member.designation === 'Academician') badgeStyle = "bg-indigo-100 text-indigo-900 border-indigo-200 font-medium";
+
+                        return (
+                          <tr key={member.sno} className="hover:bg-slate-50 transition-colors">
+                            <td className="py-3.5 px-4 font-mono font-bold text-center text-blue-700">{member.sno}</td>
+                            <td className="py-3.5 px-4 font-bold text-slate-900 whitespace-nowrap">{member.name}</td>
+                            <td className="py-3.5 px-4 text-slate-600 leading-relaxed">{member.organization}</td>
+                            <td className="py-3.5 px-4 text-center whitespace-nowrap">
+                              <span className={`px-3 py-1 rounded-full text-[11px] font-mono border inline-block ${badgeStyle}`}>
+                                {member.designation}
+                              </span>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
@@ -325,63 +724,142 @@ export default function CSE() {
 
             {/* 4. COURSES OFFERED */}
             {activeTab === 'courses' && (
-              <div className="space-y-6 animate-fadeIn">
+              <div className="space-y-8 animate-fadeIn">
                 <div className="border-b border-slate-200 pb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Curriculum & Intake</span>
+                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Academic Curriculum & Degrees</span>
                   <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
                     Courses Offered
                   </h1>
+                  <p className="text-sm font-semibold text-slate-500 font-serif">Department of Computer Science & Engineering</p>
                 </div>
 
-                {/* Course Card */}
-                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                    <div>
-                      <span className="text-[10px] font-mono uppercase bg-blue-600 text-white font-bold px-2 py-0.5 rounded">Undergraduate (UG)</span>
-                      <h3 className="font-serif font-bold text-xl text-slate-900 mt-1">B.Tech in Computer Science & Engineering</h3>
+                <p className="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-5 rounded-2xl border-l-4 border-blue-600">
+                  The Department of Computer Science & Engineering offers industry-aligned Undergraduate (B.Tech) and Postgraduate (M.Tech) programs engineered to impart deep theoretical knowledge, hands-on software development expertise, and advanced specialization in Artificial Intelligence & Machine Learning.
+                </p>
+
+                {/* Programs Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
+                  {/* 1. CSE */}
+                  <div className="bg-white rounded-2xl border-2 border-blue-200 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between space-y-4">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="px-3 py-1 bg-blue-600 text-white text-xs font-mono font-bold rounded-lg uppercase tracking-wider">
+                          CSE
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 font-mono border border-amber-200">
+                          Undergraduate Program
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="font-serif font-bold text-lg sm:text-xl text-slate-900 leading-snug">
+                          Computer Science and Engineering
+                        </h3>
+                        <p className="text-xs font-mono text-slate-500 mt-1">Degree: B.Tech (4 Years / 8 Semesters)</p>
+                      </div>
+                      <p className="text-xs text-slate-600 leading-relaxed pt-1">
+                        Comprehensive curriculum covering software engineering, algorithms, database architectures, cloud systems, and core computer science fundamentals.
+                      </p>
                     </div>
-                    <span className="text-sm font-mono font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-                      Intake: 180 Seats / Year
-                    </span>
+
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-600">
+                      <span className="flex items-center gap-1 font-semibold text-blue-600">
+                        <CheckCircle2 className="h-3.5 w-3.5" /> NBA Accredited
+                      </span>
+                      <span>Affiliation: JNTUA</span>
+                    </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                    <div className="bg-white p-4 rounded-xl border border-slate-200">
-                      <span className="text-[10px] text-slate-400 font-mono uppercase">Duration</span>
-                      <p className="font-bold text-slate-900 text-sm">4 Years (8 Semesters)</p>
+                  {/* 2. CAI */}
+                  <div className="bg-white rounded-2xl border-2 border-amber-400/30 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between space-y-4">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="px-3 py-1 bg-amber-600 text-white text-xs font-mono font-bold rounded-lg uppercase tracking-wider">
+                          CAI
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 font-mono border border-amber-200">
+                          Undergraduate Program
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="font-serif font-bold text-lg sm:text-xl text-slate-900 leading-snug">
+                          Computer Science and Engineering with Artificial Intelligence specialization
+                        </h3>
+                        <p className="text-xs font-mono text-slate-500 mt-1">Degree: B.Tech (4 Years / 8 Semesters)</p>
+                      </div>
+                      <p className="text-xs text-slate-600 leading-relaxed pt-1">
+                        Specialized B.Tech program focused on neural networks, machine learning algorithms, deep learning, computer vision, and cognitive computing.
+                      </p>
                     </div>
-                    <div className="bg-white p-4 rounded-xl border border-slate-200">
-                      <span className="text-[10px] text-slate-400 font-mono uppercase">Affiliation</span>
-                      <p className="font-bold text-slate-900 text-sm">JNTU Anantapur (JNTUA)</p>
-                    </div>
-                    <div className="bg-white p-4 rounded-xl border border-slate-200">
-                      <span className="text-[10px] text-slate-400 font-mono uppercase">Approval</span>
-                      <p className="font-bold text-slate-900 text-sm">AICTE, New Delhi</p>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Syllabus Highlights */}
-                <div className="space-y-3">
-                  <h3 className="font-serif font-bold text-lg text-slate-900">Key Specialization Electives</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="p-3.5 bg-white border border-slate-200 rounded-xl flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-amber-500 shrink-0" />
-                      <span className="text-xs font-semibold text-slate-800">Artificial Intelligence & Machine Learning</span>
-                    </div>
-                    <div className="p-3.5 bg-white border border-slate-200 rounded-xl flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-amber-500 shrink-0" />
-                      <span className="text-xs font-semibold text-slate-800">Full-Stack Cloud & Web Development</span>
-                    </div>
-                    <div className="p-3.5 bg-white border border-slate-200 rounded-xl flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-amber-500 shrink-0" />
-                      <span className="text-xs font-semibold text-slate-800">Cyber Security & Cryptography</span>
-                    </div>
-                    <div className="p-3.5 bg-white border border-slate-200 rounded-xl flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-amber-500 shrink-0" />
-                      <span className="text-xs font-semibold text-slate-800">Big Data Analytics & NoSQL Systems</span>
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-600">
+                      <span className="flex items-center gap-1 font-semibold text-amber-700">
+                        <Sparkles className="h-3.5 w-3.5" /> AI Specialization
+                      </span>
+                      <span>Affiliation: JNTUA</span>
                     </div>
                   </div>
+
+                  {/* 3. M.Tech(CSE) */}
+                  <div className="bg-white rounded-2xl border-2 border-blue-200 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between space-y-4">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="px-3 py-1 bg-blue-900 text-white text-xs font-mono font-bold rounded-lg uppercase tracking-wider">
+                          M.Tech (CSE)
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-900 font-mono border border-blue-200">
+                          Post Graduate Program
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="font-serif font-bold text-lg sm:text-xl text-slate-900 leading-snug">
+                          Computer Science and Engineering Specialization
+                        </h3>
+                        <p className="text-xs font-mono text-slate-500 mt-1">Degree: M.Tech (2 Years / 4 Semesters)</p>
+                      </div>
+                      <p className="text-xs text-slate-600 leading-relaxed pt-1">
+                        Advanced postgraduate degree focused on computer architecture, distributed software systems, high-performance computing, and research thesis work.
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-600">
+                      <span className="flex items-center gap-1 font-semibold text-blue-900">
+                        <GraduationCap className="h-3.5 w-3.5" /> Advanced R&D
+                      </span>
+                      <span>Intake: 18 Seats</span>
+                    </div>
+                  </div>
+
+                  {/* 4. M.Tech(AI & ML) */}
+                  <div className="bg-white rounded-2xl border-2 border-purple-200 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between space-y-4">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="px-3 py-1 bg-purple-900 text-white text-xs font-mono font-bold rounded-lg uppercase tracking-wider">
+                          M.Tech (AI & ML)
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-900 font-mono border border-purple-200">
+                          Post Graduate Program
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="font-serif font-bold text-lg sm:text-xl text-slate-900 leading-snug">
+                          AI & ML (Artificial Intelligence & Machine Learning)
+                        </h3>
+                        <p className="text-xs font-mono text-slate-500 mt-1">Degree: M.Tech (2 Years / 4 Semesters)</p>
+                      </div>
+                      <p className="text-xs text-slate-600 leading-relaxed pt-1">
+                        Cutting-edge postgraduate specialization preparing researchers and software architects in generative AI, natural language processing, and autonomous systems.
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-600">
+                      <span className="flex items-center gap-1 font-semibold text-purple-900">
+                        <Award className="h-3.5 w-3.5" /> AI & ML Research
+                      </span>
+                      <span>Affiliation: JNTUA</span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             )}
@@ -394,78 +872,106 @@ export default function CSE() {
                   <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
                     Outcome Based Education (OBE)
                   </h1>
+                  <p className="text-sm font-semibold text-slate-500 font-serif">Department of Computer Science & Engineering</p>
                 </div>
 
-                {/* Sub-tabs for PEOs, POs, PSOs */}
-                <div className="flex gap-2 border-b border-slate-200">
+                {/* Sub-tabs for PEOs, PSOs, POs */}
+                <div className="flex flex-wrap gap-2 border-b border-slate-200 pb-1">
                   <button
                     onClick={() => setObeSubtab('peos')}
-                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-t-lg transition-colors cursor-pointer ${
                       obeSubtab === 'peos'
-                        ? 'text-blue-600 border-b-2 border-blue-600 font-extrabold'
-                        : 'text-slate-500 hover:text-slate-800'
+                        ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                   >
-                    PEOs (Objectives)
-                  </button>
-                  <button
-                    onClick={() => setObeSubtab('pos')}
-                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-                      obeSubtab === 'pos'
-                        ? 'text-blue-600 border-b-2 border-blue-600 font-extrabold'
-                        : 'text-slate-500 hover:text-slate-800'
-                    }`}
-                  >
-                    POs (Program Outcomes)
+                    PEOs (Educational Objectives)
                   </button>
                   <button
                     onClick={() => setObeSubtab('psos')}
-                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-t-lg transition-colors cursor-pointer ${
                       obeSubtab === 'psos'
-                        ? 'text-blue-600 border-b-2 border-blue-600 font-extrabold'
-                        : 'text-slate-500 hover:text-slate-800'
+                        ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                   >
                     PSOs (Specific Outcomes)
+                  </button>
+                  <button
+                    onClick={() => setObeSubtab('pos')}
+                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-t-lg transition-colors cursor-pointer ${
+                      obeSubtab === 'pos'
+                        ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    POs (Program Outcomes - PO1 to PO11)
                   </button>
                 </div>
 
                 {/* Subtab PEOs */}
                 {obeSubtab === 'peos' && (
                   <div className="space-y-4">
-                    {OBE_DATA.peos.map((peo, idx) => (
-                      <div key={idx} className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
-                        <span className="text-xs font-mono font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded">{peo.code}</span>
-                        <h4 className="font-serif font-bold text-slate-900 text-sm mt-1">{peo.title}</h4>
-                        <p className="text-xs text-slate-600 leading-relaxed">{peo.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                    <div className="p-4 bg-slate-50 border-l-4 border-blue-600 rounded-r-xl">
+                      <h3 className="font-serif font-bold text-slate-900 text-base">PROGRAM EDUCATIONAL OBJECTIVES</h3>
+                      <p className="text-xs text-slate-600 mt-1">Core long-term career and professional accomplishments expected of CSE graduates within a few years of graduation.</p>
+                    </div>
 
-                {/* Subtab POs */}
-                {obeSubtab === 'pos' && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {OBE_DATA.pos.map((po, idx) => (
-                      <div key={idx} className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
-                        <span className="text-[10px] font-mono font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">{po.code}</span>
-                        <h4 className="font-bold text-slate-900 text-xs mt-1.5">{po.name}</h4>
-                        <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">{po.desc}</p>
-                      </div>
-                    ))}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {OBE_DATA.peos.map((peo, idx) => (
+                        <div key={idx} className="p-5 bg-white border border-slate-200 rounded-2xl shadow-xs hover:border-blue-600 transition-colors space-y-2">
+                          <span className="text-xs font-mono font-bold text-white bg-blue-600 px-2.5 py-1 rounded-md">{peo.code}</span>
+                          <h4 className="font-serif font-bold text-slate-900 text-sm pt-1">{peo.title}</h4>
+                          <p className="text-xs text-slate-600 leading-relaxed">{peo.desc}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
 
                 {/* Subtab PSOs */}
                 {obeSubtab === 'psos' && (
                   <div className="space-y-4">
-                    {OBE_DATA.psos.map((pso, idx) => (
-                      <div key={idx} className="p-4 bg-blue-50/50 border border-blue-100 rounded-xl space-y-1">
-                        <span className="text-xs font-mono font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded">{pso.code}</span>
-                        <h4 className="font-serif font-bold text-slate-900 text-sm mt-1">{pso.title}</h4>
-                        <p className="text-xs text-slate-600 leading-relaxed">{pso.desc}</p>
-                      </div>
-                    ))}
+                    <div className="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl space-y-1">
+                      <h3 className="font-serif font-bold text-slate-900 text-base">PROGRAM SPECIFIC OUTCOMES</h3>
+                      <p className="text-xs font-medium text-amber-900 italic">
+                        Upon completion of the program, students will be able to:
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {OBE_DATA.psos.map((pso, idx) => (
+                        <div key={idx} className="p-5 bg-white border-2 border-amber-200/80 rounded-2xl shadow-xs hover:shadow-md transition-shadow space-y-2">
+                          <span className="text-xs font-mono font-bold text-amber-900 bg-amber-100 px-2.5 py-1 rounded-md border border-amber-200">{pso.code}</span>
+                          <h4 className="font-serif font-bold text-slate-900 text-sm pt-1">{pso.title}</h4>
+                          <p className="text-xs text-slate-700 leading-relaxed font-medium">{pso.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Subtab POs */}
+                {obeSubtab === 'pos' && (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-slate-50 border-l-4 border-blue-600 rounded-r-xl">
+                      <h3 className="font-serif font-bold text-slate-900 text-base">PROGRAM OUTCOMES (PO1 - PO11)</h3>
+                      <p className="text-xs text-slate-600 mt-1">Graduate attributes defined by National Board of Accreditation (NBA) for Computer Science & Engineering.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {OBE_DATA.pos.map((po, idx) => (
+                        <div key={idx} className="p-4 bg-white border border-slate-200 rounded-2xl shadow-xs hover:border-blue-600 transition-colors space-y-1.5 flex flex-col justify-between">
+                          <div>
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs font-mono font-bold text-white bg-blue-600 px-2.5 py-0.5 rounded">{po.code}</span>
+                            </div>
+                            <h4 className="font-serif font-bold text-slate-900 text-sm mt-2">{po.name}</h4>
+                            <p className="text-xs text-slate-600 mt-1 leading-relaxed">{po.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -473,120 +979,184 @@ export default function CSE() {
 
             {/* 6. FACULTY MEMBERS */}
             {activeTab === 'faculty' && (
-              <div className="space-y-6 animate-fadeIn">
-                <div className="border-b border-slate-200 pb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Academic Roster</span>
-                  <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
-                    Faculty Members
-                  </h1>
+              <div className="space-y-8 animate-fadeIn">
+                <div className="border-b border-slate-200 pb-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div>
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">RCEW Academic Roster</span>
+                    <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
+                      Department of CSE Faculty Members
+                    </h1>
+                    <p className="text-xs font-semibold text-slate-500 font-serif mt-0.5">
+                      65 Core Faculty Members across B.Tech, M.Tech & CAI Specializations
+                    </p>
+                  </div>
+
+                  {/* Search Bar */}
+                  <div className="relative w-full md:w-64">
+                    <Search className="h-4 w-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <input
+                      type="text"
+                      placeholder="Search faculty name..."
+                      value={facultySearch}
+                      onChange={(e) => setFacultySearch(e.target.value)}
+                      className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all"
+                    />
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {FACULTY_ROSTER.map((fac, idx) => (
-                    <div key={idx} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                      <img
-                        src={fac.image}
-                        alt={fac.name}
-                        className="w-24 h-24 rounded-full object-cover border-2 border-blue-200 shadow-sm mb-3"
-                      />
-                      <h3 className="font-serif font-bold text-slate-900 text-sm">{fac.name}</h3>
-                      <span className="text-xs font-bold text-blue-600 mt-0.5">{fac.designation}</span>
-                      <p className="text-[11px] font-mono text-slate-500 mt-1">{fac.qualification}</p>
-                      <p className="text-[11px] text-slate-600 mt-2 bg-slate-50 px-3 py-1 rounded-lg border border-slate-100 w-full line-clamp-1">
-                        Specialization: {fac.specialization}
-                      </p>
-                      <span className="text-[10px] font-bold font-mono text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full mt-3 border border-amber-200">
-                        Experience: {fac.experience}
-                      </span>
-                    </div>
-                  ))}
+                {/* Summary Metrics & Filter Pills */}
+                <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-4">
+                  <button
+                    onClick={() => setFacultyFilter('all')}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                      facultyFilter === 'all'
+                        ? 'bg-blue-600 text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    All Faculty (65)
+                  </button>
+                  <button
+                    onClick={() => setFacultyFilter('btech')}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                      facultyFilter === 'btech'
+                        ? 'bg-blue-600 text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    B.Tech CSE (51)
+                  </button>
+                  <button
+                    onClick={() => setFacultyFilter('mtech_cse')}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                      facultyFilter === 'mtech_cse'
+                        ? 'bg-blue-600 text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    M.Tech CSE (3)
+                  </button>
+                  <button
+                    onClick={() => setFacultyFilter('mtech_aiml')}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                      facultyFilter === 'mtech_aiml'
+                        ? 'bg-blue-600 text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    M.Tech AI & ML (2)
+                  </button>
+                  <button
+                    onClick={() => setFacultyFilter('cai')}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                      facultyFilter === 'cai'
+                        ? 'bg-blue-600 text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    CAI (9)
+                  </button>
                 </div>
-              </div>
-            )}
 
-            {/* 7. CSE LAB FACILITIES */}
-            {activeTab === 'labs' && (
-              <div className="space-y-6 animate-fadeIn">
-                <div className="border-b border-slate-200 pb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Practical Infrastructure</span>
-                  <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
-                    CSE Lab Facilities
-                  </h1>
-                </div>
+                {/* Helper Table Renderer Function */}
+                {(() => {
+                  const filterList = (list: FacultyMember[]) => {
+                    if (!facultySearch.trim()) return list;
+                    const query = facultySearch.toLowerCase();
+                    return list.filter(f =>
+                      f.name.toLowerCase().includes(query) ||
+                      f.designation.toLowerCase().includes(query)
+                    );
+                  };
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {CSE_LABS.map((lab, idx) => (
-                    <div key={idx} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
-                      <div>
-                        <div className="relative h-44 overflow-hidden">
-                          <img src={lab.image} alt={lab.name} className="w-full h-full object-cover" />
-                        </div>
-                        <div className="p-5 space-y-2">
-                          <h3 className="font-serif font-bold text-slate-900 text-base">{lab.name}</h3>
-                          <p className="text-xs text-slate-600 leading-relaxed">{lab.desc}</p>
-                          <div className="pt-2 text-[11px] font-mono text-slate-500 space-y-1">
-                            <p><strong>Hardware:</strong> {lab.systems}</p>
-                            <p><strong>Software Platforms:</strong> {lab.software}</p>
+                  const renderFacultyTable = (title: string, badgeText: string, members: FacultyMember[]) => {
+                    const filteredMembers = filterList(members);
+                    if (filteredMembers.length === 0) return null;
+
+                    return (
+                      <div className="space-y-4 pt-2">
+                        {/* Section Header Banner */}
+                        <div className="p-4 bg-gradient-to-r from-blue-50/80 via-indigo-50/40 to-slate-50 border-l-4 border-blue-600 rounded-r-2xl flex items-center justify-between shadow-xs">
+                          <div>
+                            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 bg-blue-100 px-2 py-0.5 rounded border border-blue-200">
+                              {badgeText}
+                            </span>
+                            <h3 className="font-serif font-bold text-slate-900 text-base sm:text-lg mt-1">
+                              {title}
+                            </h3>
                           </div>
+                          <span className="px-3 py-1 bg-white text-blue-900 font-mono font-bold text-xs rounded-full border border-blue-200 shadow-2xs">
+                            {filteredMembers.length} Members
+                          </span>
+                        </div>
+
+                        {/* Table */}
+                        <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-xs bg-white">
+                          <table className="w-full text-left text-xs sm:text-sm">
+                            <thead className="bg-slate-100 text-slate-800 font-serif font-bold uppercase text-[11px] border-b border-slate-200">
+                              <tr>
+                                <th className="py-3.5 px-4 w-16 text-center">SNO</th>
+                                <th className="py-3.5 px-4">Name of the Faculty</th>
+                                <th className="py-3.5 px-4 text-center">Designation</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-100 text-slate-700">
+                              {filteredMembers.map((fac) => {
+                                let badgeStyle = "bg-slate-100 text-slate-800 border-slate-200";
+                                if (fac.designation.includes('HoD') || fac.designation.includes('Professor &')) {
+                                  badgeStyle = "bg-amber-500 text-white font-bold shadow-2xs";
+                                } else if (fac.designation.includes('Associate Professor')) {
+                                  badgeStyle = "bg-blue-600 text-white font-bold shadow-2xs";
+                                } else if (fac.designation.includes('Assistant Professor')) {
+                                  badgeStyle = "bg-slate-100 text-slate-800 border border-slate-200 font-medium";
+                                }
+
+                                return (
+                                  <tr key={fac.sno} className="hover:bg-blue-50/40 transition-colors">
+                                    <td className="py-3 px-4 font-mono font-bold text-center text-blue-700">{fac.sno}</td>
+                                    <td className="py-3 px-4 font-bold text-slate-900 flex items-center gap-2">
+                                      <span>{fac.name}</span>
+                                      {fac.isPhD && (
+                                        <span className="px-2 py-0.5 bg-purple-100 text-purple-900 font-mono font-bold text-[10px] rounded-md border border-purple-200 shrink-0">
+                                          (Ph.D)
+                                        </span>
+                                      )}
+                                    </td>
+                                    <td className="py-3 px-4 text-center">
+                                      <span className={`px-3 py-1 rounded-full text-[11px] inline-block ${badgeStyle}`}>
+                                        {fac.designation}
+                                      </span>
+                                    </td>
+                                  </tr>
+                                );
+                              })}
+                            </tbody>
+                          </table>
                         </div>
                       </div>
+                    );
+                  };
+
+                  return (
+                    <div className="space-y-8">
+                      {(facultyFilter === 'all' || facultyFilter === 'btech') && (
+                        renderFacultyTable('B.Tech – Faculty Members', 'Undergraduate Program', BTECH_FACULTY)
+                      )}
+
+                      {(facultyFilter === 'all' || facultyFilter === 'mtech_cse') && (
+                        renderFacultyTable('M.Tech – Faculty Members (CSE)', 'Postgraduate Program', MTECH_CSE_FACULTY)
+                      )}
+
+                      {(facultyFilter === 'all' || facultyFilter === 'mtech_aiml') && (
+                        renderFacultyTable('M.Tech – Faculty Members (CSE- AI&ML)', 'Postgraduate Program', MTECH_AIML_FACULTY)
+                      )}
+
+                      {(facultyFilter === 'all' || facultyFilter === 'cai') && (
+                        renderFacultyTable('CAI – Faculty Members', 'Undergraduate Program (AI Specialization)', CAI_FACULTY)
+                      )}
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* 8. AUTONOMOUS QUESTION PAPERS */}
-            {activeTab === 'question-papers' && (
-              <div className="space-y-6 animate-fadeIn">
-                <div className="border-b border-slate-200 pb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Exam Repository</span>
-                  <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
-                    Autonomous Question Papers
-                  </h1>
-                </div>
-
-                <p className="text-xs sm:text-sm text-slate-600">
-                  Access Mid-Semester and End-Semester autonomous examination question papers for all B.Tech CSE academic years.
-                </p>
-
-                <div className="overflow-x-auto border border-slate-200 rounded-xl">
-                  <table className="w-full text-left text-xs sm:text-sm">
-                    <thead className="bg-slate-100 text-slate-800 font-serif font-bold uppercase text-[11px] border-b border-slate-200">
-                      <tr>
-                        <th className="py-3 px-4">Academic Year</th>
-                        <th className="py-3 px-4">Semester</th>
-                        <th className="py-3 px-4">Subject Code & Name</th>
-                        <th className="py-3 px-4">Exam Type</th>
-                        <th className="py-3 px-4 text-right">Download</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 text-slate-700">
-                      {QUESTION_PAPERS.map((qp, idx) => (
-                        <tr key={idx} className="hover:bg-slate-50">
-                          <td className="py-3 px-4 font-mono font-bold text-blue-900">{qp.year}</td>
-                          <td className="py-3 px-4 font-semibold">{qp.sem}</td>
-                          <td className="py-3 px-4">
-                            <span className="font-bold text-slate-900">{qp.code}</span> - {qp.title}
-                          </td>
-                          <td className="py-3 px-4">
-                            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-200 text-slate-800">
-                              {qp.type}
-                            </span>
-                          </td>
-                          <td className="py-3 px-4 text-right">
-                            <button
-                              onClick={() => alert(`Downloading Question Paper: ${qp.title}`)}
-                              className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 cursor-pointer"
-                            >
-                              <Download className="h-3.5 w-3.5" /> PDF
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                  );
+                })()}
               </div>
             )}
 

@@ -1,14 +1,51 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { ClipboardCheck, Sparkles, Phone, Send, HelpCircle, Check, Loader2 } from 'lucide-react';
-import { ADMISSION_PROCESS, SCHOLARSHIPS, FAQS, COURSE_OFFERINGS } from '../data';
+import {
+  ClipboardCheck, Sparkles, Phone, Send, HelpCircle, Check, Loader2,
+  GraduationCap, Award, BookOpen, Layers, CheckCircle2, ShieldCheck, Users, Info
+} from 'lucide-react';
+import { ADMISSION_PROCESS, SCHOLARSHIPS, FAQS } from '../data';
+
+// User-provided Fee Structure & Seat Matrix Data
+const ADMISSION_FEE_STRUCTURE = [
+  {
+    sno: 1,
+    course: 'Computer Science Engineering (CSE)',
+    code: 'CSE',
+    convenerSeats: 252,
+    convenerFee: '43,000',
+    catBSeats: 108,
+    catBFee: '129,000',
+    totalIntake: 360
+  },
+  {
+    sno: 2,
+    course: 'Electronics & Communication Engineering (ECE)',
+    code: 'ECE',
+    convenerSeats: 42,
+    convenerFee: '43,000',
+    catBSeats: 18,
+    catBFee: '60,000',
+    totalIntake: 60
+  },
+  {
+    sno: 3,
+    course: 'Computer Science Engineering (Artificial Intelligence - CAI)',
+    code: 'CAI',
+    convenerSeats: 126,
+    convenerFee: '43,000',
+    catBSeats: 54,
+    catBFee: '129,000',
+    totalIntake: 180
+  }
+];
 
 export default function Admissions() {
   const [form, setForm] = useState({
     name: '',
     email: '',
     phone: '',
-    course: 'B.Tech - Computer Science',
+    course: 'Computer Science Engineering (CSE)',
     percentage: '',
     message: ''
   });
@@ -21,146 +58,324 @@ export default function Admissions() {
     setTimeout(() => {
       setSubmitting(false);
       setSuccess(true);
-      setForm({ name: '', email: '', phone: '', course: 'B.Tech - Computer Science', percentage: '', message: '' });
+      setForm({ name: '', email: '', phone: '', course: 'Computer Science Engineering (CSE)', percentage: '', message: '' });
       setTimeout(() => setSuccess(false), 5000);
     }, 1500);
   };
 
   return (
-    <div className="py-12 bg-slate-50 dark:bg-primary-950/20">
-      {/* Banner */}
-      <section className="relative py-20 bg-primary-900 text-white overflow-hidden mb-16 rounded-b-[40px] shadow-lg">
-        <div className="absolute inset-0 bg-grid-pattern opacity-15" />
+    <div className="py-8 sm:py-12 bg-slate-50">
+      
+      {/* Balanced Elegant Banner */}
+      <section className="relative py-16 sm:py-20 bg-slate-900 text-white overflow-hidden mb-12 sm:mb-16 rounded-b-[40px] shadow-lg">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <span className="text-gold-400 text-xs font-bold uppercase tracking-widest font-mono">
-            Admissions Open 2026-27
+          <span className="px-3.5 py-1 bg-amber-500/20 text-amber-300 text-xs font-mono font-bold uppercase tracking-widest rounded-full border border-amber-400/30">
+            Admissions 2026-27 • EAMCET Code: REC
           </span>
-          <h1 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight">
-            Secure Your Academic Pathway
+          <h1 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-white">
+            Eligibility, Procedure & Fee Structure
           </h1>
-          <div className="h-1 w-24 bg-gold-500 mx-auto mt-2 rounded-full" />
-          <p className="max-w-2xl mx-auto text-slate-300 text-sm sm:text-base leading-relaxed">
-            Choose Ravindra Engineering College for Women (Counseling Code: REC) to excel under premier technology mentors.
+          <div className="h-1 w-24 bg-amber-400 mx-auto mt-2 rounded-full" />
+          <p className="max-w-3xl mx-auto text-slate-300 text-sm sm:text-base leading-relaxed font-medium">
+            Discover B.Tech program admission guidelines, seat allocation quotas, EAMCET/ECET eligibility criteria, and fee structures at Ravindra College of Engineering for Women.
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-        {/* 1. Admission Process Steps */}
-        <section>
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-widest font-mono">Step-by-Step</span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white mt-1">Admission Process</h2>
-            <div className="h-1 w-12 bg-gold-500 mx-auto mt-3 rounded-full" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        
+        {/* 1. ELIGIBILITY & ADMISSION PROCEDURE SECTION */}
+        <section className="space-y-8">
+          <div className="border-b border-slate-200 pb-4">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+              Admission Framework
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2">
+              Eligibility & Admission Procedure
+            </h2>
+            <p className="text-sm font-semibold text-slate-500 font-serif">State-wide Common Entrance Test (EAMCET) & Quota Seat Matrix</p>
+          </div>
+
+          {/* Entrance Overview Banner */}
+          <div className="p-6 bg-white border-l-4 border-blue-600 rounded-2xl shadow-xs border-y border-r border-slate-200 space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 bg-blue-100 text-blue-700 rounded-xl">
+                <GraduationCap className="h-6 w-6" />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded border border-amber-300">
+                  Govt. of Andhra Pradesh EAMCET Scheme
+                </span>
+                <h3 className="font-serif font-bold text-lg text-slate-900 mt-0.5">
+                  State-Level Centralized Admissions
+                </h3>
+              </div>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+              Admissions to the Institute are made along with the other Engineering colleges in the state through a common entrance test (EAMCET) conducted by the Govt. of Andhra Pradesh.
+            </p>
+          </div>
+
+          {/* Minimum Eligibility Criteria Card */}
+          <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-xs space-y-3">
+            <h3 className="font-serif font-bold text-lg text-slate-900 flex items-center gap-2">
+              <CheckCircle2 className="h-5 w-5 text-blue-600" /> Minimum Academic Qualification for B.Tech First Year
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+              The eligibility criteria for admission to following courses of B. Tech are:
+              The admission pattern to B. Tech is as follows: The minimum qualification for admission to first year of the B. Tech course is a pass in the Intermediate (10 + 2) conducted by the board of Intermediate education, Govt. of Andhra Pradesh or any other examination recognized as equivalent thereto with Mathematics, Physics and Chemistry as optional subjects.
+            </p>
+          </div>
+
+          {/* Seat Allocation Breakdown (3 Quota Cards with Balanced Colors) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            {/* 70% Convener Seats */}
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3 flex flex-col justify-between hover:border-blue-600 transition-colors">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 font-mono font-bold text-xs rounded-full border border-blue-200">
+                    Category-A Seats
+                  </span>
+                  <span className="text-2xl font-serif font-bold text-blue-700">70%</span>
+                </div>
+                <h4 className="font-serif font-bold text-slate-900 text-base">EAMCET Convener Quota</h4>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                  70 % of the seats are allotted based on the merit rank obtained in the state-wide EAMCET conducted by AP State Council of Higher Education (APSCHE).
+                </p>
+              </div>
+              <div className="pt-2 border-t border-slate-100 text-[11px] font-mono font-semibold text-slate-500">
+                State Counseling Allotment
+              </div>
+            </div>
+
+            {/* 30% Management / NRI Seats */}
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3 flex flex-col justify-between hover:border-amber-400 transition-colors">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 bg-amber-50 text-amber-900 font-mono font-bold text-xs rounded-full border border-amber-300">
+                    Category-B Seats
+                  </span>
+                  <span className="text-2xl font-serif font-bold text-amber-700">30%</span>
+                </div>
+                <h4 className="font-serif font-bold text-slate-900 text-base">Management / NRI Quota</h4>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                  30 % of the seats are earmarked for Management/NRI candidates filled directly by institute management adhering to state merit guidelines.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-slate-100 text-[11px] font-mono font-semibold text-slate-500">
+                Direct Merit Application
+              </div>
+            </div>
+
+            {/* 10% Lateral Entry (ECET) */}
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3 flex flex-col justify-between hover:border-emerald-500 transition-colors">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 bg-emerald-50 text-emerald-900 font-mono font-bold text-xs rounded-full border border-emerald-300">
+                    ECET Scheme
+                  </span>
+                  <span className="text-2xl font-serif font-bold text-emerald-700">10%</span>
+                </div>
+                <h4 className="font-serif font-bold text-slate-900 text-base">Lateral Entry (Diploma Holders)</h4>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                  In addition to the above, Diploma holders are admitted in second year of B. Tech to the extent of 10% of intake based on the merit in the ECET, under lateral entry scheme.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-slate-100 text-[11px] font-mono font-semibold text-slate-500">
+                Direct 2nd Year B.Tech Entry
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* 2. FEE STRUCTURE TABLE */}
+        <section className="space-y-6">
+          <div className="border-b border-slate-200 pb-4">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-2.5 py-1 rounded border border-amber-200">
+              Government Regulated Fees
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2">
+              Fee Structure & Seat Matrix
+            </h2>
+            <p className="text-sm font-semibold text-slate-500 font-serif">Comprehensive seat breakdown and AP State regulated tuition fee details for B.Tech programs</p>
+          </div>
+
+          {/* Table Container */}
+          <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm bg-white">
+            <table className="w-full text-left text-xs sm:text-sm">
+              <thead className="bg-slate-900 text-white font-serif font-bold uppercase text-[11px]">
+                <tr>
+                  <th className="py-3.5 px-4 w-14 text-center text-amber-300">S.No</th>
+                  <th className="py-3.5 px-4 text-white">COURSE</th>
+                  <th className="py-3.5 px-4 text-center text-slate-200">CONVENER SEATS</th>
+                  <th className="py-3.5 px-4 text-center text-amber-300">CONVENER FEE (Rs)</th>
+                  <th className="py-3.5 px-4 text-center text-slate-200">CAT-B SEATS</th>
+                  <th className="py-3.5 px-4 text-center text-amber-300">CAT B FEE (Rs)</th>
+                  <th className="py-3.5 px-4 text-center text-white">TOTAL INTAKE</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 text-slate-700 font-medium">
+                {ADMISSION_FEE_STRUCTURE.map((item) => (
+                  <tr key={item.sno} className="hover:bg-blue-50/30 transition-colors">
+                    <td className="py-4 px-4 font-mono font-bold text-center text-blue-700">{item.sno}</td>
+                    <td className="py-4 px-4 font-bold text-slate-900">
+                      <div>
+                        <span>{item.course}</span>
+                        <span className="ml-2 px-2 py-0.5 bg-blue-50 text-blue-800 font-mono font-bold text-[10px] rounded border border-blue-200">
+                          {item.code}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-4 text-center font-mono font-bold text-slate-800 bg-slate-50">{item.convenerSeats}</td>
+                    <td className="py-4 px-4 text-center font-mono font-bold text-slate-900">₹{item.convenerFee}</td>
+                    <td className="py-4 px-4 text-center font-mono font-bold text-slate-800 bg-slate-50">{item.catBSeats}</td>
+                    <td className="py-4 px-4 text-center font-mono font-bold text-slate-900">₹{item.catBFee}</td>
+                    <td className="py-4 px-4 text-center whitespace-nowrap">
+                      <span className="px-3 py-1 bg-blue-700 text-white font-mono font-bold text-xs rounded-full shadow-2xs">
+                        {item.totalIntake} Seats
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* 3. STEP-BY-STEP ADMISSION PROCESS */}
+        <section className="space-y-6">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-blue-700 text-xs font-bold uppercase tracking-widest font-mono bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+              Guidance Steps
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2">
+              4-Step Admission Journey
+            </h2>
+            <div className="h-1 w-12 bg-blue-600 mx-auto mt-2 rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
             {ADMISSION_PROCESS.map((step) => (
-              <div key={step.step} className="bg-white dark:bg-primary-900 border border-slate-100 dark:border-slate-800 p-6 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow">
-                <span className="absolute top-4 right-4 text-4xl font-serif font-bold text-gold-500/20">{step.step}</span>
-                <ClipboardCheck className="h-6 w-6 text-gold-500 mb-4" />
-                <h4 className="font-serif font-bold text-sm sm:text-base text-primary-950 dark:text-white mb-2">{step.title}</h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{step.desc}</p>
+              <div key={step.step} className="bg-white border border-slate-200 p-6 rounded-2xl relative shadow-xs hover:border-blue-600 hover:shadow-md transition-all space-y-3">
+                <span className="absolute top-4 right-4 text-3xl font-serif font-bold text-slate-200">{step.step}</span>
+                <div className="w-10 h-10 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center font-bold">
+                  <ClipboardCheck className="h-5 w-5" />
+                </div>
+                <h4 className="font-serif font-bold text-sm sm:text-base text-slate-900">{step.title}</h4>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">{step.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* 2. Eligibility & Offerings */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 space-y-6">
-            <span className="text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-widest font-mono block">
-              Course Offerings
+        {/* 4. ONLINE APPLICATION & COUNSELING FORM */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-6 space-y-6">
+            <span className="text-blue-700 text-xs font-bold uppercase tracking-widest font-mono bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+              Immediate Assistance
             </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white">
-              Course Offerings & Eligibility
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
+              Admissions Counseling Helpline & Online Application
             </h2>
-            <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Below are the details of the programs offered by RCEW for the academic year 2026-27 under JNTUA affiliation.
-            </p>
-            <div className="space-y-4">
-              {COURSE_OFFERINGS.slice(0, 3).map((course, idx) => (
-                <div key={idx} className="bg-white dark:bg-primary-900 p-5 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-sm">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="font-serif font-bold text-sm sm:text-base text-primary-950 dark:text-white">{course.degree} in {course.branch}</span>
-                    <span className="text-[10px] font-mono bg-gold-100 text-gold-800 px-2 py-0.5 rounded-full">{course.seats} Seats</span>
-                  </div>
-                  <p className="text-[11px] text-slate-400 leading-relaxed"><strong>Eligibility:</strong> {course.eligibility}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="lg:col-span-5 bg-primary-950 text-white p-8 rounded-3xl border border-white/5 shadow-xl space-y-6">
-            <h3 className="font-serif font-bold text-lg text-gold-400">Apply Online Now</h3>
-            <p className="text-slate-300 text-xs leading-relaxed">
-              Fill in your academic and contact details. Our admissions counseling department will get in touch with you immediately to finalize details.
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium">
+              Submit your academic details to reserve seat counseling or get detailed guidance regarding Category-A EAMCET code REC or Category-B Management quota admissions.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="p-6 bg-slate-900 text-white rounded-2xl space-y-4 shadow-md border border-slate-800">
+              <h4 className="font-serif font-bold text-base text-amber-300 flex items-center gap-2">
+                <Phone className="h-5 w-5" /> Direct Admission Helpline
+              </h4>
+              <div className="space-y-2 text-xs text-slate-300 font-medium">
+                <p><strong>Admissions Coordinator:</strong> Mrs. G. Spandana</p>
+                <p><strong>Contact Phone:</strong> +91 8639756876</p>
+                <p><strong>Office Landline:</strong> 08518-285088</p>
+              </div>
+              <a
+                href="tel:+918639756876"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase rounded-xl shadow-xs transition-colors w-full"
+              >
+                Call Helpline +91 8639756876
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-sm space-y-4">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+              <h3 className="font-serif font-bold text-xl text-slate-900">
+                Online Seat Inquiry Form
+              </h3>
+              <span className="text-[10px] font-mono font-bold uppercase text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+                Direct Desk Response
+              </span>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-3">
               <input
                 type="text"
-                placeholder="Student Full Name"
+                placeholder="Student Full Name *"
                 required
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 <input
                   type="email"
-                  placeholder="Official Email Address"
+                  placeholder="Email Address *"
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <input
                   type="tel"
-                  placeholder="Helpline Contact No"
+                  placeholder="Contact Phone *"
                   required
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 />
               </div>
               <select
                 value={form.course}
                 onChange={(e) => setForm({ ...form, course: e.target.value })}
-                className="w-full bg-primary-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-slate-300 focus:outline-none focus:border-gold-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 font-medium"
               >
-                <option>B.Tech - Computer Science & Engineering</option>
-                <option>B.Tech - Artificial Intelligence & Data Science</option>
-                <option>B.Tech - Electronics & Communication Engineering</option>
-                <option>Master of Business Administration (MBA)</option>
+                <option>Computer Science Engineering (CSE)</option>
+                <option>Electronics & Communication Engineering (ECE)</option>
+                <option>Computer Science Engineering (Artificial Intelligence - CAI)</option>
               </select>
               <input
                 type="text"
-                placeholder="Intermediate / degree Percentage"
+                placeholder="Intermediate (10+2) % or EAMCET Rank *"
                 required
                 value={form.percentage}
                 onChange={(e) => setForm({ ...form, percentage: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
               <textarea
-                placeholder="Inquiry Question or Message"
+                placeholder="Inquiry Question or Quotas (Category-A / Category-B)"
                 rows={3}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500 resize-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 resize-none"
               />
 
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gold-500 hover:bg-gold-400 text-primary-950 font-bold uppercase text-xs transition-all cursor-pointer disabled:opacity-50"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase text-xs transition-all cursor-pointer disabled:opacity-50"
               >
                 {submitting ? (
                   <>
-                    <Loader2 className="h-4.5 w-4.5 animate-spin" /> Processing Inquiry...
+                    <Loader2 className="h-4.5 w-4.5 animate-spin" /> Submitting Inquiry...
                   </>
                 ) : (
                   <>
-                    <Send className="h-4 w-4" /> Submit Application
+                    <Send className="h-4 w-4" /> Register Inquiry
                   </>
                 )}
               </button>
@@ -172,89 +387,39 @@ export default function Admissions() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="p-3 bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs rounded-xl text-center flex items-center justify-center gap-2"
+                  className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-xl text-center flex items-center justify-center gap-2 font-medium"
                 >
-                  <Check className="h-4 w-4" /> Thank you! Your inquiry was successfully registered.
+                  <Check className="h-4 w-4 text-emerald-600" /> Thank you! Your application inquiry was successfully registered.
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
         </section>
 
-        {/* 3. Fee Structure */}
-        <section className="bg-white dark:bg-primary-900/35 p-8 sm:p-12 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4">
-              <span className="text-gold-500 font-mono text-xs font-bold uppercase tracking-widest block">Finances & Budgets</span>
-              <h2 className="text-2xl font-serif font-bold text-primary-900 dark:text-white">Fee Structure 2026-27</h2>
-              <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
-                RCEW maintains complete transparency concerning college fees. We comply strictly with fee structures designated by the Andhra Pradesh Higher Education Regulatory Committee (APHERC).
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-slate-50 dark:bg-primary-950/40 border border-slate-100 dark:border-slate-800">
-                  <span className="font-bold text-xs text-primary-950 dark:text-white block">B.Tech Tuition Fee</span>
-                  <span className="text-gold-600 dark:text-gold-400 text-sm font-bold block">₹43,500 / Year</span>
-                  <span className="text-[10px] text-slate-400 font-mono block">(AP State government regulated)</span>
-                </div>
-                <div className="p-4 rounded-xl bg-slate-50 dark:bg-primary-950/40 border border-slate-100 dark:border-slate-800">
-                  <span className="font-bold text-xs text-primary-950 dark:text-white block">In-Campus Girls Hostel Fee</span>
-                  <span className="text-gold-600 dark:text-gold-400 text-sm font-bold block">₹65,000 / Year</span>
-                  <span className="text-[10px] text-slate-400 font-mono block">(Includes boarding & all amenities)</span>
-                </div>
-              </div>
-            </div>
-            <div className="lg:col-span-4 flex flex-col gap-4 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl">
-              <h4 className="font-bold text-xs text-primary-950 dark:text-white text-center">Inquire Admissions Hotline</h4>
-              <p className="text-center text-[11px] text-slate-400">Connect to our counseling team immediately for seat booking, quota applications, and custom billing details.</p>
-              <a href="tel:+919246922069" className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary-700 hover:bg-primary-800 text-white dark:bg-gold-500 dark:hover:bg-gold-400 dark:text-primary-950 text-xs font-bold uppercase transition-all shadow-sm">
-                <Phone className="h-4 w-4" /> +91 92469 22069
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* 4. Scholarships */}
-        <section>
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-widest font-mono">Financial Assistance</span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white mt-1">Scholarships & Waivers</h2>
-            <div className="h-1 w-12 bg-gold-500 mx-auto mt-3 rounded-full" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {SCHOLARSHIPS.map((scholarship, idx) => (
-              <div key={idx} className="bg-white dark:bg-primary-900 border border-slate-100 dark:border-slate-800 p-6 rounded-2xl flex gap-4 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 bg-gold-100 dark:bg-primary-950 text-gold-600 dark:text-gold-400 rounded-xl flex items-center justify-center shrink-0">
-                  <Sparkles className="h-5 w-5" />
-                </div>
-                <div>
-                  <h4 className="font-serif font-bold text-sm sm:text-base text-primary-950 dark:text-white mb-2">{scholarship.name}</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed">{scholarship.eligibility}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 5. FAQs */}
-        <section className="pb-12">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-widest font-mono">Frequently Asked Questions</span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary-900 dark:text-white mt-1">Admissions Queries FAQs</h2>
-            <div className="h-1 w-12 bg-gold-500 mx-auto mt-3 rounded-full" />
+        {/* 5. FAQS */}
+        <section className="pb-12 space-y-6">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-blue-700 text-xs font-bold uppercase tracking-widest font-mono bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+              Frequently Asked Questions
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2">
+              Admissions FAQs
+            </h2>
+            <div className="h-1 w-12 bg-blue-600 mx-auto mt-2 rounded-full" />
           </div>
 
           <div className="max-w-4xl mx-auto space-y-4">
             {FAQS.map((faq, idx) => (
-              <div key={idx} className="bg-white dark:bg-primary-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
-                <h4 className="font-serif font-bold text-sm sm:text-base text-primary-950 dark:text-white flex gap-2 items-center mb-2">
-                  <HelpCircle className="h-5 w-5 text-gold-500 shrink-0" /> {faq.question}
+              <div key={idx} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <h4 className="font-serif font-bold text-sm sm:text-base text-slate-900 flex gap-2 items-center">
+                  <HelpCircle className="h-5 w-5 text-blue-600 shrink-0" /> {faq.question}
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed pl-7">{faq.answer}</p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-7 font-medium">{faq.answer}</p>
               </div>
             ))}
           </div>
         </section>
+
       </div>
     </div>
   );
