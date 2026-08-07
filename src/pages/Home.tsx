@@ -1,19 +1,224 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, Award, GraduationCap, CheckCircle2, ChevronRight, BookOpen, Star, TrendingUp, Sparkles, Building2, Globe, Users } from 'lucide-react';
+import {
+  ArrowRight, ShieldCheck, Award, GraduationCap, CheckCircle2, ChevronRight,
+  BookOpen, Star, TrendingUp, Sparkles, Building2, Globe, Users, Bell,
+  FileText, Calendar, ExternalLink, Search, DollarSign, Download, ChevronDown
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
-import Testimonials from '../components/Testimonials';
 import { DEPARTMENTS, NEWS_EVENTS, PLACEMENT_STATS } from '../data';
+
+// Import newly added project assets
 import MUGDHA_CELEBRATIONS_IMAGE from '../assets/images/rcew_mugdha_celebrations.jpg';
 import VISUAL_TOUR_BOOTCAMP from '../assets/images/rcew_visual_tour_bootcamp.jpg';
 import VISUAL_TOUR_WORKSHOP from '../assets/images/rcew_visual_tour_workshop.jpg';
 import VISUAL_TOUR_LABS from '../assets/images/rcew_visual_tour_labs.jpg';
+import DRONE_DEMO_IMAGE from '../assets/images/rcew_drone_demo.jpg';
+import TCS_ACCENTURE_IMAGE from '../assets/images/rcew_tcs_accenture_placements.png';
+import WALMART_PLACEMENT_IMAGE from '../assets/images/rcew_walmart_placement.png';
+import ADP_PLACEMENT_IMAGE from '../assets/images/rcew_adp_placement.png';
+import TCS_DIGITAL_IMAGE from '../assets/images/rcew_tcs_digital_placement.png';
+
+// 1. CIRCULARS DATA (84 entries)
+const CIRCULARS_DATA = [
+  { id: 1, date: '25.06.2026', title: 'Circular - Holiday in view of Muharram', link: 'https://drive.google.com/file/d/136uLkN22LZFKA_MS9WwELT4m_lRP1SNA/view?usp=drive_link' },
+  { id: 2, date: '22.06.2026', title: 'Circular - Commencement of Classwork for II & III B.Tech', link: '#' },
+  { id: 3, date: '20.06.2026', title: 'Circular regarding International Yoga Day', link: '#' },
+  { id: 4, date: '27.05.2026', title: 'Circular - Holiday in view of Bakrid festival', link: '#' },
+  { id: 5, date: '13.04.2026', title: 'Circular - Holiday in view of Dr. B R Ambedkar Jayanthi', link: '#' },
+  { id: 6, date: '02.04.2026', title: 'Circular - Holiday in view of Good Friday', link: '#' },
+  { id: 7, date: '26.03.2026', title: 'Circular - Holidays in view of SriRama Navami Festival', link: '#' },
+  { id: 8, date: '18.03.2026', title: 'Circular - Holidays in view of Ugadi & Ramzan Festivals', link: '#' },
+  { id: 9, date: '10.03.2026', title: 'Circular - Fee Reimbursement Amount Released for SC Category Students.', link: '#' },
+  { id: 10, date: '09.03.2026', title: 'Circular reg. Fraudulent Phone Calls and Messages from Unknown Persons', link: '#' },
+  { id: 11, date: '02.03.2026', title: 'Holiday in view of Holi Festival', link: '#' },
+  { id: 12, date: '24.01.2026', title: '77th Republic Day Celebrations - Circular', link: '#' },
+  { id: 13, date: '10.01.2026', title: 'Holidays in view of Sankranthi Festival', link: '#' },
+  { id: 14, date: '31.12.2025', title: 'Holiday in view of New Year Day', link: '#' },
+  { id: 15, date: '24.12.2025', title: 'Holiday in view of Christmas Festival', link: '#' },
+  { id: 16, date: '27.11.2025', title: 'Circular regarding Five step verification at Sachivalayam', link: '#' },
+  { id: 17, date: '31.10.2025', title: 'Students to enroll their names - Vivekananda Youth Club', link: '#' },
+  { id: 18, date: '18.10.2025', title: 'Holiday in view of Diwali Festival', link: '#' },
+  { id: 19, date: '26.09.2025', title: 'Holidays in view of Dussehra Festival', link: '#' },
+  { id: 20, date: '03.09.2025', title: 'Holidays in view of Ganesh Nimajjanam & Milad-Un-Nabi Festivals', link: '#' },
+  { id: 21, date: '26.08.2025', title: 'Holiday in view of Vinayaka Chavithi', link: '#' },
+  { id: 22, date: '23.08.2025', title: 'Holiday in view of I B.Tech Orientation Day', link: '#' },
+  { id: 23, date: '13.08.2025', title: 'Holiday in view of Sri Krishna Janmastami', link: '#' },
+  { id: 24, date: '13.08.2025', title: 'Independence Day Circular', link: '#' },
+  { id: 25, date: '07.08.2025', title: 'Holiday in view of Varalakshmi Vratham Festival', link: '#' },
+  { id: 26, date: '14.07.2025', title: 'Transport Facility - Circular', link: '#' },
+  { id: 27, date: '06.06.2025', title: 'Holiday on account of Bakrid Festival', link: '#' },
+  { id: 28, date: '17.04.2025', title: 'Holiday on account of Good Friday', link: '#' },
+  { id: 29, date: '12.04.2025', title: 'Holiday in view of Dr. B R Ambedkar Jayanthi', link: '#' },
+  { id: 30, date: '04.04.2025', title: "Holiday in view of Babu Jagjivan Ram's Jayanthi", link: '#' },
+  { id: 31, date: '29.03.2025', title: 'Holiday in view of Ramzan Festival', link: '#' },
+  { id: 32, date: '13.03.2025', title: 'Holiday in view of Holi Festival', link: '#' },
+  { id: 33, date: '01.03.2025', title: "International Women's Day (Mugdha'2K25)", link: '#' },
+  { id: 34, date: '28.02.2025', title: 'Circular - Fee Reimbursement Amount Released for SC Category Students.', link: '#' },
+  { id: 35, date: '25.02.2025', title: 'Holiday in view of Maha Shivarathri', link: '#' },
+  { id: 36, date: '15.02.2025', title: 'Revised Classwork Timings', link: '#' },
+  { id: 37, date: '25.01.2025', title: 'Hoisting of the flag on Republic Day', link: '#' },
+  { id: 38, date: '11.01.2025', title: 'Holidays in view of Sankranthi Festival', link: '#' },
+  { id: 39, date: '31.12.2024', title: 'II & IV B.Tech - Commencement of Class works for Even Sem', link: '#' },
+  { id: 40, date: '31.12.2024', title: 'Holiday in view of New Year Day', link: '#' },
+  { id: 41, date: '24.12.2024', title: 'Holiday in view of Cristmas Festival', link: '#' },
+  { id: 42, date: '30.10.2024', title: 'Holiday in view of Diwali', link: '#' },
+  { id: 43, date: '08.10.2024', title: 'Holidays in view of Dussehra Festival', link: '#' },
+  { id: 44, date: '01.10.2024', title: 'Holiday in view of Gandhi Jayanthi', link: '#' },
+  { id: 45, date: '14.09.2024', title: 'Holiday in view of Mild-Un-Nabi Festival', link: '#' },
+  { id: 46, date: '05.09.2024', title: 'Holiday in view of Vinayaka Chavithi', link: '#' },
+  { id: 47, date: '24.08.2024', title: 'Holiday in view of Krishnastami', link: '#' },
+  { id: 48, date: '14.08.2024', title: 'Independence Day', link: '#' },
+  { id: 49, date: '16.07.2024', title: 'Holiday in virw of Muharram', link: '#' },
+  { id: 50, date: '09.07.2024', title: 'Transportation Fee', link: '#' },
+  { id: 51, date: '15.06.2024', title: 'Holiday in view of Bakrid', link: '#' },
+  { id: 52, date: '11.05.2024', title: 'Holiday in view of General Elections', link: '#' },
+  { id: 53, date: '16.04.2024', title: 'Holiday in view of Srirama Navami Festival', link: '#' },
+  { id: 54, date: '08.04.2024', title: 'Holidays in view of Ugadi & Ramzan Festivals', link: '#' },
+  { id: 55, date: '04.04.2024', title: "Holiday in view of Babu Jagjivan Ram's Jayanthi", link: '#' },
+  { id: 56, date: '28.03.2024', title: 'Holiday for Good Friday', link: '#' },
+  { id: 57, date: '23.03.2024', title: 'Holiday for Holi Festival', link: '#' },
+  { id: 58, date: '07.03.2024', title: 'Holiday for Maha Sivarathri', link: '#' },
+  { id: 59, date: '21.02.2024', title: 'A two-day boot camp on "C" Coding skills', link: '#' },
+  { id: 60, date: '07.02.2024', title: 'Inauguration of SPACE Club', link: '#' },
+  { id: 61, date: '01.02.2024', title: 'To install APSCHE Messenger App', link: '#' },
+  { id: 62, date: '25.01.2024', title: '75th Republic Day Celebrations', link: '#' },
+  { id: 63, date: '11.01.2024', title: 'Pongal Hoilidays', link: '#' },
+  { id: 64, date: '06.01.2024', title: 'Yoga Competition', link: '#' },
+  { id: 65, date: '06.01.2024', title: 'Five step verification at Sachivalayam', link: '#' },
+  { id: 66, date: '30.12.2023', title: 'Holiday for New Year Day', link: '#' },
+  { id: 67, date: '23.12.2023', title: 'Holiday in view of Christmas Festival', link: '#' },
+  { id: 68, date: '16.11.2023', title: 'For Voter registration', link: '#' },
+  { id: 69, date: '11.11.2023', title: 'Holiday in view of Diwali Festival', link: '#' },
+  { id: 70, date: '07.11.2023', title: 'In view of Bandh', link: '#' },
+  { id: 71, date: '19.10.2023', title: 'Dasara Holidays', link: '#' },
+  { id: 72, date: '30.09.2023', title: 'Holiday in view of Gandhi Jayanthi', link: '#' },
+  { id: 73, date: '20.09.2023', title: 'JNTU Circular', link: '#' },
+  { id: 74, date: '16.09.2023', title: 'Holiday in view of Vinayaka Chavithi', link: '#' },
+  { id: 75, date: '11.09.2023', title: 'In view of Bandh', link: '#' },
+  { id: 76, date: '06.09.2023', title: 'Holiday in view of Sri Krishna Janmastami', link: '#' },
+  { id: 77, date: '22.08.2023', title: 'National Sports Day', link: '#' },
+  { id: 78, date: '14.08.2023', title: 'Independence Day', link: '#' },
+  { id: 79, date: '09.08.2023', title: 'Transportation', link: '#' },
+  { id: 80, date: '28.07.2023', title: 'Holiday in view of Muharram Festival', link: '#' },
+  { id: 81, date: '28.06.2023', title: 'Holiday in view of Bakrid Festival', link: '#' },
+  { id: 82, date: '20.06.2023', title: 'Yoga Session', link: '#' },
+  { id: 83, date: '05.05.2023', title: 'Internship Training', link: '#' },
+  { id: 84, date: '21.04.2023', title: 'Holiday in view of Ramzan Festival', link: '#' }
+];
+
+// 2. EXAM NOTIFICATIONS DATA (57 entries)
+const EXAM_NOTIFICATIONS_DATA = [
+  { id: 1, date: '21/05/2026', title: 'II & III B.Tech I Sem Supplementary Examination – Jun 2026 Timetable', link: '#' },
+  { id: 2, date: '10/05/2026', title: 'II & III B.Tech I Sem (R23) Supplementary Examination – Jun 2026 Notification', link: '#' },
+  { id: 3, date: '24/04/2026', title: 'I B.Tech II Sem Regular & Supplementary (R23) Examination – Jun 2026', link: '#' },
+  { id: 4, date: '17/03/2026', title: 'II & III B.Tech II Sem (R23) Regular Examination – Apr 2026 Timetable', link: '#' },
+  { id: 5, date: '13/03/2026', title: 'III B.Tech II Sem (R23) Regular Examination – Apr 2026 Notification Circular', link: '#' },
+  { id: 6, date: '07/03/2026', title: 'II B.Tech II Sem (R23) Regular & Supplementary Examination – Apr 2026', link: '#' },
+  { id: 7, date: '18/12/2025', title: 'I B.Tech I Sem (R23) Regular Examination – Jan 2026 Timetable', link: '#' },
+  { id: 8, date: '18/11/2025', title: 'I B.Tech I Sem Regular & Supplementary (R23) Examination – Dec 2025', link: '#' },
+  { id: 9, date: '14/11/2025', title: 'II & III B.Tech I Sem Regular & Supplementary Examination – Nov 2025 Timetable', link: '#' },
+  { id: 10, date: '14/11/2025', title: 'I B.Tech II Sem (R23) Supplementary Examination – Dec 2025 Timetable', link: '#' },
+  { id: 11, date: '04/11/2025', title: 'I & II B.Tech II Sem Supplementary (R23) Examination – Dec 2025', link: '#' },
+  { id: 12, date: '10/10/2025', title: 'II M.Tech I Sem (R24) Regular Examination – Nov 2025', link: '#' },
+  { id: 13, date: '01/10/2025', title: 'II & III B.Tech I Sem Regular (R23) Examination – Nov 2025', link: '#' },
+  { id: 14, date: '29/03/2025', title: 'II B.Tech II Sem (R23) Regular Examination – May 2025 Timetable', link: '#' },
+  { id: 15, date: '18/03/2025', title: 'IV B.Tech II Semester(R20) Regular Notification', link: '#' },
+  { id: 16, date: '02/04/2025', title: 'II B.Tech II Semester(R20) Regular Notification and Schedule', link: '#' },
+  { id: 17, date: '02/04/2025', title: 'III B.Tech II & I Semester(R20) Regular Notification and Schedule', link: '#' },
+  { id: 18, date: '27/03/2025', title: 'IV B.Tech II Semester(R20) Regular Notification', link: '#' },
+  { id: 19, date: '04/11/2024', title: 'II-B.Tech I Sem (R23) Regular (Autonomous Exams)Notification -Dec-2024', link: '#' },
+  { id: 20, date: '09/08/2024', title: 'RCEW Autonomous Examinations – Date: 12.08.2024 – I B.Tech I Sem(23) Exams Postponed & Rescheduled Circular', link: '#' },
+  { id: 21, date: '20/07/2024', title: 'Notification I-B.Tech I Sem (R23) Supply -July-2024-Exams', link: '#' },
+  { id: 22, date: '12/06/2024', title: 'I B.Tech II Semester(R23) Regular Examination Timetable - July-2024', link: '#' },
+  { id: 23, date: '10/06/2024', title: 'I B.Tech II Semester(R23) MID-II Examination Timetable - July-2024', link: '#' },
+  { id: 24, date: '10/06/2024', title: 'Notification I-B.Tech II Sem (R23) Regular-July-2024-Exams', link: '#' },
+  { id: 25, date: '22/11/2023', title: 'Notification IV-I - B.Tech (R20) -Dec-Jan-2023-24-Exams', link: '#' },
+  { id: 26, date: '22/11/2023', title: 'Notification-for-B.Tech-IV-II-R15-Dec-Jan-2023-24-Exams', link: '#' },
+  { id: 27, date: '22/11/2023', title: 'Notification -for-B.Tech-IV-I-R15-Dec-Jan-2023-24-Exams', link: '#' },
+  { id: 28, date: '22/11/2023', title: 'Notification NT-for-B.Tech-IV-I-R19-Dec-Jan-2023-24-Exams', link: '#' },
+  { id: 29, date: '21/11/2023', title: 'Timetable-for-B.Tech-II-II-R15-Dec-2023-Exams', link: '#' },
+  { id: 30, date: '21/11/2023', title: 'Timetable-for-B.Tech-II-II-R19-Supple-Dec-2023-Exams', link: '#' },
+  { id: 31, date: '21/11/2023', title: 'Timetable-for-B.Tech-II-II-R20-Dec-2023-Exams', link: '#' },
+  { id: 32, date: '21/11/2023', title: 'Timetable-for-B.Tech-II-I-R15-Dec-2023-Exams', link: '#' },
+  { id: 33, date: '21/11/2023', title: 'Timetable-for-B.Tech-II-I-R19-Supple-Dec-2023-Exams', link: '#' },
+  { id: 34, date: '21/11/2023', title: 'Timetable-for-B.Tech-II-I-R20-Dec-2023-Exams', link: '#' },
+  { id: 35, date: '07/11/2023', title: 'B.Tech-II-Yr-I-II-sem-Reg-Supple-Dec-2023-Notification', link: '#' },
+  { id: 36, date: '07/11/2023', title: 'II B TECH I R-20 SEM REGULAR & SUPPLEMENTARY NOTIFICATION', link: '#' },
+  { id: 37, date: '14/08/2023', title: 'Revised-TT-for-B.Tech-II-I-Aug-Sep-2023-Exams', link: '#' },
+  { id: 38, date: '08/08/2023', title: 'TTs-for-B.Tech-II-II-R20-Aug-Sep-2023-Exams', link: '#' },
+  { id: 39, date: '08/08/2023', title: 'TTs-for-B.Tech-II-I-R20-Aug-Sep-2023-Exams', link: '#' },
+  { id: 40, date: '08/08/2023', title: 'TTs-for-B.Tech-II-I-R19-Aug-Sep-2023-Exams', link: '#' },
+  { id: 41, date: '08/08/2023', title: 'TTs-for-B.Tech-II-II-R19-Aug-Sep-2023-Exams', link: '#' },
+  { id: 42, date: '08/08/2023', title: 'TTs-for-B.Tech-II-II-R15-Aug-Sep-2023-Exams', link: '#' },
+  { id: 43, date: '08/08/2023', title: 'TTs-for-B.Tech-II-I-R15-Aug-Sep-2023-Exams', link: '#' },
+  { id: 44, date: '05/08/2023', title: 'Postponed circular - DE', link: '#' },
+  { id: 45, date: '31/07/2023', title: 'B.Tech-II-Yr-Academic-Calendar-for-AY-2023-24', link: '#' },
+  { id: 46, date: '31/07/2023', title: 'B.Tech-III-Yr-Academic-Calendar-for-AY-2023-25', link: '#' },
+  { id: 47, date: '31/07/2023', title: 'B.Tech-IV-Yr-Academic-Calendar-for-AY-2023-26', link: '#' },
+  { id: 48, date: '21/07/2023', title: 'B.Tech-II-II-R20 Reg & Supple Notification', link: '#' },
+  { id: 49, date: '24/07/2023', title: 'Postponed circular', link: '#' },
+  { id: 50, date: '21/07/2023', title: 'B.Tech-II-II-R15 & R19 Supple Notification', link: '#' },
+  { id: 51, date: '25/07/2023', title: 'B.Tech-III-II-R20-Aug-2023-Exam Timetables', link: '#' },
+  { id: 52, date: '25/07/2023', title: 'B.Tech-III-I-R15-Aug-2023-Exam Timetables', link: '#' },
+  { id: 53, date: '25/07/2023', title: 'B.Tech-III-I-R19-Aug-2023-Exam Timetables', link: '#' },
+  { id: 54, date: '25/07/2023', title: 'B.Tech-III-I-R20-Aug-2023-Exam Timetables', link: '#' },
+  { id: 55, date: '25/07/2023', title: 'B.Tech-III-II-R15-Aug-2023-Exam Timetables', link: '#' },
+  { id: 56, date: '21/07/2023', title: 'II B TECH I SEM SUPPLEMENTARY NOTIFICATION', link: '#' },
+  { id: 57, date: '25/07/2023', title: 'B.Tech-III-II-R19-Aug-2023-Exam Timetables', link: '#' }
+];
+
+// 3. PLACEMENTS BY ACADEMIC YEAR (23-24 & 24-25)
+const PLACEMENTS_23_24 = [
+  { sno: 1, company: 'SpringWorks', offers: 1, ctc: '10 Lakhs' },
+  { sno: 2, company: 'Accenture(ASE)', offers: 15, ctc: '4.5 Lakhs' },
+  { sno: 3, company: 'Accenture(AASE)', offers: 2, ctc: '6.5 Lakhs' },
+  { sno: 4, company: 'Excelr', offers: 18, ctc: '4 Lakhs' },
+  { sno: 5, company: 'Qspiders', offers: 51, ctc: '4.2 Lakhs' },
+  { sno: 6, company: 'Movate(EPS)', offers: 5, ctc: '3.6 Lakhs' },
+  { sno: 7, company: 'Movate(DES)', offers: 3, ctc: '2.4 Lakhs' },
+  { sno: 8, company: 'Sutherland', offers: 24, ctc: '3 Lakhs' },
+  { sno: 9, company: 'UTS', offers: 1, ctc: '4 Lakhs' },
+  { sno: 10, company: 'PlanetSpark', offers: 2, ctc: '6.5 Lakhs' },
+  { sno: 11, company: 'Accenture (App Developer)', offers: 14, ctc: '4.5 Lakhs' },
+  { sno: 12, company: 'Rinex Technologies', offers: 10, ctc: '5.2 Lakhs' }
+];
+
+const PLACEMENTS_24_25 = [
+  { sno: 1, company: 'Walmart', offers: 1, ctc: '27 Lakhs' },
+  { sno: 2, company: 'Manomay', offers: 1, ctc: '4 Lakhs' },
+  { sno: 3, company: 'Accenture(ASE)', offers: 51, ctc: '4.5 Lakhs' },
+  { sno: 4, company: 'Accenture(AASE)', offers: 3, ctc: '6.5 Lakhs' },
+  { sno: 5, company: 'Infosys', offers: 1, ctc: '9.5 Lakhs' },
+  { sno: 6, company: 'Cognizant - Genc', offers: 4, ctc: '4 Lakhs' },
+  { sno: 7, company: 'Techouts', offers: 1, ctc: '3.5 Lakhs' },
+  { sno: 8, company: 'SpringWorks', offers: 1, ctc: '5 Lakhs' },
+  { sno: 9, company: 'Infosys', offers: 2, ctc: '3.6 Lakhs' },
+  { sno: 10, company: 'Eduexpose', offers: 33, ctc: '5.2 Lakhs' },
+  { sno: 11, company: 'SmartED', offers: 6, ctc: '5 Lakhs' },
+  { sno: 12, company: 'NCR Atleos', offers: 17, ctc: '3.6 Lakhs' },
+  { sno: 13, company: 'Inspire AI', offers: 4, ctc: '4.5 Lakhs' }
+];
 
 export default function Home() {
-  // Filter only the three departments requested: CSE, ECE, AI&DS
   const featuredDepts = DEPARTMENTS.filter(d => ['cse', 'ece', 'aids'].includes(d.id));
+
+  // Interactive Notice Board State
+  const [noticeTab, setNoticeTab] = useState<'circulars' | 'exams'>('circulars');
+  const [noticeSearch, setNoticeSearch] = useState('');
+
+  // Interactive Placements Year State
+  const [placementYear, setPlacementYear] = useState<'24-25' | '23-24'>('24-25');
+
+  const filteredCirculars = CIRCULARS_DATA.filter(c => 
+    c.title.toLowerCase().includes(noticeSearch.toLowerCase()) || c.date.includes(noticeSearch)
+  );
+
+  const filteredExams = EXAM_NOTIFICATIONS_DATA.filter(e => 
+    e.title.toLowerCase().includes(noticeSearch.toLowerCase()) || e.date.includes(noticeSearch)
+  );
 
   return (
     <div className="bg-slate-50 dark:bg-primary-950/20">
@@ -24,48 +229,56 @@ export default function Home() {
       <Stats />
 
       {/* College Introduction & Vision */}
-      <section className="py-20 bg-white">
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
+          >
             {/* Left Image grid */}
             <div className="lg:col-span-5 relative">
-              <div className="absolute -top-4 -left-4 w-72 h-72 bg-blue-100 rounded-3xl blur-2xl -z-10" />
+              <div className="absolute -top-4 -left-4 w-72 h-72 bg-blue-100/60 rounded-3xl blur-2xl -z-10" />
               <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white">
                 <img
                   src={MUGDHA_CELEBRATIONS_IMAGE}
                   alt="RCEW Mugdha Celebrations"
-                  className="w-full h-96 object-cover"
+                  className="w-full h-80 sm:h-96 object-cover hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <p className="font-serif font-bold text-lg">Empowering Women Engineers</p>
-                  <p className="text-xs text-yellow-300 font-mono mt-1">Established in 2008 • Kurnool</p>
+                  <p className="font-serif font-bold text-lg drop-shadow-xs">Empowering Women Engineers</p>
+                  <p className="text-xs text-yellow-300 font-mono mt-1 drop-shadow-xs">Established in 2008 • Kurnool</p>
                 </div>
               </div>
             </div>
 
             {/* Right content */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-5">
               <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono block">
                 Welcome to RCEW, Kurnool
               </span>
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 leading-tight">
                 Pioneering Technical Excellence for Women
               </h2>
+              <div className="h-1 w-20 bg-yellow-500 rounded-full" />
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Ravindra Engineering College for Women (RCEW) is Kurnool's elite academic destination, solely committed to sharpening technological competency and leadership profiles of young women engineers. Approved by AICTE, affiliated to JNTUA, and NAAC Accredited, we offer state-of-the-art labs and global placement training.
+                Ravindra Engineering College for Women (RCEW) is Kurnool's elite academic destination, solely committed to sharpening technological competency and leadership profiles of young women engineers. Approved by AICTE, affiliated to JNTUA, and NAAC Accredited A+, we offer state-of-the-art labs and global placement training.
               </p>
 
               {/* Accreditations Row */}
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="flex items-start gap-2.5">
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
                   <CheckCircle2 className="h-5 w-5 text-yellow-500 shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-xs sm:text-sm text-slate-900">NAAC Accredited</h4>
+                    <h4 className="font-bold text-xs sm:text-sm text-slate-900">NAAC Accredited A+</h4>
                     <p className="text-[11px] text-slate-500">Institutional Excellence Mark</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-2.5">
+                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
                   <CheckCircle2 className="h-5 w-5 text-yellow-500 shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold text-xs sm:text-sm text-slate-900">NBA Accredited</h4>
@@ -74,73 +287,213 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="pt-6">
+              <div className="pt-4">
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg"
+                  aria-label="Learn Vision and Profile"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg group"
                 >
-                  Learn Vision & Profile <ArrowRight className="h-4 w-4" />
+                  Learn Vision & Profile <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Why Choose RCEW - Bento Grid Features */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      {/* ================= COMPACT NOTICE BOARD PORTAL (CIRCULARS & EXAM NOTIFICATIONS) ================= */}
+      <section className="py-14 bg-gradient-to-b from-slate-100 to-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono">
-              The RCEW Advantage
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 mt-1">
-              Why Choose RCEW Kurnool?
-            </h2>
-            <div className="h-1 w-20 bg-yellow-500 mx-auto mt-4 rounded-full" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden"
+          >
+            {/* Header with Switcher & Search */}
+            <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-5 sm:p-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-yellow-400/20 text-yellow-400 rounded-xl border border-yellow-400/30">
+                  <Bell className="h-5 w-5 shrink-0" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-yellow-300 font-bold">Live Updates</span>
+                  <h3 className="font-serif font-bold text-lg sm:text-xl text-white">
+                    Campus Notices & Exam Desk
+                  </h3>
+                </div>
+              </div>
+
+              {/* Tab Switch Buttons */}
+              <div className="flex items-center bg-white/10 p-1 rounded-xl border border-white/20 self-start sm:self-center">
+                <button
+                  onClick={() => setNoticeTab('circulars')}
+                  aria-label="Show circulars"
+                  className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    noticeTab === 'circulars'
+                      ? 'bg-yellow-400 text-blue-950 shadow-sm'
+                      : 'text-white hover:text-yellow-300'
+                  }`}
+                >
+                  📢 Circulars ({CIRCULARS_DATA.length})
+                </button>
+                <button
+                  onClick={() => setNoticeTab('exams')}
+                  aria-label="Show exam notifications"
+                  className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    noticeTab === 'exams'
+                      ? 'bg-yellow-400 text-blue-950 shadow-sm'
+                      : 'text-white hover:text-yellow-300'
+                  }`}
+                >
+                  📝 Exam Notifications ({EXAM_NOTIFICATIONS_DATA.length})
+                </button>
+              </div>
+
+              {/* Live Search */}
+              <div className="relative w-full sm:w-64">
+                <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search notices..."
+                  value={noticeSearch}
+                  onChange={(e) => setNoticeSearch(e.target.value)}
+                  className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-300 focus:outline-none focus:bg-white focus:text-slate-900 transition-all"
+                />
+              </div>
+            </div>
+
+            {/* Scrollable Compact Content Area */}
+            <div className="p-4 sm:p-6 max-h-[380px] overflow-y-auto divide-y divide-slate-100">
+              {noticeTab === 'circulars' ? (
+                filteredCirculars.length > 0 ? (
+                  filteredCirculars.map((item) => (
+                    <div key={item.id} className="py-2.5 flex items-center gap-4 hover:bg-blue-50/60 px-3 rounded-xl transition-colors">
+                      <span className="px-2.5 py-0.5 rounded-md font-mono text-[10px] font-bold bg-blue-100 text-blue-800 shrink-0">
+                        {item.date}
+                      </span>
+                      <span className="text-xs sm:text-sm font-medium text-slate-800 truncate">
+                        {item.title}
+                      </span>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-xs text-slate-400 text-center py-8 font-mono">No circulars match your search query.</p>
+                )
+              ) : (
+                filteredExams.length > 0 ? (
+                  filteredExams.map((item) => (
+                    <div key={item.id} className="py-2.5 flex items-center gap-4 hover:bg-amber-50/60 px-3 rounded-xl transition-colors">
+                      <span className="px-2.5 py-0.5 rounded-md font-mono text-[10px] font-bold bg-amber-100 text-amber-900 shrink-0">
+                        {item.date}
+                      </span>
+                      <span className="text-xs sm:text-sm font-medium text-slate-800 truncate">
+                        {item.title}
+                      </span>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-xs text-slate-400 text-center py-8 font-mono">No exam notifications match your search query.</p>
+                )
+              )}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= COMPACT PLACEMENTS BY ACADEMIC YEAR SECTION ================= */}
+      <section className="py-16 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono block">
+                Yearly Placements Breakdown
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
+                Corporate Placements (AY 2023-24 & 2024-25)
+              </h2>
+            </div>
+
+            {/* Year Switcher Buttons */}
+            <div className="flex items-center gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 self-start sm:self-center">
+              <button
+                onClick={() => setPlacementYear('24-25')}
+                aria-label="View 2024-25 placements"
+                className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  placementYear === '24-25'
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'text-slate-700 hover:text-blue-600'
+                }`}
+              >
+                Academic Year 2024-25
+              </button>
+              <button
+                onClick={() => setPlacementYear('23-24')}
+                aria-label="View 2023-24 placements"
+                className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  placementYear === '23-24'
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'text-slate-700 hover:text-blue-600'
+                }`}
+              >
+                Academic Year 2023-24
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Advantage 1 */}
-            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <Award className="h-6 w-6 text-yellow-500" />
-              </div>
-              <h3 className="font-serif font-bold text-lg text-slate-900 mb-2">100% Women Centric</h3>
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                A highly secure, supportive, and empowering environment tailored to build courage, critical engineering expertise, and outstanding campus leaders.
-              </p>
+          {/* Featured Placement Photo Banners Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
+              <img src={WALMART_PLACEMENT_IMAGE} alt="Walmart 27 Lakhs Placement Banner" className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
-
-            {/* Advantage 2 */}
-            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <TrendingUp className="h-6 w-6 text-yellow-500" />
-              </div>
-              <h3 className="font-serif font-bold text-lg text-slate-900 mb-2">Stellar Placements Record</h3>
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                Consistent placement statistics of over 95% with blue-chip recruiters like TCS, Cognizant, Wipro, Accenture, and Hexaware offering premium packages.
-              </p>
+            <div className="rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
+              <img src={TCS_ACCENTURE_IMAGE} alt="TCS and Accenture Placements Banner" className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
-
-            {/* Advantage 3 */}
-            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <Sparkles className="h-6 w-6 text-yellow-500" />
-              </div>
-              <h3 className="font-serif font-bold text-lg text-slate-900 mb-2">Modern Infrastructure</h3>
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                Advanced AI Research stations, IoT studios, smart high-speed digital libraries, sports arenas, and robust campus Wi-Fi infrastructure.
-              </p>
+            <div className="rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
+              <img src={ADP_PLACEMENT_IMAGE} alt="ADP 6 Lakh Placements Banner" className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
+              <img src={TCS_DIGITAL_IMAGE} alt="TCS Digital 7 Lakh Package Banner" className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
           </div>
+
+          {/* Compact Placements Table */}
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs">
+            <table className="w-full text-left text-xs sm:text-sm">
+              <thead className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white font-mono uppercase text-[11px]">
+                <tr>
+                  <th className="px-4 py-3 text-center w-14">S.No</th>
+                  <th className="px-4 py-3">Recruiting Company</th>
+                  <th className="px-4 py-3 text-center">Number of Offers</th>
+                  <th className="px-4 py-3 text-right">Package (CTC)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 text-slate-700">
+                {(placementYear === '24-25' ? PLACEMENTS_24_25 : PLACEMENTS_23_24).map((row) => (
+                  <tr key={row.sno} className="hover:bg-blue-50/50 transition-colors">
+                    <td className="px-4 py-2.5 text-center font-mono font-bold text-slate-400">{row.sno}</td>
+                    <td className="px-4 py-2.5 font-bold text-slate-900">{row.company}</td>
+                    <td className="px-4 py-2.5 text-center">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-blue-100 text-blue-800">
+                        {row.offers} {row.offers === 1 ? 'Offer' : 'Offers'}
+                      </span>
+                    </td>
+                    <td className="px-4 py-2.5 text-right font-bold text-emerald-700">{row.ctc}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
         </div>
       </section>
 
       {/* Featured Departments */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-10">
             <div>
               <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono block">
                 Academic Disciplines
@@ -161,17 +514,17 @@ export default function Home() {
             {featuredDepts.map((dept) => (
               <div
                 key={dept.id}
-                className="group bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                className="group bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="relative h-48 overflow-hidden shrink-0">
                   <img
                     src={dept.image}
                     alt={dept.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <span className="absolute bottom-4 left-4 text-xs font-bold bg-yellow-400 text-blue-950 px-2.5 py-1 rounded-full font-mono uppercase tracking-widest">
+                  <span className="absolute bottom-4 left-4 text-xs font-bold bg-yellow-400 text-blue-950 px-2.5 py-1 rounded-full font-mono uppercase tracking-widest shadow-2xs">
                     {dept.code}
                   </span>
                 </div>
@@ -200,196 +553,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Corporate Placements Highlights */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200/80 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Placements Text side */}
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono block">
-                Placement Excellence
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 leading-tight">
-                Launch Your Global Career From RCEW
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                With a robust placement cell and industry relationships, our young women engineers are highly preferred by global tech and software organizations. Specialized soft skill and programming camps ensure immediate deployment readiness.
-              </p>
-
-              {/* Package stats cards */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm hover:-translate-y-1 transition-all">
-                  <span className="text-amber-500 font-serif font-bold text-2xl sm:text-3xl block">14.5 LPA</span>
-                  <span className="text-[10px] text-slate-500 font-mono uppercase tracking-widest font-bold">Highest Package</span>
-                </div>
-                <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm hover:-translate-y-1 transition-all">
-                  <span className="text-amber-500 font-serif font-bold text-2xl sm:text-3xl block">4.8 LPA</span>
-                  <span className="text-[10px] text-slate-500 font-mono uppercase tracking-widest font-bold">Average Package</span>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <Link
-                  to="/placements"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-sm hover:shadow-md"
-                >
-                  Explore Placement Cell <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Top Recruiters interactive grid / preview */}
-            <div className="lg:col-span-6 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
-              <h3 className="font-serif font-bold text-lg text-slate-900">Our Premier Recruiters</h3>
-              <div className="grid grid-cols-3 gap-3" id="recruiters-logo-grid">
-                {PLACEMENT_STATS.topRecruiters.map((rec, i) => (
-                  <div
-                    key={i}
-                    className="h-16 bg-slate-50 rounded-xl flex flex-col items-center justify-center p-2 text-center border border-slate-200/60 hover:bg-blue-50 hover:border-blue-300 transition-all cursor-pointer"
-                  >
-                    <span className="text-slate-700 text-[11px] font-bold font-mono uppercase leading-tight">{rec.name.split(' ')[0]}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="p-4 rounded-xl bg-blue-50 border border-blue-100 text-xs text-slate-700 text-center">
-                📊 Over <strong className="text-blue-700 font-bold">120+ recruitments</strong> secured in the previous academic calendar.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Recruiter Logo Marquee Slider */}
-      <section className="py-8 bg-white overflow-hidden border-b border-slate-200">
+      {/* Visual Tour Preview Section (Including Drone Demo Photo) */}
+      <section className="py-16 bg-slate-50 relative border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-[11px] font-mono text-slate-500 uppercase tracking-widest mb-4">Empowering careers at major multinationals</p>
-          <div className="flex items-center justify-around gap-8 flex-wrap opacity-60">
-            <span className="text-sm font-bold tracking-wider text-slate-500">TATA CONSULTANCY SERVICES</span>
-            <span className="text-sm font-bold tracking-wider text-slate-500">COGNIZANT GENC</span>
-            <span className="text-sm font-bold tracking-wider text-slate-500">WIPRO TECH</span>
-            <span className="text-sm font-bold tracking-wider text-slate-500">INFOSYS SOLUTIONS</span>
-            <span className="text-sm font-bold tracking-wider text-slate-500">ACCENTURE</span>
-          </div>
-        </div>
-      </section>
-
-      {/* News & Events Section */}
-      <section className="py-20 bg-[#F8FBFF] border-b border-blue-100/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-12">
-            <div>
-              <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono block">
-                Stay Updated
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
-                Latest News & Campus Events
-              </h2>
-            </div>
-            <Link
-              to="/faculty"
-              className="text-xs font-bold uppercase tracking-wider text-blue-600 flex items-center gap-1 hover:gap-2 transition-all mt-4 sm:mt-0"
-            >
-              Faculty Directory <ChevronRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {NEWS_EVENTS.slice(0, 3).map((item) => (
-              <div
-                key={item.id}
-                className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="relative h-44 overflow-hidden shrink-0">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest bg-blue-600 text-white font-mono">
-                        {item.category}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <span className="text-slate-400 text-[10px] font-mono block mb-2">{item.date}</span>
-                    <h3 className="font-serif font-bold text-sm sm:text-base text-slate-900 leading-tight line-clamp-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-600 text-xs mt-3 leading-relaxed line-clamp-3">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-                <div className="p-6 pt-0 border-t border-slate-100 mt-4 flex justify-end">
-                  <Link
-                    to="/faculty"
-                    className="text-xs font-bold uppercase text-blue-600 flex items-center gap-1 hover:translate-x-1 transition-transform"
-                  >
-                    Read Details <ArrowRight className="h-3 w-3" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <Testimonials />
-
-      {/* Gallery Preview Slider / Grid */}
-      <section className="py-20 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono">
               Life on Campus
             </span>
             <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
-              Visual Tour Preview
+              Campus Innovation & Visual Tour
             </h2>
             <div className="h-1 w-16 bg-yellow-500 mx-auto mt-3 rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6" id="home-gallery-grid-preview">
-            <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Photo 1: Drone Demo */}
+            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
               <img
-                src={VISUAL_TOUR_BOOTCAMP}
-                alt="Lean Start Up & MVP Boot Camp"
+                src={DRONE_DEMO_IMAGE}
+                alt="RCEW Drone Technology Demonstration"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-5">
-                <span className="text-white text-xs sm:text-sm font-serif font-bold drop-shadow-sm">Lean Start Up & MVP Boot Camp</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4">
+                <span className="text-white text-xs font-serif font-bold drop-shadow-sm">Drone Innovation & Flight Demonstration</span>
               </div>
             </div>
-            <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
+
+            {/* Photo 2: Bootcamp */}
+            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
+              <img
+                src={VISUAL_TOUR_BOOTCAMP}
+                alt="Lean Start Up Boot Camp"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4">
+                <span className="text-white text-xs font-serif font-bold drop-shadow-sm">Lean Start Up & MVP Boot Camp</span>
+              </div>
+            </div>
+
+            {/* Photo 3: Workshop */}
+            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
               <img
                 src={VISUAL_TOUR_WORKSHOP}
                 alt="Empowering Girls on Cloud Tech"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-5">
-                <span className="text-white text-xs sm:text-sm font-serif font-bold drop-shadow-sm">Empowering Girls on Cloud Tech Workshop</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4">
+                <span className="text-white text-xs font-serif font-bold drop-shadow-sm">Cloud Tech Workshop</span>
               </div>
             </div>
-            <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
+
+            {/* Photo 4: Labs */}
+            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
               <img
                 src={VISUAL_TOUR_LABS}
-                alt="Advanced Computing & Hardware Labs"
+                alt="Advanced Hardware Labs"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-5">
-                <span className="text-white text-xs sm:text-sm font-serif font-bold drop-shadow-sm">Advanced Computing & Hardware Labs</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4">
+                <span className="text-white text-xs font-serif font-bold drop-shadow-sm">Advanced Computing & Hardware Labs</span>
               </div>
             </div>
           </div>
 
-          <div className="mt-10 text-center">
+          <div className="mt-8 text-center">
             <Link
               to="/campus-life"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-700 hover:bg-primary-800 text-white dark:bg-gold-500 dark:hover:bg-gold-400 dark:text-primary-950 text-xs font-bold uppercase tracking-wider transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg"
             >
               Tour Campus & Facilities <ArrowRight className="h-4 w-4" />
             </Link>

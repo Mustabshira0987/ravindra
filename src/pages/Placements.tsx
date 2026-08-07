@@ -24,6 +24,10 @@ import {
   PLACED_STUDENTS_ROSTER
 } from '../data';
 import COMPANY_VISITS_LOGOS from '../assets/images/company_visits_logos.png';
+import WALMART_PLACEMENT_IMAGE from '../assets/images/rcew_walmart_placement.png';
+import TCS_ACCENTURE_IMAGE from '../assets/images/rcew_tcs_accenture_placements.png';
+import ADP_PLACEMENT_IMAGE from '../assets/images/rcew_adp_placement.png';
+import TCS_DIGITAL_IMAGE from '../assets/images/rcew_tcs_digital_placement.png';
 
 export default function Placements() {
   const location = useLocation();
@@ -270,6 +274,28 @@ export default function Placements() {
                     alt="Corporate Giants Logo CTC Reference"
                     className="w-full object-contain max-h-[360px] mx-auto rounded-xl"
                   />
+                </div>
+              </div>
+
+              {/* PLACEMENTS HALL OF FAME BANNERS */}
+              <div className="space-y-4 pt-4">
+                <h3 className="text-xl font-serif font-bold text-slate-900 flex items-center gap-2">
+                  <Award className="h-6 w-6 text-amber-500" />
+                  Placements Hall of Fame & Top Achievers
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="rounded-2xl overflow-hidden shadow-md border border-slate-200 group">
+                    <img src={WALMART_PLACEMENT_IMAGE} alt="Walmart 27 Lakhs Placement" className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="rounded-2xl overflow-hidden shadow-md border border-slate-200 group">
+                    <img src={TCS_ACCENTURE_IMAGE} alt="TCS & Accenture Placements" className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="rounded-2xl overflow-hidden shadow-md border border-slate-200 group">
+                    <img src={ADP_PLACEMENT_IMAGE} alt="ADP 6 Lakh Placements" className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="rounded-2xl overflow-hidden shadow-md border border-slate-200 group">
+                    <img src={TCS_DIGITAL_IMAGE} alt="TCS Digital 7 Lakh Package" className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
                 </div>
               </div>
 

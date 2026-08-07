@@ -1,27 +1,10 @@
-import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import React from 'react';
 import {
-  MapPin, Phone, Mail, Send, Check, Loader2, Facebook, Twitter, Linkedin,
-  Instagram, Youtube, GraduationCap, Briefcase, Building2, UserCheck, MessageSquare
+  MapPin, Phone, Mail, GraduationCap, Briefcase, Building2, UserCheck
 } from 'lucide-react';
 import { COLLEGE_INFO } from '../data';
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
-  const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      setSuccess(true);
-      setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-      setTimeout(() => setSuccess(false), 5000);
-    }, 1200);
-  };
-
   return (
     <div className="py-8 sm:py-12 bg-slate-50">
       
@@ -44,7 +27,7 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         
-        {/* Contact Info Directory Grid (Clean white cards with blue highlights) */}
+        {/* Contact Info Directory Grid */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
           {/* 1. Address Card */}
@@ -157,144 +140,50 @@ export default function Contact() {
 
         </section>
 
-        {/* Send Inquiry Form & Quick Contact Panel */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Left Summary Box */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 sm:p-8 bg-slate-900 text-white rounded-3xl shadow-md space-y-4 border border-slate-800">
-              <span className="px-3 py-1 bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold uppercase rounded-full border border-amber-400/30">
-                Help Desk Availability
-              </span>
-              <h2 className="text-xl sm:text-2xl font-serif font-bold text-white">
-                RCEW Campus Administrative Office
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
-                Our help desks remain open from 9:00 AM to 5:00 PM on all academic working days. Feel free to visit our campus in Kurnool or send an online message using the inquiry form.
-              </p>
-
-              <div className="pt-4 border-t border-slate-800 space-y-3 text-xs text-slate-300 font-medium">
-                <div className="flex items-center gap-3">
-                  <UserCheck className="h-4 w-4 text-amber-400 shrink-0" />
-                  <span>Admissions Coordinator: Mrs. G. Spandana (+91 8639756876)</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Briefcase className="h-4 w-4 text-amber-400 shrink-0" />
-                  <span>Placement Cell Officer: Mrs. Indira Priyadarshini (+91 9948187766)</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Building2 className="h-4 w-4 text-amber-400 shrink-0" />
-                  <span>Campus Office Landline: 08518-285088</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Inquiry Form */}
-          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-              <h3 className="font-serif font-bold text-xl text-slate-900 flex items-center gap-2">
-                <MessageSquare className="h-5 w-5 text-blue-600" /> Send Inquiry Message
-              </h3>
-              <span className="text-[10px] font-mono font-bold uppercase text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
-                Direct Desk Response
-              </span>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-[11px] text-slate-600 font-semibold font-mono block mb-1">Full Name *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Enter your name"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="text-[11px] text-slate-600 font-semibold font-mono block mb-1">Email Address *</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="name@example.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-[11px] text-slate-600 font-semibold font-mono block mb-1">Contact Phone No *</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="+91 Mobile number"
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="text-[11px] text-slate-600 font-semibold font-mono block mb-1">Inquiry Subject *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g., Admission Inquiry / Placement Drive"
-                    value={form.subject}
-                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all"
-                  />
-                </div>
-              </div>
-
+        {/* Administrative Help Desk Summary Banner */}
+        <section>
+          <div className="p-6 sm:p-8 bg-slate-900 text-white rounded-3xl shadow-md space-y-4 border border-slate-800">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
               <div>
-                <label className="text-[11px] text-slate-600 font-semibold font-mono block mb-1">Detailed Message *</label>
-                <textarea
-                  required
-                  rows={4}
-                  placeholder="Write your query or message here..."
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all resize-none"
-                />
+                <span className="px-3 py-1 bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold uppercase rounded-full border border-amber-400/30">
+                  Help Desk Availability
+                </span>
+                <h2 className="text-xl sm:text-2xl font-serif font-bold text-white mt-2">
+                  RCEW Campus Administrative Office
+                </h2>
               </div>
+              <span className="text-xs font-mono font-bold bg-amber-400 text-slate-950 px-3 py-1 rounded-full w-fit">
+                Mon - Sat: 9:00 AM - 5:00 PM
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+              Our administrative help desks remain open on all academic working days. Feel free to visit our campus in Kurnool or reach out to our designated coordinators.
+            </p>
 
-              <button
-                type="submit"
-                disabled={submitting}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase text-xs transition-all cursor-pointer shadow-xs disabled:opacity-50"
-              >
-                {submitting ? (
-                  <>
-                    <Loader2 className="h-4.5 w-4.5 animate-spin" /> Submitting Inquiry...
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-4 w-4" /> Submit Inquiry
-                  </>
-                )}
-              </button>
-            </form>
-
-            <AnimatePresence>
-              {success && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-xl font-medium text-center flex items-center justify-center gap-2"
-                >
-                  <Check className="h-4 w-4 text-emerald-600" /> Thank you! Your message has been sent to RCEW Administrative Desk.
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 text-xs text-slate-300 font-medium">
+              <div className="flex items-center gap-3 bg-slate-800/60 p-3.5 rounded-2xl border border-slate-700/60">
+                <UserCheck className="h-5 w-5 text-amber-400 shrink-0" />
+                <div>
+                  <span className="text-[10px] font-mono text-slate-400 block font-bold">Admissions Coordinator</span>
+                  <span className="font-semibold text-white">Mrs. G. Spandana (+91 8639756876)</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-slate-800/60 p-3.5 rounded-2xl border border-slate-700/60">
+                <Briefcase className="h-5 w-5 text-amber-400 shrink-0" />
+                <div>
+                  <span className="text-[10px] font-mono text-slate-400 block font-bold">Placement Cell Officer</span>
+                  <span className="font-semibold text-white">Mrs. Indira Priyadarshini (+91 9948187766)</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-slate-800/60 p-3.5 rounded-2xl border border-slate-700/60">
+                <Building2 className="h-5 w-5 text-amber-400 shrink-0" />
+                <div>
+                  <span className="text-[10px] font-mono text-slate-400 block font-bold">Campus Landline</span>
+                  <span className="font-semibold text-white">08518-285088</span>
+                </div>
+              </div>
+            </div>
           </div>
-
         </section>
 
         {/* Google Maps Location Section */}

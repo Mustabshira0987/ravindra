@@ -6,6 +6,7 @@ import COLLEGE_BANNER_IMAGE from './assets/images/rcew_horizontal_banner.png';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollProgress from './components/ScrollProgress';
 import Preloader from './components/Preloader';
 
 // Pages
@@ -83,6 +84,7 @@ function ScrollTopButton() {
 function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: (val: boolean) => void }) {
   return (
     <div className="relative min-h-screen bg-slate-50 transition-colors duration-300 flex flex-col">
+      <ScrollProgress />
       <ScrollToTop />
       
       {/* Dynamic multi-layer header and navigations */}

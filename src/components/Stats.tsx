@@ -34,7 +34,7 @@ function Counter({ value, suffix }: CounterProps) {
   }, [value, isInView]);
 
   return (
-    <span ref={elementRef} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-blue-600 tracking-tight">
+    <span ref={elementRef} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-blue-700 tracking-tight">
       {count.toLocaleString()}{suffix}
     </span>
   );
@@ -61,25 +61,25 @@ export default function Stats() {
   };
 
   return (
-    <section className="relative bg-[#F8FBFF] py-20 overflow-hidden border-y border-blue-100/80">
+    <section aria-label="Key Institution Statistics" className="relative bg-[#F8FBFF] py-16 sm:py-20 overflow-hidden border-y border-blue-100/80">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 lg:gap-6">
           {STATS.map((stat, idx) => (
             <motion.div
               key={stat.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="flex flex-col items-center text-center p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 group"
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              className="flex flex-col items-center text-center p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group hover:border-blue-300"
             >
-              <div className="p-3.5 bg-yellow-50 rounded-2xl mb-4 border border-yellow-200/60 group-hover:scale-110 transition-transform duration-300">
+              <div className="p-3 bg-yellow-50 rounded-2xl mb-3 border border-yellow-200/60 group-hover:scale-110 group-hover:bg-yellow-100/80 transition-all duration-300 shadow-2xs">
                 {getIcon(stat.id)}
               </div>
               
               <Counter value={stat.value} suffix={stat.suffix} />
               
-              <p className="text-xs sm:text-sm text-slate-600 font-sans font-semibold mt-2 max-w-[130px]">
+              <p className="text-xs sm:text-sm text-slate-700 font-sans font-semibold mt-2 max-w-[130px] leading-snug">
                 {stat.label}
               </p>
             </motion.div>

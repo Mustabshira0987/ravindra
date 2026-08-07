@@ -94,7 +94,17 @@ export default function Navbar({}: NavbarProps) {
       label: 'Campus Life',
       href: '/campus-life',
       subitems: [
-        { label: 'Facilities & Clubs', href: '/campus-life' },
+        { label: 'Campus Connect', href: '/campus-life?tab=campus-connect' },
+        { label: 'IEEE Society', href: '/campus-life?tab=ieee-society' },
+        { label: 'Computer Society of India (CSI)', href: '/campus-life?tab=csi-society' },
+        { label: 'Extra Curricular Activities', href: '/campus-life?tab=extra-curricular' },
+        { label: 'Sports Club', href: '/campus-life?tab=sports-club' },
+        { label: 'NSS Club', href: '/campus-life?tab=nss-club' },
+        { label: 'SPEAK EASY CLUB', href: '/campus-life?tab=speak-easy' },
+        { label: 'Foreign Languages Club', href: '/campus-life?tab=foreign-languages' },
+        { label: 'MSRC Club', href: '/campus-life?tab=msrc-club' },
+        { label: 'RCEW Swastha – Health Club', href: '/campus-life?tab=swastha-health' },
+        { label: 'Yoga Club', href: '/campus-life?tab=yoga-club' },
       ]
     },
     {
