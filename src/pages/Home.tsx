@@ -21,6 +21,10 @@ import WALMART_PLACEMENT_IMAGE from '../assets/images/rcew_walmart_placement.png
 import ADP_PLACEMENT_IMAGE from '../assets/images/rcew_adp_placement.png';
 import TCS_DIGITAL_IMAGE from '../assets/images/rcew_tcs_digital_placement.png';
 
+// Imported Home Page Edge Banners
+import ADMISSIONS_POSTER_2025 from '../assets/images/rcew_admissions_poster_2025.png';
+import CLASSICAL_DANCE_PERFORMERS from '../assets/images/rcew_classical_dance_performers.jpg';
+
 // 1. CIRCULARS DATA (84 entries)
 const CIRCULARS_DATA = [
   { id: 1, date: '25.06.2026', title: 'Circular - Holiday in view of Muharram', link: 'https://drive.google.com/file/d/136uLkN22LZFKA_MS9WwELT4m_lRP1SNA/view?usp=drive_link' },
@@ -301,6 +305,64 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ================= COMPACT FULLY VISIBLE B.TECH ADMISSIONS 2025-2026 POSTER SHOWCASE ================= */}
+      <section id="admissions-section" className="relative overflow-hidden py-6 sm:py-8 bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-950 text-white border-y-2 border-yellow-400 shadow-lg my-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 space-y-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-400 text-blue-950 font-mono font-bold text-[11px] shadow-sm">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  ADMISSIONS OPEN • 2025-2026
+                </span>
+                <span className="text-[11px] font-mono font-bold uppercase bg-white/10 px-3 py-1 rounded-full border border-yellow-400/40 text-yellow-300">
+                  AP EAPCET CODE: RAVW
+                </span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-yellow-300 leading-snug">
+                Begin Your Engineering Journey With RCEW
+              </h2>
+
+              <p className="text-xs sm:text-sm text-blue-100 leading-relaxed font-sans">
+                Approved by AICTE, Affiliated to JNTUA, NAAC Accredited A+, and NBA Accredited (CSE & ECE). B.Tech Specializations in <strong>CSE (AI), CSE, and ECE</strong>.
+              </p>
+
+              {/* Action Buttons */}
+              <div className="pt-1 flex flex-wrap items-center gap-3">
+                <Link
+                  to="/academics"
+                  className="px-5 py-2.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 cursor-pointer"
+                >
+                  Apply Online Now <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a
+                  href="tel:8639756876"
+                  className="text-xs font-mono font-bold text-yellow-300 hover:text-white underline flex items-center gap-1"
+                >
+                  📞 Helpline: 8639756876 / 8639756663
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: COMPACT FULLY VISIBLE POSTER */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative max-w-xs w-full bg-white p-1.5 rounded-2xl border-2 border-yellow-400 shadow-xl group transition-all duration-300">
+                <img
+                  src={ADMISSIONS_POSTER_2025}
+                  alt="Ravindra College of Engineering for Women B.Tech Admissions 2025-2026 Open Official Poster"
+                  className="w-full h-auto max-h-[320px] sm:max-h-[360px] rounded-xl object-contain shadow-xs mx-auto"
+                  loading="eager"
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* ================= COMPACT NOTICE BOARD PORTAL (CIRCULARS & EXAM NOTIFICATIONS) ================= */}
       <section className="py-14 bg-gradient-to-b from-slate-100 to-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -549,6 +611,38 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= COMPACT CULTURAL DANCE BANNER ================= */}
+      <section className="relative overflow-hidden py-6 sm:py-8 bg-gradient-to-r from-slate-950 via-purple-950 to-indigo-950 text-white border-y-2 border-amber-400/50 shadow-lg my-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center justify-between gap-6 relative z-10">
+          {/* COMPACT DANCE IMAGE CARD */}
+          <div className="relative w-full md:w-80 h-52 md:h-60 rounded-2xl overflow-hidden border-2 border-amber-400/80 shadow-xl group cursor-pointer bg-slate-900 shrink-0">
+            <img src={CLASSICAL_DANCE_PERFORMERS} alt="RCEW Classical Cultural Dance Performance" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-3">
+              <span className="text-[11px] font-mono text-amber-300 font-bold bg-slate-950/80 px-2.5 py-0.5 rounded-md border border-amber-400/40">
+                🎭 Mugdha & Cultural Fests
+              </span>
+            </div>
+          </div>
+
+          <div className="space-y-2.5 max-w-xl text-left md:text-right">
+            <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-amber-400 text-blue-950 uppercase tracking-widest inline-block shadow-sm">
+              ✨ Vibrant Campus Culture
+            </span>
+            <h3 className="text-xl sm:text-2xl font-serif font-bold text-amber-300 leading-snug">
+              Celebrating Artistic Excellence & Heritage
+            </h3>
+            <p className="text-xs sm:text-sm text-purple-100 leading-relaxed font-sans">
+              From classical Bharatanatyam recitals to annual campus celebrations like <strong>Mugdha 2K25</strong>, RCEW nurtures artistic talents and leadership alongside academic brilliance.
+            </p>
+            <div className="pt-1 flex md:justify-end">
+              <Link to="/campus-life" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-blue-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer">
+                Explore Clubs <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

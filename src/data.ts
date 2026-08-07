@@ -1,5 +1,9 @@
 import { Department, CourseOffering, PlacementsData, CampusFacility, NewsEvent, FacultyMember, Testimonial, FAQItem, CompanyVisitItem, PlacedStudentRecord } from './types';
 
+// Imported exact RCEW Department Lab photos
+import AIDS_DEPT_LAB from './assets/images/rcew_aids_dept_lab.png';
+import ECE_DEPT_LAB from './assets/images/rcew_ece_dept_lab.jpg';
+
 export const COLLEGE_INFO = {
   name: 'Ravindra Engineering College for Women',
   abbreviation: 'RCEW',
@@ -82,7 +86,7 @@ export const DEPARTMENTS: Department[] = [
     established: 2021,
     labs: ['AI & Neural Networks Lab', 'Big Data Analytics Lab', 'Machine Learning & Python Lab', 'Data Visualization Studio'],
     careers: ['Data Scientist', 'AI Research Engineer', 'Machine Learning Analyst', 'Business Intelligence Consultant', 'Data Architect'],
-    image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&q=80&w=800',
+    image: AIDS_DEPT_LAB,
     hodName: 'Dr. T. Kavitha',
     hodDesignation: 'Professor & Head of Department',
     hodQualification: 'Ph.D. in Artificial Intelligence'
@@ -98,7 +102,7 @@ export const DEPARTMENTS: Department[] = [
     established: 2008,
     labs: ['VLSI & Embedded Systems Lab', 'Analog & Digital Communications Lab', 'Microprocessors & Microcontrollers Lab', 'Digital Signal Processing Lab', 'Microwave Engineering Lab'],
     careers: ['Embedded Systems Engineer', 'VLSI Design Engineer', 'Telecom Systems Architect', 'IoT Solutions Expert', 'Hardware Test Analyst'],
-    image: 'https://images.unsplash.com/photo-1517055727180-d5a0cd281b78?auto=format&fit=crop&q=80&w=800',
+    image: ECE_DEPT_LAB,
     hodName: 'Dr. J. Prasanna Kumar',
     hodDesignation: 'Professor & Head of Department',
     hodQualification: 'M.E., Ph.D. in Communication Systems'
