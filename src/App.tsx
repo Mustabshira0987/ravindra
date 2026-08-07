@@ -20,6 +20,7 @@ import AIDS from './pages/AIDS';
 import Admissions from './pages/Admissions';
 import Placements from './pages/Placements';
 import IQAC from './pages/IQAC';
+import RD from './pages/RD';
 import CampusLife from './pages/CampusLife';
 import Faculty from './pages/Faculty';
 import Contact from './pages/Contact';
@@ -111,6 +112,7 @@ function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMo
             <Route path="/placements/company-visits" element={<Placements />} />
             <Route path="/placements/placed-students" element={<Placements />} />
             <Route path="/iqac" element={<IQAC />} />
+            <Route path="/rd" element={<RD />} />
             <Route path="/campus-life" element={<CampusLife />} />
             <Route path="/faculty" element={<Faculty />} />
             <Route path="/milestones" element={<Milestones />} />

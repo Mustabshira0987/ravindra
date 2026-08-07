@@ -83,10 +83,11 @@ export default function Navbar({}: NavbarProps) {
       ]
     },
     {
-      label: 'IQAC',
+      label: 'IQAC and R&D',
       href: '/iqac',
       subitems: [
-        { label: 'Quality Assurance', href: '/iqac' },
+        { label: 'IQAC', href: '/iqac' },
+        { label: 'R&D', href: '/rd' },
       ]
     },
     {
