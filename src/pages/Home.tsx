@@ -378,30 +378,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column: Interactive Pop-up Image Cards */}
-            <div className="lg:col-span-5 flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {/* Right Column: Interactive Pop-up Image Card */}
+            <div className="lg:col-span-5 flex justify-center items-center">
               <motion.div
                 whileHover={{ scale: 1.05, y: -4 }}
                 transition={{ duration: 0.3 }}
-                className="relative max-w-[220px] w-full bg-white p-1.5 rounded-2xl border-2 border-yellow-400 shadow-xl group cursor-pointer"
+                className="relative max-w-[280px] w-full bg-white p-1.5 rounded-2xl border-2 border-yellow-400 shadow-xl group cursor-pointer"
               >
                 <img
                   src={ADMISSIONS_POSTER_2025}
                   alt="Ravindra College of Engineering for Women B.Tech Admissions 2025-2026 Open Official Poster"
-                  className="w-full h-auto max-h-[300px] rounded-xl object-contain shadow-xs mx-auto"
-                  loading="eager"
-                />
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05, y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="relative max-w-[220px] w-full bg-white p-1.5 rounded-2xl border-2 border-yellow-400 shadow-xl group cursor-pointer"
-              >
-                <img
-                  src={HOME_NIELIT_BOOTCAMP}
-                  alt="RCEW NIELIT Five-Day Offline Boot Camp on RTL, IP Integration & SoC Sign-off Lamp Lighting Inauguration"
-                  className="w-full h-auto max-h-[300px] rounded-xl object-cover shadow-xs mx-auto"
+                  className="w-full h-auto max-h-[340px] rounded-xl object-contain shadow-xs mx-auto"
                   loading="eager"
                 />
               </motion.div>
