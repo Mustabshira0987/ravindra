@@ -82,6 +82,8 @@ function ScrollTopButton() {
 }
 
 function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: (val: boolean) => void }) {
+  const location = useLocation();
+
   return (
     <div className="relative min-h-screen bg-slate-50 transition-colors duration-300 flex flex-col">
       <ScrollProgress />
@@ -90,42 +92,51 @@ function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMo
       {/* Dynamic multi-layer header and navigations */}
       <Navbar />
 
-      {/* Pages Outlet */}
+      {/* Pages Outlet with Smooth Animated Pop-up Transitions */}
       <main className="flex-grow">
         <AnimatePresence mode="wait">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutProfile />} />
-            <Route path="/about/profile" element={<AboutProfile />} />
-            <Route path="/about/vision-mission" element={<VisionMission />} />
-            <Route path="/about/management" element={<Management />} />
-            <Route path="/about/principal-desk" element={<PrincipalDesk />} />
-            <Route path="/about/rankings-awards" element={<RankingsAwards />} />
-            <Route path="/about/governing-body" element={<GoverningBody />} />
-            <Route path="/know-us/principal-desk" element={<PrincipalDesk />} />
-            <Route path="/know-us/rankings-awards" element={<RankingsAwards />} />
-            <Route path="/know-us/governing-body" element={<GoverningBody />} />
-            <Route path="/academics" element={<Academics />} />
-            <Route path="/departments/cse" element={<CSE />} />
-            <Route path="/departments/ece" element={<ECE />} />
-            <Route path="/departments/ai-ds" element={<AIDS />} />
-            <Route path="/admissions" element={<Admissions />} />
-            <Route path="/placements" element={<Placements />} />
-            <Route path="/placements/company-visits" element={<Placements />} />
-            <Route path="/placements/placed-students" element={<Placements />} />
-            <Route path="/iqac" element={<IQAC />} />
-            <Route path="/rd" element={<RD />} />
-            <Route path="/campus-life" element={<CampusLife />} />
-            <Route path="/faculty" element={<Faculty />} />
-            <Route path="/milestones" element={<Milestones />} />
-            <Route path="/know-us/milestones" element={<Milestones />} />
-            <Route path="/why-rcew" element={<WhyRCEW />} />
-            <Route path="/know-us/why-rcew" element={<WhyRCEW />} />
-            <Route path="/bulletins" element={<Faculty />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* Fallback route */}
-            <Route path="*" element={<Home />} />
-          </Routes>
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 35, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.98 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full flex-grow flex flex-col"
+          >
+            <Routes location={location}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutProfile />} />
+              <Route path="/about/profile" element={<AboutProfile />} />
+              <Route path="/about/vision-mission" element={<VisionMission />} />
+              <Route path="/about/management" element={<Management />} />
+              <Route path="/about/principal-desk" element={<PrincipalDesk />} />
+              <Route path="/about/rankings-awards" element={<RankingsAwards />} />
+              <Route path="/about/governing-body" element={<GoverningBody />} />
+              <Route path="/know-us/principal-desk" element={<PrincipalDesk />} />
+              <Route path="/know-us/rankings-awards" element={<RankingsAwards />} />
+              <Route path="/know-us/governing-body" element={<GoverningBody />} />
+              <Route path="/academics" element={<Academics />} />
+              <Route path="/departments/cse" element={<CSE />} />
+              <Route path="/departments/ece" element={<ECE />} />
+              <Route path="/departments/ai-ds" element={<AIDS />} />
+              <Route path="/admissions" element={<Admissions />} />
+              <Route path="/placements" element={<Placements />} />
+              <Route path="/placements/company-visits" element={<Placements />} />
+              <Route path="/placements/placed-students" element={<Placements />} />
+              <Route path="/iqac" element={<IQAC />} />
+              <Route path="/rd" element={<RD />} />
+              <Route path="/campus-life" element={<CampusLife />} />
+              <Route path="/faculty" element={<Faculty />} />
+              <Route path="/milestones" element={<Milestones />} />
+              <Route path="/know-us/milestones" element={<Milestones />} />
+              <Route path="/why-rcew" element={<WhyRCEW />} />
+              <Route path="/know-us/why-rcew" element={<WhyRCEW />} />
+              <Route path="/bulletins" element={<Faculty />} />
+              <Route path="/contact" element={<Contact />} />
+              {/* Fallback route */}
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </motion.div>
         </AnimatePresence>
       </main>
 

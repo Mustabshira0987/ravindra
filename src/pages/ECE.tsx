@@ -7,6 +7,7 @@ import {
   Globe, Cpu, Radio, Search, FlaskConical, Microchip, Binary, Zap
 } from 'lucide-react';
 import { DEPARTMENTS } from '../data';
+import ECE_HERO_IMAGE from '../assets/images/rcew_home_building_front.png';
 
 // ECE Sidebar Navigation Configuration
 const ECE_SIDEBAR_MENU = [
@@ -360,128 +361,119 @@ export default function ECE() {
                 className="space-y-8"
               >
                 
-                {/* Section Header with Electric Royal Blue Theme */}
+                {/* Section Header with CSE-matched Color Scheme */}
                 <div className="border-b border-slate-200 pb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">
                       RCEW Academic Department
                     </span>
-                    <h1 className="text-2xl sm:text-3xl font-serif font-bold text-blue-800 mt-2">
+                    <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
                       Department of ECE
                     </h1>
                   </div>
-                  <span className="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-blue-600 text-white shadow-xs">
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-100 text-amber-900 border border-amber-300">
                     NBA Accredited • Code: ECE
                   </span>
                 </div>
 
-                {/* Hero Feature Card */}
-                <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+                {/* Hero Feature Card with Full Building Photo Visibility */}
+                <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-200">
                   <img
-                    src="https://images.unsplash.com/photo-1517055727180-d5a0cd281b78?auto=format&fit=crop&q=80&w=1200"
-                    alt="Electronics & Communication Engineering Laboratory"
-                    className="w-full h-64 sm:h-80 object-cover"
+                    src={ECE_HERO_IMAGE}
+                    alt="Electronics & Communication Engineering Department Building"
+                    className="w-full h-72 sm:h-96 md:h-[460px] object-cover object-center"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/40 to-transparent flex items-end p-6 sm:p-8">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent flex items-end p-6 sm:p-8">
                     <div className="text-white space-y-1.5">
-                      <span className="px-2.5 py-0.5 bg-blue-500 text-white text-[10px] font-mono font-bold uppercase rounded">
+                      <span className="px-2.5 py-0.5 bg-amber-400 text-slate-950 text-[10px] font-mono font-bold uppercase rounded shadow-2xs">
                         Established 2008
                       </span>
-                      <p className="font-serif text-xl sm:text-3xl font-bold text-white drop-shadow-xs">
-                        ELECTRONICS & COMMUNICATION ENGINEERING
+                      <p className="font-serif text-lg sm:text-2xl font-bold text-amber-300 drop-shadow-xs">
+                        Department of Electronics & Communication Engineering
                       </p>
-                      <p className="text-xs sm:text-sm text-blue-100 font-medium max-w-2xl">
+                      <p className="text-xs sm:text-sm text-slate-200 font-medium max-w-2xl">
                         Generating innovative ideas, technical competence, and moral values for local and global societal needs.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Quick Highlights / Key Metrics with Electric Royal Blue Palette */}
+                {/* Quick Highlights / Key Metrics with CSE-matched Palette */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  <div className="p-4 bg-blue-600 text-white rounded-2xl text-center shadow-md relative overflow-hidden">
-                    <span className="text-2xl sm:text-3xl font-serif font-bold text-white block">1,500+</span>
-                    <span className="text-[11px] text-blue-100 font-mono uppercase font-bold">Campus Community</span>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center shadow-xs">
+                    <span className="text-2xl sm:text-3xl font-serif font-bold text-blue-700 block">1,500+</span>
+                    <span className="text-[11px] text-slate-600 font-mono uppercase font-semibold">Campus Community</span>
                   </div>
 
-                  <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-2xl text-center shadow-xs">
-                    <span className="text-2xl sm:text-3xl font-serif font-bold text-blue-700 block">2008</span>
-                    <span className="text-[11px] text-blue-900 font-mono uppercase font-bold">Established</span>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center shadow-xs">
+                    <span className="text-2xl sm:text-3xl font-serif font-bold text-amber-600 block">2008</span>
+                    <span className="text-[11px] text-slate-600 font-mono uppercase font-semibold">Established</span>
                   </div>
 
-                  <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-2xl text-center shadow-xs">
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center shadow-xs">
                     <span className="text-2xl sm:text-3xl font-serif font-bold text-blue-700 block">180</span>
-                    <span className="text-[11px] text-blue-900 font-mono uppercase font-bold">Augmented Intake</span>
+                    <span className="text-[11px] text-slate-600 font-mono uppercase font-semibold">Annual Intake</span>
                   </div>
 
-                  <div className="p-4 bg-blue-700 text-white rounded-2xl text-center shadow-md">
-                    <span className="text-xl sm:text-2xl font-serif font-bold text-white block pt-1">AICTE</span>
-                    <span className="text-[10px] text-blue-100 font-mono uppercase font-bold">JNTUA Affiliated</span>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center shadow-xs">
+                    <span className="text-xl sm:text-2xl font-serif font-bold text-blue-700 block pt-1">AICTE</span>
+                    <span className="text-[11px] text-slate-600 font-mono uppercase font-semibold">JNTUA Affiliated</span>
                   </div>
                 </div>
 
                 {/* ABOUT THE DEPARTMENT */}
                 <div className="space-y-5">
-                  <div className="flex items-center gap-2.5 border-b border-slate-200 pb-3">
-                    <div className="p-2 bg-blue-600 text-white rounded-xl shadow-xs">
-                      <BookOpen className="h-5 w-5" />
-                    </div>
+                  <div className="flex items-center gap-2 border-b border-slate-100 pb-2">
+                    <BookOpen className="h-6 w-6 text-blue-600" />
                     <h2 className="text-xl sm:text-2xl font-serif font-bold text-blue-800">
-                      ELECTRONICS & COMMUNICATION ENGINEERING
+                      ABOUT THE DEPARTMENT
                     </h2>
                   </div>
 
                   <div className="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
-                    <p className="bg-blue-50/90 p-5 rounded-2xl border-l-4 border-blue-600 shadow-xs font-medium text-slate-800">
+                    <p className="bg-gradient-to-r from-amber-50 via-amber-50/90 to-yellow-50/70 p-5 rounded-2xl border-l-4 border-amber-500 border border-amber-200/80 shadow-xs font-medium text-slate-900">
                       The Electronics and Communication Engineering (ECE) Department in Ravindra College of Engineering women (RECW) has been established in 2008 since then it is providing education for the students of ECE to create innovative ideas and produce creative solutions to the societys needs. The students of ECE are conscious to the universal moral values, adherent to the professional ethical code. The department is intended to generate and disseminate knowledge and technologies essential to the local and global needs in the field of Electronics and Communication Engineering.
                     </p>
 
-                    <p className="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs">
-                      Since its inception in 2008,RECW is rigorously striving to attain the status of being one of the top institutions in the field of technical education and scientific research. It is aesthetically designed, practically architected campus for student, faculty and administration efficiency. RECW currently supports a community of over 1,500 students.
+                    <p className="p-4 bg-white rounded-xl border border-slate-200 shadow-2xs">
+                      Since its inception in 2008, RECW is rigorously striving to attain the status of being one of the top institutions in the field of technical education and scientific research. It is aesthetically designed, practically architected campus for student, faculty and administration efficiency. RECW currently supports a community of over 1,500 students.
                     </p>
 
-                    <p className="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs">
-                      The Department of Electronics and Communication Engineering (ECE) at RECW is a name for its excellence in Electronics and Communication Engineering education and research. The department is providing excellent opportunities for young technocrats to enhance their learning capabilities with strong skill set in Electronics, Signal & Image processing, Analog & Digital communications, Optical communications, Computer communications and wireless communications. The ECE graduate is likely to be equipped with the required skill set and pursue career in Electronics, Communications & IT industry, research and higher qualifications in reputed premier institutions in the country or abroad.
+                    <p className="p-4 bg-white rounded-xl border border-slate-200 shadow-2xs">
+                      The Department of Electronics and Communication Engineering (ECE) at RECW is a name for its excellence in Electronics and Communication Engineering education and research. The department is providing excellent opportunities for young technocrats to enhance their learning capabilities with strong skill set in Electronics, Signal & Image processing, Analog & Digital communications, Optical communications, Computer communications and wireless communications.
                     </p>
 
-                    {/* Intake & Program Growth Card */}
-                    <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl flex items-start gap-4 shadow-md relative overflow-hidden">
-                      <div className="p-3 bg-white/20 text-white rounded-xl shrink-0 mt-0.5 shadow-sm">
-                        <GraduationCap className="h-6 w-6 font-bold" />
-                      </div>
-                      <div className="space-y-1.5">
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-100 bg-white/20 px-2.5 py-0.5 rounded">
-                          Approved Intake Capacity
-                        </span>
-                        <h4 className="font-serif font-bold text-white text-base sm:text-lg">
-                          AICTE Recognition & Intake Augmentation
-                        </h4>
-                        <p className="text-xs sm:text-sm text-blue-50 leading-relaxed font-medium">
-                          The ECE Program has been recognized by AICTE and affiliated to JNTUA; Anantapur the current intake is 120 students. The intake has been augmented to 180 from the next academic year i.e 2012-2013.
-                        </p>
-                      </div>
+                    {/* Intake & Program Growth Card with Amber/Gold Accent matching CSE */}
+                    <div className="p-5 bg-gradient-to-br from-amber-50/80 to-amber-100/40 rounded-2xl border border-amber-200 space-y-3">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-900 bg-amber-200/80 px-2.5 py-0.5 rounded border border-amber-300">
+                        Approved Intake Capacity
+                      </span>
+                      <h4 className="font-serif font-bold text-slate-900 text-base sm:text-lg">
+                        AICTE Recognition & Intake Augmentation
+                      </h4>
+                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+                        The ECE Program has been recognized by AICTE and affiliated to JNTUA; Anantapur the current intake is 120 students. The intake has been augmented to 180 from the next academic year i.e 2012-2013.
+                      </p>
                     </div>
 
                     {/* Faculty & Mentorship Feature */}
-                    <div className="p-6 bg-blue-50/80 rounded-2xl border border-blue-200 space-y-4 shadow-xs">
+                    <div className="p-5 bg-white rounded-2xl border border-slate-200 space-y-4 shadow-xs">
                       <h4 className="font-serif font-bold text-blue-900 text-base sm:text-lg flex items-center gap-2">
-                        <div className="p-2 bg-blue-600 text-white rounded-lg">
-                          <Users className="h-5 w-5" />
-                        </div>
+                        <Users className="h-5 w-5 text-blue-600" />
                         Faculty Commitment & Mentorship Program
                       </h4>
-                      <p className="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium">
+                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
                         The ECE Department recruits faculty with excellent academic qualifications and rich experience in academia, industry and research, and supports superior research facilities. Faculty of ECE uses the state- of- the art teaching aids to ensure better content delivery and facilitate greater student interaction. Faculty commitment to excellence in teaching has been recognized and honored with numerous engineering and institution teaching awards. In addition to classes, students also have the opportunity to interact with faculty as mentees through faculty mentoring program.
                       </p>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
-                        <div className="bg-white p-4 rounded-xl border border-blue-200 flex items-start gap-3 shadow-2xs">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-start gap-3 shadow-2xs">
                           <FlaskConical className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
                           <p className="text-xs sm:text-sm text-slate-700 font-medium">
                             The department has well-equipped laboratories for course work teaching and student projects, including a number of specialist laboratories.
                           </p>
                         </div>
-                        <div className="bg-white p-4 rounded-xl border border-blue-200 flex items-start gap-3 shadow-2xs">
+                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-start gap-3 shadow-2xs">
                           <Sparkles className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
                           <p className="text-xs sm:text-sm text-slate-700 font-medium">
                             The department of ECE always looks ahead with strong team work in order to give a valuable education and present techno excellent Electronics and Communication engineers to the society.
@@ -492,10 +484,10 @@ export default function ECE() {
                   </div>
                 </div>
 
-                {/* VISION & MISSION CARDS */}
+                {/* VISION & MISSION CARDS matching CSE style */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
                   {/* Vision Card */}
-                  <div className="bg-white rounded-2xl border-2 border-blue-600 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+                  <div className="bg-white rounded-2xl border-2 border-blue-200 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
                     <div className="space-y-3">
                       <div className="inline-flex items-center gap-2 bg-blue-600 text-white px-3.5 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider">
                         <Eye className="h-4 w-4 text-white" />

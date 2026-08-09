@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { DEPARTMENTS } from '../data';
 import CSE_HOD_IMAGE from '../assets/images/rcew_cse_hod_seshadri.png';
+import CSE_HERO_IMAGE from '../assets/images/rcew_academic_lab3_1785860375164.png';
 
 // Detailed data models for each sidebar section
 const DEPARTMENT_SIDEBAR_MENU = [
@@ -394,7 +395,7 @@ export default function CSE() {
                   </div>
 
                   <div className="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
-                    <p className="bg-slate-50 p-5 rounded-2xl border-l-4 border-blue-600 shadow-xs">
+                    <p className="bg-gradient-to-r from-amber-50 via-amber-50/90 to-yellow-50/70 p-5 rounded-2xl border-l-4 border-amber-500 border border-amber-200/80 shadow-xs font-medium text-slate-900">
                       At Ravindra College of Engineering for Women, the Computer Science and Engineering department is more than just a program—it’s a launchpad for innovation and empowerment. Here, we nurture creativity, problem-solving skills, and a passion for technology, preparing women to thrive in the dynamic world of computing. With dedicated faculty, cutting-edge research opportunities, and a supportive community, we’re shaping the next generation of female leaders in computer science.
                     </p>
 
