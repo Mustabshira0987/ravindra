@@ -21,9 +21,14 @@ import WALMART_PLACEMENT_IMAGE from '../assets/images/rcew_walmart_placement.png
 import ADP_PLACEMENT_IMAGE from '../assets/images/rcew_adp_placement.png';
 import TCS_DIGITAL_IMAGE from '../assets/images/rcew_tcs_digital_placement.png';
 
-// Imported Home Page Edge Banners
+// Imported Home Page Edge Banners & User Showcase Photos
 import ADMISSIONS_POSTER_2025 from '../assets/images/rcew_admissions_poster_2025.png';
 import CLASSICAL_DANCE_PERFORMERS from '../assets/images/rcew_classical_dance_performers.jpg';
+import HOME_FACULTY_EVENT from '../assets/images/rcew_home_faculty_event.png';
+import HOME_DRONE_INNOVATION from '../assets/images/rcew_home_drone_innovation.png';
+import HOME_BUILDING_FRONT from '../assets/images/rcew_home_building_front.png';
+import HOME_NIELIT_BOOTCAMP from '../assets/images/rcew_nielit_bootcamp_lamp_lighting.png';
+import HOME_TECH_LAB_EVENT from '../assets/images/rcew_home_tech_lab_event.png';
 
 // 1. CIRCULARS DATA (84 entries)
 const CIRCULARS_DATA = [
@@ -232,24 +237,30 @@ export default function Home() {
       {/* Stats Section with Animated Counters */}
       <Stats />
 
-      {/* College Introduction & Vision */}
-      <section className="py-16 sm:py-20 bg-white border-b border-slate-200/80">
+      {/* College Introduction & Vision - Scroll Pop-Up Reveal */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200/80 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 45, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
           >
-            {/* Left Image grid */}
-            <div className="lg:col-span-5 relative">
+            {/* Left Image grid with pop-up hover effect */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="lg:col-span-5 relative"
+            >
               <div className="absolute -top-4 -left-4 w-72 h-72 bg-blue-100/60 rounded-3xl blur-2xl -z-10" />
-              <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white group">
                 <img
                   src={MUGDHA_CELEBRATIONS_IMAGE}
                   alt="RCEW Mugdha Celebrations"
-                  className="w-full h-80 sm:h-96 object-cover hover:scale-105 transition-transform duration-700"
+                  className="w-full h-80 sm:h-96 object-cover group-hover:scale-108 transition-transform duration-700"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent" />
@@ -258,10 +269,16 @@ export default function Home() {
                   <p className="text-xs text-yellow-300 font-mono mt-1 drop-shadow-xs">Established in 2008 • Kurnool</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Right content */}
-            <div className="lg:col-span-7 space-y-5">
+            {/* Right content with smooth reveal */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:col-span-7 space-y-5"
+            >
               <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono block">
                 Welcome to RCEW, Kurnool
               </span>
@@ -273,22 +290,29 @@ export default function Home() {
                 Ravindra Engineering College for Women (RCEW) is Kurnool's elite academic destination, solely committed to sharpening technological competency and leadership profiles of young women engineers. Approved by AICTE, affiliated to JNTUA, and NAAC Accredited A+, we offer state-of-the-art labs and global placement training.
               </p>
 
-              {/* Accreditations Row */}
+              {/* Accreditations Row with Pop-up Badges */}
               <div className="grid grid-cols-2 gap-4 pt-2">
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <motion.div
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 shadow-2xs transition-all"
+                >
                   <CheckCircle2 className="h-5 w-5 text-yellow-500 shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold text-xs sm:text-sm text-slate-900">NAAC Accredited A+</h4>
                     <p className="text-[11px] text-slate-500">Institutional Excellence Mark</p>
                   </div>
-                </div>
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 shadow-2xs transition-all"
+                >
                   <CheckCircle2 className="h-5 w-5 text-yellow-500 shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold text-xs sm:text-sm text-slate-900">NBA Accredited</h4>
                     <p className="text-[11px] text-slate-500">CSE & ECE Core Streams</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               <div className="pt-4">
@@ -300,13 +324,20 @@ export default function Home() {
                   Learn Vision & Profile <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* ================= COMPACT FULLY VISIBLE B.TECH ADMISSIONS 2025-2026 POSTER SHOWCASE ================= */}
-      <section id="admissions-section" className="relative overflow-hidden py-6 sm:py-8 bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-950 text-white border-y-2 border-yellow-400 shadow-lg my-4">
+      {/* ================= ADMISSIONS & SHOWCASE POSTERS BANNER - POP-UP MOTION ================= */}
+      <motion.section
+        initial={{ opacity: 0, y: 50, scale: 0.96 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        id="admissions-section"
+        className="relative overflow-hidden py-8 sm:py-10 bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-950 text-white border-y-2 border-yellow-400 shadow-lg my-6"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             
@@ -333,10 +364,10 @@ export default function Home() {
               {/* Action Buttons */}
               <div className="pt-1 flex flex-wrap items-center gap-3">
                 <Link
-                  to="/academics"
-                  className="px-5 py-2.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 cursor-pointer"
+                  to="/admissions"
+                  className="px-5 py-2.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 cursor-pointer hover:scale-105"
                 >
-                  Apply Online Now <ArrowRight className="h-4 w-4" />
+                  Admissions Information <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
                   href="tel:8639756876"
@@ -347,30 +378,47 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column: COMPACT FULLY VISIBLE POSTER */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative max-w-xs w-full bg-white p-1.5 rounded-2xl border-2 border-yellow-400 shadow-xl group transition-all duration-300">
+            {/* Right Column: Interactive Pop-up Image Cards */}
+            <div className="lg:col-span-5 flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <motion.div
+                whileHover={{ scale: 1.05, y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="relative max-w-[220px] w-full bg-white p-1.5 rounded-2xl border-2 border-yellow-400 shadow-xl group cursor-pointer"
+              >
                 <img
                   src={ADMISSIONS_POSTER_2025}
                   alt="Ravindra College of Engineering for Women B.Tech Admissions 2025-2026 Open Official Poster"
-                  className="w-full h-auto max-h-[320px] sm:max-h-[360px] rounded-xl object-contain shadow-xs mx-auto"
+                  className="w-full h-auto max-h-[300px] rounded-xl object-contain shadow-xs mx-auto"
                   loading="eager"
                 />
-              </div>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.05, y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="relative max-w-[220px] w-full bg-white p-1.5 rounded-2xl border-2 border-yellow-400 shadow-xl group cursor-pointer"
+              >
+                <img
+                  src={HOME_NIELIT_BOOTCAMP}
+                  alt="RCEW NIELIT Five-Day Offline Boot Camp on RTL, IP Integration & SoC Sign-off Lamp Lighting Inauguration"
+                  className="w-full h-auto max-h-[300px] rounded-xl object-cover shadow-xs mx-auto"
+                  loading="eager"
+                />
+              </motion.div>
             </div>
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* ================= COMPACT NOTICE BOARD PORTAL (CIRCULARS & EXAM NOTIFICATIONS) ================= */}
+      {/* ================= NOTICE BOARD PORTAL - POP-UP REVEAL ================= */}
       <section className="py-14 bg-gradient-to-b from-slate-100 to-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 45, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden"
           >
             {/* Header with Switcher & Search */}
@@ -426,7 +474,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Scrollable Compact Content Area */}
+            {/* Scrollable Content Area */}
             <div className="p-4 sm:p-6 max-h-[380px] overflow-y-auto divide-y divide-slate-100">
               {noticeTab === 'circulars' ? (
                 filteredCirculars.length > 0 ? (
@@ -464,11 +512,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= COMPACT PLACEMENTS BY ACADEMIC YEAR SECTION ================= */}
-      <section className="py-16 bg-white border-b border-slate-200">
+      {/* ================= PLACEMENTS SECTION - STAGGERED POP-UP motion ================= */}
+      <section className="py-16 bg-white border-b border-slate-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+          >
             <div>
               <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono block">
                 Yearly Placements Breakdown
@@ -503,26 +557,33 @@ export default function Home() {
                 Academic Year 2023-24
               </button>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Featured Placement Photo Banners Grid */}
+          {/* Featured Placement Photo Banners Grid with Staggered Pop-Ups */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
-              <img src={WALMART_PLACEMENT_IMAGE} alt="Walmart 27 Lakhs Placement Banner" className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
-              <img src={TCS_ACCENTURE_IMAGE} alt="TCS and Accenture Placements Banner" className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
-              <img src={ADP_PLACEMENT_IMAGE} alt="ADP 6 Lakh Placements Banner" className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
-              <img src={TCS_DIGITAL_IMAGE} alt="TCS Digital 7 Lakh Package Banner" className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            </div>
+            {[WALMART_PLACEMENT_IMAGE, TCS_ACCENTURE_IMAGE, ADP_PLACEMENT_IMAGE, TCS_DIGITAL_IMAGE].map((imgSrc, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 35, scale: 0.94 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -5, scale: 1.03 }}
+                className="rounded-2xl overflow-hidden shadow-sm border border-slate-200 group cursor-pointer"
+              >
+                <img src={imgSrc} alt="Corporate Placement Banner" className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </motion.div>
+            ))}
           </div>
 
-          {/* Compact Placements Table */}
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs">
+          {/* Placements Table with Pop-Up Animation */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs"
+          >
             <table className="w-full text-left text-xs sm:text-sm">
               <thead className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white font-mono uppercase text-[11px]">
                 <tr>
@@ -547,15 +608,21 @@ export default function Home() {
                 ))}
               </tbody>
             </table>
-          </div>
+          </motion.div>
 
         </div>
       </section>
 
-      {/* Featured Departments */}
-      <section className="py-16 bg-white border-b border-slate-200">
+      {/* Featured Departments - Staggered Pop-Up Grid */}
+      <section className="py-16 bg-white border-b border-slate-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col sm:flex-row items-center justify-between mb-10"
+          >
             <div>
               <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono block">
                 Academic Disciplines
@@ -570,19 +637,24 @@ export default function Home() {
             >
               All Programs <ChevronRight className="h-4 w-4" />
             </Link>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredDepts.map((dept) => (
-              <div
+            {featuredDepts.map((dept, idx) => (
+              <motion.div
                 key={dept.id}
-                className="group bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 45, scale: 0.94 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.15 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="relative h-48 overflow-hidden shrink-0">
                   <img
                     src={dept.image}
                     alt={dept.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -609,24 +681,34 @@ export default function Home() {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= COMPACT CULTURAL DANCE BANNER ================= */}
-      <section className="relative overflow-hidden py-6 sm:py-8 bg-gradient-to-r from-slate-950 via-purple-950 to-indigo-950 text-white border-y-2 border-amber-400/50 shadow-lg my-4">
+      {/* ================= CULTURAL FEST BANNER - POP-UP MOTION ================= */}
+      <motion.section
+        initial={{ opacity: 0, y: 45, scale: 0.96 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="relative overflow-hidden py-8 sm:py-10 bg-gradient-to-r from-slate-950 via-purple-950 to-indigo-950 text-white border-y-2 border-amber-400/50 shadow-lg my-6"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center justify-between gap-6 relative z-10">
-          {/* COMPACT DANCE IMAGE CARD */}
-          <div className="relative w-full md:w-80 h-52 md:h-60 rounded-2xl overflow-hidden border-2 border-amber-400/80 shadow-xl group cursor-pointer bg-slate-900 shrink-0">
+          {/* Pop-up Dance Image Card */}
+          <motion.div
+            whileHover={{ scale: 1.05, rotate: -1 }}
+            transition={{ duration: 0.3 }}
+            className="relative w-full md:w-80 h-52 md:h-60 rounded-2xl overflow-hidden border-2 border-amber-400/80 shadow-xl group cursor-pointer bg-slate-900 shrink-0"
+          >
             <img src={CLASSICAL_DANCE_PERFORMERS} alt="RCEW Classical Cultural Dance Performance" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-3">
               <span className="text-[11px] font-mono text-amber-300 font-bold bg-slate-950/80 px-2.5 py-0.5 rounded-md border border-amber-400/40">
                 🎭 Mugdha & Cultural Fests
               </span>
             </div>
-          </div>
+          </motion.div>
 
           <div className="space-y-2.5 max-w-xl text-left md:text-right">
             <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-amber-400 text-blue-950 uppercase tracking-widest inline-block shadow-sm">
@@ -639,18 +721,24 @@ export default function Home() {
               From classical Bharatanatyam recitals to annual campus celebrations like <strong>Mugdha 2K25</strong>, RCEW nurtures artistic talents and leadership alongside academic brilliance.
             </p>
             <div className="pt-1 flex md:justify-end">
-              <Link to="/campus-life" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-blue-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer">
+              <Link to="/campus-life" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-blue-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer hover:scale-105">
                 Explore Clubs <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Visual Tour Preview Section (Including Drone Demo Photo) */}
-      <section className="py-16 bg-slate-50 relative border-t border-slate-200">
+      {/* Visual Tour Section - Staggered Motion Reveal */}
+      <section className="py-16 bg-slate-50 relative border-t border-slate-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
             <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono">
               Life on Campus
             </span>
@@ -658,70 +746,52 @@ export default function Home() {
               Campus Innovation & Visual Tour
             </h2>
             <div className="h-1 w-16 bg-yellow-500 mx-auto mt-3 rounded-full" />
-          </div>
+          </motion.div>
 
+          {/* 4 Staggered Pop-Up Campus Life Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Photo 1: Drone Demo */}
-            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
-              <img
-                src={DRONE_DEMO_IMAGE}
-                alt="RCEW Drone Technology Demonstration"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4">
-                <span className="text-white text-xs font-serif font-bold drop-shadow-sm">Drone Innovation & Flight Demonstration</span>
-              </div>
-            </div>
-
-            {/* Photo 2: Bootcamp */}
-            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
-              <img
-                src={VISUAL_TOUR_BOOTCAMP}
-                alt="Lean Start Up Boot Camp"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4">
-                <span className="text-white text-xs font-serif font-bold drop-shadow-sm">Lean Start Up & MVP Boot Camp</span>
-              </div>
-            </div>
-
-            {/* Photo 3: Workshop */}
-            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
-              <img
-                src={VISUAL_TOUR_WORKSHOP}
-                alt="Empowering Girls on Cloud Tech"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4">
-                <span className="text-white text-xs font-serif font-bold drop-shadow-sm">Cloud Tech Workshop</span>
-              </div>
-            </div>
-
-            {/* Photo 4: Labs */}
-            <div className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-200">
-              <img
-                src={VISUAL_TOUR_LABS}
-                alt="Advanced Hardware Labs"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4">
-                <span className="text-white text-xs font-serif font-bold drop-shadow-sm">Advanced Computing & Hardware Labs</span>
-              </div>
-            </div>
+            {[
+              { img: HOME_DRONE_INNOVATION, title: "IEEE Drone Innovation & Flight Demo" },
+              { img: HOME_TECH_LAB_EVENT, title: "Interactive Coding & Tech Lab Mentorship" },
+              { img: HOME_FACULTY_EVENT, title: "Academic Conferences & Faculty Leadership" },
+              { img: HOME_BUILDING_FRONT, title: "State-of-the-Art Autonomous Campus" },
+            ].map((card, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 40, scale: 0.93 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.12 }}
+                whileHover={{ y: -6, scale: 1.03 }}
+                className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-200 cursor-pointer"
+              >
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4">
+                  <span className="text-white text-xs font-serif font-bold drop-shadow-sm">{card.title}</span>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          <div className="mt-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-8 text-center"
+          >
             <Link
               to="/campus-life"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg"
             >
               Tour Campus & Facilities <ArrowRight className="h-4 w-4" />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

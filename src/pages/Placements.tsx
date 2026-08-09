@@ -353,14 +353,14 @@ export default function Placements() {
                 <div className="overflow-x-auto rounded-2xl border border-slate-200/90 shadow-md">
                   <table className="w-full text-left border-collapse">
                     <thead>
-                      <tr className="bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 text-white font-serif text-xs uppercase tracking-wider">
-                        <th className="py-4 px-6 font-bold w-20 text-center">SNO</th>
-                        <th className="py-4 px-6 font-bold">Company Name</th>
-                        <th className="py-4 px-6 font-bold text-right">CTC (in Lakh)</th>
-                        <th className="py-4 px-6 font-bold text-center">Offer Category</th>
+                      <tr className="bg-blue-800 text-white font-serif font-bold uppercase text-[11px] border-b-2 border-amber-400">
+                        <th className="py-4 px-6 font-bold w-20 text-center text-amber-300">SNO</th>
+                        <th className="py-4 px-6 font-bold text-white">Company Name</th>
+                        <th className="py-4 px-6 font-bold text-right text-amber-300">CTC (in Lakh)</th>
+                        <th className="py-4 px-6 font-bold text-center text-slate-100">Offer Category</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-200/70 text-xs font-sans bg-white">
+                    <tbody className="divide-y divide-slate-200/70 text-xs font-sans bg-white text-slate-800">
                       {filteredCompanies.map((item, idx) => (
                         <tr
                           key={item.sno}
@@ -540,24 +540,24 @@ export default function Placements() {
                 <div className="overflow-x-auto rounded-2xl border border-slate-200/90 shadow-md">
                   <table className="w-full text-left border-collapse">
                     <thead>
-                      <tr className="bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 text-white font-serif text-xs uppercase tracking-wider">
-                        <th className="py-4 px-5 font-bold w-16 text-center">S.NO</th>
-                        <th className="py-4 px-5 font-bold">ROLL NUMBER</th>
-                        <th className="py-4 px-6 font-bold">STUDENT NAME</th>
-                        <th className="py-4 px-6 font-bold">EMPLOYER</th>
-                        <th className="py-4 px-5 font-bold text-right">CTC</th>
-                        <th className="py-4 px-5 font-bold text-center">BRANCH</th>
+                      <tr className="bg-blue-800 text-white font-serif font-bold uppercase text-[11px] border-b-2 border-amber-400">
+                        <th className="py-4 px-5 font-bold w-16 text-center text-amber-300">S.NO</th>
+                        <th className="py-4 px-5 font-bold text-white">ROLL NUMBER</th>
+                        <th className="py-4 px-6 font-bold text-white">STUDENT NAME</th>
+                        <th className="py-4 px-6 font-bold text-white">EMPLOYER</th>
+                        <th className="py-4 px-5 font-bold text-right text-amber-300">CTC</th>
+                        <th className="py-4 px-5 font-bold text-center text-slate-100">BRANCH</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-200/70 text-xs font-sans bg-white">
+                    <tbody className="divide-y divide-slate-200/70 text-xs font-sans bg-white text-slate-800">
                       {filteredStudents.map((item, idx) => (
                         <tr
                           key={item.sno}
                           className={`transition-colors duration-150 group ${
                             idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'
-                          } hover:bg-blue-50/80`}
+                          } hover:bg-blue-50/40`}
                         >
-                          <td className="py-3.5 px-5 font-mono font-bold text-slate-400 text-center group-hover:text-blue-600">
+                          <td className="py-3.5 px-5 font-mono font-bold text-blue-800 text-center">
                             {item.sno}
                           </td>
                           <td className="py-3.5 px-5 font-mono font-bold text-slate-700 tracking-wider">

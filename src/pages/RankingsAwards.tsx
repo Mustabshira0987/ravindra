@@ -383,18 +383,18 @@ export default function RankingsAwards() {
   return (
     <div className="py-8 sm:py-12 bg-slate-50 min-h-screen">
       
-      {/* Page Header Banner in Vibrant Blue Theme */}
-      <section className="relative py-16 sm:py-20 bg-slate-900 text-white overflow-hidden mb-12 rounded-b-[40px] shadow-lg">
+      {/* Page Header Banner in Royal Blue Theme */}
+      <section className="relative py-16 sm:py-20 bg-gradient-to-b from-blue-900 via-blue-800 to-slate-900 text-white overflow-hidden mb-12 rounded-b-[40px] shadow-lg border-b-2 border-amber-400/80">
         <div className="absolute inset-0 bg-grid-pattern opacity-10" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-          <span className="px-3.5 py-1 bg-amber-500/20 text-amber-300 text-xs font-mono font-bold uppercase tracking-widest rounded-full border border-amber-400/30">
+          <span className="px-3.5 py-1 bg-white/10 text-amber-300 text-xs font-mono font-bold uppercase tracking-widest rounded-full border border-amber-400/30">
             Institutional Accreditations & Honors
           </span>
           <h1 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-white">
             Rankings and Awards
           </h1>
-          <div className="h-1 w-20 bg-amber-400 mx-auto mt-2 rounded-full" />
-          <p className="max-w-3xl mx-auto text-slate-300 text-sm sm:text-base leading-relaxed font-medium">
+          <div className="h-1 w-20 bg-amber-400 mx-auto mt-2 rounded-full shadow-xs" />
+          <p className="max-w-3xl mx-auto text-blue-100 text-sm sm:text-base leading-relaxed font-medium">
             National rankings, survey accolades, state honors, and quality certifications conferred on Ravindra College of Engineering for Women.
           </p>
         </div>
@@ -412,8 +412,8 @@ export default function RankingsAwards() {
                 onClick={() => setSelectedYear(sec.yearSection)}
                 className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold font-mono transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20 border border-blue-500'
-                    : 'bg-white text-slate-700 hover:bg-blue-50 border border-slate-200'
+                    ? 'bg-blue-800 text-white shadow-xs border border-blue-900'
+                    : 'bg-white text-slate-700 hover:bg-blue-50/60 border border-slate-200'
                 }`}
               >
                 Academic Year {sec.yearSection}
@@ -423,16 +423,16 @@ export default function RankingsAwards() {
         </div>
 
         {/* Selected Year Section Title Header */}
-        <div className="p-6 bg-white border-l-4 border-blue-600 rounded-2xl shadow-xs border-y border-r border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="p-6 bg-white border-l-4 border-blue-800 rounded-2xl shadow-2xs border-y border-r border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded border border-amber-200">
               Survey Records
             </span>
-            <h2 className="text-xl sm:text-2xl font-serif font-bold text-slate-900 mt-1">
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-slate-950 mt-1">
               {currentSurveyData.title}
             </h2>
           </div>
-          <span className="px-3.5 py-1 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-full border border-amber-300">
+          <span className="px-3.5 py-1 bg-amber-100 text-amber-950 font-mono font-bold text-xs rounded-full border border-amber-300">
             {currentSurveyData.items.length} Award Records
           </span>
         </div>
@@ -442,29 +442,29 @@ export default function RankingsAwards() {
           {currentSurveyData.items.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:border-blue-600 hover:shadow-md transition-all space-y-3 flex flex-col justify-between group"
+              className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs hover:border-amber-400 hover:shadow-md transition-all space-y-3 flex flex-col justify-between group"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 bg-blue-50 text-blue-700 rounded-xl flex items-center justify-center font-bold border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <Trophy className="h-5 w-5" />
+                  <div className="w-10 h-10 bg-blue-50 text-blue-800 rounded-xl flex items-center justify-center font-bold border border-blue-200 group-hover:bg-blue-800 group-hover:text-white transition-colors">
+                    <Trophy className="h-5 w-5 text-amber-500 group-hover:text-amber-300" />
                   </div>
-                  <span className="px-3 py-1 bg-blue-600 text-white font-mono font-bold text-xs rounded-full shadow-2xs">
+                  <span className="px-3 py-1 bg-amber-100 text-amber-950 border border-amber-300 font-mono font-bold text-xs rounded-full shadow-2xs">
                     {item.rank}
                   </span>
                 </div>
 
-                <h3 className="font-serif font-bold text-slate-900 text-base leading-snug">
+                <h3 className="font-serif font-bold text-slate-950 text-base leading-snug">
                   {item.survey}
                 </h3>
 
-                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                <p className="text-xs text-slate-700 leading-relaxed font-medium">
                   {item.detail}
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-blue-700 font-semibold">
-                <CheckCircle2 className="h-3.5 w-3.5 text-blue-600" /> National Survey Verification
+              <div className="pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-blue-900 font-semibold">
+                <CheckCircle2 className="h-3.5 w-3.5 text-amber-500" /> National Survey Verification
               </div>
             </div>
           ))}

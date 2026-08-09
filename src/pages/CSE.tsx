@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import {
   BookOpen, Award, CheckCircle2, Users, ChevronRight,
   History, ShieldCheck, GraduationCap, Eye, Sparkles, Building2,
@@ -6,6 +7,7 @@ import {
   Globe, Rocket, Search
 } from 'lucide-react';
 import { DEPARTMENTS } from '../data';
+import CSE_HOD_IMAGE from '../assets/images/rcew_cse_hod_seshadri.png';
 
 // Detailed data models for each sidebar section
 const DEPARTMENT_SIDEBAR_MENU = [
@@ -273,18 +275,18 @@ export default function CSE() {
           {/* ================= LEFT SIDEBAR (Electric Royal Blue Theme - 2nd Image Color) ================= */}
           <div className="lg:col-span-3 bg-white rounded-2xl shadow-lg border border-slate-200/80 overflow-hidden sticky top-24">
             
-            {/* Top Electric Royal Blue Accent Line */}
-            <div className="h-3.5 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700" />
+            {/* Top Royal Blue & Gold Accent Line */}
+            <div className="h-3.5 bg-gradient-to-r from-blue-900 via-blue-700 to-amber-500" />
 
-            {/* Sidebar Title Card with Electric Royal Blue Gradient */}
-            <div className="p-6 text-center bg-gradient-to-b from-blue-600 via-blue-700 to-blue-800 text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-bl-full pointer-events-none" />
-              <GraduationCap className="h-7 w-7 text-white mx-auto mb-1.5 drop-shadow-xs" />
+            {/* Sidebar Title Card with Royal Blue Gradient & Gold Accent */}
+            <div className="p-6 text-center bg-gradient-to-b from-blue-900 via-blue-800 to-slate-900 text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-amber-400/10 rounded-bl-full pointer-events-none" />
+              <GraduationCap className="h-7 w-7 text-amber-400 mx-auto mb-1.5 drop-shadow-xs" />
               <h2 className="text-xl sm:text-2xl font-serif font-bold text-white leading-tight">
                 Department <br />
-                <span className="text-white font-sans tracking-wide text-lg sm:text-xl">of CSE</span>
+                <span className="text-amber-300 font-sans tracking-wide text-lg sm:text-xl">of CSE</span>
               </h2>
-              <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/20 text-white border border-white/30">
+              <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/10 text-amber-300 border border-amber-400/30">
                 RCEW Autonomous
               </span>
             </div>
@@ -299,22 +301,22 @@ export default function CSE() {
                     onClick={() => setActiveTab(item.id)}
                     className={`w-full text-left px-5 py-3.5 text-sm sm:text-base font-semibold flex items-center justify-between transition-all cursor-pointer relative ${
                       isActive
-                        ? 'text-blue-700 bg-blue-50 font-bold shadow-2xs'
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                        ? 'text-blue-900 bg-blue-50/80 font-bold shadow-2xs'
+                        : 'text-slate-700 hover:text-blue-900 hover:bg-blue-50/40'
                     }`}
                   >
                     <span className="flex items-center gap-2">
-                      {isActive && <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />}
+                      {isActive && <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />}
                       <span>{item.label}</span>
                     </span>
 
                     {item.hasSubmenu ? (
-                      <ChevronRight className={`h-4 w-4 transition-transform ${isActive ? 'rotate-90 text-blue-600 font-bold' : 'text-slate-400'}`} />
+                      <ChevronRight className={`h-4 w-4 transition-transform ${isActive ? 'rotate-90 text-amber-500 font-bold' : 'text-slate-400'}`} />
                     ) : null}
 
-                    {/* Active Right Vertical Electric Blue Indicator */}
+                    {/* Active Right Vertical Gold Indicator */}
                     {isActive && (
-                      <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-blue-600 rounded-l" />
+                      <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-amber-500 rounded-l shadow-xs" />
                     )}
                   </button>
                 );
@@ -327,7 +329,13 @@ export default function CSE() {
             
             {/* 1. HOME TAB */}
             {activeTab === 'home' && (
-              <div className="space-y-8 animate-fadeIn">
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="space-y-8"
+              >
                 {/* Section Header */}
                 <div className="border-b border-slate-200 pb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
@@ -467,26 +475,31 @@ export default function CSE() {
                 {/* HOD Message */}
                 <div className="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md flex flex-col md:flex-row gap-6 items-start">
                   <img
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300"
-                    alt="Dr. G. Ramesh"
-                    className="w-24 h-24 rounded-full object-cover border-2 border-amber-400 shrink-0 shadow-sm"
+                    src={CSE_HOD_IMAGE}
+                    alt="Dr. K. Seshadri Ramana"
+                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-amber-400 shrink-0 shadow-sm"
                   />
                   <div className="space-y-2">
                     <h3 className="font-serif font-bold text-amber-300 text-lg sm:text-xl">Message from Head of Department</h3>
                     <p className="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
                       "Our mission in the Department of Computer Science & Engineering is to inspire creativity, logical rigor, and software leadership. We provide state-of-the-art computational infrastructure and individual mentorship to make our women graduates industry leaders."
                     </p>
-                    <p className="text-xs font-bold text-amber-400 font-mono pt-1">— Dr. G. Ramesh, HOD & Professor</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* 2. HISTORY OF THE DEPARTMENT */}
+            {/* 2. HISTORY OF THE DEPARTMENT - STAGGERED POP-UP MOTION */}
             {activeTab === 'history' && (
-              <div className="space-y-8 animate-fadeIn">
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="space-y-8"
+              >
                 <div className="border-b border-slate-200 pb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">RCEW Legacy & Program Growth</span>
+                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Department Chronology</span>
                   <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
                     History of the Department
                   </h1>
@@ -500,7 +513,10 @@ export default function CSE() {
                 {/* Programs Breakdown Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* B.Tech Card */}
-                  <div className="bg-white rounded-2xl border-2 border-blue-200 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden space-y-4">
+                  <motion.div
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className="bg-white rounded-2xl border-2 border-blue-200 p-6 shadow-sm hover:shadow-xl transition-all relative overflow-hidden space-y-4 cursor-pointer"
+                  >
                     <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
                       <div className="p-2.5 bg-blue-600 text-white rounded-xl">
                         <GraduationCap className="h-6 w-6" />
@@ -541,65 +557,63 @@ export default function CSE() {
                       <div className="flex items-center justify-between p-3 bg-gradient-to-r from-amber-50 to-amber-100/50 rounded-xl border border-amber-200">
                         <div className="flex items-center gap-3">
                           <span className="px-2.5 py-1 bg-amber-600 text-white text-xs font-mono font-bold rounded-lg">2022</span>
-                          <span className="text-xs sm:text-sm font-bold text-slate-900">Major Expansion</span>
+                          <span className="text-xs sm:text-sm font-medium text-slate-800">3rd Major Expansion</span>
                         </div>
-                        <span className="text-xs font-extrabold text-blue-700 font-mono bg-white px-2.5 py-1 rounded-full border border-amber-300 shadow-xs">Intake increased to 360 seats</span>
+                        <span className="text-xs font-bold text-amber-900 font-mono bg-amber-200 px-2.5 py-1 rounded-full border border-amber-300">Intake expanded to 360 seats</span>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* M.Tech Card */}
-                  <div className="bg-white rounded-2xl border-2 border-amber-400/30 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between space-y-4">
-                    <div>
-                      <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
-                        <div className="p-2.5 bg-amber-600 text-white rounded-xl">
-                          <Award className="h-6 w-6" />
+                  <motion.div
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className="bg-white rounded-2xl border-2 border-amber-200 p-6 shadow-sm hover:shadow-xl transition-all relative overflow-hidden space-y-4 cursor-pointer"
+                  >
+                    <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+                      <div className="p-2.5 bg-amber-500 text-white rounded-xl">
+                        <Award className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono uppercase bg-blue-100 text-blue-900 font-bold px-2 py-0.5 rounded">Postgraduate</span>
+                        <h3 className="font-serif font-bold text-lg text-slate-900 mt-0.5">
+                          M. Tech. (Computer Science & Engineering)
+                        </h3>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3 pt-1">
+                      <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                        <div className="flex items-center gap-3">
+                          <span className="px-2.5 py-1 bg-amber-600 text-white text-xs font-mono font-bold rounded-lg">2024</span>
+                          <span className="text-xs sm:text-sm font-medium text-slate-800">PG Inception</span>
                         </div>
-                        <div>
-                          <span className="text-[10px] font-mono uppercase bg-blue-100 text-blue-900 font-bold px-2 py-0.5 rounded">Postgraduate</span>
-                          <h3 className="font-serif font-bold text-lg text-slate-900 mt-0.5">
-                            M. Tech. (Computer Science & Engineering)
-                          </h3>
-                        </div>
+                        <span className="text-xs font-bold text-amber-800 font-mono bg-amber-50 px-2.5 py-1 rounded-full border border-amber-100">18 Seats Capacity</span>
                       </div>
 
-                      <div className="space-y-3 pt-4">
-                        <div className="flex items-center justify-between p-4 bg-amber-50/60 rounded-xl border border-amber-200">
-                          <div className="flex items-center gap-3">
-                            <span className="px-2.5 py-1 bg-amber-600 text-white text-xs font-mono font-bold rounded-lg">2024</span>
-                            <span className="text-xs sm:text-sm font-bold text-slate-800">Postgraduate Program Launch</span>
-                          </div>
-                          <span className="text-xs font-extrabold text-amber-900 font-mono bg-white px-3 py-1 rounded-full border border-amber-300 shadow-xs">Started with 18 seats</span>
-                        </div>
-
-                        <p className="text-xs text-slate-600 leading-relaxed pt-2">
-                          Introduced advanced research-oriented curriculum focusing on Artificial Intelligence, Cloud Infrastructure, and Data Engineering to nurture postgraduates for advanced R&D and leadership roles.
+                      <div className="p-4 bg-amber-50/60 rounded-xl border border-amber-200/80 space-y-1.5">
+                        <h4 className="font-bold text-xs text-amber-950 uppercase font-mono">Advanced Curriculum Focus:</h4>
+                        <p className="text-xs text-slate-700 leading-relaxed font-medium">
+                          High Performance Computing, Distributed Systems, Deep Learning Architectures, Cloud Security, and Big Data Analytics.
                         </p>
                       </div>
                     </div>
-
-                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
-                      <span className="text-xs font-mono font-bold text-slate-500 uppercase">Total Current Annual Intake</span>
-                      <span className="text-sm font-serif font-bold text-blue-700">378 Seats (B.Tech + M.Tech)</span>
-                    </div>
-                  </div>
+                  </motion.div>
                 </div>
 
-                {/* Milestone Visual Timeline */}
-                <div className="space-y-4 pt-4">
+                {/* Timeline Visual Progress */}
+                <div className="pt-6 border-t border-slate-200 space-y-6">
                   <h3 className="font-serif font-bold text-xl text-slate-900 flex items-center gap-2">
-                    <History className="h-5 w-5 text-blue-600" />
-                    Historical Growth Timeline
+                    <History className="h-5 w-5 text-blue-600" /> Key Milestones Timeline
                   </h3>
 
-                  <div className="relative border-l-2 border-blue-600 pl-6 ml-3 space-y-6">
+                  <div className="relative border-l-2 border-blue-200 pl-6 ml-3 space-y-6">
                     {/* 2008 */}
                     <div className="relative group">
                       <span className="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-xs group-hover:scale-125 transition-transform" />
                       <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs hover:border-blue-600 transition-colors">
                         <span className="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">2008</span>
-                        <h4 className="font-bold text-slate-900 text-sm mt-1">B.Tech CSE Introduced — 60 Seats</h4>
-                        <p className="text-xs text-slate-600 mt-0.5">The Department of Computer Science & Engineering was established with an initial intake of 60 seats.</p>
+                        <h4 className="font-bold text-slate-900 text-sm mt-1">Established with 60 Seats Intake</h4>
+                        <p className="text-xs text-slate-600 mt-0.5">Undergraduate B.Tech in CSE launched under JNTUA affiliation with 60 initial seats.</p>
                       </div>
                     </div>
 
@@ -644,48 +658,58 @@ export default function CSE() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* 3. BOARD OF STUDIES MEMBERS */}
+            {/* 3. BOARD OF STUDIES MEMBERS - STAGGERED POP-UP MOTION */}
             {activeTab === 'bos' && (
-              <div className="space-y-6 animate-fadeIn">
-                <div className="border-b border-slate-200 pb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Academic Governance</span>
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="space-y-6"
+              >
+                <div className="border-b border-slate-200 pb-4 relative">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-600">Academic Governance</span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400 inline-block" />
+                  </div>
                   <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
                     Board of Studies' Members
                   </h1>
                   <p className="text-sm font-semibold text-slate-500 font-serif">Department of Computer Science & Engineering</p>
+                  <div className="absolute bottom-0 left-0 w-16 h-0.5 bg-amber-500" />
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-xl border-l-4 border-blue-600">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-blue-50/40 p-4 rounded-xl border-l-4 border-blue-800 shadow-2xs">
                   The Board of Studies (BOS) for Computer Science and Engineering comprises eminent academic experts from IITs, NITs, JNTUA, corporate technical leaders, distinguished alumni, and core internal faculty to design an industry-relevant autonomous curriculum.
                 </p>
 
                 {/* Summary Metrics */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  <div className="p-3 bg-blue-50/50 border border-blue-100 rounded-xl text-center shadow-xs">
-                    <span className="text-xl font-serif font-bold text-blue-700">9</span>
-                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Total Members</span>
+                  <div className="p-3.5 bg-blue-50/60 border border-blue-200/80 rounded-xl text-center shadow-2xs hover:border-amber-400/60 transition-all hover:shadow-xs">
+                    <span className="text-xl sm:text-2xl font-serif font-bold text-blue-900 block">9</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase mt-0.5">Total Members</span>
                   </div>
-                  <div className="p-3 bg-amber-50/50 border border-amber-100 rounded-xl text-center shadow-xs">
-                    <span className="text-xl font-serif font-bold text-amber-700">JNTUA / IIT / NIT</span>
-                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Academic Experts</span>
+                  <div className="p-3.5 bg-amber-50/60 border border-amber-200/80 rounded-xl text-center shadow-2xs hover:border-amber-400 transition-all hover:shadow-xs">
+                    <span className="text-lg sm:text-xl font-serif font-bold text-amber-800 block">JNTUA / IIT / NIT</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase mt-0.5">Academic Experts</span>
                   </div>
-                  <div className="p-3 bg-blue-50/50 border border-blue-100 rounded-xl text-center shadow-xs">
-                    <span className="text-xl font-serif font-bold text-blue-900">LTI Mindtree</span>
-                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Industry Partner</span>
+                  <div className="p-3.5 bg-blue-50/60 border border-blue-200/80 rounded-xl text-center shadow-2xs hover:border-amber-400/60 transition-all hover:shadow-xs">
+                    <span className="text-lg sm:text-xl font-serif font-bold text-blue-900 block">LTI Mindtree</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase mt-0.5">Industry Partner</span>
                   </div>
-                  <div className="p-3 bg-purple-50/50 border border-purple-100 rounded-xl text-center shadow-xs">
-                    <span className="text-xl font-serif font-bold text-purple-900">Value Labs</span>
-                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Alumni Representative</span>
+                  <div className="p-3.5 bg-amber-50/50 border border-amber-200/70 rounded-xl text-center shadow-2xs hover:border-amber-400 transition-all hover:shadow-xs">
+                    <span className="text-lg sm:text-xl font-serif font-bold text-amber-900 block">Value Labs</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase mt-0.5">Alumni Representative</span>
                   </div>
                 </div>
 
                 {/* Table View */}
                 <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm bg-white">
                   <table className="w-full text-left text-xs sm:text-sm">
-                    <thead className="bg-blue-700 text-white font-serif font-bold uppercase text-[11px]">
+                    <thead className="bg-blue-800 text-white font-serif font-bold uppercase text-[11px] border-b-2 border-amber-400">
                       <tr>
                         <th className="py-3.5 px-4 w-16 text-center">S.No</th>
                         <th className="py-3.5 px-4">Name of the Member</th>
@@ -693,21 +717,21 @@ export default function CSE() {
                         <th className="py-3.5 px-4 text-center">Designation</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 text-slate-700">
+                    <tbody className="divide-y divide-slate-100 text-slate-800">
                       {BOS_MEMBERS.map((member) => {
                         let badgeStyle = "bg-slate-100 text-slate-800 border-slate-200";
-                        if (member.designation === 'Chairman') badgeStyle = "bg-blue-700 text-white font-bold";
-                        else if (member.designation === 'University Nominee') badgeStyle = "bg-blue-100 text-blue-900 border-blue-200 font-bold";
-                        else if (member.designation === 'Industry') badgeStyle = "bg-amber-100 text-amber-900 border-amber-200 font-bold";
-                        else if (member.designation === 'Alumni') badgeStyle = "bg-purple-100 text-purple-900 border-purple-200 font-bold";
-                        else if (member.designation === 'Internal Member') badgeStyle = "bg-emerald-100 text-emerald-900 border-emerald-200 font-medium";
-                        else if (member.designation === 'Academician') badgeStyle = "bg-indigo-100 text-indigo-900 border-indigo-200 font-medium";
+                        if (member.designation === 'Chairman') badgeStyle = "bg-blue-800 text-white border-blue-900 font-bold shadow-2xs";
+                        else if (member.designation === 'University Nominee') badgeStyle = "bg-blue-100 text-blue-950 border-blue-200 font-bold";
+                        else if (member.designation === 'Industry') badgeStyle = "bg-amber-100 text-amber-950 border-amber-300 font-bold";
+                        else if (member.designation === 'Alumni') badgeStyle = "bg-amber-50 text-amber-900 border-amber-200/80 font-bold";
+                        else if (member.designation === 'Internal Member') badgeStyle = "bg-slate-100 text-slate-900 border-slate-200 font-medium";
+                        else if (member.designation === 'Academician') badgeStyle = "bg-blue-50 text-blue-900 border-blue-200 font-medium";
 
                         return (
-                          <tr key={member.sno} className="hover:bg-slate-50 transition-colors">
-                            <td className="py-3.5 px-4 font-mono font-bold text-center text-blue-700">{member.sno}</td>
-                            <td className="py-3.5 px-4 font-bold text-slate-900 whitespace-nowrap">{member.name}</td>
-                            <td className="py-3.5 px-4 text-slate-600 leading-relaxed">{member.organization}</td>
+                          <tr key={member.sno} className="hover:bg-blue-50/40 transition-colors">
+                            <td className="py-3.5 px-4 font-mono font-bold text-center text-blue-800">{member.sno}</td>
+                            <td className="py-3.5 px-4 font-bold text-slate-950 whitespace-nowrap">{member.name}</td>
+                            <td className="py-3.5 px-4 text-slate-700 leading-relaxed">{member.organization}</td>
                             <td className="py-3.5 px-4 text-center whitespace-nowrap">
                               <span className={`px-3 py-1 rounded-full text-[11px] font-mono border inline-block ${badgeStyle}`}>
                                 {member.designation}
@@ -719,7 +743,7 @@ export default function CSE() {
                     </tbody>
                   </table>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* 4. COURSES OFFERED */}
@@ -783,7 +807,7 @@ export default function CSE() {
                       </div>
                       <div>
                         <h3 className="font-serif font-bold text-lg sm:text-xl text-slate-900 leading-snug">
-                          Computer Science and Engineering with Artificial Intelligence specialization
+                          Computer Science and Engineering (Artificial Intelligence )-b.tech
                         </h3>
                         <p className="text-xs font-mono text-slate-500 mt-1">Degree: B.Tech (4 Years / 8 Semesters)</p>
                       </div>
@@ -813,7 +837,7 @@ export default function CSE() {
                       </div>
                       <div>
                         <h3 className="font-serif font-bold text-lg sm:text-xl text-slate-900 leading-snug">
-                          Computer Science and Engineering Specialization
+                          Computer Science and Engineering
                         </h3>
                         <p className="text-xs font-mono text-slate-500 mt-1">Degree: M.Tech (2 Years / 4 Semesters)</p>
                       </div>

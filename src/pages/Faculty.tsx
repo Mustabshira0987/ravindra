@@ -152,18 +152,18 @@ export default function Faculty() {
 
   const getDesignationBadgeClass = (designation: string) => {
     if (designation.includes('HoD') || designation.includes('Professor')) {
-      return 'bg-yellow-50 text-yellow-800 border-yellow-300 font-bold';
+      return 'bg-amber-100 text-amber-950 border-amber-300 font-bold';
     }
     if (designation.includes('Associate')) {
-      return 'bg-blue-50 text-blue-700 border-blue-200 font-semibold';
+      return 'bg-blue-100 text-blue-950 border-blue-200 font-semibold';
     }
-    return 'bg-slate-100 text-slate-700 border-slate-200';
+    return 'bg-slate-100 text-slate-800 border-slate-200 font-medium';
   };
 
   return (
     <div className="bg-slate-50 min-h-screen">
       {/* HERO SECTION */}
-      <section className="relative bg-gradient-to-b from-blue-50 via-white to-slate-50 py-16 border-b border-slate-200">
+      <section className="relative bg-gradient-to-b from-blue-900 via-blue-800 to-slate-900 py-16 border-b-2 border-amber-400/80 text-white shadow-md">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Column: Heading & Info */}
@@ -172,16 +172,16 @@ export default function Faculty() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-700 border border-blue-200"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-amber-300 border border-amber-400/30"
               >
-                <UserCheck className="h-4 w-4 text-yellow-500" /> Academic Leadership & Faculty
+                <UserCheck className="h-4 w-4 text-amber-400" /> Academic Leadership & Faculty
               </motion.div>
 
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 tracking-tight leading-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-tight"
               >
                 Faculty Members
               </motion.h1>
@@ -190,7 +190,7 @@ export default function Faculty() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal"
+                className="text-blue-100 text-base sm:text-lg leading-relaxed font-normal"
               >
                 Meet the experienced and dedicated faculty members of Ravindra Engineering College for Women committed to academic excellence, innovation, and student success.
               </motion.p>
@@ -200,23 +200,23 @@ export default function Faculty() {
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-6 border-t border-slate-200"
+                className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-6 border-t border-blue-700/60"
               >
-                <div className="bg-white border border-slate-200 p-3.5 rounded-2xl shadow-sm text-center">
-                  <span className="text-blue-600 font-serif font-bold text-xl sm:text-2xl block">{totalFacultyCount}</span>
-                  <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider font-bold">Faculty Members</span>
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3.5 rounded-2xl shadow-sm text-center">
+                  <span className="text-amber-300 font-serif font-bold text-xl sm:text-2xl block">{totalFacultyCount}</span>
+                  <span className="text-[10px] text-blue-100 font-mono uppercase tracking-wider font-bold">Faculty Members</span>
                 </div>
-                <div className="bg-white border border-slate-200 p-3.5 rounded-2xl shadow-sm text-center">
-                  <span className="text-blue-600 font-serif font-bold text-xl sm:text-2xl block">4</span>
-                  <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider font-bold">Academic Streams</span>
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3.5 rounded-2xl shadow-sm text-center">
+                  <span className="text-amber-300 font-serif font-bold text-xl sm:text-2xl block">4</span>
+                  <span className="text-[10px] text-blue-100 font-mono uppercase tracking-wider font-bold">Academic Streams</span>
                 </div>
-                <div className="bg-white border border-slate-200 p-3.5 rounded-2xl shadow-sm text-center">
-                  <span className="text-blue-600 font-serif font-bold text-xl sm:text-2xl block">100%</span>
-                  <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider font-bold">Dedicated Mentors</span>
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3.5 rounded-2xl shadow-sm text-center">
+                  <span className="text-amber-300 font-serif font-bold text-xl sm:text-2xl block">100%</span>
+                  <span className="text-[10px] text-blue-100 font-mono uppercase tracking-wider font-bold">Dedicated Mentors</span>
                 </div>
-                <div className="bg-white border border-slate-200 p-3.5 rounded-2xl shadow-sm text-center">
-                  <span className="text-blue-600 font-serif font-bold text-xl sm:text-2xl block">JNTUA</span>
-                  <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider font-bold">Aligned Syllabus</span>
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3.5 rounded-2xl shadow-sm text-center">
+                  <span className="text-amber-300 font-serif font-bold text-xl sm:text-2xl block">JNTUA</span>
+                  <span className="text-[10px] text-blue-100 font-mono uppercase tracking-wider font-bold">Aligned Syllabus</span>
                 </div>
               </motion.div>
             </div>
@@ -228,15 +228,15 @@ export default function Faculty() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="lg:col-span-5"
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-md border-4 border-white">
+              <div className="relative rounded-2xl overflow-hidden shadow-md border-4 border-white/20">
                 <img
                   src={FACULTY_GROUP_IMAGE}
                   alt="Ravindra College of Engineering for Women Faculty Team"
                   className="w-full h-72 sm:h-80 object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 text-white text-center">
-                  <span className="text-[11px] bg-blue-600 text-white px-3 py-1 rounded-full font-bold uppercase tracking-wider font-mono shadow-sm">
+                  <span className="text-[11px] bg-blue-900/90 text-amber-300 border border-amber-400/40 px-3 py-1 rounded-full font-bold uppercase tracking-wider font-mono shadow-sm">
                     RCEW Faculty Team • Academic Leadership
                   </span>
                 </div>
@@ -246,8 +246,8 @@ export default function Faculty() {
         </div>
       </section>
 
-      {/* SEARCH AND FILTER BAR */}
-      <section className="sticky top-[72px] z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm py-4">
+      {/* FILTER & SEARCH BAR (Sticky) */}
+      <section className="sticky top-[72px] z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-2xs py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
             {/* Search Bar Input */}
@@ -258,7 +258,7 @@ export default function Faculty() {
                 placeholder="Search faculty by name or designation..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs sm:text-sm text-slate-800 outline-none focus:border-blue-600 transition-colors"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs sm:text-sm text-slate-800 outline-none focus:border-blue-800 transition-colors"
               />
               {searchQuery && (
                 <button
@@ -276,8 +276,8 @@ export default function Faculty() {
                 onClick={() => setSelectedDept('all')}
                 className={`px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer ${
                   selectedDept === 'all'
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    ? 'bg-blue-800 text-white shadow-xs border border-blue-900'
+                    : 'bg-slate-100 text-slate-700 hover:bg-blue-50/60'
                 }`}
               >
                 All Departments
@@ -288,8 +288,8 @@ export default function Faculty() {
                   onClick={() => setSelectedDept(dept.id)}
                   className={`px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer ${
                     selectedDept === dept.id
-                      ? 'bg-blue-600 text-white shadow-sm'
-                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                      ? 'bg-blue-800 text-white shadow-xs border border-blue-900'
+                      : 'bg-slate-100 text-slate-700 hover:bg-blue-50/60'
                   }`}
                 >
                   {dept.code}
@@ -301,7 +301,7 @@ export default function Faculty() {
           {/* Search Result Count summary */}
           <div className="mt-3 flex items-center justify-between text-xs text-slate-500 font-mono">
             <span>
-              Showing <strong className="text-blue-600">{totalFilteredCount}</strong> faculty members
+              Showing <strong className="text-blue-900">{totalFilteredCount}</strong> faculty members
             </span>
             {searchQuery && (
               <span>Query: "{searchQuery}"</span>
@@ -320,7 +320,7 @@ export default function Faculty() {
               <p className="text-xs text-slate-500 mt-1">Try adjusting your search keyword or department filter.</p>
               <button
                 onClick={() => { setSearchQuery(''); setSelectedDept('all'); }}
-                className="mt-4 px-4 py-2 bg-blue-600 text-white text-xs font-bold uppercase rounded-xl hover:bg-blue-700 transition-colors"
+                className="mt-4 px-4 py-2 bg-blue-800 text-white text-xs font-bold uppercase rounded-xl hover:bg-blue-900 transition-colors"
               >
                 Reset Search Filters
               </button>
@@ -337,13 +337,13 @@ export default function Faculty() {
                 id={`dept-${dept.id}`}
               >
                 {/* Department Section Header */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b-2 border-blue-600">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b-2 border-blue-800">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-serif font-bold text-lg shrink-0">
-                      <GraduationCap className="h-5 w-5 text-yellow-500" />
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-800 flex items-center justify-center font-serif font-bold text-lg shrink-0 border border-blue-200">
+                      <GraduationCap className="h-5 w-5 text-amber-500" />
                     </div>
                     <div>
-                      <h2 className="text-xl sm:text-2xl font-serif font-bold text-slate-900">
+                      <h2 className="text-xl sm:text-2xl font-serif font-bold text-slate-950">
                         {dept.title}
                       </h2>
                       <p className="text-xs text-slate-500 font-mono">
@@ -352,18 +352,18 @@ export default function Faculty() {
                     </div>
                   </div>
 
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200 shrink-0 self-start sm:self-auto">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-900 border border-amber-300 shrink-0 self-start sm:self-auto">
                     {dept.faculty.length} Members
                   </span>
                 </div>
 
                 {/* Responsive Faculty Table Card */}
-                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div className="bg-white rounded-2xl shadow-2xs border border-slate-200 overflow-hidden">
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                       {/* Sticky Table Header */}
                       <thead>
-                        <tr className="bg-blue-600 text-white font-mono text-xs uppercase tracking-wider">
+                        <tr className="bg-blue-800 text-white font-serif font-bold uppercase text-[11px] border-b-2 border-amber-400">
                           <th scope="col" className="py-4 px-6 w-20 text-center">S.No</th>
                           <th scope="col" className="py-4 px-6">Faculty Name</th>
                           <th scope="col" className="py-4 px-6">Designation</th>
@@ -371,23 +371,23 @@ export default function Faculty() {
                       </thead>
 
                       {/* Alternating Table Rows */}
-                      <tbody className="divide-y divide-slate-100 text-xs sm:text-sm">
+                      <tbody className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-800">
                         {dept.faculty.map((member, index) => (
                           <tr
                             key={member.sNo}
-                            className={`transition-colors hover:bg-blue-50/80 ${
+                            className={`transition-colors hover:bg-blue-50/40 ${
                               index % 2 === 0
                                 ? 'bg-white'
-                                : 'bg-slate-50/70'
+                                : 'bg-slate-50/60'
                             }`}
                           >
-                            <td className="py-3.5 px-6 font-mono font-bold text-center text-slate-400">
+                            <td className="py-3.5 px-6 font-mono font-bold text-center text-blue-800">
                               {member.sNo}
                             </td>
 
-                            <td className="py-3.5 px-6 font-semibold text-slate-800">
+                            <td className="py-3.5 px-6 font-semibold text-slate-950">
                               <div className="flex items-center gap-3">
-                                <div className="w-7 h-7 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0 border border-blue-200">
+                                <div className="w-7 h-7 rounded-full bg-blue-50 text-blue-800 flex items-center justify-center text-xs font-bold shrink-0 border border-blue-200">
                                   {member.name.replace(/^(Dr\.|Mrs\.|Mr\.|Ms\.)\s*/, '').charAt(0)}
                                 </div>
                                 <span>{member.name}</span>

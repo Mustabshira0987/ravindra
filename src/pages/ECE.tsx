@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import {
   BookOpen, Award, CheckCircle2, Users, ChevronRight,
   History, ShieldCheck, GraduationCap, Eye, Sparkles, Building2,
@@ -297,18 +298,18 @@ export default function ECE() {
           {/* ================= LEFT SIDEBAR (Electric Royal Blue Theme - 2nd Image Color) ================= */}
           <div className="lg:col-span-3 bg-white rounded-2xl shadow-lg border border-slate-200/80 overflow-hidden sticky top-24">
             
-            {/* Top Electric Royal Blue Accent Line */}
-            <div className="h-3.5 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700" />
+            {/* Top Royal Blue & Gold Accent Line */}
+            <div className="h-3.5 bg-gradient-to-r from-blue-900 via-blue-700 to-amber-500" />
 
-            {/* Sidebar Title Card with Electric Royal Blue Gradient */}
-            <div className="p-6 text-center bg-gradient-to-b from-blue-600 via-blue-700 to-blue-800 text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-bl-full pointer-events-none" />
-              <GraduationCap className="h-7 w-7 text-white mx-auto mb-1.5 drop-shadow-xs" />
+            {/* Sidebar Title Card with Royal Blue Gradient & Gold Accent */}
+            <div className="p-6 text-center bg-gradient-to-b from-blue-900 via-blue-800 to-slate-900 text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-amber-400/10 rounded-bl-full pointer-events-none" />
+              <GraduationCap className="h-7 w-7 text-amber-400 mx-auto mb-1.5 drop-shadow-xs" />
               <h2 className="text-xl sm:text-2xl font-serif font-bold text-white leading-tight">
                 Department <br />
-                <span className="text-white font-sans tracking-wide text-lg sm:text-xl">of ECE</span>
+                <span className="text-amber-300 font-sans tracking-wide text-lg sm:text-xl">of ECE</span>
               </h2>
-              <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/20 text-white border border-white/30">
+              <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/10 text-amber-300 border border-amber-400/30">
                 RCEW Autonomous
               </span>
             </div>
@@ -323,22 +324,22 @@ export default function ECE() {
                     onClick={() => setActiveTab(item.id)}
                     className={`w-full text-left px-5 py-3.5 text-sm sm:text-base font-semibold flex items-center justify-between transition-all cursor-pointer relative ${
                       isActive
-                        ? 'text-blue-700 bg-blue-50 font-bold shadow-2xs'
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/50'
+                        ? 'text-blue-900 bg-blue-50/80 font-bold shadow-2xs'
+                        : 'text-slate-700 hover:text-blue-900 hover:bg-blue-50/40'
                     }`}
                   >
                     <span className="flex items-center gap-2">
-                      {isActive && <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />}
+                      {isActive && <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />}
                       <span>{item.label}</span>
                     </span>
 
                     {item.hasSubmenu ? (
-                      <ChevronRight className={`h-4 w-4 transition-transform ${isActive ? 'rotate-90 text-blue-600 font-bold' : 'text-slate-400'}`} />
+                      <ChevronRight className={`h-4 w-4 transition-transform ${isActive ? 'rotate-90 text-amber-500 font-bold' : 'text-slate-400'}`} />
                     ) : null}
 
-                    {/* Active Right Vertical Electric Blue Indicator */}
+                    {/* Active Right Vertical Gold Indicator */}
                     {isActive && (
-                      <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-blue-600 rounded-l" />
+                      <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-amber-500 rounded-l shadow-xs" />
                     )}
                   </button>
                 );
@@ -351,7 +352,13 @@ export default function ECE() {
             
             {/* 1. HOME TAB */}
             {activeTab === 'home' && (
-              <div className="space-y-8 animate-fadeIn">
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="space-y-8"
+              >
                 
                 {/* Section Header with Electric Royal Blue Theme */}
                 <div className="border-b border-slate-200 pb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -526,50 +533,52 @@ export default function ECE() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* 2. BOARD OF STUDIES MEMBERS */}
             {activeTab === 'bos' && (
               <div className="space-y-6 animate-fadeIn">
-                <div className="border-b border-slate-200 pb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
-                    Academic Governance
-                  </span>
-                  <h1 className="text-2xl sm:text-3xl font-serif font-bold text-blue-800 mt-2">
+                <div className="border-b border-slate-200 pb-4 relative">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-600">Academic Governance</span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400 inline-block" />
+                  </div>
+                  <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-1">
                     Board of Studies Members
                   </h1>
                   <p className="text-sm font-semibold text-slate-500 font-serif">Department of Electronics & Communication Engineering</p>
+                  <div className="absolute bottom-0 left-0 w-16 h-0.5 bg-amber-500" />
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-blue-50/50 p-4 rounded-xl border-l-4 border-blue-600 font-medium">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-blue-50/40 p-4 rounded-xl border-l-4 border-blue-800 shadow-2xs">
                   The Board of Studies (BOS) for Electronics & Communication Engineering comprises university nominees from JNTUA, DRDO defense research scientists, Synopsys application engineers, academic experts from IISc Bangalore & NIT Warangal, and internal faculty.
                 </p>
 
                 {/* Summary Metrics */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  <div className="p-3.5 bg-blue-600 text-white rounded-xl text-center shadow-xs">
-                    <span className="text-2xl font-serif font-bold text-white">9</span>
-                    <span className="text-[10px] font-mono block text-blue-100 font-semibold uppercase">Total Members</span>
+                  <div className="p-3.5 bg-blue-50/60 border border-blue-200/80 rounded-xl text-center shadow-2xs hover:border-amber-400/60 transition-all hover:shadow-xs">
+                    <span className="text-xl sm:text-2xl font-serif font-bold text-blue-900 block">9</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase mt-0.5">Total Members</span>
                   </div>
-                  <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-center shadow-xs">
-                    <span className="text-sm font-serif font-bold text-blue-900 block">JNTUA / IISc / NITW</span>
-                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Academic Experts</span>
+                  <div className="p-3.5 bg-amber-50/60 border border-amber-200/80 rounded-xl text-center shadow-2xs hover:border-amber-400 transition-all hover:shadow-xs">
+                    <span className="text-sm font-serif font-bold text-amber-800 block">JNTUA / IISc / NITW</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase mt-0.5">Academic Experts</span>
                   </div>
-                  <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-center shadow-xs">
+                  <div className="p-3.5 bg-blue-50/60 border border-blue-200/80 rounded-xl text-center shadow-2xs hover:border-amber-400/60 transition-all hover:shadow-xs">
                     <span className="text-sm font-serif font-bold text-blue-900 block">DRDO Hyderabad</span>
-                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Industry Partner</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase mt-0.5">Industry Partner</span>
                   </div>
-                  <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-center shadow-xs">
-                    <span className="text-sm font-serif font-bold text-blue-900 block">Synopsys</span>
-                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase">Alumni Representative</span>
+                  <div className="p-3.5 bg-amber-50/50 border border-amber-200/70 rounded-xl text-center shadow-2xs hover:border-amber-400 transition-all hover:shadow-xs">
+                    <span className="text-sm font-serif font-bold text-amber-900 block">Synopsys</span>
+                    <span className="text-[10px] font-mono block text-slate-600 font-semibold uppercase mt-0.5">Alumni Representative</span>
                   </div>
                 </div>
 
                 {/* Table View */}
                 <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm bg-white">
                   <table className="w-full text-left text-xs sm:text-sm">
-                    <thead className="bg-blue-600 text-white font-serif font-bold uppercase text-[11px]">
+                    <thead className="bg-blue-800 text-white font-serif font-bold uppercase text-[11px] border-b-2 border-amber-400">
                       <tr>
                         <th className="py-3.5 px-4 w-16 text-center">S.No</th>
                         <th className="py-3.5 px-4">Name of the Member</th>
@@ -577,23 +586,23 @@ export default function ECE() {
                         <th className="py-3.5 px-4 text-center">Designation</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 text-slate-700">
+                    <tbody className="divide-y divide-slate-100 text-slate-800">
                       {ECE_BOS_MEMBERS.map((member) => {
                         let badgeStyle = "bg-slate-100 text-slate-800 border-slate-200";
-                        if (member.designation === 'Chairman') badgeStyle = "bg-blue-700 text-white font-bold shadow-2xs";
-                        else if (member.designation === 'University Nominee') badgeStyle = "bg-blue-600 text-white font-bold shadow-2xs";
-                        else if (member.designation === 'Industry') badgeStyle = "bg-blue-100 text-blue-900 border border-blue-300 font-bold";
-                        else if (member.designation === 'Alumni') badgeStyle = "bg-blue-100 text-blue-900 border border-blue-300 font-bold";
-                        else if (member.designation === 'Internal Member') badgeStyle = "bg-slate-100 text-slate-800 border border-slate-200 font-medium";
-                        else if (member.designation === 'Academician') badgeStyle = "bg-blue-50 text-blue-800 border border-blue-200 font-bold";
+                        if (member.designation === 'Chairman') badgeStyle = "bg-blue-800 text-white border-blue-900 font-bold shadow-2xs";
+                        else if (member.designation === 'University Nominee') badgeStyle = "bg-blue-100 text-blue-950 border-blue-200 font-bold";
+                        else if (member.designation === 'Industry') badgeStyle = "bg-amber-100 text-amber-950 border-amber-300 font-bold";
+                        else if (member.designation === 'Alumni') badgeStyle = "bg-amber-50 text-amber-900 border-amber-200/80 font-bold";
+                        else if (member.designation === 'Internal Member') badgeStyle = "bg-slate-100 text-slate-900 border-slate-200 font-medium";
+                        else if (member.designation === 'Academician') badgeStyle = "bg-blue-50 text-blue-900 border-blue-200 font-medium";
 
                         return (
                           <tr key={member.sno} className="hover:bg-blue-50/40 transition-colors">
-                            <td className="py-3.5 px-4 font-mono font-bold text-center text-blue-600">{member.sno}</td>
-                            <td className="py-3.5 px-4 font-bold text-slate-900 whitespace-nowrap">{member.name}</td>
-                            <td className="py-3.5 px-4 text-slate-600 leading-relaxed">{member.organization}</td>
+                            <td className="py-3.5 px-4 font-mono font-bold text-center text-blue-800">{member.sno}</td>
+                            <td className="py-3.5 px-4 font-bold text-slate-950 whitespace-nowrap">{member.name}</td>
+                            <td className="py-3.5 px-4 text-slate-700 leading-relaxed">{member.organization}</td>
                             <td className="py-3.5 px-4 text-center whitespace-nowrap">
-                              <span className={`px-3 py-1 rounded-full text-[11px] font-mono inline-block ${badgeStyle}`}>
+                              <span className={`px-3 py-1 rounded-full text-[11px] font-mono border inline-block ${badgeStyle}`}>
                                 {member.designation}
                               </span>
                             </td>

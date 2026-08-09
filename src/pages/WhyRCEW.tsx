@@ -59,16 +59,16 @@ export default function WhyRCEW() {
   return (
     <div className="py-10 bg-slate-50 min-h-screen">
       {/* HEADER BANNER */}
-      <section className="relative py-16 bg-gradient-to-b from-blue-50 via-white to-slate-50 text-slate-900 overflow-hidden mb-12 border-b border-slate-200 shadow-sm">
+      <section className="relative py-16 bg-gradient-to-b from-blue-900 via-blue-800 to-slate-900 text-white overflow-hidden mb-12 border-b-2 border-amber-400/80 shadow-md">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-          <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100/80 border border-blue-200">
-            <Sparkles className="h-3.5 w-3.5 text-yellow-500" /> Discover Your Potential
+          <span className="text-amber-400 text-xs font-bold uppercase tracking-widest font-mono inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-amber-400/30">
+            <Sparkles className="h-3.5 w-3.5 text-amber-400" /> Discover Your Potential
           </span>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-slate-900">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-white">
             Why RCEW?
           </h1>
-          <div className="h-1 w-20 bg-yellow-500 mx-auto mt-2 rounded-full" />
-          <p className="max-w-3xl mx-auto text-slate-700 text-base sm:text-lg font-serif font-semibold">
+          <div className="h-1 w-20 bg-amber-400 mx-auto mt-2 rounded-full shadow-xs" />
+          <p className="max-w-3xl mx-auto text-blue-100 text-base sm:text-lg font-serif font-semibold">
             Ravindra College of Engineering for Women can be your best choice:
           </p>
         </div>
@@ -90,7 +90,7 @@ export default function WhyRCEW() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
           <div className="absolute bottom-6 left-6 right-6 text-white text-center space-y-2">
-            <span className="inline-block text-xs bg-yellow-500 text-slate-950 px-4 py-1.5 rounded-full font-bold uppercase tracking-wider font-mono shadow-md">
+            <span className="inline-block text-xs bg-amber-400 text-amber-950 px-4 py-1.5 rounded-full font-bold uppercase tracking-wider font-mono shadow-md border border-amber-300">
               Knowledge Meets Opportunity • RCEW Campus
             </span>
             <p className="text-slate-200 text-xs sm:text-sm max-w-2xl mx-auto italic font-serif">
@@ -110,30 +110,30 @@ export default function WhyRCEW() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-4 flex flex-col justify-between group hover:-translate-y-1"
+                className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-2xs hover:shadow-md hover:border-amber-400 transition-all space-y-4 flex flex-col justify-between group hover:-translate-y-1"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-200 group-hover:scale-110 transition-transform">
-                      <IconComponent className="h-6 w-6 text-yellow-600" />
+                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-800 flex items-center justify-center border border-blue-200 group-hover:bg-blue-800 group-hover:text-white transition-all shadow-2xs">
+                      <IconComponent className="h-6 w-6 text-amber-500 group-hover:text-amber-300" />
                     </div>
-                    <span className={`text-[10px] px-2.5 py-1 rounded-md font-mono uppercase font-bold border ${p.badgeBg}`}>
+                    <span className="text-[10px] px-2.5 py-1 rounded-md font-mono uppercase font-bold border bg-amber-100 text-amber-950 border-amber-300">
                       Pillar 0{idx + 1}
                     </span>
                   </div>
 
-                  <h3 className="font-serif font-bold text-xl text-slate-900 group-hover:text-blue-600 transition-colors">
+                  <h3 className="font-serif font-bold text-xl text-slate-950 group-hover:text-blue-900 transition-colors">
                     {p.title}
                   </h3>
 
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed font-medium">
                     {p.text}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex items-center gap-2 text-xs font-bold text-blue-600 font-mono uppercase tracking-wider">
+                <div className="pt-3 border-t border-slate-100 flex items-center gap-2 text-xs font-bold text-blue-900 font-mono uppercase tracking-wider">
                   <span>RCEW Promise</span>
-                  <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                  <CheckCircle2 className="h-4 w-4 text-amber-500" />
                 </div>
               </motion.div>
             );
@@ -146,15 +146,15 @@ export default function WhyRCEW() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-8 sm:p-12 rounded-3xl shadow-xl text-center space-y-4"
+          className="bg-gradient-to-b from-blue-900 via-blue-800 to-slate-900 text-white p-8 sm:p-12 rounded-3xl shadow-xl text-center space-y-4 border-t-2 border-amber-400"
         >
-          <span className="text-yellow-400 font-mono text-xs font-bold uppercase tracking-widest inline-block px-3 py-1 rounded-full bg-white/10 border border-white/10">
+          <span className="text-amber-300 font-mono text-xs font-bold uppercase tracking-widest inline-block px-3 py-1 rounded-full bg-white/10 border border-amber-400/30">
             Join Ravindra Engineering College for Women
           </span>
           <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white max-w-3xl mx-auto">
             Ready to Begin Your Engineering Journey?
           </h2>
-          <p className="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-blue-100 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed font-medium">
             Step into a world of endless possibilities, top MNC placements, and NAAC A+ accredited technical education.
           </p>
         </motion.div>

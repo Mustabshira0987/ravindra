@@ -6,16 +6,16 @@ export default function VisionMission() {
   return (
     <div className="py-10 bg-slate-50 min-h-screen">
       {/* Page Title Header Banner */}
-      <section className="relative py-16 bg-gradient-to-b from-blue-50 via-white to-slate-50 text-slate-900 overflow-hidden mb-12 border-b border-slate-200 shadow-sm">
+      <section className="relative py-16 bg-gradient-to-b from-blue-900 via-blue-800 to-slate-900 text-white overflow-hidden mb-12 border-b-2 border-amber-400/80 shadow-md">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-          <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono">
+          <span className="text-amber-400 text-xs font-bold uppercase tracking-widest font-mono">
             College Identity & Values
           </span>
-          <h1 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-slate-900">
+          <h1 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-white">
             Vision & Mission
           </h1>
-          <div className="h-1 w-20 bg-yellow-500 mx-auto mt-2 rounded-full" />
-          <p className="max-w-2xl mx-auto text-slate-600 text-sm sm:text-base leading-relaxed">
+          <div className="h-1 w-20 bg-amber-400 mx-auto mt-2 rounded-full shadow-xs" />
+          <p className="max-w-2xl mx-auto text-blue-100 text-sm sm:text-base leading-relaxed">
             Nurturing competent engineering intellect under ethical frameworks and modern digital parameters.
           </p>
         </div>
@@ -25,12 +25,12 @@ export default function VisionMission() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Vision Box */}
-          <div className="bg-white border border-slate-200 p-8 sm:p-10 rounded-2xl shadow-sm hover:-translate-y-1 transition-all space-y-5">
-            <div className="w-12 h-12 bg-yellow-50 text-yellow-600 rounded-xl flex items-center justify-center border border-yellow-200">
-              <Sparkles className="h-6 w-6 text-yellow-600" />
+          <div className="bg-white border border-slate-200 p-8 sm:p-10 rounded-2xl shadow-2xs hover:border-amber-400 hover:shadow-md transition-all space-y-5">
+            <div className="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center border border-amber-200 shadow-2xs">
+              <Sparkles className="h-6 w-6 text-amber-500" />
             </div>
-            <h3 className="text-2xl font-serif font-bold text-slate-900">Our Vision</h3>
-            <p className="text-slate-700 text-sm sm:text-base leading-relaxed italic font-serif">
+            <h3 className="text-2xl font-serif font-bold text-slate-950">Our Vision</h3>
+            <p className="text-slate-800 text-sm sm:text-base leading-relaxed italic font-serif">
               "{COLLEGE_INFO.vision}"
             </p>
             <p className="text-xs text-slate-500">
@@ -39,18 +39,18 @@ export default function VisionMission() {
           </div>
 
           {/* Mission Box */}
-          <div className="bg-white border border-slate-200 p-8 sm:p-10 rounded-2xl shadow-sm hover:-translate-y-1 transition-all space-y-5">
-            <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center border border-blue-200">
-              <Trophy className="h-6 w-6 text-blue-600" />
+          <div className="bg-white border border-slate-200 p-8 sm:p-10 rounded-2xl shadow-2xs hover:border-blue-700 hover:shadow-md transition-all space-y-5">
+            <div className="w-12 h-12 bg-blue-50 text-blue-800 rounded-xl flex items-center justify-center border border-blue-200 shadow-2xs">
+              <Trophy className="h-6 w-6 text-amber-500" />
             </div>
-            <h3 className="text-2xl font-serif font-bold text-slate-900">Our Mission</h3>
+            <h3 className="text-2xl font-serif font-bold text-slate-950">Our Mission</h3>
             <ul className="space-y-4">
               {COLLEGE_INFO.mission.map((item, idx) => (
-                <li key={idx} className="flex gap-3 items-start text-xs sm:text-sm text-slate-600">
-                  <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-[10px] font-bold shrink-0">
+                <li key={idx} className="flex gap-3 items-start text-xs sm:text-sm text-slate-700">
+                  <span className="w-6 h-6 rounded-full bg-blue-800 text-white flex items-center justify-center text-[10px] font-mono font-bold shrink-0 shadow-2xs">
                     {idx + 1}
                   </span>
-                  <span>{item}</span>
+                  <span className="leading-relaxed font-medium">{item}</span>
                 </li>
               ))}
             </ul>
@@ -58,11 +58,11 @@ export default function VisionMission() {
         </div>
 
         {/* Quality Policy Banner */}
-        <div className="bg-[#F8FBFF] text-slate-900 p-8 sm:p-10 rounded-2xl border border-blue-100/80 shadow-sm relative overflow-hidden">
+        <div className="bg-blue-50/40 text-slate-950 p-8 sm:p-10 rounded-2xl border-l-4 border-blue-800 border-y border-r border-slate-200 shadow-2xs relative overflow-hidden">
           <div className="max-w-3xl space-y-3">
-            <span className="text-blue-600 font-mono text-xs font-bold uppercase tracking-widest block">Quality Policy</span>
-            <h4 className="text-xl sm:text-2xl font-serif font-bold text-slate-900">Commitment to Academic Governance</h4>
-            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+            <span className="text-amber-600 font-mono text-xs font-bold uppercase tracking-widest block">Quality Policy</span>
+            <h4 className="text-xl sm:text-2xl font-serif font-bold text-slate-950">Commitment to Academic Governance</h4>
+            <p className="text-slate-700 text-xs sm:text-sm leading-relaxed font-medium">
               We pledge to provide world-class technical training through qualified faculty, modern computing laboratories, and high-quality teaching-learning paradigms. We implement rigorous internal audits under NAAC frameworks to constantly review student outcomes.
             </p>
           </div>

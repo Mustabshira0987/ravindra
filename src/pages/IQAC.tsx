@@ -179,23 +179,23 @@ export default function IQAC() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* ================= LEFT SIDEBAR ================= */}
-          <div className="lg:col-span-3 bg-white dark:bg-primary-900 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 overflow-hidden sticky top-24">
+          <div className="lg:col-span-3 bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden sticky top-24">
             {/* Top Accent Line */}
-            <div className="h-2.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
+            <div className="h-3.5 bg-gradient-to-r from-blue-900 via-blue-700 to-amber-500" />
 
             {/* Sidebar Title Header */}
-            <div className="p-5 text-center bg-gradient-to-b from-blue-700 to-blue-900 text-white relative">
-              <ShieldCheck className="h-7 w-7 text-yellow-400 mx-auto mb-1 drop-shadow-sm" />
+            <div className="p-5 text-center bg-gradient-to-b from-blue-900 via-blue-800 to-slate-900 text-white relative">
+              <ShieldCheck className="h-7 w-7 text-amber-400 mx-auto mb-1 drop-shadow-sm" />
               <h2 className="text-lg font-serif font-bold text-white leading-snug">
                 IQAC Navigation
               </h2>
-              <span className="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/20 text-white border border-white/20">
+              <span className="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/10 text-amber-300 border border-amber-400/30">
                 RCEW Autonomous
               </span>
             </div>
 
             {/* Navigation Options List */}
-            <nav className="divide-y divide-slate-100 dark:divide-slate-800">
+            <nav className="divide-y divide-slate-100">
               {IQAC_SIDEBAR_MENU.map((item) => {
                 const isActive = activeTab === item.id;
                 return (
@@ -204,20 +204,20 @@ export default function IQAC() {
                     onClick={() => handleTabChange(item.id)}
                     className={`w-full text-left px-5 py-3.5 text-xs sm:text-sm font-semibold flex items-center justify-between transition-all cursor-pointer relative ${
                       isActive
-                        ? 'text-blue-700 dark:text-yellow-400 bg-blue-50 dark:bg-blue-950/60 font-bold'
-                        : 'text-slate-700 dark:text-slate-300 hover:text-blue-600 hover:bg-blue-50/50 dark:hover:bg-slate-800/50'
+                        ? 'text-blue-900 bg-blue-50/80 font-bold'
+                        : 'text-slate-700 hover:text-blue-900 hover:bg-blue-50/40'
                     }`}
                   >
                     <span className="flex items-center gap-2.5">
-                      {isActive && <span className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-yellow-400 animate-pulse" />}
+                      {isActive && <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />}
                       <span>{item.label}</span>
                     </span>
 
-                    <ChevronRight className={`h-4 w-4 transition-transform ${isActive ? 'text-blue-600 dark:text-yellow-400 font-bold translate-x-0.5' : 'text-slate-400'}`} />
+                    <ChevronRight className={`h-4 w-4 transition-transform ${isActive ? 'text-amber-500 font-bold translate-x-0.5' : 'text-slate-400'}`} />
 
                     {/* Active Right Vertical Indicator */}
                     {isActive && (
-                      <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-blue-600 dark:bg-yellow-400 rounded-l" />
+                      <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-amber-500 rounded-l shadow-xs" />
                     )}
                   </button>
                 );
@@ -226,53 +226,51 @@ export default function IQAC() {
           </div>
 
           {/* ================= RIGHT MAIN CONTENT AREA ================= */}
-          <div className="lg:col-span-9 bg-white dark:bg-primary-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 sm:p-8 md:p-10 min-h-[600px]">
+          <div className="lg:col-span-9 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 md:p-10 min-h-[600px]">
             
             {/* ---------------- 1. TAB: INTERNAL QUALITY ASSURANCE CELL ---------------- */}
             {activeTab === 'iqac-cell' && (
               <div className="space-y-8 animate-fadeIn">
                 {/* Section Title */}
-                <div className="border-b border-slate-200 dark:border-slate-800 pb-5">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600 dark:text-yellow-400">Institutional Compass</span>
-                  <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 dark:text-white mt-1">
+                <div className="border-b border-slate-200 pb-5 relative">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-600">Institutional Governance</span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400 inline-block" />
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-950 mt-1">
                     Internal Quality Assurance Cell
                   </h2>
-                  <div className="mt-3 p-4 bg-blue-50 dark:bg-blue-950/40 rounded-xl border border-blue-100 dark:border-blue-900/50 text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
-                    <p className="font-semibold text-blue-900 dark:text-yellow-300">
-                      The committee will be framed in the college to look after the quality aspects in day to day activities of the college.
-                    </p>
+                  <div className="absolute bottom-0 left-0 w-16 h-0.5 bg-amber-500" />
+                  <div className="mt-3 p-4 bg-blue-50/40 rounded-xl border-l-4 border-blue-800 text-slate-700 text-sm leading-relaxed shadow-2xs">
+                    In pursuance of National Assessment and Accreditation Council (NAAC) guidelines, Ravindra College of Engineering for Women (RCEW) established the Internal Quality Assurance Cell (IQAC) as a post-accreditation quality sustenance measure.
                   </div>
                 </div>
 
                 {/* Functions & Responsibilities */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-serif font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <BookmarkCheck className="h-5 w-5 text-blue-600 dark:text-yellow-400" />
-                    Functions & Responsibilities
+                  <h3 className="text-lg font-serif font-bold text-slate-950 flex items-center gap-2">
+                    <BookmarkCheck className="h-5 w-5 text-amber-500" />
+                    Functions & Key Responsibilities
                   </h3>
                   <div className="grid grid-cols-1 gap-3">
-                    {IQAC_RESPONSIBILITIES.map((resp, idx) => (
-                      <div key={idx} className="p-4 bg-slate-50 dark:bg-primary-950/50 rounded-xl border border-slate-200 dark:border-slate-800 flex gap-3.5 items-start hover:border-blue-300 transition-colors">
-                        <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/80 dark:text-yellow-400 font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                          {idx + 1}
-                        </div>
-                        <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                          {resp}
-                        </p>
+                    {IQAC_RESPONSIBILITIES.map((resp, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3.5 bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:border-amber-300 transition-colors">
+                        <CheckCircle2 className="h-4.5 w-4.5 text-amber-500 shrink-0 mt-0.5" />
+                        <span className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">{resp}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Committee Members Table */}
-                <div className="space-y-4 pt-4">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                {/* Committee Members Table Section */}
+                <div className="space-y-4 pt-4 border-t border-slate-200">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div>
-                      <h3 className="text-lg font-serif font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                        <Users className="h-5 w-5 text-blue-600 dark:text-yellow-400" />
+                      <h3 className="text-lg font-serif font-bold text-slate-950 flex items-center gap-2">
+                        <Users className="h-5 w-5 text-blue-800" />
                         IQAC Committee Members Roster
                       </h3>
-                      <span className="text-xs text-slate-500 dark:text-slate-400">15 Active Executive & Academic Committee Members</span>
+                      <span className="text-xs text-slate-500">15 Active Executive & Academic Committee Members</span>
                     </div>
 
                     {/* Search filter */}
@@ -283,14 +281,14 @@ export default function IQAC() {
                         placeholder="Search member..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-slate-100 dark:bg-primary-950 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-blue-500"
+                        className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-800 focus:outline-none focus:border-blue-800"
                       />
                     </div>
                   </div>
 
-                  <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs">
+                  <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-2xs">
                     <table className="w-full text-left text-xs sm:text-sm">
-                      <thead className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white font-mono uppercase text-[11px] tracking-wider">
+                      <thead className="bg-blue-800 text-white font-serif font-bold uppercase text-[11px] border-b-2 border-amber-400">
                         <tr>
                           <th className="px-4 py-3.5 text-center w-14">S.No</th>
                           <th className="px-4 py-3.5">Name of the Member</th>
@@ -298,17 +296,17 @@ export default function IQAC() {
                           <th className="px-4 py-3.5 text-center">Designation</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+                      <tbody className="divide-y divide-slate-100 text-slate-800">
                         {filteredMembers.map((member) => (
-                          <tr key={member.sno} className="hover:bg-blue-50/50 dark:hover:bg-slate-800/40 transition-colors">
-                            <td className="px-4 py-3 text-center font-mono font-bold text-slate-500 dark:text-slate-400">{member.sno}</td>
-                            <td className="px-4 py-3 font-semibold text-slate-900 dark:text-white">{member.name}</td>
-                            <td className="px-4 py-3 text-slate-600 dark:text-slate-300">{member.profession}</td>
+                          <tr key={member.sno} className="hover:bg-blue-50/40 transition-colors">
+                            <td className="px-4 py-3 text-center font-mono font-bold text-blue-800">{member.sno}</td>
+                            <td className="px-4 py-3 font-semibold text-slate-950">{member.name}</td>
+                            <td className="px-4 py-3 text-slate-700">{member.profession}</td>
                             <td className="px-4 py-3 text-center">
                               <span className={`px-3 py-1 rounded-full text-[10px] font-mono font-bold ${
                                 member.designation === 'Chairperson'
-                                  ? 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300 border border-amber-300'
-                                  : 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300'
+                                  ? 'bg-amber-100 text-amber-950 border border-amber-300'
+                                  : 'bg-blue-100 text-blue-950 border border-blue-200'
                               }`}>
                                 {member.designation}
                               </span>
