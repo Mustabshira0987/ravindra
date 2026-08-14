@@ -38,7 +38,7 @@ export const COLLEGE_INFO = {
       mobile: '+91 9948187766',
       landline: '08518-285088'
     },
-    mapIframeUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3837.93380295191!2d78.0700021!3d15.8504018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1m3!1d0!2d78.0700021!3d15.8504018!2sRavindra+Engineering+College+for+Women!5e0!3m2!1sen!2sin!4v1580000000000!5m2!1sen!2sin',
+    mapIframeUrl: 'https://maps.google.com/maps?q=Ravindra+College+of+Engineering+for+Women,+Nandikotkur+Road,+Venkayapalli,+Kurnool,+Andhra+Pradesh+518002&t=&z=15&ie=UTF8&iwloc=&output=embed',
     socials: {
       facebook: 'https://facebook.com',
       twitter: 'https://twitter.com',
@@ -61,7 +61,7 @@ export const STATS = [
 export const DEPARTMENTS: Department[] = [
   {
     id: 'cse',
-    name: 'Computer Science & Engineering',
+    name: 'Computer Science and Engineering',
     code: 'CSE',
     shortDesc: 'Nurturing innovative software developers and computer scientists for the modern digital era.',
     fullDesc: 'At Ravindra College of Engineering for Women, the Computer Science and Engineering department is a launchpad for innovation and empowerment. Established in 2008, the NBA-accredited department has more than 420 students and 27 core faculty members dedicated to professional excellence, research, and contemporary computing education.',
@@ -76,24 +76,8 @@ export const DEPARTMENTS: Department[] = [
     hodQualification: 'M.Tech, Ph.D in Computer Science'
   },
   {
-    id: 'aids',
-    name: 'Artificial Intelligence & Data Science',
-    code: 'AI&DS',
-    shortDesc: 'Pioneering the next wave of computing with machine learning, neural networks, and analytical intelligence.',
-    fullDesc: 'Designed to cater to the explosive demand for data intelligence, the Department of AI & Data Science trains students in algorithms, statistical models, natural language processing, computer vision, and big data pipeline engineering. Students work on real-world datasets and complete hands-on AI projects.',
-    intake: 120,
-    duration: '4 Years (B.Tech)',
-    established: 2021,
-    labs: ['AI & Neural Networks Lab', 'Big Data Analytics Lab', 'Machine Learning & Python Lab', 'Data Visualization Studio'],
-    careers: ['Data Scientist', 'AI Research Engineer', 'Machine Learning Analyst', 'Business Intelligence Consultant', 'Data Architect'],
-    image: AIDS_DEPT_LAB,
-    hodName: 'Dr. T. Kavitha',
-    hodDesignation: 'Professor & Head of Department',
-    hodQualification: 'Ph.D. in Artificial Intelligence'
-  },
-  {
     id: 'ece',
-    name: 'Electronics & Communication Engineering',
+    name: 'Electronics and Communication Engineering',
     code: 'ECE',
     shortDesc: 'Connecting the physical and digital worlds through VLSI, communication systems, and embedded signal processing.',
     fullDesc: 'The NBA-accredited ECE department provides deep knowledge of hardware systems, microcontrollers, VLSI design, wireless networks, and IoT architectures. RCEW ECE students consistently win national level hackathons and secure placements in both core electronics and IT corporations.',
@@ -108,74 +92,23 @@ export const DEPARTMENTS: Department[] = [
     hodQualification: 'M.E., Ph.D. in Communication Systems'
   },
   {
-    id: 'eee',
-    name: 'Electrical & Electronics Engineering',
-    code: 'EEE',
-    shortDesc: 'Powering a sustainable future through smart grids, power electronics, and electric vehicle designs.',
-    fullDesc: 'The EEE department at RCEW trains women to innovate in modern renewable energy systems, high voltage transmissions, electric vehicle drivetrains, and automatic industrial controls. The coursework blends classical grid logic with dynamic electronic engineering.',
-    intake: 60,
+    id: 'aids',
+    name: 'Computer Science and Engineering (AI)',
+    code: 'CAI',
+    shortDesc: 'Undergraduate Program: Computer Science and Engineering with Artificial Intelligence specialization.',
+    fullDesc: 'Designed to cater to the explosive demand for data intelligence, the Department of Computer Science and Engineering (AI) [CAI] trains students in algorithms, statistical models, natural language processing, computer vision, and big data pipeline engineering. Students work on real-world datasets and complete hands-on AI projects.',
+    intake: 120,
     duration: '4 Years (B.Tech)',
-    established: 2009,
-    labs: ['Electrical Machines Lab', 'Power Systems Simulation Lab', 'Control Systems Lab', 'Power Electronics & Drives Lab'],
-    careers: ['Smart Grid Design Engineer', 'EV Powertrain Engineer', 'Power Plant Automation Analyst', 'Control Engineer', 'Energy Systems Consultant'],
-    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800',
-    hodName: 'Dr. M. Sreenivasulu',
-    hodDesignation: 'Associate Professor & HOD',
-    hodQualification: 'M.Tech, Ph.D. in Power Electronics'
-  },
-  {
-    id: 'civil',
-    name: 'Civil Engineering',
-    code: 'CIVIL',
-    shortDesc: 'Designing and building sustainable infrastructure, smart townships, and environment-friendly green spaces.',
-    fullDesc: 'The Department of Civil Engineering focuses on structural integrity, geotechnical designs, water resource conservation, and environmental engineering. Students use advanced CAD tools and perform intensive lab work on materials and structure modeling.',
-    intake: 30,
-    duration: '4 Years (B.Tech)',
-    established: 2012,
-    labs: ['Concrete Technology Lab', 'Geotechnical Engineering Lab', 'Fluid Mechanics & Hydraulic Machinery Lab', 'Surveying & CAD Studio'],
-    careers: ['Structural Consultant', 'Site Engineer', 'Urban Planning Consultant', 'Geotechnical Analyst', 'Estimation Engineer'],
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800',
-    hodName: 'Mr. K. Madhan Gopal',
-    hodDesignation: 'Assistant Professor & HOD',
-    hodQualification: 'M.Tech in Structural Engineering'
-  },
-  {
-    id: 'mech',
-    name: 'Mechanical Engineering',
-    code: 'MECH',
-    shortDesc: 'Mastering robotics, CAD/CAM modeling, thermodynamic innovations, and manufacturing technology.',
-    fullDesc: 'Breaking gender stereotypes, RCEW’s Mechanical Engineering department is dedicated to preparing women for industry 4.0, combining robotics, thermodynamics, materials science, and digital high-tech manufacturing architectures.',
-    intake: 30,
-    duration: '4 Years (B.Tech)',
-    established: 2012,
-    labs: ['Thermal Engineering Lab', 'Machine Tools & Metrology Lab', 'CAD/CAM Lab', 'Fluid Dynamics & Heat Transfer Lab'],
-    careers: ['Robotics Design Engineer', 'HVAC Consultant', 'Automotive Systems Designer', 'Quality Assurance Manager', 'Production Planner'],
-    image: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&q=80&w=800',
-    hodName: 'Mr. P. Shiva Ram',
-    hodDesignation: 'Assistant Professor & HOD',
-    hodQualification: 'M.Tech in Machine Design'
-  },
-  {
-    id: 'mba',
-    name: 'Master of Business Administration',
-    code: 'MBA',
-    shortDesc: 'Grooming corporate managers, financial analysts, and entrepreneurs with high-impact strategic business leadership.',
-    fullDesc: 'Our MBA postgraduate stream offers specializations in Human Resource Management, Finance, and Marketing. Centered on leadership case studies, internship exposures, and soft-skill development, RCEW MBA is a gateway to premium corporate pathways.',
-    intake: 60,
-    duration: '2 Years (Postgraduate)',
-    established: 2010,
-    labs: ['Management Communication Lab', 'Business Analytics Lab', 'Financial Analysis Suite'],
-    careers: ['HR Manager', 'Financial Analyst', 'Marketing Specialist', 'Business Development Officer', 'Project Consultant'],
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800',
-    hodName: 'Mrs. S. Shabana',
-    hodDesignation: 'Associate Professor & Head of MBA',
-    hodQualification: 'MBA, (Ph.D) in Human Resources'
+    established: 2021,
+    labs: ['AI & Neural Networks Lab', 'Big Data Analytics Lab', 'Machine Learning & Python Lab', 'Data Visualization Studio'],
+    careers: ['Data Scientist', 'AI Research Engineer', 'Machine Learning Analyst', 'Business Intelligence Consultant', 'Data Architect'],
+    image: AIDS_DEPT_LAB
   }
 ];
 
 export const COURSE_OFFERINGS: CourseOffering[] = [
-  { degree: 'B.Tech', branch: 'Computer Science & Engineering', duration: '4 Years', seats: 180, eligibility: '10+2 with Physics, Chemistry & Math, plus qualifying rank in AP EAPCET (EAMCET)' },
-  { degree: 'B.Tech', branch: 'Artificial Intelligence & Data Science', duration: '4 Years', seats: 120, eligibility: '10+2 with Physics, Chemistry & Math, plus qualifying rank in AP EAPCET (EAMCET)' },
+  { degree: 'B.Tech', branch: 'Computer Science and Engineering', duration: '4 Years', seats: 180, eligibility: '10+2 with Physics, Chemistry & Math, plus qualifying rank in AP EAPCET (EAMCET)' },
+  { degree: 'B.Tech', branch: 'Computer Science and Engineering (AI)', duration: '4 Years', seats: 120, eligibility: '10+2 with Physics, Chemistry & Math, plus qualifying rank in AP EAPCET (EAMCET)' },
   { degree: 'B.Tech', branch: 'Electronics & Communication Engineering', duration: '4 Years', seats: 120, eligibility: '10+2 with Physics, Chemistry & Math, plus qualifying rank in AP EAPCET (EAMCET)' },
   { degree: 'B.Tech', branch: 'Electrical & Electronics Engineering', duration: '4 Years', seats: 60, eligibility: '10+2 with Physics, Chemistry & Math, plus qualifying rank in AP EAPCET (EAMCET)' },
   { degree: 'B.Tech', branch: 'Civil Engineering', duration: '4 Years', seats: 30, eligibility: '10+2 with Physics, Chemistry & Math, plus qualifying rank in AP EAPCET (EAMCET)' },

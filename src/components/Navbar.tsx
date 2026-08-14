@@ -63,8 +63,9 @@ export default function Navbar({}: NavbarProps) {
       label: 'Departments',
       href: '/departments/cse',
       subitems: [
-        { label: 'Computer Science & Engineering', href: '/departments/cse' },
-        { label: 'Electronics & Communication', href: '/departments/ece' },
+        { label: 'Computer Science and Engineering', href: '/departments/cse' },
+        { label: 'Electronics and Communication Engineering', href: '/departments/ece' },
+        { label: 'Computer Science and Engineering (AI)', href: '/departments/cai' },
       ]
     },
     {

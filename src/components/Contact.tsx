@@ -146,7 +146,7 @@ export default function Contact() {
               <iframe
                 title="RCEW Location Map"
                 src={COLLEGE_INFO.contact.mapIframeUrl}
-                className="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-300"
+                className="w-full h-full border-0 transition-all duration-300"
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

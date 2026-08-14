@@ -10,9 +10,9 @@ export interface Department {
   labs: string[];
   careers: string[];
   image: string;
-  hodName: string;
-  hodDesignation: string;
-  hodQualification: string;
+  hodName?: string;
+  hodDesignation?: string;
+  hodQualification?: string;
 }
 
 export interface CourseOffering {

@@ -110,12 +110,17 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs sm:text-sm text-blue-100">
               <li>
                 <Link to="/departments/cse" onClick={handleScrollTop} className="hover:text-amber-300 transition-colors">
-                  Computer Science (CSE)
+                  Computer Science and Engineering (CSE)
                 </Link>
               </li>
               <li>
                 <Link to="/departments/ece" onClick={handleScrollTop} className="hover:text-amber-300 transition-colors">
-                  Electronics (ECE)
+                  Electronics and Communication Engineering (ECE)
+                </Link>
+              </li>
+              <li>
+                <Link to="/departments/ai-ds" onClick={handleScrollTop} className="hover:text-amber-300 transition-colors">
+                  Computer Science and Engineering (AI)
                 </Link>
               </li>
               <li>

@@ -11,6 +11,8 @@ export default function Departments() {
     switch (code) {
       case 'CSE':
         return <Terminal className="h-5 w-5 text-gold-400" />;
+      case 'CAI':
+      case 'CSE (AI)':
       case 'AI&DS':
         return <BrainCircuit className="h-5 w-5 text-gold-400" />;
       case 'ECE':
@@ -234,20 +236,22 @@ export default function Departments() {
                     </div>
 
                     {/* HOD Details */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-slate-50 dark:bg-primary-950/30 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/60">
-                      <div className="p-2.5 bg-primary-700/10 dark:bg-primary-800/30 text-primary-700 dark:text-gold-400 rounded-xl shrink-0">
-                        <GraduationCap className="h-6 w-6" />
+                    {selectedDept.hodName && (
+                      <div className="mt-6 p-4 rounded-2xl bg-slate-50 dark:bg-primary-950/40 border border-slate-100 dark:border-slate-800 flex items-center gap-4">
+                        <div className="p-2.5 bg-primary-700/10 dark:bg-primary-800/30 text-primary-700 dark:text-gold-400 rounded-xl shrink-0">
+                          <GraduationCap className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] text-slate-400 uppercase font-mono font-bold tracking-wider">Department HOD</p>
+                          <p className="text-sm font-serif font-bold text-slate-800 dark:text-white">
+                            {selectedDept.hodName}
+                          </p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400">
+                            {selectedDept.hodDesignation} • <span className="font-mono text-[11px] text-primary-700 dark:text-gold-300 font-semibold">{selectedDept.hodQualification}</span>
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-[10px] text-slate-400 uppercase font-mono font-bold tracking-wider">Department HOD</p>
-                        <p className="text-sm font-serif font-bold text-slate-800 dark:text-white">
-                          {selectedDept.hodName}
-                        </p>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">
-                          {selectedDept.hodDesignation} • <span className="font-mono text-[11px] text-primary-700 dark:text-gold-300 font-semibold">{selectedDept.hodQualification}</span>
-                        </p>
-                      </div>
-                    </div>
+                    )}
                   </div>
 
                   {/* Actions inside modal */}

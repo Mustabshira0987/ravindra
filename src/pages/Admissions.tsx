@@ -71,7 +71,7 @@ export default function Admissions() {
         <div className="absolute inset-0 bg-grid-pattern opacity-10" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <span className="px-3.5 py-1 bg-amber-500/20 text-amber-300 text-xs font-mono font-bold uppercase tracking-widest rounded-full border border-amber-400/30">
-            Admissions 2026-27 • EAMCET Code: REC
+            Admissions 2026-27 • EAMCET Code: RAVW
           </span>
           <h1 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-white">
             Eligibility, Procedure & Fee Structure

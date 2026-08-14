@@ -3,12 +3,12 @@ import { motion } from 'motion/react';
 import {
   ArrowRight, ShieldCheck, Award, GraduationCap, CheckCircle2, ChevronRight,
   BookOpen, Star, TrendingUp, Sparkles, Building2, Globe, Users, Bell,
-  FileText, Calendar, ExternalLink, Search, DollarSign, Download, ChevronDown
+  FileText, Calendar, ExternalLink, Search, DollarSign, Download, ChevronDown, MapPin, Phone
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
-import { DEPARTMENTS, NEWS_EVENTS, PLACEMENT_STATS } from '../data';
+import { DEPARTMENTS, NEWS_EVENTS, PLACEMENT_STATS, COLLEGE_INFO } from '../data';
 
 // Import newly added project assets
 import MUGDHA_CELEBRATIONS_IMAGE from '../assets/images/rcew_mugdha_celebrations.jpg';
@@ -344,9 +344,8 @@ export default function Home() {
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-3">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-400 text-blue-950 font-mono font-bold text-[11px] shadow-sm">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  ADMISSIONS OPEN • 2025-2026
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-yellow-400 text-blue-950 font-mono font-bold text-[11px] shadow-sm">
+                  ADMISSIONS OPEN
                 </span>
                 <span className="text-[11px] font-mono font-bold uppercase bg-white/10 px-3 py-1 rounded-full border border-yellow-400/40 text-yellow-300">
                   AP EAPCET CODE: RAVW
@@ -779,6 +778,62 @@ export default function Home() {
               Tour Campus & Facilities <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Campus Location Map Box */}
+      <section className="py-12 bg-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Left Info Column */}
+            <div className="lg:col-span-5 space-y-4">
+              <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+                Campus Geography
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 leading-snug">
+                Campus Location & Navigation Map
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+                Ravindra College of Engineering for Women (RCEW) is located on Nandikotkur Road at Venkayapalli, Kurnool, Andhra Pradesh - 518002.
+              </p>
+              
+              <div className="space-y-2 text-xs font-medium text-slate-700 pt-1">
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4 text-blue-600 shrink-0" />
+                  <span>Nandikotkur Road, Venkayapalli, Kurnool - 518002</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-blue-600 shrink-0" />
+                  <span>Admissions Helpline: +91 8639756876</span>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href="https://maps.google.com/?q=Ravindra+College+of+Engineering+for+Women+Kurnool"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-sm cursor-pointer"
+                >
+                  Open in Google Maps <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Map Box Column */}
+            <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-3xl p-2.5 overflow-hidden shadow-sm h-72 sm:h-80">
+              <iframe
+                title="RCEW Campus Map Location"
+                src={COLLEGE_INFO.contact.mapIframeUrl}
+                className="w-full h-full rounded-2xl border-0"
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
+          </div>
         </div>
       </section>
     </div>

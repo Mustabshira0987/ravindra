@@ -119,6 +119,7 @@ function MainAppLayout({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMo
               <Route path="/departments/cse" element={<CSE />} />
               <Route path="/departments/ece" element={<ECE />} />
               <Route path="/departments/ai-ds" element={<AIDS />} />
+              <Route path="/departments/cai" element={<AIDS />} />
               <Route path="/admissions" element={<Admissions />} />
               <Route path="/placements" element={<Placements />} />
               <Route path="/placements/company-visits" element={<Placements />} />

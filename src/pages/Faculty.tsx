@@ -78,6 +78,26 @@ const FACULTY_DATA: DepartmentData[] = [
     ]
   },
   {
+    id: 'btech-ece',
+    title: 'B.Tech – Electronics & Communication Engineering',
+    code: 'ECE',
+    description: 'Undergraduate Department of Electronics & Communication Engineering Faculty Roster',
+    faculty: [
+      { sNo: 1, name: 'Dr. N. Sreekanth (Ph.D)', designation: 'Professor & Principal' },
+      { sNo: 2, name: 'Dr. B. Madhusudhana Reddy (Ph.D)', designation: 'HOD & Professor' },
+      { sNo: 3, name: 'Dr. M. Jayalakshmi (Ph.D)', designation: 'Professor' },
+      { sNo: 4, name: 'Dr. P. Bindhu Swetha (Ph.D)', designation: 'Professor' },
+      { sNo: 5, name: 'Dr. Mohebbanaaz (Ph.D)', designation: 'Associate Professor' },
+      { sNo: 6, name: 'Mrs. C. Ahalya (Ph.D)', designation: 'Assistant Professor' },
+      { sNo: 7, name: 'Mrs. M. Jyothirmai (Ph.D)', designation: 'Assistant Professor' },
+      { sNo: 8, name: 'Mr. K. Venkata Siva Reddy (Ph.D)', designation: 'Assistant Professor' },
+      { sNo: 9, name: 'Mr. P. Kishor Kumar (Ph.D)', designation: 'Assistant Professor' },
+      { sNo: 10, name: 'Mrs. B. Geetha Rani (Ph.D)', designation: 'Assistant Professor' },
+      { sNo: 11, name: 'Mr. D. Gowri Sankar Rao', designation: 'Assistant Professor' },
+      { sNo: 12, name: 'Ms. Syed Ishrath Moin', designation: 'Assistant Professor' }
+    ]
+  },
+  {
     id: 'mtech-cse',
     title: 'M.Tech – Computer Science & Engineering',
     code: 'M.Tech CSE',
@@ -207,7 +227,7 @@ export default function Faculty() {
                   <span className="text-[10px] text-blue-100 font-mono uppercase tracking-wider font-bold">Faculty Members</span>
                 </div>
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3.5 rounded-2xl shadow-sm text-center">
-                  <span className="text-amber-300 font-serif font-bold text-xl sm:text-2xl block">4</span>
+                  <span className="text-amber-300 font-serif font-bold text-xl sm:text-2xl block">5</span>
                   <span className="text-[10px] text-blue-100 font-mono uppercase tracking-wider font-bold">Academic Streams</span>
                 </div>
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3.5 rounded-2xl shadow-sm text-center">
