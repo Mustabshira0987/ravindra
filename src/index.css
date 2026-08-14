@@ -113,6 +113,26 @@ body {
   @apply bg-primary-400;
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-700;
+
+/* Scrolling Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
+
+.animate-marquee {
+  display: flex;
+  shrink: 0;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover,
+.group:hover .animate-marquee {
+  animation-play-state: paused;
+}
+

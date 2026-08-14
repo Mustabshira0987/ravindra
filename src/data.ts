@@ -185,7 +185,7 @@ export const COURSE_OFFERINGS: CourseOffering[] = [
 
 export const ADMISSION_PROCESS = [
   { step: '1', title: 'Entrance Exams', desc: 'Appear for AP EAPCET (for B.Tech courses) or AP ICET (for postgraduate MBA course) state counseling.' },
-  { step: '2', title: 'Web Counseling Selection', desc: 'Select Ravindra Engineering College for Women (College Code: REC) as your preferred choice in the web options entry.' },
+  { step: '2', title: 'Web Counseling Selection', desc: 'Select Ravindra Engineering College for Women (College Code: RAVW) as your preferred choice in the web options entry.' },
   { step: '3', title: 'Verification', desc: 'Undergo document verification at certified government counseling centers.' },
   { step: '4', title: 'Reporting & Booking', desc: 'Upon seat allotment, report to our lush Kurnool campus with academic credentials to confirm admission.' }
 ];
@@ -539,7 +539,7 @@ export const NEWS_EVENTS: NewsEvent[] = [
     title: 'Admissions Open for B.Tech & MBA Academic Year 2026-27',
     date: 'July 10, 2026',
     category: 'Announcement',
-    description: 'The counseling codes are active. Candidates qualified in AP EAPCET / AP ICET can now exercise Web options for REC. Apply today to secure a seat at Kurnool’s premium girls engineering college.',
+    description: 'The counseling codes are active. Candidates qualified in AP EAPCET / AP ICET can now exercise Web options for RAVW. Apply today to secure a seat at Kurnool’s premium girls engineering college.',
     image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800'
   },
   {
@@ -612,7 +612,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     question: 'What is the college code for counseling options?',
-    answer: 'The counseling code for Ravindra Engineering College for Women under both AP EAPCET (EAMCET) and AP ICET systems is "REC".'
+    answer: 'The counseling code for Ravindra Engineering College for Women under both AP EAPCET (EAMCET) and AP ICET systems is "RAVW".'
   },
   {
     question: 'How secure is the hostel facility inside the campus?',

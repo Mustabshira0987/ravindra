@@ -116,7 +116,7 @@ export default function Events() {
               <span className="text-[10px] bg-red-100 text-red-800 font-bold uppercase tracking-wider font-mono h-fit px-2 py-0.5 rounded">NEW</span>
               <div>
                 <p className="font-bold text-primary-900 dark:text-white text-xs">AP EAPCET (EAMCET) Web Options Link Active</p>
-                <p className="text-slate-400 text-[11px] mt-1 font-mono">Counseling active. College Code: REC</p>
+                <p className="text-slate-400 text-[11px] mt-1 font-mono">Counseling active. College Code: RAVW</p>
               </div>
             </div>
           </div>

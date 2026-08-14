@@ -29,7 +29,7 @@ export default function Hero() {
       highlightWord: "Futures.",
       subtitle: "Personalized faculty guidance, interactive Speakeasy coding sessions, and 95%+ campus placements up to 27.0 LPA.",
       tag: "INTERACTIVE CODING & CAREER MENTORSHIP",
-      badgeTag: "RAWN",
+      badgeTag: "RAVW",
       image: HERO_SLIDE_1_AWARD,
       showEmblem: true,
       objectPosition: "object-center"
@@ -39,7 +39,7 @@ export default function Hero() {
       highlightWord: "SoC Sign-off.",
       subtitle: "Five-Day hands-on training on 'RTL, IP Integration & SoC Sign-off' funded by Ministry of Electronics & IT (MeitY), Govt. of India.",
       tag: "NIELIT & MEITY NATIONAL WORKSHOP",
-      badgeTag: "RAWN",
+      badgeTag: "RAVW",
       image: HERO_SLIDE_2_NIELIT,
       showEmblem: false,
       objectPosition: "object-[38%_center]"
@@ -49,7 +49,7 @@ export default function Hero() {
       highlightWord: "Impact.",
       subtitle: "Supporting innovation, startups and research that create real-world solutions for a better tomorrow.",
       tag: "EMPOWERING INNOVATION & STARTUPS",
-      badgeTag: "RAWN",
+      badgeTag: "RAVW",
       image: HERO_SLIDE_3_BUILDING,
       showEmblem: false,
       objectPosition: "object-center"
@@ -59,7 +59,7 @@ export default function Hero() {
       highlightWord: "Succeed.",
       subtitle: "A vibrant campus life that nurtures leadership, creativity, and holistic development.",
       tag: "CAMPUS LIFE & BEYOND CLASSROOMS",
-      badgeTag: "RAWN",
+      badgeTag: "RAVW",
       image: HERO_SLIDE_4_STUDENTS,
       showEmblem: false,
       objectPosition: "object-center"

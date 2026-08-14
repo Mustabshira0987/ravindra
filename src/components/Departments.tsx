@@ -253,7 +253,7 @@ export default function Departments() {
                   {/* Actions inside modal */}
                   <div className="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <p className="text-[11px] text-slate-400 font-mono">
-                      AP EAPCET Counseling Code: REC
+                      AP EAPCET Counseling Code: RAVW
                     </p>
                     <div className="flex gap-2 w-full sm:w-auto">
                       <button

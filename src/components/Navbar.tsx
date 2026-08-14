@@ -144,8 +144,8 @@ export default function Navbar({}: NavbarProps) {
           <span className="bg-yellow-400 text-blue-950 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded mr-3 shrink-0 relative z-10 shadow-sm animate-pulse">
             Announcements
           </span>
-          <div className="w-full overflow-hidden flex whitespace-nowrap">
-            <div className="animate-marquee flex gap-16 uppercase font-semibold">
+          <div className="w-full overflow-hidden flex whitespace-nowrap group">
+            <div className="animate-marquee flex gap-16 uppercase font-semibold shrink-0">
               <span>🎉 Admissions Open for Academic Year 2026-27</span>
               <span>🏆 NAAC Accredited with A+ Grade</span>
               <span>🎓 Autonomous Institution (UGC Proposal)</span>
@@ -154,7 +154,7 @@ export default function Navbar({}: NavbarProps) {
               <span>💼 Corporate Placements: 96.4% Secured</span>
             </div>
             {/* Duplicate for infinite loop */}
-            <div className="animate-marquee flex gap-16 uppercase ml-16 font-semibold" aria-hidden="true">
+            <div className="animate-marquee flex gap-16 uppercase ml-16 font-semibold shrink-0" aria-hidden="true">
               <span>🎉 Admissions Open for Academic Year 2026-27</span>
               <span>🏆 NAAC Accredited with A+ Grade</span>
               <span>🎓 Autonomous Institution (UGC Proposal)</span>

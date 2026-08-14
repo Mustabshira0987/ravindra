@@ -164,7 +164,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Ravindra Engineering College for Women. All Rights Reserved.
           </p>
           <div className="flex items-center gap-6">
-            <span className="hidden sm:inline-block text-amber-300">College Counseling Code: REC</span>
+            <span className="hidden sm:inline-block text-amber-300">College Counseling Code: RAVW</span>
             <button
               onClick={handleScrollTop}
               className="p-2.5 bg-blue-800 hover:bg-amber-400 hover:text-blue-950 text-white rounded-xl shadow transition-all duration-300 flex items-center gap-1 border border-amber-400/40 cursor-pointer"
