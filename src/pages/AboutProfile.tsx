@@ -116,7 +116,7 @@ export default function AboutProfile() {
             <motion.section
               initial={{ opacity: 0, y: 40, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.6 }}
               id="history"
               className="scroll-mt-28 bg-white p-6 sm:p-10 lg:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-8"
@@ -226,7 +226,7 @@ export default function AboutProfile() {
             <motion.section
               initial={{ opacity: 0, y: 40, scale: 0.96 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0.15, margin: "-40px" }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               id="why-rcew"
               className="scroll-mt-28 bg-blue-50/50 p-8 sm:p-12 rounded-3xl border border-blue-100 shadow-sm space-y-8"
@@ -244,7 +244,7 @@ export default function AboutProfile() {
                     key={idx}
                     initial={{ opacity: 0, y: 30, scale: 0.94 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.15 }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
                     whileHover={{ y: -6, scale: 1.02 }}
                     className="bg-white p-6 rounded-2xl border border-blue-100 shadow-2xs space-y-3 hover:border-blue-700 transition-all cursor-pointer"
@@ -263,7 +263,7 @@ export default function AboutProfile() {
             <motion.section
               initial={{ opacity: 0, y: 40, scale: 0.96 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0.15, margin: "-40px" }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               id="milestones"
               className="scroll-mt-28 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-8"
@@ -280,7 +280,7 @@ export default function AboutProfile() {
                     key={idx}
                     initial={{ opacity: 0, y: 30, scale: 0.93 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.15 }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
                     whileHover={{ y: -5, scale: 1.03 }}
                     className="bg-blue-50/40 p-5 rounded-2xl border border-blue-100 shadow-2xs space-y-2 flex flex-col justify-between hover:shadow-md hover:border-blue-700 transition-all cursor-pointer"

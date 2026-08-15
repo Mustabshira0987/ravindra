@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  Menu, X, Search, ChevronDown, Phone, Mail, ExternalLink, Instagram, Linkedin, Youtube
+  Menu, X, Search, ChevronDown, Phone, Mail, ExternalLink, Instagram, Linkedin, Youtube, Bell, Sparkles
 } from 'lucide-react';
 import { COLLEGE_INFO } from '../data';
 import COLLEGE_LOGO_IMAGE from '../assets/images/rcew_college_logo_1784036182954.png';
@@ -139,31 +139,62 @@ export default function Navbar({}: NavbarProps) {
 
   return (
     <>
-      {/* 1. TOP ANNOUNCEMENT BAR (Scrolling Marquee) */}
-      <div className="bg-blue-600 text-white py-1.5 overflow-hidden border-b border-blue-700 text-[11px] font-mono select-none relative z-50 w-full">
-        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-4 xl:px-4 2xl:px-8 flex items-center relative">
-          <span className="bg-yellow-400 text-blue-950 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded mr-3 shrink-0 relative z-10 shadow-sm animate-pulse">
-            Announcements
+      {/* 1. TOP ANNOUNCEMENT BAR (Sleek Gradient & Enlarged Title) */}
+      <div className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-950 text-white py-2.5 sm:py-3 overflow-hidden border-b-2 border-amber-400/80 shadow-md select-none relative z-50 w-full">
+        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 flex items-center relative">
+          
+          {/* Enlarged Title Badge */}
+          <span className="bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 text-xs sm:text-sm font-extrabold uppercase px-3.5 py-1 rounded-xl mr-4 shrink-0 relative z-10 shadow-md border border-amber-300 flex items-center gap-1.5 font-sans tracking-wider">
+            <Bell className="h-4 w-4 text-slate-950 animate-bounce" />
+            <span>ANNOUNCEMENTS</span>
           </span>
+
+          {/* Marquee Track with Pause-on-Hover and Enlarged Text */}
           <div className="w-full overflow-hidden flex whitespace-nowrap group">
-            <div className="animate-marquee flex gap-16 uppercase font-semibold shrink-0">
-              <span>🎉 Admissions Open for Academic Year 2026-27</span>
-              <span>🏆 NAAC Accredited with A+ Grade</span>
-              <span>🎓 Autonomous Institution (UGC Proposal)</span>
-              <span>📢 Latest JNTUA Circulars Released</span>
-              <span>📅 Academic Calendars Active</span>
-              <span>💼 Corporate Placements: 96.4% Secured</span>
+            <div className="animate-marquee flex gap-12 sm:gap-16 uppercase font-bold text-xs sm:text-sm md:text-base tracking-wide shrink-0">
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                <Sparkles className="h-4 w-4 text-amber-400 shrink-0" /> Admissions Open for Academic Year 2026-27
+              </span>
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                🏆 NAAC Accredited with A+ Grade
+              </span>
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                🎓 Autonomous Institution (UGC Proposal)
+              </span>
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                📢 Latest JNTUA Circulars Released
+              </span>
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                💼 Corporate Placements: 96.4% Secured
+              </span>
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                ⚡ RTL & IP Integration Boot Camp Active
+              </span>
             </div>
-            {/* Duplicate for infinite loop */}
-            <div className="animate-marquee flex gap-16 uppercase ml-16 font-semibold shrink-0" aria-hidden="true">
-              <span>🎉 Admissions Open for Academic Year 2026-27</span>
-              <span>🏆 NAAC Accredited with A+ Grade</span>
-              <span>🎓 Autonomous Institution (UGC Proposal)</span>
-              <span>📢 Latest JNTUA Circulars Released</span>
-              <span>📅 Academic Calendars Active</span>
-              <span>💼 Corporate Placements: 96.4% Secured</span>
+
+            {/* Duplicate for seamless infinite loop */}
+            <div className="animate-marquee flex gap-12 sm:gap-16 uppercase ml-12 sm:ml-16 font-bold text-xs sm:text-sm md:text-base tracking-wide shrink-0" aria-hidden="true">
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                <Sparkles className="h-4 w-4 text-amber-400 shrink-0" /> Admissions Open for Academic Year 2026-27
+              </span>
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                🏆 NAAC Accredited with A+ Grade
+              </span>
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                🎓 Autonomous Institution (UGC Proposal)
+              </span>
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                📢 Latest JNTUA Circulars Released
+              </span>
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                💼 Corporate Placements: 96.4% Secured
+              </span>
+              <span className="flex items-center gap-2 text-white hover:text-amber-300 transition-colors">
+                ⚡ RTL & IP Integration Boot Camp Active
+              </span>
             </div>
           </div>
+
         </div>
       </div>
 

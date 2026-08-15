@@ -351,7 +351,7 @@ export default function Faculty() {
                 key={dept.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5 }}
                 className="space-y-5"
                 id={`dept-${dept.id}`}

@@ -100,7 +100,7 @@ export default function Milestones() {
                   key={item.year}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.15 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className={`relative grid grid-cols-1 lg:grid-cols-12 gap-6 items-center ${
                     isEven ? '' : 'lg:flex-row-reverse'
@@ -156,7 +156,7 @@ export default function Milestones() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.6 }}
           className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-8 sm:p-12 rounded-3xl shadow-xl relative overflow-hidden text-center space-y-6"
         >

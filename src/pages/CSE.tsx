@@ -333,7 +333,7 @@ export default function CSE() {
               <motion.div
                 initial={{ opacity: 0, y: 30, scale: 0.98 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5 }}
                 className="space-y-8"
               >
@@ -495,7 +495,7 @@ export default function CSE() {
               <motion.div
                 initial={{ opacity: 0, y: 30, scale: 0.98 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5 }}
                 className="space-y-8"
               >
@@ -667,7 +667,7 @@ export default function CSE() {
               <motion.div
                 initial={{ opacity: 0, y: 30, scale: 0.98 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5 }}
                 className="space-y-6"
               >

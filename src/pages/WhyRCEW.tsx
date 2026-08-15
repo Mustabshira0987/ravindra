@@ -108,7 +108,7 @@ export default function WhyRCEW() {
                 key={idx}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
                 className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-2xs hover:shadow-md hover:border-amber-400 transition-all space-y-4 flex flex-col justify-between group hover:-translate-y-1"
               >
@@ -144,7 +144,7 @@ export default function WhyRCEW() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.6 }}
           className="bg-gradient-to-b from-blue-900 via-blue-800 to-slate-900 text-white p-8 sm:p-12 rounded-3xl shadow-xl text-center space-y-4 border-t-2 border-amber-400"
         >

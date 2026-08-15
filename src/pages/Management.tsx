@@ -30,7 +30,7 @@ export default function Management() {
         <motion.section
           initial={{ opacity: 0, y: 40, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.6 }}
           className="bg-white rounded-3xl border border-slate-200 shadow-2xs p-6 sm:p-10 lg:p-12 transition-all hover:shadow-md hover:border-amber-300"
         >

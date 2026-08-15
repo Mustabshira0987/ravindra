@@ -29,6 +29,8 @@ import HOME_DRONE_INNOVATION from '../assets/images/rcew_home_drone_innovation.p
 import HOME_BUILDING_FRONT from '../assets/images/rcew_home_building_front.png';
 import HOME_NIELIT_BOOTCAMP from '../assets/images/rcew_nielit_bootcamp_lamp_lighting.png';
 import HOME_TECH_LAB_EVENT from '../assets/images/rcew_home_tech_lab_event.png';
+import AIDS_DEPT_LAB from '../assets/images/rcew_aids_dept_lab.png';
+import ECE_DEPT_LAB from '../assets/images/rcew_ece_dept_lab.jpg';
 
 // 1. CIRCULARS DATA (84 entries)
 const CIRCULARS_DATA = [
@@ -211,6 +213,23 @@ const PLACEMENTS_24_25 = [
   { sno: 13, company: 'Inspire AI', offers: 4, ctc: '4.5 Lakhs' }
 ];
 
+// 3. CAMPUS VISUAL TOUR CARDS DATA (13 Showcase Items with Captions)
+const TOUR_CARDS = [
+  { img: HOME_DRONE_INNOVATION, title: "IEEE Drone Innovation & Flight Demo", category: "Robotics & Innovation" },
+  { img: HOME_TECH_LAB_EVENT, title: "Interactive Coding & Tech Lab Mentorship", category: "Skill Development" },
+  { img: HOME_FACULTY_EVENT, title: "Academic Conferences & Faculty Leadership", category: "Research & FDP" },
+  { img: HOME_BUILDING_FRONT, title: "State-of-the-Art Autonomous Campus Building", category: "Infrastructure" },
+  { img: VISUAL_TOUR_BOOTCAMP, title: "NIELIT Boot Camp & Lamp Lighting Ceremony", category: "National Workshop" },
+  { img: VISUAL_TOUR_WORKSHOP, title: "IP Integration & RTL SoC Sign-off Workshop", category: "MeitY Sponsored" },
+  { img: VISUAL_TOUR_LABS, title: "Advanced AI & Computer Science Research Labs", category: "Research Facilities" },
+  { img: MUGDHA_CELEBRATIONS_IMAGE, title: "Mugdha Annual Cultural & Heritage Celebrations", category: "Cultural Fest" },
+  { img: CLASSICAL_DANCE_PERFORMERS, title: "Classical Bharatanatyam & Dance Recitals", category: "Student Talent" },
+  { img: AIDS_DEPT_LAB, title: "AI & Data Science High-Performance Computing Lab", category: "Department Lab" },
+  { img: ECE_DEPT_LAB, title: "Electronics & Embedded Systems Hardware Lab", category: "Department Lab" },
+  { img: HOME_NIELIT_BOOTCAMP, title: "MeitY Sponsored National Skill Workshop", category: "National Bootcamp" },
+  { img: DRONE_DEMO_IMAGE, title: "Autonomous Drone & Robotics Flight Demo", category: "Student Innovation" }
+];
+
 export default function Home() {
   const featuredDepts = DEPARTMENTS.filter(d => ['cse', 'ece', 'aids'].includes(d.id));
 
@@ -243,7 +262,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 45, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={{ once: true, amount: 0.15, margin: "-60px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
           >
@@ -251,7 +270,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="lg:col-span-5 relative"
             >
@@ -275,7 +294,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-7 space-y-5"
             >
@@ -333,7 +352,7 @@ export default function Home() {
       <motion.section
         initial={{ opacity: 0, y: 50, scale: 0.96 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, amount: 0.15, margin: "-50px" }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         id="admissions-section"
         className="relative overflow-hidden py-8 sm:py-10 bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-950 text-white border-y-2 border-yellow-400 shadow-lg my-6"
@@ -403,7 +422,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 45, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, amount: 0.15, margin: "-50px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden"
           >
@@ -505,7 +524,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6 }}
             className="flex flex-col sm:flex-row sm:items-center justify-between gap-4"
           >
@@ -552,7 +571,7 @@ export default function Home() {
                 key={idx}
                 initial={{ opacity: 0, y: 35, scale: 0.94 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ y: -5, scale: 1.03 }}
                 className="rounded-2xl overflow-hidden shadow-sm border border-slate-200 group cursor-pointer"
@@ -566,7 +585,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs"
           >
@@ -605,7 +624,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6 }}
             className="flex flex-col sm:flex-row items-center justify-between mb-10"
           >
@@ -631,7 +650,7 @@ export default function Home() {
                 key={dept.id}
                 initial={{ opacity: 0, y: 45, scale: 0.94 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
                 whileHover={{ y: -8, scale: 1.02 }}
                 className="group bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
@@ -673,57 +692,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= CULTURAL FEST BANNER - POP-UP MOTION ================= */}
-      <motion.section
-        initial={{ opacity: 0, y: 45, scale: 0.96 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative overflow-hidden py-8 sm:py-10 bg-gradient-to-r from-slate-950 via-purple-950 to-indigo-950 text-white border-y-2 border-amber-400/50 shadow-lg my-6"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center justify-between gap-6 relative z-10">
-          {/* Pop-up Dance Image Card */}
-          <motion.div
-            whileHover={{ scale: 1.05, rotate: -1 }}
-            transition={{ duration: 0.3 }}
-            className="relative w-full md:w-80 h-52 md:h-60 rounded-2xl overflow-hidden border-2 border-amber-400/80 shadow-xl group cursor-pointer bg-slate-900 shrink-0"
-          >
-            <img src={CLASSICAL_DANCE_PERFORMERS} alt="RCEW Classical Cultural Dance Performance" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-3">
-              <span className="text-[11px] font-mono text-amber-300 font-bold bg-slate-950/80 px-2.5 py-0.5 rounded-md border border-amber-400/40">
+      {/* ================= CULTURAL FEST BANNER - CONSTANT STATIC DISPLAY ================= */}
+      <section className="relative overflow-hidden py-10 sm:py-12 bg-gradient-to-r from-slate-950 via-purple-950 to-indigo-950 text-white border-y-2 border-amber-400/50 shadow-lg my-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center justify-between gap-8 relative z-10">
+          {/* Enlarged Dance Image Card */}
+          <div className="relative w-full md:w-[460px] lg:w-[500px] h-64 sm:h-72 md:h-80 rounded-2xl overflow-hidden border-2 border-amber-400/90 shadow-2xl group cursor-pointer bg-slate-900 shrink-0">
+            <img
+              src={CLASSICAL_DANCE_PERFORMERS}
+              alt="RCEW Classical Cultural Dance Performance"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-4">
+              <span className="text-xs font-mono text-amber-300 font-bold bg-slate-950/85 px-3 py-1 rounded-md border border-amber-400/40 shadow-sm">
                 🎭 Mugdha & Cultural Fests
               </span>
             </div>
-          </motion.div>
+          </div>
 
-          <div className="space-y-2.5 max-w-xl text-left md:text-right">
-            <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-amber-400 text-blue-950 uppercase tracking-widest inline-block shadow-sm">
+          <div className="space-y-3 max-w-xl text-left md:text-right">
+            <span className="px-3.5 py-1 rounded-full text-[11px] font-mono font-bold bg-amber-400 text-blue-950 uppercase tracking-widest inline-block shadow-sm">
               ✨ Vibrant Campus Culture
             </span>
-            <h3 className="text-xl sm:text-2xl font-serif font-bold text-amber-300 leading-snug">
+            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-amber-300 leading-snug">
               Celebrating Artistic Excellence & Heritage
             </h3>
             <p className="text-xs sm:text-sm text-purple-100 leading-relaxed font-sans">
               From classical Bharatanatyam recitals to annual campus celebrations like <strong>Mugdha 2K25</strong>, RCEW nurtures artistic talents and leadership alongside academic brilliance.
             </p>
-            <div className="pt-1 flex md:justify-end">
-              <Link to="/campus-life" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-blue-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer hover:scale-105">
+            <div className="pt-2 flex md:justify-end">
+              <Link to="/campus-life" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-blue-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer hover:scale-105">
                 Explore Clubs <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Visual Tour Section - Staggered Motion Reveal */}
+      {/* Visual Tour Section - Continuous Infinite Scrolling Marquee */}
       <section className="py-16 bg-slate-50 relative border-t border-slate-200 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-12"
+            className="text-center max-w-3xl mx-auto"
           >
             <span className="text-blue-600 text-xs font-bold uppercase tracking-widest font-mono">
               Life on Campus
@@ -732,53 +746,59 @@ export default function Home() {
               Campus Innovation & Visual Tour
             </h2>
             <div className="h-1 w-16 bg-yellow-500 mx-auto mt-3 rounded-full" />
+            <p className="text-slate-600 text-xs sm:text-sm mt-3 font-sans">
+              Explore our state-of-the-art labs, IEEE drone flight trials, national bootcamps, and vibrant campus life.
+            </p>
           </motion.div>
+        </div>
 
-          {/* 4 Staggered Pop-Up Campus Life Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { img: HOME_DRONE_INNOVATION, title: "IEEE Drone Innovation & Flight Demo" },
-              { img: HOME_TECH_LAB_EVENT, title: "Interactive Coding & Tech Lab Mentorship" },
-              { img: HOME_FACULTY_EVENT, title: "Academic Conferences & Faculty Leadership" },
-              { img: HOME_BUILDING_FRONT, title: "State-of-the-Art Autonomous Campus" },
-            ].map((card, idx) => (
+        {/* Continuous Infinite Scrolling Marquee Slider with Pause-on-Hover */}
+        <div className="relative w-full overflow-hidden py-4 group">
+          {/* Left and Right Fade Overlay for smooth visual boundaries */}
+          <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent z-20 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent z-20 pointer-events-none" />
+
+          <div className="animate-marquee-continuous flex gap-6">
+            {[...TOUR_CARDS, ...TOUR_CARDS].map((card, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 40, scale: 0.93 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.12 }}
-                whileHover={{ y: -6, scale: 1.03 }}
-                className="relative h-64 rounded-2xl overflow-hidden group shadow-sm border border-slate-200 cursor-pointer"
+                whileHover={{ y: -8, scale: 1.04 }}
+                transition={{ duration: 0.25 }}
+                className="relative w-72 sm:w-80 h-64 sm:h-72 rounded-2xl overflow-hidden group/card shadow-md hover:shadow-2xl border border-slate-200/90 cursor-pointer shrink-0 bg-slate-950"
               >
                 <img
                   src={card.img}
                   alt={card.title}
-                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover/card:scale-108 transition-transform duration-700"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4">
-                  <span className="text-white text-xs font-serif font-bold drop-shadow-sm">{card.title}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/30 to-transparent flex flex-col justify-end p-4">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 bg-slate-950/80 px-2.5 py-0.5 rounded-md border border-amber-400/30 w-fit mb-1.5 shadow-xs">
+                    {card.category}
+                  </span>
+                  <span className="text-white text-xs sm:text-sm font-serif font-bold drop-shadow-sm leading-snug">
+                    {card.title}
+                  </span>
                 </div>
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-8 text-center"
-          >
-            <Link
-              to="/campus-life"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg"
-            >
-              Tour Campus & Facilities <ArrowRight className="h-4 w-4" />
-            </Link>
-          </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-8 text-center"
+        >
+          <Link
+            to="/campus-life"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg hover:scale-105"
+          >
+            Tour Campus & Facilities <ArrowRight className="h-4 w-4" />
+          </Link>
+        </motion.div>
       </section>
 
       {/* Campus Location Map Box */}

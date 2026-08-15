@@ -66,7 +66,7 @@ export default function Academics() {
         <motion.section
           initial={{ opacity: 0, y: 40, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.6 }}
           className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-2xs space-y-6"
         >
@@ -115,7 +115,7 @@ export default function Academics() {
         <motion.section
           initial={{ opacity: 0, y: 40, scale: 0.96 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true, amount: 0.15, margin: "-40px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-2xs space-y-6"
         >
@@ -160,7 +160,7 @@ export default function Academics() {
         <motion.section
           initial={{ opacity: 0, y: 40, scale: 0.96 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true, amount: 0.15, margin: "-40px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="space-y-8"
         >
@@ -180,7 +180,7 @@ export default function Academics() {
                 key={index}
                 initial={{ opacity: 0, y: 35, scale: 0.94 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: index * 0.12 }}
                 whileHover={{ y: -6, scale: 1.02 }}
                 className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-2xs hover:shadow-xl hover:border-amber-300 transition-all group cursor-pointer"
